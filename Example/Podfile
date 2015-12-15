@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'Visilabs_Example', :exclusive => true do
+  pod "Visilabs", :path => "../"
+end
+
+target 'Visilabs_Tests', :exclusive => true do
+  pod "Visilabs", :path => "../"
+
+  
+end
