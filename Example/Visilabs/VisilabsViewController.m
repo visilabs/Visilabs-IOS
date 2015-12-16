@@ -107,6 +107,12 @@
                     NSString *attr4 = [product objectForKey:@"attr4"];
                     NSString *attr5 = [product objectForKey:@"attr5"];
                     
+                    NSLog(@"%@-%@-%@-%@-%@-%f-%f-%@-%@-%i-%i-%f-%@-%@-%@-%@-%@-%@-%@", title,img,code,destURL,brand,price,discountedPrice,currency,discountCurrency,rating,comment,discount
+                          ,freeShipping ? @"YES" : @"NO"
+                          ,sameDayShipping? @"YES" : @"NO"
+                          , attr1, attr2, attr3, attr4, attr5);
+                    
+                    
                     
                     NSLog(@"Product: %@", product);
                 }
