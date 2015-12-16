@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-Visilabs_Example.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Visilabs_Tests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Visilabs-Visilabs.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Visilabs.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>1FD596221BD3230CB7478461365F9887</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>702E771A3F1DFF02BF678CC11DBECFD9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E9B2260536562D04EA26B6029244F66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F495680DEE537AB3A71C5591885BDD29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -7,6 +7,7 @@
 //
 
 @import XCTest;
+@import Visilabs;
 
 @interface Tests : XCTestCase
 
