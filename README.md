@@ -22,7 +22,7 @@ pod "Visilabs"
 
 ## Author
 
-visilabs, egemen@visilabs.com
+visilabs, contact@visilabs.com
 
 ## License
 
