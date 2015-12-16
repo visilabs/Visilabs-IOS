@@ -83,35 +83,4 @@
     return [NSString stringWithString:queryParameters];
 }
 
-
-//- (NSString *)getArgsAsQueryString {
-//    
-//    __block NSString *qs = @"";
-//    __block bool first = YES;
-//    if (_args && [_args count] > 0) {
-//        
-//        [_args enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//            NSString *format = first ? @"%@=%@" : @"&%@=%@";
-//            if (first) {
-//                first = NO;
-//            }
-//            NSString *str = [NSString stringWithFormat:format, key, obj];
-//            qs = [qs stringByAppendingString:str];
-//        }];
-//    }
-//    return qs;
-//}
-
-//- (NSDictionary *)headers {
-//    return nil;
-//    __block NSMutableDictionary *defaultHeaders =
-//    [NSMutableDictionary dictionaryWithDictionary:[Visilabs getDefaultParamsAsHeaders]];
-//    if (nil != _headers) {
-//        [_headers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//            defaultHeaders[key] = obj;
-//        }];
-//    }
-//    return defaultHeaders;
-//}
-
 @end

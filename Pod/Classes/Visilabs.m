@@ -12,6 +12,7 @@
 #import "VisilabsDefines.h"
 #import "VisilabsParameter.h"
 #import "VisilabsConfig.h"
+#import "VisilabsPersistentTargetManager.h"
 
 static Visilabs * API = nil;
 
@@ -254,19 +255,32 @@ static Reachability *reachability;
     UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
     self.userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     
-    
     //TODO: doğru mu?
     //[webView release];
     webView = nil;
     
-    
-    self.cookieID = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.cookieIDArchiveKey]];
+    @try {
+        self.cookieID = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.cookieIDArchiveKey]];
+    }@catch(NSException *exception) {
+        #ifdef DEBUG
+            NSLog(@"Visilabs: Error while unarchiving cookieID.");
+        #endif
+    }
     if(!self.cookieID)
     {
         [self setCookieID];
     }
     
-    self.exVisitorID = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]];
+    
+    @try {
+        self.exVisitorID = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]];
+    }@catch(NSException *exception) {
+        #ifdef DEBUG
+                NSLog(@"Visilabs: Error while unarchiving cookieID.");
+        #endif
+    }
+    
+    
     if(!self.exVisitorID)
     {
         [self clearExVisitorID];
@@ -306,6 +320,8 @@ static Reachability *reachability;
     
 }
 
+
+//TODO: bunlara bak
 - (void)applicationWillTerminate:(NSNotification*) notification
 {
     @synchronized(self)
@@ -381,12 +397,8 @@ static Reachability *reachability;
             [request setTimeoutInterval:self.requestTimeout];
         }
         
-        
-        
         self.segmentConnection = [NSURLConnection connectionWithRequest:request delegate:self];
         [self.segmentConnection start];
-        //TODO:tekrar bak
-//      [request release];
         
         if(![NSThread isMainThread]){
             while(self.segmentConnection) {
@@ -485,9 +497,9 @@ static Reachability *reachability;
 {
     if(pageName == nil || [pageName length] == 0)
     {
-#ifdef DEBUG
-        NSLog(@"Visilabs: WARNING - Tried to record event with empty or nil name. Ignoring.");
-#endif
+        #ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - Tried to record event with empty or nil name. Ignoring.");
+        #endif
         return;
     }
     
@@ -543,6 +555,8 @@ static Reachability *reachability;
     
     if(properties != nil)
     {
+        //TODO: kontrol et.
+        [VisilabsPersistentTargetManager saveParameters:properties];
         NSString *additionalURL = [self urlizeProps:properties];
         if([additionalURL length] > 0)
         {

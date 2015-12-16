@@ -12,80 +12,81 @@
 
 +(void) saveParameters:(NSDictionary*) parameters
 {
-    if(!parameters){
-        return;
-    }
-    
-    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-    
-    for (VisilabsParameter *visilabsParameter in [VisilabsConfig visilabsParameters])
-    {
-        NSString *key = visilabsParameter.key;
-        NSString *storeKey = visilabsParameter.storeKey;
-        NSArray *relatedKeys = visilabsParameter.relatedKeys;
-        NSNumber *count = visilabsParameter.count;
+    @synchronized (self) {
+        if(!parameters){
+            return;
+        }
         
-        NSString *parameterValue = [parameters objectForKey:key];
+        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
         
-        if(parameterValue && [parameterValue length] > 0)
+        for (VisilabsParameter *visilabsParameter in [VisilabsConfig visilabsParameters])
         {
-            if([count intValue] == 1)
+            NSString *key = visilabsParameter.key;
+            NSString *storeKey = visilabsParameter.storeKey;
+            NSArray *relatedKeys = visilabsParameter.relatedKeys;
+            NSNumber *count = visilabsParameter.count;
+            
+            NSString *parameterValue = [parameters objectForKey:key];
+            
+            if(parameterValue && [parameterValue length] > 0)
             {
-                if(relatedKeys != nil && [relatedKeys count] > 0)
+                if([count intValue] == 1)
                 {
-                    NSString *parameterValueToStore = [parameterValue copy];
-                    NSString *relatedKey = [relatedKeys objectAtIndex:0];
-                    if([parameters objectForKey:relatedKey])
+                    if(relatedKeys != nil && [relatedKeys count] > 0)
                     {
-                        NSString *relatedKeyValue = [[parameters objectForKey:relatedKey] stringByTrimmingCharactersInSet:
-                                                     [NSCharacterSet whitespaceCharacterSet]];
-                        parameterValueToStore = [parameterValueToStore stringByAppendingString:@"|"];
-                        parameterValueToStore = [parameterValueToStore stringByAppendingString:relatedKeyValue];
+                        NSString *parameterValueToStore = [parameterValue copy];
+                        NSString *relatedKey = [relatedKeys objectAtIndex:0];
+                        if([parameters objectForKey:relatedKey])
+                        {
+                            NSString *relatedKeyValue = [[parameters objectForKey:relatedKey] stringByTrimmingCharactersInSet:
+                                                         [NSCharacterSet whitespaceCharacterSet]];
+                            parameterValueToStore = [parameterValueToStore stringByAppendingString:@"|"];
+                            parameterValueToStore = [parameterValueToStore stringByAppendingString:relatedKeyValue];
+                        }
+                        else
+                        {
+                            parameterValueToStore = [parameterValueToStore stringByAppendingString:@"|0"];
+                        }
+                        parameterValueToStore = [parameterValueToStore stringByAppendingString:dateString];
+                        [VisilabsDataManager save:storeKey withObject:parameterValueToStore];
                     }
                     else
                     {
-                        parameterValueToStore = [parameterValueToStore stringByAppendingString:@"|0"];
+                        [VisilabsDataManager save:storeKey withObject:parameterValue];
                     }
-                    parameterValueToStore = [parameterValueToStore stringByAppendingString:dateString];
-                    [VisilabsDataManager save:storeKey withObject:parameterValueToStore];
                 }
-                else
+                else if([count intValue] > 1)
                 {
-                    [VisilabsDataManager save:storeKey withObject:parameterValue];
-                }
-            }
-            else if([count intValue] > 1)
-            {
-                NSString *previousParameterValue = (NSString *)[VisilabsDataManager read:storeKey];
-                NSString *parameterValueToStore  = [parameterValue stringByAppendingString:@"|"];
-                parameterValueToStore  = [parameterValue stringByAppendingString:dateString];
-                if(previousParameterValue && [previousParameterValue length] > 0)
-                {
-                    NSArray *previousParameterValueParts = [previousParameterValue componentsSeparatedByString:@"~"];
-                    if(previousParameterValueParts)
+                    NSString *previousParameterValue = (NSString *)[VisilabsDataManager read:storeKey];
+                    NSString *parameterValueToStore  = [parameterValue stringByAppendingString:@"|"];
+                    parameterValueToStore  = [parameterValue stringByAppendingString:dateString];
+                    if(previousParameterValue && [previousParameterValue length] > 0)
                     {
-                        for (int i = 0; i< [previousParameterValueParts count]; i++) {
-                            if(i==9)
-                            {
-                                break;
-                            }
-                            NSString *decodedPreviousParameterValuePart = [previousParameterValueParts objectAtIndex:i];
-                            //TODO:burayı kontrol et java'da "\\|" yapmak gerekiyordu.
-                            NSArray *decodedPreviousParameterValuePartArray = [decodedPreviousParameterValuePart componentsSeparatedByString:@"|"];
-                            if([decodedPreviousParameterValuePartArray count] == 2)
-                            {
-                                parameterValueToStore = [parameterValueToStore stringByAppendingString:decodedPreviousParameterValuePart];
+                        NSArray *previousParameterValueParts = [previousParameterValue componentsSeparatedByString:@"~"];
+                        if(previousParameterValueParts)
+                        {
+                            for (int i = 0; i< [previousParameterValueParts count]; i++) {
+                                if(i==9)
+                                {
+                                    break;
+                                }
+                                NSString *decodedPreviousParameterValuePart = [previousParameterValueParts objectAtIndex:i];
+                                //TODO:burayı kontrol et java'da "\\|" yapmak gerekiyordu.
+                                NSArray *decodedPreviousParameterValuePartArray = [decodedPreviousParameterValuePart componentsSeparatedByString:@"|"];
+                                if([decodedPreviousParameterValuePartArray count] == 2)
+                                {
+                                    parameterValueToStore = [parameterValueToStore stringByAppendingString:decodedPreviousParameterValuePart];
+                                }
                             }
                         }
                     }
+                    [VisilabsDataManager save:storeKey withObject:parameterValueToStore];
                 }
-                [VisilabsDataManager save:storeKey withObject:parameterValueToStore];
             }
         }
     }
-    
 }
 
 +(NSDictionary*) getParameters
