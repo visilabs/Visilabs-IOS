@@ -61,7 +61,7 @@
                 {
                     NSString *previousParameterValue = (NSString *)[VisilabsDataManager read:storeKey];
                     NSString *parameterValueToStore  = [parameterValue stringByAppendingString:@"|"];
-                    parameterValueToStore  = [parameterValue stringByAppendingString:dateString];
+                    parameterValueToStore  = [parameterValueToStore stringByAppendingString:dateString];
                     if(previousParameterValue && [previousParameterValue length] > 0)
                     {
                         NSArray *previousParameterValueParts = [previousParameterValue componentsSeparatedByString:@"~"];
