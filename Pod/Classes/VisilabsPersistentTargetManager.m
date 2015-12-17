@@ -77,6 +77,7 @@
                                 NSArray *decodedPreviousParameterValuePartArray = [decodedPreviousParameterValuePart componentsSeparatedByString:@"|"];
                                 if([decodedPreviousParameterValuePartArray count] == 2)
                                 {
+                                    parameterValueToStore = [parameterValueToStore stringByAppendingString:@"~"];
                                     parameterValueToStore = [parameterValueToStore stringByAppendingString:decodedPreviousParameterValuePart];
                                 }
                             }
