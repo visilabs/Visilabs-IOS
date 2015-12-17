@@ -46,9 +46,13 @@
     self.successHandler = sucornil;
     self.failureHandler = failornil;
     
+    NSURL *apicall = visilabsAction.buildURL;
     
     if (! [[Visilabs callAPI] isOnline]) {
         VisilabsResponse *res = [[VisilabsResponse alloc] init];
+        if(apicall){
+            res.targetURL = [apicall absoluteString];
+        }
         [res setError:[NSError errorWithDomain:@"VisilabsHttpClient"
                                           code:VisilabsSDKNetworkOfflineErrorType
                                       userInfo:@{
@@ -57,7 +61,8 @@
         [self failWithResponse:res AndAction:visilabsAction];
         return;
     }
-    NSURL *apicall = visilabsAction.buildURL;
+    
+    
     
     DLog(@"Request URL is : %@", [apicall absoluteString]);
     
@@ -77,6 +82,9 @@
             if (error) {
                 DLog(@"Error %@", error.description);
                 VisilabsResponse *visilabsResponse = [[VisilabsResponse alloc] init];
+                if(apicall){
+                    visilabsResponse.targetURL = [apicall absoluteString];
+                }
                 visilabsResponse.rawResponseAsString = reponseAsRawString;
                 visilabsResponse.rawResponse = data;
                 visilabsResponse.error = error;
@@ -93,6 +101,9 @@
             visilabsResponse.responseStatusCode = (int)((NSHTTPURLResponse*)response).statusCode;
             visilabsResponse.rawResponseAsString = reponseAsRawString;
             visilabsResponse.rawResponse = data;
+            if(apicall){
+                visilabsResponse.targetURL = [apicall absoluteString];
+            }
             [visilabsResponse parseResponseData:data];
             
             

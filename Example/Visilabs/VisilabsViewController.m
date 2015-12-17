@@ -116,11 +116,6 @@
                     
                     NSLog(@"Product: %@", product);
                 }
-                
-                
-
-                
-//                NSLog(@"Value: %@", [parsedDictionary valueForKey:key]);
             }
         }
         

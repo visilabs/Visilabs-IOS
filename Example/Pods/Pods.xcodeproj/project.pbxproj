@@ -197,73 +197,6 @@
 			path = "Target Support Files/Pods-Visilabs_Tests";
 			sourceTree = "<group>";
 		};
-		38A15B001C221ECC00D1A3E7 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				8FED7AC84065EBD977E72F745B51C6A8 /* VisilabsResponseDelegate.h */,
-				C05518D9BF0A9188457B3DA863D272DC /* VisilabsHttpClient.h */,
-				705B45A4D1298493240D20FCF76B5351 /* VisilabsHttpClient.m */,
-				C6DAC3C5D7457BE6F69A011A6C5457B2 /* VisilabsResponse.h */,
-				0C96A0B5290437E2ECD2A89023E8AE06 /* VisilabsResponse.m */,
-				8AD4823D8258AD28433047FA11F1E05E /* VisilabsTargetRequest.h */,
-				BB86907F6A7BC1FD5522BA728BFD79BD /* VisilabsTargetRequest.m */,
-				1A0A1DAB3AA00ECC431546353713E2BA /* Visilabs.h */,
-				234C39045622C82F2ECD205B5A0D22DB /* Visilabs.m */,
-				50DCBFE4E98D010416BDE72DD67DA74D /* VisilabsAction.h */,
-				D8C97AFF857080D71C4D6C3F02705E7D /* VisilabsAction.m */,
-			);
-			name = API;
-			sourceTree = "<group>";
-		};
-		38A15B011C221F1C00D1A3E7 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				617D0F5A8332F6842032C6BC78A42B12 /* VisilabsPersistentTargetManager.h */,
-				71D728BA6AAEAA16D6BC18EAAB7154A4 /* VisilabsPersistentTargetManager.m */,
-				2758C4769FBFCE246A504F0A0E241648 /* VisilabsDataManager.h */,
-				FAE534EC0D0ED799507A48057DBC80AE /* VisilabsDataManager.m */,
-				5D4BA8BBCD46A82FD2A7EA03E876468E /* VisilabsParameter.h */,
-				ECDE40BBFF85CB7F6EE7A2D4EC385E73 /* VisilabsParameter.m */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
-		38A15B021C221F2F00D1A3E7 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				09C29CF30D6FF3851247455569BC7869 /* VisilabsConfig.h */,
-				D52269237AEB46CC87090035B5640623 /* VisilabsConfig.m */,
-			);
-			name = Config;
-			sourceTree = "<group>";
-		};
-		38A15B031C221F8B00D1A3E7 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				38A15B041C221F9600D1A3E7 /* JSON */,
-			);
-			name = Categories;
-			sourceTree = "<group>";
-		};
-		38A15B041C221F9600D1A3E7 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				4172D061D4DA8C0E8549A9CF4F855B22 /* VisilabsJSON.h */,
-				ADDB262B8281D395417DC0929196CCDA /* VisilabsJSON.m */,
-			);
-			name = JSON;
-			sourceTree = "<group>";
-		};
-		38A15B051C221FAA00D1A3E7 /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				E1025194A5DE1C5939E2F41FD8B487C1 /* Reachability.h */,
-				D71CD52AC036083CCFDA812598C42826 /* Reachability.m */,
-				3D0EA84ECE302D871369B2ECA1B7231C /* VisilabsDefines.h */,
-			);
-			name = Others;
-			sourceTree = "<group>";
-		};
 		5757BB5A88627EC5D08862F52FB7439C /* Pod */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,11 +236,30 @@
 		80AC6A7917E214B6EDFDA7D091CEB426 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				38A15B051C221FAA00D1A3E7 /* Others */,
-				38A15B031C221F8B00D1A3E7 /* Categories */,
-				38A15B021C221F2F00D1A3E7 /* Config */,
-				38A15B011C221F1C00D1A3E7 /* Data */,
-				38A15B001C221ECC00D1A3E7 /* API */,
+				E1025194A5DE1C5939E2F41FD8B487C1 /* Reachability.h */,
+				D71CD52AC036083CCFDA812598C42826 /* Reachability.m */,
+				1A0A1DAB3AA00ECC431546353713E2BA /* Visilabs.h */,
+				234C39045622C82F2ECD205B5A0D22DB /* Visilabs.m */,
+				50DCBFE4E98D010416BDE72DD67DA74D /* VisilabsAction.h */,
+				D8C97AFF857080D71C4D6C3F02705E7D /* VisilabsAction.m */,
+				09C29CF30D6FF3851247455569BC7869 /* VisilabsConfig.h */,
+				D52269237AEB46CC87090035B5640623 /* VisilabsConfig.m */,
+				2758C4769FBFCE246A504F0A0E241648 /* VisilabsDataManager.h */,
+				FAE534EC0D0ED799507A48057DBC80AE /* VisilabsDataManager.m */,
+				3D0EA84ECE302D871369B2ECA1B7231C /* VisilabsDefines.h */,
+				C05518D9BF0A9188457B3DA863D272DC /* VisilabsHttpClient.h */,
+				705B45A4D1298493240D20FCF76B5351 /* VisilabsHttpClient.m */,
+				4172D061D4DA8C0E8549A9CF4F855B22 /* VisilabsJSON.h */,
+				ADDB262B8281D395417DC0929196CCDA /* VisilabsJSON.m */,
+				5D4BA8BBCD46A82FD2A7EA03E876468E /* VisilabsParameter.h */,
+				ECDE40BBFF85CB7F6EE7A2D4EC385E73 /* VisilabsParameter.m */,
+				617D0F5A8332F6842032C6BC78A42B12 /* VisilabsPersistentTargetManager.h */,
+				71D728BA6AAEAA16D6BC18EAAB7154A4 /* VisilabsPersistentTargetManager.m */,
+				C6DAC3C5D7457BE6F69A011A6C5457B2 /* VisilabsResponse.h */,
+				0C96A0B5290437E2ECD2A89023E8AE06 /* VisilabsResponse.m */,
+				8FED7AC84065EBD977E72F745B51C6A8 /* VisilabsResponseDelegate.h */,
+				8AD4823D8258AD28433047FA11F1E05E /* VisilabsTargetRequest.h */,
+				BB86907F6A7BC1FD5522BA728BFD79BD /* VisilabsTargetRequest.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

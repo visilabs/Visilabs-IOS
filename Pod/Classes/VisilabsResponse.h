@@ -12,6 +12,9 @@
 @interface VisilabsResponse : NSObject
 
 
+/** Get the generated target URL as NSString */
+@property (nonatomic, strong) NSString *targetURL;
+
 /** Get the response as NSArray */ /*egemen*/
 @property (nonatomic, strong) NSArray *responseArray;
 
