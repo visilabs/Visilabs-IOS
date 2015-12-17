@@ -505,7 +505,12 @@ static Reachability *reachability;
     
     if ([[properties allKeys] containsObject:@"OM.cookieID"])
     {
-        NSString     *cookieid = [properties objectForKey: @"OM.cookieID"];
+        NSString *cookieid = [properties objectForKey: @"OM.cookieID"];
+        
+        if(![self.cookieID isEqualToString:cookieid]){
+            [VisilabsPersistentTargetManager clearParameters];
+        }
+        
         self.cookieID = cookieid;
         if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.cookieIDArchiveKey]])
         {
@@ -517,6 +522,11 @@ static Reachability *reachability;
     if ([[properties allKeys] containsObject:@"OM.exVisitorID"])
     {
         NSString     *exvisitorid = [properties objectForKey: @"OM.exVisitorID"];
+        
+        if(![self.exVisitorID isEqualToString:exvisitorid]){
+            [VisilabsPersistentTargetManager clearParameters];
+        }
+        
         self.exVisitorID = exvisitorid;
         if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]])
         {
@@ -699,6 +709,10 @@ static Reachability *reachability;
     
     @synchronized(self)
     {
+        if(![self.exVisitorID isEqualToString:exVisitorID]){
+            [VisilabsPersistentTargetManager clearParameters];
+        }
+        
         self.exVisitorID = exVisitorID;
         
         if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]])
@@ -751,6 +765,11 @@ static Reachability *reachability;
     
     @synchronized(self)
     {
+        if(![self.exVisitorID isEqualToString:exVisitorID]){
+            [VisilabsPersistentTargetManager clearParameters];
+        }
+
+        
         self.exVisitorID = exVisitorID;
         
         if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]])
