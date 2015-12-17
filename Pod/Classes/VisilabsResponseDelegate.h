@@ -14,7 +14,7 @@
 /**
  The delegate class to process the response data. If callback blocks are not
  used in the API requests, this protocol should be implemented and assigned to
- an instance of FHAct
+ an instance of VisilabsAction
  */
 
 @protocol VisilabsResponseDelegate <NSObject>

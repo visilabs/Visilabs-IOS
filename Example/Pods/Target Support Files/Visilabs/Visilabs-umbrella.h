@@ -1,6 +1,5 @@
 #import <UIKit/UIKit.h>
 
-#import "Reachability.h"
 #import "Visilabs.h"
 #import "VisilabsAction.h"
 #import "VisilabsConfig.h"
@@ -10,6 +9,7 @@
 #import "VisilabsJSON.h"
 #import "VisilabsParameter.h"
 #import "VisilabsPersistentTargetManager.h"
+#import "VisilabsReachability.h"
 #import "VisilabsResponse.h"
 #import "VisilabsResponseDelegate.h"
 #import "VisilabsTargetRequest.h"

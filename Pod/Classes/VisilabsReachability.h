@@ -46,13 +46,13 @@ typedef NS_ENUM(NSInteger, NetworkStatus) {
     ReachableViaWWAN = 1
 };
 
-@class Reachability;
+@class VisilabsReachability;
 
-typedef void (^NetworkReachable)(Reachability * reachability);
-typedef void (^NetworkUnreachable)(Reachability * reachability);
+typedef void (^NetworkReachable)(VisilabsReachability * reachability);
+typedef void (^NetworkUnreachable)(VisilabsReachability * reachability);
 
 
-@interface Reachability : NSObject
+@interface VisilabsReachability : NSObject
 
 @property (nonatomic, copy) NetworkReachable    reachableBlock;
 @property (nonatomic, copy) NetworkUnreachable  unreachableBlock;
@@ -60,15 +60,15 @@ typedef void (^NetworkUnreachable)(Reachability * reachability);
 @property (nonatomic, assign) BOOL reachableOnWWAN;
 
 
-+(Reachability*)reachabilityWithHostname:(NSString*)hostname;
++(VisilabsReachability*)reachabilityWithHostname:(NSString*)hostname;
 // This is identical to the function above, but is here to maintain
 //compatibility with Apples original code. (see .m)
-+(Reachability*)reachabilityWithHostName:(NSString*)hostname;
-+(Reachability*)reachabilityForInternetConnection;
-+(Reachability*)reachabilityWithAddress:(void *)hostAddress;
-+(Reachability*)reachabilityForLocalWiFi;
++(VisilabsReachability*)reachabilityWithHostName:(NSString*)hostname;
++(VisilabsReachability*)reachabilityForInternetConnection;
++(VisilabsReachability*)reachabilityWithAddress:(void *)hostAddress;
++(VisilabsReachability*)reachabilityForLocalWiFi;
 
--(Reachability *)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
+-(VisilabsReachability*)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
 
 -(BOOL)startNotifier;
 -(void)stopNotifier;

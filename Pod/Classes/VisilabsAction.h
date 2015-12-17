@@ -33,7 +33,7 @@
 
 /** The response delegate for this request.
  
- @see FHResponseDelegate
+ @see VisilabsResponseDelegate
  */
 @property (nonatomic, weak) id<VisilabsResponseDelegate> delegate;
 
@@ -73,13 +73,13 @@
  
  @warning This will block the application's main UI thread
  @param sucornil The block to be executed if the request is successful. If it's
- nil, the delegate's [FHResponseDelegate requestDidSucceedWithResponse:] will be
+ nil, the delegate's [VisilabsResponseDelegate requestDidSucceedWithResponse:] will be
  exectued.
  @param failornil The block to be executed if the request is failed. If it's nil,
- the delegate's [FHResponseDelegate requestDidFailWithResponse:] will be
+ the delegate's [VisilabsResponseDelegate requestDidFailWithResponse:] will be
  exectued.
  
- @see FHResponseDelegate
+ @see VisilabsResponseDelegate
  */
 - (void)execWithSuccess:(void (^)(VisilabsResponse *success))sucornil AndFailure:(void (^)(VisilabsResponse *failed))failornil;
 
@@ -89,12 +89,12 @@
  This is the recommended way to execute the request.
  
  @param sucornil The block to be executed if the request is successful. If it's
- nil, the delegate's [FHResponseDelegate requestDidSucceedWithResponse:] will be
+ nil, the delegate's [VisilabsResponseDelegate requestDidSucceedWithResponse:] will be
  exectued.
  @param failornil The block to be executed if the request is failed. If it's nil,
- the delegate's [FHResponseDelegate requestDidFailWithResponse:] will be
+ the delegate's [VisilabsResponseDelegate requestDidFailWithResponse:] will be
  exectued.
- @see FHResponseDelegate
+ @see VisilabsResponseDelegate
  */
 - (void)execAsyncWithSuccess:(void (^)(VisilabsResponse *success))sucornil
                   AndFailure:(void (^)(VisilabsResponse *failed))failornil;

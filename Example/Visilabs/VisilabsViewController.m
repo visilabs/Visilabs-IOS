@@ -66,6 +66,8 @@
 - (IBAction)suggest:(id)sender {
     VisilabsTargetRequest *request = [[Visilabs callAPI] buildTargetRequest:@"9" withProductCode:productCodeText.text];
     
+    
+    
     [request execAsyncWithSuccess:^(VisilabsResponse * response) {
         // Response
         

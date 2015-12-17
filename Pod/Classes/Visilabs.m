@@ -6,7 +6,7 @@
 //  Copyright © 2015 Visilabs. All rights reserved.
 //
 
-#import "Reachability.h"
+#import "VisilabsReachability.h"
 
 #import "Visilabs.h"
 #import "VisilabsDefines.h"
@@ -89,7 +89,7 @@ static Visilabs * API = nil;
 @synthesize encryptedDataSource;
 
 //static BOOL _isOnline = false;
-static Reachability *reachability;
+static VisilabsReachability *reachability;
 
 -(NSString*) exVisitorID
 {
@@ -113,7 +113,7 @@ static Reachability *reachability;
 
 -(void)registerForNetworkReachabilityNotifications {
     if (!reachability) {
-        reachability = [Reachability reachabilityForInternetConnection];
+        reachability = [VisilabsReachability reachabilityForInternetConnection];
         if ([reachability currentReachabilityStatus] == ReachableViaWiFi ||
             [reachability currentReachabilityStatus] == ReachableViaWWAN) {
             _isOnline = YES;
@@ -934,15 +934,9 @@ static Reachability *reachability;
         pushURL = [NSString stringWithFormat:@"%@%@=%@",pushURL,@"&utm_content",escapedContent];
     }
     
-    return  pushURL;
-    
+    return  pushURL;    
 }
 
-//- (void)initVisilabsParameters
-//{
-//    self.visilabsParameters = [[NSMutableArray alloc] init];
-//    VisilabsParameter *visilabsParameter = [[VisilabsParameter alloc] initWithKey:@"OM:OSS" storeKey:@"OM.voss" count: [NSNumber numberWithInteger:1] relatedKeys:nil];
-//}
 
 @end
 
