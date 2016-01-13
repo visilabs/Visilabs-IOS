@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Visilabs"
-  s.version          = "2.4.2"
+  s.version          = "2.4.3"
   s.summary          = "Visilabs IOS SDK for Analytics and Target modules."
   s.description      = "Visilabs IOS SDK for Analytics and Target modules. SDK tracks user interactions and makes recommendations to enhance conversion and user retention."
   s.homepage         = "http://www.visilabs.com"
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Visilabs' do |ss|
     ss.source_files  = 'Pod/**/*.{m,h}', 'Pod/**/*.swift'
-    ss.resources 	 = ['Pod/**/*.{png,storyboard}','Pod/**/**/*.{png,storyboard}']
+    ss.resources 	 = ['Pod/**/*.{png,storyboard}','Pod/**/**/*.{png,storyboard}','Pod/**/**/**/*.{png,storyboard}''Pod/**/**/**/**/*.{png,storyboard}']
   end
 
 

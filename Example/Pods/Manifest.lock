@@ -1,7 +1,7 @@
 PODS:
-  - Visilabs (2.4.2):
-    - Visilabs/Visilabs (= 2.4.2)
-  - Visilabs/Visilabs (2.4.2)
+  - Visilabs (2.4.3):
+    - Visilabs/Visilabs (= 2.4.3)
+  - Visilabs/Visilabs (2.4.3)
 
 DEPENDENCIES:
   - Visilabs (from `../`)
@@ -11,6 +11,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Visilabs: fd9b65a72ef5b21156d3a82907c6268e81570bf1
+  Visilabs: 73da5af4d9929f8c316935f2b5f65ba185d97abc
 
 COCOAPODS: 0.39.0
