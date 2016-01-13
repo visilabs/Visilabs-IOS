@@ -113,11 +113,23 @@
 
 
 
+- (IBAction)showMini:(id)sender {
+    [[Visilabs callAPI] showNotificationWithType:@"mini" pageName:@"dene"];
+}
 
 
+- (IBAction)showFull:(id)sender {
+    [[Visilabs callAPI] showNotificationWithType:@"full" pageName:@"dene"];
+}
 
 
+- (IBAction)show3:(id)sender {
+    [[Visilabs callAPI] showNotificationWithID:3 pageName:@"dene"];
+}
 
+- (IBAction)show:(id)sender {
+    [[Visilabs callAPI] showNotification:@"dene"];
+}
 
 
 

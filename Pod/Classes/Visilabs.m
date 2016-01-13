@@ -13,6 +13,9 @@
 #import "VisilabsParameter.h"
 #import "VisilabsConfig.h"
 #import "VisilabsPersistentTargetManager.h"
+#import "VisilabsNotification.h"
+#import "VisilabsNotificationViewController.h"
+#import "UIView+VisilabsHelpers.h"
 
 static Visilabs * API = nil;
 
@@ -39,7 +42,7 @@ static Visilabs * API = nil;
 @end
 
 
-@interface Visilabs()
+@interface Visilabs()<VisilabsNotificationViewControllerDelegate>
 
 @property (nonatomic, retain) NSString *segmentURL;
 @property (nonatomic, retain) NSString *realTimeURL;
@@ -55,13 +58,13 @@ static Visilabs * API = nil;
 @property (nonatomic, readwrite) NSInteger requestTimeout;
 @property (nonatomic, retain) NSString *cookieIDArchiveKey ;
 @property (nonatomic, retain) NSString *exVisitorIDArchiveKey ;
+@property (nonatomic, retain) NSString *propertiesArchiveKey ;
 
 
-
-
-- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL  withChannel:(NSString *)chan  withRequestTimeout:(NSInteger)timeout withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)targetURL;
-- (void)applicationWillTerminate:(NSNotification *)notification;
-- (void)applicationWillEnterForeground:(NSNotificationCenter*) notification;
+- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL  withChannel:(NSString *)chan  withRequestTimeout:(NSInteger)timeout withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)targetURL withActionURL:(NSString *)aURL;
+//- (void)applicationWillTerminate:(NSNotification *)notification;
+//- (void)applicationWillEnterForeground:(NSNotificationCenter*) notification;
+//- (void)applicationDidBecomeActive:(NSNotification *)notification;
 - (void) send;
 - (NSString *)urlizeProps:(NSDictionary *)props;
 - (void)setProperties:(NSDictionary *)properties;
@@ -71,6 +74,13 @@ static Visilabs * API = nil;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 
+/*Notification Properties*/
+@property (nonatomic, strong) dispatch_queue_t serialQueue;
+//@property (nonatomic, strong) NSArray *notifications;
+@property (nonatomic, strong) id currentlyShowingNotification;
+@property (nonatomic, strong) UIViewController *notificationViewController;
+//@property (nonatomic, strong) NSMutableSet *shownNotifications; // bu sette gösterilen notification'ların id'leri duruyor.
+@property (nonatomic) BOOL notificationResponseCached;
 
 @end
 
@@ -88,8 +98,497 @@ static Visilabs * API = nil;
 @synthesize RESTURL;
 @synthesize encryptedDataSource;
 
-//static BOOL _isOnline = false;
 static VisilabsReachability *reachability;
+
+
+//TODO shownNotifications keyedarchive'lenecek
+
+/*Notification Methods*/
+
+
+#pragma mark - Notification
+
+
+- (void)trackNotificationClick:(VisilabsNotification *)notification
+{
+    if(notification == nil || notification.ID < 1)
+    {
+#ifdef DEBUG
+        NSLog(@"Visilabs: WARNING - Tried to record empty or nil notification. Ignoring.");
+#endif
+        return;
+    }
+    
+    
+    
+    
+    int actualTimeOfevent = (int)[[NSDate date] timeIntervalSince1970];
+    
+    
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
+                        ,@"OM.cookieID", self.cookieID
+                        ,@"OM.vchannel", self.channel
+                        ,@"OM.siteID",self.siteID
+                        ,@"OM.oid",self.organizationID
+                        ,@"dat", actualTimeOfevent
+                        ,@"OM.uri",[self urlEncode:@"/OM_evt.gif"]
+                        ,@"OM.domain",[NSString stringWithFormat:@"%@_%@", self.dataSource, @"Android"]];
+    
+    if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
+    {
+        NSString *escapedIdentity = [self urlEncode:self.exVisitorID];
+        segURL = [NSString stringWithFormat:@"%@%@=%@",segURL,@"OM.exVisitorID",escapedIdentity];
+    }
+    
+    NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
+    
+    if(visilabsParameters)
+    {
+        for (NSString *key in [visilabsParameters allKeys])
+        {
+            NSString *value = [visilabsParameters objectForKey:key];
+            if (value && [value length] > 0)
+            {
+                NSString* encodedValue = [[Visilabs callAPI] urlEncode:value];
+                NSString *parameter = [NSString stringWithFormat:@"&%@=%@", key, encodedValue];
+                segURL = [[segURL stringByAppendingString:parameter] mutableCopy];
+            }
+        }
+    }
+    
+    
+    NSString *rtURL = nil;
+    if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
+    {
+        rtURL = [segURL stringByReplacingOccurrencesOfString:self.segmentURL withString:self.realTimeURL];
+    }
+    DLog(@"%@ tracking notification click %@", self, segURL);
+    
+    @synchronized(self)
+    {
+        [self.sendQueue addObject:segURL];
+        if(rtURL != nil)
+        {
+            [self.sendQueue addObject:rtURL];
+        }
+    }
+    [self send];
+}
+
+
+- (void)checkForNotificationsResponseWithCompletion:(void (^)(NSArray *notifications))completion pageName:(NSString *)pageName
+{
+    
+    self.notificationResponseCached = NO;
+    
+    dispatch_async(self.serialQueue, ^{
+        
+        NSMutableArray *parsedNotifications = [NSMutableArray array];
+        
+        if (!self.notificationResponseCached) {
+            
+            if(pageName == nil){
+                return;
+            }
+            
+            int actualTimeOfevent = (int)[[NSDate date] timeIntervalSince1970];
+            NSString *actURL = [NSString stringWithFormat:@"%@?%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@", self.actionURL
+                                ,@"OM.cookieID", self.cookieID
+                                ,@"OM.siteID",self.siteID
+                                ,@"OM.oid",self.organizationID
+                                ,@"dat", actualTimeOfevent
+                                ,@"OM.apiver", @"IOS"
+                                ,@"OM.uri", [self urlEncode:pageName]];
+            
+            if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
+            {
+                NSString *escapedIdentity = [self urlEncode:self.exVisitorID];
+                actURL = [NSString stringWithFormat:@"%@%@=%@",actURL,@"OM.exVisitorID",escapedIdentity];
+            }
+            
+            NSURL *URL = [NSURL URLWithString:actURL];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+            NSError *error = nil;
+            NSURLResponse *urlResponse = nil;
+            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+            if (error) {
+                DLog(@"%@ notification check http error: %@", self, error);
+                return;
+            }
+            
+            
+            //TODO: buralar değişecek
+            
+            
+            NSArray *rawNotifications = (NSArray *)[NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:&error];
+            if (error) {
+                DLog(@"%@ notification check json error: %@, data: %@", self, error, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                return;
+            }
+            
+            //NSArray *rawNotifications = object[@"notifications"];
+            
+            
+            
+            
+            
+            
+            if (rawNotifications && [rawNotifications isKindOfClass:[NSArray class]]) {
+                for (id obj in rawNotifications) {
+                    VisilabsNotification *notification = [VisilabsNotification notificationWithJSONObject:obj];
+                    if (notification) {
+                        [parsedNotifications addObject:notification];
+                    }
+                }
+            } else {
+                DLog(@"%@ in-app notifs check response format error: %@", self, rawNotifications);
+            }
+            
+            //self.notifications = [NSArray arrayWithArray:parsedNotifications];
+            self.notificationResponseCached = YES;
+        }else {
+            DLog(@"%@ notification cache found, skipping network request", self);
+        }
+        
+        
+        
+        if (completion) {
+            completion(parsedNotifications);
+        }
+        
+    });
+}
+
++ (UIViewController *)topPresentedViewController
+{
+    UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (controller.presentedViewController) {
+        controller = controller.presentedViewController;
+    }
+    return controller;
+}
+
++ (BOOL)canPresentFromViewController:(UIViewController *)viewController
+{
+    // This fixes the NSInternalInconsistencyException caused when we try present a
+    // survey on a viewcontroller that is itself being presented.
+    if ([viewController isBeingPresented] || [viewController isBeingDismissed]) {
+        return NO;
+    }
+    
+    Class UIAlertControllerClass = NSClassFromString(@"UIAlertController");
+    if (UIAlertControllerClass && [viewController isKindOfClass:UIAlertControllerClass]) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+
+//TODO: bunlara shown kontrolü koyulacak.showNotificationWithID,showNotificationWithType,showNotification
+
+- (void)showNotification:(NSString *)pageName
+{
+    [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
+        if ([notifications count] > 0) {
+            [self showNotificationWithObject:notifications[0]];
+        }
+    } pageName:pageName];
+}
+
+- (void)showNotificationWithType:(NSString *)type pageName:(NSString *)pageName
+{
+    [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
+        if (type != nil) {
+            for (VisilabsNotification *notification in notifications) {
+                if ([notification.type isEqualToString:type]) {
+                    [self showNotificationWithObject:notification];
+                    break;
+                }
+            }
+        }
+    } pageName:pageName];
+}
+
+- (void)showNotificationWithID:(NSUInteger)ID pageName:(NSString *)pageName
+{
+    [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
+        for (VisilabsNotification *notification in notifications) {
+            if (notification.ID == ID) {
+                [self showNotificationWithObject:notification];
+                break;
+            }
+        }
+    } pageName:pageName];
+}
+
+- (void)showNotificationWithObject:(VisilabsNotification *)notification
+{
+    NSData *image = notification.image;
+    
+    // if images fail to load, remove the notification from the queue
+    if (!image) {
+        //NSMutableArray *notifications = [NSMutableArray arrayWithArray:_notifications];
+        //[notifications removeObject:notification];
+        //self.notifications = [NSArray arrayWithArray:notifications];
+        return;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.currentlyShowingNotification) {
+            DLog(@"%@ already showing in-app notification: %@", self, self.currentlyShowingNotification);
+        }else {
+            self.currentlyShowingNotification = notification;
+            BOOL shown;
+            if ([notification.type isEqualToString:VisilabsNotificationTypeMini]) {
+                shown = [self showMiniNotificationWithObject:notification];
+            } else {
+                shown = [self showFullNotificationWithObject:notification];
+            }
+            
+            /*
+             if (shown && ![notification.title isEqualToString:@"$ignore"]) {
+             [self markNotificationShown:notification];
+             }
+             */
+            
+            if (!shown) {
+                self.currentlyShowingNotification = nil;
+            }
+        }
+    });
+}
+
+- (BOOL)showMiniNotificationWithObject:(VisilabsNotification *)notification
+{
+    VisilabsMiniNotificationViewController *controller = [[VisilabsMiniNotificationViewController alloc] init];
+    controller.notification = notification;
+    controller.delegate = self;
+    controller.backgroundColor = self.miniNotificationBackgroundColor;
+    self.notificationViewController = controller;
+    
+    [controller showWithAnimation];
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.miniNotificationPresentationTime * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self notificationController:controller wasDismissedWithStatus:NO];
+    });
+    return YES;
+}
+
+- (BOOL)showFullNotificationWithObject:(VisilabsNotification *)notification
+{
+    UIViewController *presentingViewController = [Visilabs topPresentedViewController];
+    
+    if ([[self class] canPresentFromViewController:presentingViewController]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"VisilabsNotification" bundle:[NSBundle bundleForClass:Visilabs.class]];
+        VisilabsFullNotificationViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"VisilabsFullNotificationViewController"];
+        
+        controller.backgroundImage = [presentingViewController.view visilabs_snapshotImage];
+        controller.notification = notification;
+        controller.delegate = self;
+        self.notificationViewController = controller;
+        
+        [presentingViewController presentViewController:controller animated:YES completion:nil];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+/*
+ - (void)markNotificationShown:(VisilabsNotification *)notification
+ {
+ DLog(@"%@ marking notification shown: %@, %@", self, @(notification.ID), _shownNotifications);
+ 
+ [_shownNotifications addObject:@(notification.ID)];
+ 
+ //TODO: gösterilen notification'ı track edecek miyiz?
+ //[self trackNotification:notification event:@"$campaign_delivery"];
+ }
+ */
+
+- (void)notificationController:(VisilabsNotificationViewController *)controller wasDismissedWithStatus:(BOOL)status
+{
+    if (controller == nil || self.currentlyShowingNotification != controller.notification) {
+        return;
+    }
+    
+    void (^completionBlock)()  = ^void(){
+        self.currentlyShowingNotification = nil;
+        self.notificationViewController = nil;
+    };
+    
+    if (status && controller.notification.buttonURL) {
+        DLog(@"%@ opening URL %@", self, controller.notification.buttonURL);
+        BOOL success = [[UIApplication sharedApplication] openURL:controller.notification.buttonURL];
+        
+        [controller hideWithAnimation:!success completion:completionBlock];
+        
+        if (!success) {
+            DLog(@"Visilabs failed to open given URL: %@", controller.notification.buttonURL);
+        }
+        
+        //TODO: Notification butonuna tıkladığında track etmek için
+        [self trackNotificationClick:controller.notification];
+    } else {
+        [controller hideWithAnimation:YES completion:completionBlock];
+    }
+}
+
+//TODO: bunlara bak
+- (void)applicationWillTerminate:(NSNotification*) notification
+{
+    @synchronized(self)
+    {
+        if(self.timer != nil)
+        {
+            [self.timer invalidate];
+            self.timer = nil;
+        }
+        
+        if(self.segmentConnection != nil)
+        {
+            [self.segmentConnection cancel];
+        }
+    }
+}
+
+- (void)applicationWillEnterForeground:(NSNotificationCenter*) notification
+{
+    @synchronized(self)
+    {
+        if(self.organizationID != nil && self.siteID != nil && self.segmentURL && self.dataSource)
+        {
+            if (!self.sendQueue)
+            {
+                self.sendQueue = [NSMutableArray array];
+            }
+        }
+    }
+}
+
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    DLog(@"%@ application did become active", self);
+    /*
+     if (self.checkForNotificationsOnActive) {
+     [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
+     if (self.showNotificationOnActive && notifications && [notifications count] > 0) {
+     [self showNotificationWithObject:notifications[0]];
+     }
+     }];
+     }
+     */
+}
+
+- (void)applicationDidEnterBackground:(NSNotification *)notification
+{
+    DLog(@"%@ did enter background", self);
+    /*
+     dispatch_async(_serialQueue, ^{
+     [self archive];
+     self.notificationResponseCached = NO;
+     });
+     */
+}
+
+
+#pragma mark - Persistence
+
+- (NSString *)filePathForData:(NSString *)data
+{
+    NSString *filename = [NSString stringWithFormat:@"%@", data];
+    return [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject]
+            stringByAppendingPathComponent:filename];
+}
+
+- (NSString *)cookieIDFilePath
+{
+    return [self filePathForData:self.cookieIDArchiveKey];
+}
+
+- (NSString *)exVisitorIDFilePath
+{
+    return [self filePathForData:self.exVisitorIDArchiveKey];
+}
+
+- (NSString *)propertiesFilePath
+{
+    return [self filePathForData:self.propertiesArchiveKey];
+}
+
+-(void)archive
+{
+    [self archiveProperties];
+}
+
+
+- (void)archiveProperties
+{
+    /*
+     NSString *filePath = [self propertiesFilePath];
+     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+     [dic setValue:self.shownNotifications forKey:@"shownNotifications"];
+     if (![NSKeyedArchiver archiveRootObject:dic toFile:filePath]) {
+     DLog(@"%@ unable to archive properties data", self);
+     }
+     */
+}
+
+- (void)unarchive
+{
+    [self unarchiveProperties];
+}
+
+- (id)unarchiveFromFile:(NSString *)filePath
+{
+    id unarchivedData = nil;
+    @try {
+        unarchivedData = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        DLog(@"%@ unarchived data from %@: %@", self, filePath, unarchivedData);
+    }
+    @catch (NSException *exception) {
+        DLog(@"%@ unable to unarchive data in %@, starting fresh", self, filePath);
+        unarchivedData = nil;
+    }
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        NSError *error;
+        BOOL removed = [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+        if (!removed) {
+            DLog(@"%@ unable to remove archived file at %@ - %@", self, filePath, error);
+        }
+    }
+    return unarchivedData;
+}
+
+- (void)unarchiveProperties
+{
+    /*
+     NSDictionary *dic = (NSDictionary *)[self unarchiveFromFile:[self propertiesFilePath]];
+     if (dic) {
+     self.shownNotifications = dic[@"shownNotifications"] ? dic[@"shownNotifications"] : [NSMutableSet set];
+     }
+     */
+}
+
+
+
+
+
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<Visilabs: %p %@>", self, self.siteID];
+}
+
+
+
+
+
+
+
 
 -(NSString*) exVisitorID
 {
@@ -147,7 +646,7 @@ static VisilabsReachability *reachability;
     request.method = @"GET";
     request.requestMethod = @"GET";
     [request setArgs:nil];
-
+    
     return request;
 }
 
@@ -169,8 +668,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds  withRESTURL:RESTURL
- withEncryptedDataSource:encryptedDataSource withTargetURL:nil];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds  withRESTURL:RESTURL withEncryptedDataSource:encryptedDataSource withTargetURL:nil  withActionURL:nil];
         }
     }
     return API;
@@ -182,7 +680,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil];
         }
     }
     return API;
@@ -194,7 +692,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:60 withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:60 withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil];
         }
     }
     return API;
@@ -206,7 +704,19 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:nil];
+        }
+    }
+    return API;
+}
+
++ (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withTargetURL:(NSString *)targetURL withActionURL:(NSString *)actionURL
+{
+    @synchronized(self)
+    {
+        if (API == nil) {
+            API = [[Visilabs alloc] init];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL];
         }
     }
     return API;
@@ -219,18 +729,34 @@ static VisilabsReachability *reachability;
     {
         if (API == nil)
         {
-            #ifdef DEBUG
-                NSLog(@"Visilabs: WARNING - Visilabs object is not created yet.");
-            #endif
+#ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - Visilabs object is not created yet.");
+#endif
         }
     }
     return API;
 }
 
-- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL withChannel:(NSString *)chan withRequestTimeout:(NSInteger)seconds  withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)tURL
+
+
+
+
+
+
+- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL withChannel:(NSString *)chan withRequestTimeout:(NSInteger)seconds  withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)tURL withActionURL:(NSString *)aURL
 {
     
     [self registerForNetworkReachabilityNotifications];
+    
+    
+    self.showNotificationOnActive = NO;
+    self.checkForNotificationsOnActive = NO;
+    self.miniNotificationPresentationTime = 10.0;
+    self.miniNotificationBackgroundColor = nil;
+    NSString *label = [NSString stringWithFormat:@"visilabs.%@.%p", self.siteID, self];
+    self.serialQueue = dispatch_queue_create([label UTF8String], DISPATCH_QUEUE_SERIAL);
+    self.actionURL = aURL;
+    self.notificationResponseCached = NO;
     
     
     self.requestTimeout = seconds;
@@ -245,12 +771,14 @@ static VisilabsReachability *reachability;
     
     self.targetURL = tURL;
     
+    
     if(self.channel == nil)
     {
         self.channel = @"IOS";
     }
     self.cookieIDArchiveKey = @"Visilabs.identity";
     self.exVisitorIDArchiveKey = @"Visilabs.exVisitorID";
+    self.propertiesArchiveKey = @"Visilabs.properties";
     
     UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
     self.userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
@@ -260,11 +788,11 @@ static VisilabsReachability *reachability;
     webView = nil;
     
     @try {
-        self.cookieID = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.cookieIDArchiveKey]];
+        self.cookieID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self cookieIDFilePath]];
     }@catch(NSException *exception) {
-        #ifdef DEBUG
-            NSLog(@"Visilabs: Error while unarchiving cookieID.");
-        #endif
+#ifdef DEBUG
+        NSLog(@"Visilabs: Error while unarchiving cookieID.");
+#endif
     }
     if(!self.cookieID)
     {
@@ -273,11 +801,11 @@ static VisilabsReachability *reachability;
     
     
     @try {
-        self.exVisitorID = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]];
+        self.exVisitorID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self exVisitorIDFilePath]];
     }@catch(NSException *exception) {
-        #ifdef DEBUG
-                NSLog(@"Visilabs: Error while unarchiving cookieID.");
-        #endif
+#ifdef DEBUG
+        NSLog(@"Visilabs: Error while unarchiving cookieID.");
+#endif
     }
     
     
@@ -289,69 +817,36 @@ static VisilabsReachability *reachability;
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
-    
-    //TODO:buna gerek var mı?
-    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
-        if ([[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)])
-        {
-//            if (&UIApplicationWillEnterForegroundNotification) {
-            [notificationCenter addObserver:self
-                                   selector:@selector(applicationWillEnterForeground:)
-                                       name:UIApplicationWillEnterForegroundNotification
-                                     object:nil];
-//            }
-        }
-    #endif
-    
-    #if !TARGET_OS_IPHONE
-        [notificationCenter addObserver:self
-                           selector:@selector(applicationWillTerminate:)
-                               name:NSApplicationWillTerminateNotification
+    [notificationCenter addObserver:self
+                           selector:@selector(applicationDidBecomeActive:)
+                               name:UIApplicationDidBecomeActiveNotification
                              object:nil];
-    #else
-        [notificationCenter addObserver:self
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(applicationDidEnterBackground:)
+                               name:UIApplicationDidEnterBackgroundNotification
+                             object:nil];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(applicationWillEnterForeground:)
+                               name:UIApplicationWillEnterForegroundNotification
+                             object:nil];
+    
+    [notificationCenter addObserver:self
                            selector:@selector(applicationWillTerminate:)
                                name:UIApplicationWillTerminateNotification
                              object:nil];
-    #endif
     
     
+    [self unarchive];
+    
+    //TODO: buna bak niye çağırıyoruz?
     [self applicationWillEnterForeground:nil];
     
 }
 
 
-//TODO: bunlara bak
-- (void)applicationWillTerminate:(NSNotification*) notification
-{
-    @synchronized(self)
-    {
-        if(self.timer != nil)
-        {
-            [self.timer invalidate];
-            self.timer = nil;
-        }
-        
-        if(self.segmentConnection != nil)
-        {
-            [self.segmentConnection cancel];
-        }
-    }
-}
 
-- (void)applicationWillEnterForeground:(NSNotificationCenter*) notification
-{
-    @synchronized(self)
-    {
-        if(self.organizationID != nil && self.siteID != nil && self.segmentURL && self.dataSource)
-        {
-            if (!self.sendQueue)
-            {
-                self.sendQueue = [NSMutableArray array];
-            }
-        }
-    }
-}
 
 - (void) send
 {
@@ -418,9 +913,9 @@ static VisilabsReachability *reachability;
     {
         if (![propKey isKindOfClass:[NSString class]])
         {
-            #ifdef DEBUG
-                NSLog(@"Visilabs: WARNING - property keys must be NSString. Dropping property.");
-            #endif
+#ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - property keys must be NSString. Dropping property.");
+#endif
             continue;
         }
         NSString *stringKey = (NSString *)propKey;
@@ -428,18 +923,18 @@ static VisilabsReachability *reachability;
         
         if([stringKey length] == 0)
         {
-            #ifdef DEBUG
-                NSLog(@"Visilabs: WARNING - property keys must not be empty strings. Dropping property.");
-            #endif
+#ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - property keys must not be empty strings. Dropping property.");
+#endif
             continue;
         }
         
         NSString *stringValue = nil;
         if([props objectForKey:stringKey] == nil)
         {
-            #ifdef DEBUG
-                NSLog(@"Visilabs: WARNING - property value cannot be nil. Dropping property.");
-            #endif
+#ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - property value cannot be nil. Dropping property.");
+#endif
             continue;
         }
         else if([[props objectForKey:stringKey] isKindOfClass:[NSNumber class]])
@@ -454,17 +949,17 @@ static VisilabsReachability *reachability;
         
         if(stringValue == nil)
         {
-            #ifdef DEBUG
-                NSLog(@"Visilabs: WARNING - property value cannot be of type %@. Dropping property.", [[[props objectForKey:stringKey] class] description]);
-            #endif
+#ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - property value cannot be of type %@. Dropping property.", [[[props objectForKey:stringKey] class] description]);
+#endif
             continue;
         }
         
         if([stringValue length] == 0)
         {
-            #ifdef DEBUG
-                NSLog(@"Visilabs: WARNING - property values must not be empty strings. Dropping property.");
-            #endif
+#ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - property values must not be empty strings. Dropping property.");
+#endif
             continue;
         }
         
@@ -472,9 +967,9 @@ static VisilabsReachability *reachability;
         NSString *escapedKey = [self urlEncode:stringKey];
         if([escapedKey length] > 255)
         {
-            #ifdef DEBUG
-                NSLog(@"Visilabs: WARNING - property key cannot longer than 255 characters. When URL escaped, your key is %lu characters long (the submitted value is %@, the URL escaped value is %@). Dropping property.", (unsigned long)[escapedKey length], stringKey, escapedKey);
-            #endif
+#ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - property key cannot longer than 255 characters. When URL escaped, your key is %lu characters long (the submitted value is %@, the URL escaped value is %@). Dropping property.", (unsigned long)[escapedKey length], stringKey, escapedKey);
+#endif
             continue;
         }
         
@@ -487,19 +982,17 @@ static VisilabsReachability *reachability;
 
 - (NSString *)urlEncode:(NSString *)prior
 {
-//    NSString * after = (NSString *)CFURLCreateStringByAddingPercentEscapes( NULL,(CFStringRef)prior, NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8 );
     NSString * after = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes( NULL,(CFStringRef)prior, NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8 ));
     return after;
-//    return [after autorelease];
 }
 
 - (void)customEvent:(NSString *)pageName withProperties:(NSMutableDictionary *)properties
 {
     if(pageName == nil || [pageName length] == 0)
     {
-        #ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - Tried to record event with empty or nil name. Ignoring.");
-        #endif
+#ifdef DEBUG
+        NSLog(@"Visilabs: WARNING - Tried to record event with empty or nil name. Ignoring.");
+#endif
         return;
     }
     
@@ -512,7 +1005,7 @@ static VisilabsReachability *reachability;
         }
         
         self.cookieID = cookieid;
-        if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.cookieIDArchiveKey]])
+        if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[self cookieIDFilePath]])
         {
             NSLog(@"Visilabs: WARNING - Unable to archive identity!!!");
         }
@@ -528,7 +1021,7 @@ static VisilabsReachability *reachability;
         }
         
         self.exVisitorID = exvisitorid;
-        if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]])
+        if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[self exVisitorIDFilePath]])
         {
             NSLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
         }
@@ -715,7 +1208,7 @@ static VisilabsReachability *reachability;
         
         self.exVisitorID = exVisitorID;
         
-        if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]])
+        if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[self exVisitorIDFilePath]])
         {
             NSLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
         }
@@ -768,11 +1261,11 @@ static VisilabsReachability *reachability;
         if(![self.exVisitorID isEqualToString:exVisitorID]){
             [VisilabsPersistentTargetManager clearParameters];
         }
-
+        
         
         self.exVisitorID = exVisitorID;
         
-        if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.exVisitorIDArchiveKey]])
+        if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[self exVisitorIDFilePath]])
         {
             NSLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
         }
@@ -846,9 +1339,9 @@ static VisilabsReachability *reachability;
         {
             //TODO:buna da gerek yok sanki
             //NSString *failedURL = [self.sendQueue objectAtIndex:0];
-//            [failedURL retain];
+            //            [failedURL retain];
             [self.sendQueue removeObjectAtIndex:0];
-//            [failedURL release];
+            //            [failedURL release];
         }
     }
     
@@ -883,11 +1376,11 @@ static VisilabsReachability *reachability;
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     CFRelease(theUUID);
-//    self.cookieID = [(NSString *)string autorelease];
-//    self.cookieID = [(__bridge NSString *)string autorelease];
+    //    self.cookieID = [(NSString *)string autorelease];
+    //    self.cookieID = [(__bridge NSString *)string autorelease];
     self.cookieID =(__bridge NSString *)string;
     
-    if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.cookieIDArchiveKey]])
+    if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[self cookieIDFilePath]])
     {
         NSLog(@"Visilabs: WARNING - Unable to archive identity!!!");
     }
@@ -934,7 +1427,7 @@ static VisilabsReachability *reachability;
         pushURL = [NSString stringWithFormat:@"%@%@=%@",pushURL,@"&utm_content",escapedContent];
     }
     
-    return  pushURL;    
+    return  pushURL;
 }
 
 

@@ -13,7 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [Visilabs createAPI:@"325430485A5038696862633D" withSiteID:@"482B67724F524B5A6353633D" withSegmentURL:@"http://lgr.visilabs.net" withDataSource:@"euromsgmobilapp" withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json"];
+    [Visilabs createAPI:@"325430485A5038696862633D" withSiteID:@"482B67724F524B5A6353633D" withSegmentURL:@"http://lgr.visilabs.net" withDataSource:@"euromsgmobilapp" withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson"];
     // Override point for customization after application launch.
     return YES;
 }
