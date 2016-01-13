@@ -7,8 +7,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "Visilabs"
-  s.version          = "2.4.0"
+  s.name             = 'Visilabs'
+  s.version          = "2.4.1"
   s.summary          = "Visilabs IOS SDK for Analytics and Target modules."
   s.description      = "Visilabs IOS SDK for Analytics and Target modules. SDK tracks user interactions and makes recommendations to enhance conversion and user retention."
   s.homepage         = "http://www.visilabs.com"
@@ -20,10 +20,12 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  #s.source_files = 'Pod/Classes/**/*'
-  s.source_files = 'Pod/Classes/*.{h,m}'
-  s.resource_bundles = {
-    'Visilabs' => ['Pod/Assets/*.png']
-  }
+  s.default_subspec = 'Visilabs'
+
+  s.subspec 'Visilabs' do |ss|
+    ss.source_files  = 'Visilabs/**/*.{m,h}', 'Visilabs/**/*.swift'
+    ss.resources 	 = ['Visilabs/**/*.{png,storyboard}']
+  end
+
 
 end
