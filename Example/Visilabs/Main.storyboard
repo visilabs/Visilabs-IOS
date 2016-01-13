@@ -65,6 +65,34 @@
                                     <action selector="signUp:" destination="whP-gf-Uak" eventType="touchUpInside" id="B7x-RP-l4G"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAU-u9-HfA">
+                                <rect key="frame" x="20" y="189" width="71" height="30"/>
+                                <state key="normal" title="Show Mini"/>
+                                <connections>
+                                    <action selector="showMini:" destination="whP-gf-Uak" eventType="touchUpInside" id="fF8-qh-qk5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31y-hj-caE">
+                                <rect key="frame" x="120" y="189" width="66" height="30"/>
+                                <state key="normal" title="Show Full"/>
+                                <connections>
+                                    <action selector="showFull:" destination="whP-gf-Uak" eventType="touchUpInside" id="Iih-hw-CHI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r57-v6-eDz">
+                                <rect key="frame" x="217" y="189" width="51" height="30"/>
+                                <state key="normal" title="Show 3"/>
+                                <connections>
+                                    <action selector="show3:" destination="whP-gf-Uak" eventType="touchUpInside" id="Ne8-hl-rgp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7q-E5-lua">
+                                <rect key="frame" x="298" y="189" width="38" height="30"/>
+                                <state key="normal" title="Show"/>
+                                <connections>
+                                    <action selector="show:" destination="whP-gf-Uak" eventType="touchUpInside" id="RJf-WP-dvi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
