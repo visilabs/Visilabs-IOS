@@ -90,6 +90,7 @@
 		381AE32B1C46C3D40038F4E7 /* VisilabsResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VisilabsResponseDelegate.h; path = Pod/Classes/VisilabsResponseDelegate.h; sourceTree = "<group>"; };
 		381AE32C1C46C3D40038F4E7 /* VisilabsTargetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VisilabsTargetRequest.h; path = Pod/Classes/VisilabsTargetRequest.h; sourceTree = "<group>"; };
 		381AE32D1C46C3D40038F4E7 /* VisilabsTargetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VisilabsTargetRequest.m; path = Pod/Classes/VisilabsTargetRequest.m; sourceTree = "<group>"; };
+		38C2F4D41C46C42B00563AB9 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Pod/Assets/Media.xcassets; sourceTree = "<group>"; };
 		38EFA0411C33161E00010415 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		38EFA0571C331C0000010415 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		38EFA05D1C331FD000010415 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -206,6 +207,7 @@
 		A507B52E9059C959D060BF261B2F4244 /* Visilabs */ = {
 			isa = PBXGroup;
 			children = (
+				38C2F4D41C46C42B00563AB9 /* Media.xcassets */,
 				381AE3091C46C3D40038F4E7 /* UIColor+VisilabsColor.h */,
 				381AE30A1C46C3D40038F4E7 /* UIColor+VisilabsColor.m */,
 				381AE30B1C46C3D40038F4E7 /* UIImage+VisilabsAverageColor.h */,
