@@ -14,35 +14,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Visilabs-Visilabs.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Visilabs.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1FD596221BD3230CB7478461365F9887</key>
+		<key>607B6522F36A71838042F581DF3A1831</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>702E771A3F1DFF02BF678CC11DBECFD9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7E9B2260536562D04EA26B6029244F66</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F495680DEE537AB3A71C5591885BDD29</key>
+		<key>EB008FD19991DA6680DDC139EE6E2874</key>
 		<dict>
 			<key>primary</key>
 			<true/>
