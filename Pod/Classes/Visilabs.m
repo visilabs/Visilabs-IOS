@@ -140,21 +140,7 @@ static VisilabsReachability *reachability;
         segURL = [NSString stringWithFormat:@"%@%@=%@",segURL,@"OM.exVisitorID",escapedIdentity];
     }
     
-    NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
-    
-    if(visilabsParameters)
-    {
-        for (NSString *key in [visilabsParameters allKeys])
-        {
-            NSString *value = [visilabsParameters objectForKey:key];
-            if (value && [value length] > 0)
-            {
-                NSString* encodedValue = [[Visilabs callAPI] urlEncode:value];
-                NSString *parameter = [NSString stringWithFormat:@"&%@=%@", key, encodedValue];
-                segURL = [[segURL stringByAppendingString:parameter] mutableCopy];
-            }
-        }
-    }
+
     
     
     NSString *rtURL = nil;
@@ -206,6 +192,24 @@ static VisilabsReachability *reachability;
                 actURL = [NSString stringWithFormat:@"%@%@=%@",actURL,@"OM.exVisitorID",escapedIdentity];
             }
             
+            NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
+            
+            if(visilabsParameters)
+            {
+                for (NSString *key in [visilabsParameters allKeys])
+                {
+                    NSString *value = [visilabsParameters objectForKey:key];
+                    if (value && [value length] > 0)
+                    {
+                        NSString* encodedValue = [[Visilabs callAPI] urlEncode:value];
+                        NSString *parameter = [NSString stringWithFormat:@"&%@=%@", key, encodedValue];
+                        actURL = [[actURL stringByAppendingString:parameter] mutableCopy];
+                    }
+                }
+            }
+            
+            
+            
             NSURL *URL = [NSURL URLWithString:actURL];
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
             NSError *error = nil;
@@ -218,6 +222,9 @@ static VisilabsReachability *reachability;
             
             
             //TODO: buralar değişecek
+            
+            
+            
             
             
             NSArray *rawNotifications = (NSArray *)[NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:&error];
