@@ -140,6 +140,10 @@ static VisilabsReachability *reachability;
         segURL = [NSString stringWithFormat:@"%@%@=%@",segURL,@"OM.exVisitorID",escapedIdentity];
     }
     
+    if(notification.queryString && notification.queryString.length > 0){
+        segURL = [NSString stringWithFormat:@"%@&%@",segURL,notification.queryString];
+    }
+    
 
     
     
@@ -189,7 +193,7 @@ static VisilabsReachability *reachability;
             if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
             {
                 NSString *escapedIdentity = [self urlEncode:self.exVisitorID];
-                actURL = [NSString stringWithFormat:@"&%@%@=%@",actURL,@"OM.exVisitorID",escapedIdentity];
+                actURL = [NSString stringWithFormat:@"%@&%@=%@",actURL,@"OM.exVisitorID",escapedIdentity];
             }
             
             NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
