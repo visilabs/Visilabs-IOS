@@ -189,7 +189,7 @@ static VisilabsReachability *reachability;
             if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
             {
                 NSString *escapedIdentity = [self urlEncode:self.exVisitorID];
-                actURL = [NSString stringWithFormat:@"%@%@=%@",actURL,@"OM.exVisitorID",escapedIdentity];
+                actURL = [NSString stringWithFormat:@"&%@%@=%@",actURL,@"OM.exVisitorID",escapedIdentity];
             }
             
             NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
