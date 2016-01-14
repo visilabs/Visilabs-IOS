@@ -35,7 +35,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="10"/>
-                                        <state key="normal" image="VisilabsCloseBtn">
+                                        <state key="normal" image="VisilabsCloseBtn.png">
                                             <color key="titleColor" red="0.6588235294117647" green="0.70588235294117641" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
@@ -111,6 +111,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="VisilabsCloseBtn" width="25" height="25"/>
+        <image name="VisilabsCloseBtn.png" width="25" height="25"/>
     </resources>
 </document>
