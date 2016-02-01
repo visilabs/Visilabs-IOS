@@ -56,18 +56,6 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
  @property
  
  @abstract
- Controls whether to automatically check for and show in-app notifications
- for the currently identified user when the application becomes active.
- 
- @discussion
- Defaults to NO.
- */
-@property (atomic) BOOL showNotificationOnActive;
-
-/*!
- @property
- 
- @abstract
  Determines the time, in seconds, that a mini notification will remain on
  the screen before automatically hiding itself.
  
@@ -88,31 +76,6 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
  UINavigationBar default color for the app or the UITabBar default color.
  */
 @property (atomic) UIColor* miniNotificationBackgroundColor;
-
-
-/*!
- @method
- 
- @abstract
- Shows the notification of the given id.
- 
- @discussion
- You do not need to call this method on the main thread.
- */
-- (void)showNotificationWithID:(NSUInteger)ID pageName:(NSString *)pageName;
-
-/*!
- @method
- 
- @abstract
- Shows a notification with the given type if one is available.
- 
- @discussion
- You do not need to call this method on the main thread.
- 
- @param type The type of notification to show, either @"mini", or @"takeover"
- */
-- (void)showNotificationWithType:(NSString *)type pageName:(NSString *)pageName;
 
 /*!
  @method

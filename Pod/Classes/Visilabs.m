@@ -60,6 +60,9 @@ static Visilabs * API = nil;
 @property (nonatomic, retain) NSString *exVisitorIDArchiveKey ;
 @property (nonatomic, retain) NSString *propertiesArchiveKey ;
 
+@property (nonatomic, retain) NSString *visitData;
+@property (nonatomic, retain) NSString *visitorData;
+
 
 - (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL  withChannel:(NSString *)chan  withRequestTimeout:(NSInteger)timeout withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)targetURL withActionURL:(NSString *)aURL;
 //- (void)applicationWillTerminate:(NSNotification *)notification;
@@ -196,6 +199,19 @@ static VisilabsReachability *reachability;
                 actURL = [NSString stringWithFormat:@"%@&%@=%@",actURL,@"OM.exVisitorID",escapedIdentity];
             }
             
+            if(self.visitData != nil &&  ![self.visitData isEqual: @""])
+            {
+                NSString *escapedVisitData = [self urlEncode:self.visitData];
+                actURL = [NSString stringWithFormat:@"%@&%@=%@",actURL,@"OM.vcap",escapedVisitData];
+            }
+            
+            if(self.visitorData != nil &&  ![self.visitorData isEqual: @""])
+            {
+                NSString *escapedVisitorData = [self urlEncode:self.visitorData];
+                actURL = [NSString stringWithFormat:@"%@&%@=%@",actURL,@"OM.viscap",escapedVisitorData];
+            }
+            
+            
             NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
             
             if(visilabsParameters)
@@ -307,37 +323,10 @@ static VisilabsReachability *reachability;
     } pageName:pageName];
 }
 
-- (void)showNotificationWithType:(NSString *)type pageName:(NSString *)pageName
-{
-    [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
-        if (type != nil) {
-            for (VisilabsNotification *notification in notifications) {
-                if ([notification.type isEqualToString:type]) {
-                    [self showNotificationWithObject:notification];
-                    break;
-                }
-            }
-        }
-    } pageName:pageName];
-}
-
-- (void)showNotificationWithID:(NSUInteger)ID pageName:(NSString *)pageName
-{
-    [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
-        for (VisilabsNotification *notification in notifications) {
-            if (notification.ID == ID) {
-                [self showNotificationWithObject:notification];
-                break;
-            }
-        }
-    } pageName:pageName];
-}
-
 - (void)showNotificationWithObject:(VisilabsNotification *)notification
 {
     NSData *image = notification.image;
     
-    // if images fail to load, remove the notification from the queue
     if (!image) {
         //NSMutableArray *notifications = [NSMutableArray arrayWithArray:_notifications];
         //[notifications removeObject:notification];
@@ -351,6 +340,15 @@ static VisilabsReachability *reachability;
         }else {
             self.currentlyShowingNotification = notification;
             BOOL shown;
+            
+            if (notification.visitData != nil && ![notification.visitData  isEqual: @""]) {
+                self.visitData = notification.visitData;
+            }
+            if (notification.visitorData != nil && ![notification.visitorData  isEqual: @""]) {
+                self.visitorData = notification.visitorData;
+            }
+            
+            
             if ([notification.type isEqualToString:VisilabsNotificationTypeMini]) {
                 shown = [self showMiniNotificationWithObject:notification];
             } else {
@@ -497,12 +495,11 @@ static VisilabsReachability *reachability;
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
     DLog(@"%@ did enter background", self);
-    /*
      dispatch_async(_serialQueue, ^{
      [self archive];
-     self.notificationResponseCached = NO;
+     //self.notificationResponseCached = NO;
      });
-     */
+     
 }
 
 
@@ -538,14 +535,15 @@ static VisilabsReachability *reachability;
 
 - (void)archiveProperties
 {
-    /*
+    
      NSString *filePath = [self propertiesFilePath];
      NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-     [dic setValue:self.shownNotifications forKey:@"shownNotifications"];
+     //[dic setValue:self.shownNotifications forKey:@"shownNotifications"];
+     [dic setValue:self.visitorData forKey:@"visitorData"];
      if (![NSKeyedArchiver archiveRootObject:dic toFile:filePath]) {
      DLog(@"%@ unable to archive properties data", self);
      }
-     */
+    
 }
 
 - (void)unarchive
@@ -576,12 +574,13 @@ static VisilabsReachability *reachability;
 
 - (void)unarchiveProperties
 {
-    /*
+    
      NSDictionary *dic = (NSDictionary *)[self unarchiveFromFile:[self propertiesFilePath]];
      if (dic) {
-     self.shownNotifications = dic[@"shownNotifications"] ? dic[@"shownNotifications"] : [NSMutableSet set];
+     //self.shownNotifications = dic[@"shownNotifications"] ? dic[@"shownNotifications"] : [NSMutableSet set];
+     self.visitorData = dic[@"visitorData"] ? dic[@"visitorData"] : @"";
      }
-     */
+    
 }
 
 
@@ -759,8 +758,6 @@ static VisilabsReachability *reachability;
     
     [self registerForNetworkReachabilityNotifications];
     
-    
-    self.showNotificationOnActive = NO;
     self.checkForNotificationsOnActive = NO;
     self.miniNotificationPresentationTime = 10.0;
     self.miniNotificationBackgroundColor = nil;
@@ -791,19 +788,28 @@ static VisilabsReachability *reachability;
     self.exVisitorIDArchiveKey = @"Visilabs.exVisitorID";
     self.propertiesArchiveKey = @"Visilabs.properties";
     
-    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
-    self.userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     
-    //TODO: doğru mu?
-    //[webView release];
-    webView = nil;
+    @try {
+        UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
+        self.userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+        //TODO: doğru mu?
+        //[webView release];
+        webView = nil;
+    }@catch(NSException *exception) {
+        #ifdef DEBUG
+            NSLog(@"Visilabs: Error while unarchiving cookieID.");
+        #endif
+        self.userAgent = @"IOS";
+    }
+    
+    
     
     @try {
         self.cookieID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self cookieIDFilePath]];
     }@catch(NSException *exception) {
-#ifdef DEBUG
+    #ifdef DEBUG
         NSLog(@"Visilabs: Error while unarchiving cookieID.");
-#endif
+    #endif
     }
     if(!self.cookieID)
     {
@@ -814,9 +820,9 @@ static VisilabsReachability *reachability;
     @try {
         self.exVisitorID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self exVisitorIDFilePath]];
     }@catch(NSException *exception) {
-#ifdef DEBUG
+    #ifdef DEBUG
         NSLog(@"Visilabs: Error while unarchiving cookieID.");
-#endif
+    #endif
     }
     
     
