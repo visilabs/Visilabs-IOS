@@ -114,17 +114,17 @@
 
 
 - (IBAction)showMini:(id)sender {
-    [[Visilabs callAPI] showNotificationWithType:@"mini" pageName:@"dene"];
+    [[Visilabs callAPI] showNotification:@"dene"];
 }
 
 
 - (IBAction)showFull:(id)sender {
-    [[Visilabs callAPI] showNotificationWithType:@"full" pageName:@"dene"];
+    [[Visilabs callAPI] showNotification:@"dene"];
 }
 
 
 - (IBAction)show3:(id)sender {
-    [[Visilabs callAPI] showNotificationWithID:3 pageName:@"dene"];
+    [[Visilabs callAPI] showNotification:@"dene"];
 }
 
 - (IBAction)show:(id)sender {

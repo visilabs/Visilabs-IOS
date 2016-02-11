@@ -11,6 +11,11 @@
 
 @implementation VisilabsConfig
 
+static NSString *const kLOGGER_URL = @"lgr.visilabs.net";
+static NSString *const kREAL_TIME_URL = @"rt.visilabs.net";
+static NSString *const kLOAD_BALANCE_PREFIX = @"NSC";
+static NSString *const kOM_3_KEY = @"OM.3rd";
+
 static NSString *const kTARGET_PREF_VOSS_STORE_KEY = @"OM.voss";
 static NSString *const kTARGET_PREF_VCNAME_STORE_KEY = @"OM.vcname";
 static NSString *const kTARGET_PREF_VCMEDIUM_STORE_KEY = @"OM.vcmedium";
@@ -59,6 +64,29 @@ static NSString *const kEXVISITORID_KEY = @"OM.exVisitorID";
 
 static NSString *const kZONE_ID_KEY = @"OM.zid";
 static NSString *const kBODY_KEY = @"OM.body";
+
++(NSString *) LOGGER_URL
+{
+    return kLOGGER_URL;
+}
+
++(NSString *) REAL_TIME_URL
+{
+    return kREAL_TIME_URL;
+}
+
++(NSString *) LOAD_BALANCE_PREFIX
+{
+    return kLOAD_BALANCE_PREFIX;
+}
+
++(NSString *) OM_3_KEY
+{
+    return kOM_3_KEY;
+}
+
+
+
 
 +(NSString *) ORGANIZATIONID_KEY
 {

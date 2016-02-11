@@ -22,6 +22,8 @@ static Visilabs * API = nil;
 
 @interface NSString (CWAddition)
 -(NSString*)stringBetweenString:(NSString*)start andString:(NSString*)end;
+- (BOOL)containsString:(NSString *)string;
+- (BOOL)containsString:(NSString *)string options:(NSStringCompareOptions)options;
 @end
 
 @implementation NSString (NSAddition)
@@ -38,6 +40,14 @@ static Visilabs * API = nil;
         }
     }
     return nil;
+}
+- (BOOL)containsString:(NSString *)string
+               options:(NSStringCompareOptions)options {
+    NSRange rng = [self rangeOfString:string options:options];
+    return rng.location != NSNotFound;
+}
+- (BOOL)containsString:(NSString *)string {
+    return [self containsString:string options:0];
 }
 @end
 
@@ -79,11 +89,19 @@ static Visilabs * API = nil;
 
 /*Notification Properties*/
 @property (nonatomic, strong) dispatch_queue_t serialQueue;
-//@property (nonatomic, strong) NSArray *notifications;
 @property (nonatomic, strong) id currentlyShowingNotification;
 @property (nonatomic, strong) UIViewController *notificationViewController;
-//@property (nonatomic, strong) NSMutableSet *shownNotifications; // bu sette gösterilen notification'ların id'leri duruyor.
 @property (nonatomic) BOOL notificationResponseCached;
+
+
+@property (nonatomic, retain) NSString *loggerCookieKey;
+@property (nonatomic, retain) NSString *loggerCookieValue;
+@property (nonatomic, retain) NSString *realTimeCookieKey;
+@property (nonatomic, retain) NSString *realTimeCookieValue;
+
+
+@property (nonatomic, retain) NSString *loggerOM3rdCookieValue;
+@property (nonatomic, retain) NSString *realTimeOM3rdCookieValue;
 
 @end
 
@@ -481,6 +499,12 @@ static VisilabsReachability *reachability;
 - (void)applicationDidBecomeActive:(NSNotification *)notification
 {
     DLog(@"%@ application did become active", self);
+    
+    self.loggerCookieKey = nil;
+    self.loggerCookieValue = nil;
+    self.realTimeCookieKey = nil;
+    self.realTimeCookieValue = nil;
+    
     /*
      if (self.checkForNotificationsOnActive) {
      [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
@@ -905,11 +929,52 @@ static VisilabsReachability *reachability;
         [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
         [request setValue:referer forHTTPHeaderField:@"Referer"];
         
+        
+
+        
+        if([nextAPICall containsString:[VisilabsConfig LOGGER_URL] options:NSCaseInsensitiveSearch]
+           && self.loggerCookieKey != nil && ![self.loggerCookieKey  isEqual: @""]
+           && self.loggerCookieValue != nil && ![self.loggerCookieValue  isEqual: @""])
+        {
+            NSString *cookieString = self.loggerCookieKey ;
+            cookieString = [cookieString stringByAppendingString:@"="];
+            cookieString = [cookieString stringByAppendingString:self.loggerCookieValue];
+            
+            if (self.loggerOM3rdCookieValue != nil && ![self.loggerOM3rdCookieValue isEqual: @""]) {
+                cookieString = [cookieString stringByAppendingString:@";"];
+                cookieString = [cookieString stringByAppendingString:[VisilabsConfig OM_3_KEY]];
+                cookieString = [cookieString stringByAppendingString:@"="];
+                cookieString = [cookieString stringByAppendingString:self.loggerOM3rdCookieValue];
+            }
+            
+            [request setValue:cookieString forHTTPHeaderField:@"Cookie"];
+        }
+        else if ([nextAPICall containsString:[VisilabsConfig REAL_TIME_URL] options:NSCaseInsensitiveSearch]
+            && self.realTimeCookieKey != nil && ![self.realTimeCookieKey isEqual: @""]
+            && self.realTimeCookieValue != nil && ![self.realTimeCookieValue  isEqual: @""])
+        {
+            NSString *cookieString = self.realTimeCookieKey ;
+            cookieString = [cookieString stringByAppendingString:@"="];
+            cookieString = [cookieString stringByAppendingString:self.realTimeCookieValue];
+            
+            if (self.realTimeOM3rdCookieValue != nil && ![self.realTimeOM3rdCookieValue isEqual: @""]) {
+                cookieString = [cookieString stringByAppendingString:@";"];
+                cookieString = [cookieString stringByAppendingString:[VisilabsConfig OM_3_KEY]];
+                cookieString = [cookieString stringByAppendingString:@"="];
+                cookieString = [cookieString stringByAppendingString:self.realTimeOM3rdCookieValue];
+            }
+            
+            [request setValue:cookieString forHTTPHeaderField:@"Cookie"];
+        }
+        
+            
         if(self.requestTimeout != 0){
             [request setTimeoutInterval:self.requestTimeout];
         }
         
         self.segmentConnection = [NSURLConnection connectionWithRequest:request delegate:self];
+        
+        
         [self.segmentConnection start];
         
         if(![NSThread isMainThread]){
@@ -1303,6 +1368,11 @@ static VisilabsReachability *reachability;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
+    #ifdef DEBUG
+        NSLog(@"Response URL: %@", [response.URL absoluteString]);
+    #endif
+    
+    
     if ([response statusCode] == 200 || [response statusCode] == 304)
     {
         @synchronized(self)
@@ -1312,6 +1382,62 @@ static VisilabsReachability *reachability;
             {
                 [self.sendQueue removeObjectAtIndex:0];
             }
+            
+            @try {
+                 if (response.URL) {
+                     NSString *urlString =[response.URL absoluteString];
+                     if ([urlString containsString:[VisilabsConfig LOGGER_URL] options:NSCaseInsensitiveSearch]
+                         || [urlString containsString:[VisilabsConfig REAL_TIME_URL] options:NSCaseInsensitiveSearch])
+                     {
+                         NSArray *cookies =[[NSArray alloc]init];
+                         cookies = [NSHTTPCookie
+                                    cookiesWithResponseHeaderFields:[response allHeaderFields]
+                                    forURL:[NSURL URLWithString:[response.URL absoluteString]]]; // send to URL, return NSArray
+                            for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+                            {
+                                #ifdef DEBUG
+                                    NSLog(@"Cookie Key: %@", [cookie name]);
+                                    NSLog(@"Cookie Value: %@", [cookie value]);
+                                #endif
+                                
+                                if ([[cookie name] containsString:[VisilabsConfig LOAD_BALANCE_PREFIX] options:NSCaseInsensitiveSearch])
+                                {
+                                    if([urlString containsString:[VisilabsConfig REAL_TIME_URL] options:NSCaseInsensitiveSearch]){
+                                        self.realTimeCookieKey = [cookie name];
+                                        self.realTimeCookieValue = [cookie value];
+                                    }else{
+                                        self.loggerCookieKey = [cookie name];
+                                        self.loggerCookieValue = [cookie value];
+                                    }
+                                }
+                                
+                                if ([[cookie name] containsString:[VisilabsConfig OM_3_KEY] options:NSCaseInsensitiveSearch])
+                                {
+                                    if([urlString containsString:[VisilabsConfig REAL_TIME_URL] options:NSCaseInsensitiveSearch]){
+                                        self.realTimeOM3rdCookieValue = [cookie value];
+                                    }else{
+                                        self.loggerOM3rdCookieValue = [cookie value];
+                                    }
+                                }
+                                
+                            }
+                         
+                         
+                         NSHTTPCookieStorage* afterCookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+                         NSArray* existingCoookies = [afterCookies cookiesForURL:
+                                                      [NSURL URLWithString:[response.URL absoluteString]]];
+                         for (NSHTTPCookie* cookie in existingCoookies) {
+                             [afterCookies deleteCookie:cookie];
+                         }
+                         
+                     }
+                 }
+            }@catch(NSException *exception) {
+                #ifdef DEBUG
+                    NSLog(@"Visilabs: Error while reading cookie.");
+                #endif
+            }
+    
         }
     }
     else
@@ -1327,6 +1453,7 @@ static VisilabsReachability *reachability;
             }
         }
     }
+    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

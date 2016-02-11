@@ -20,4 +20,9 @@
 + (NSString *) ZONE_ID_KEY;
 + (NSString *) BODY_KEY;
 
++ (NSString *) LOGGER_URL;
++ (NSString *) REAL_TIME_URL;
++ (NSString *) LOAD_BALANCE_PREFIX;
++ (NSString *) OM_3_KEY;
+
 @end

@@ -12,8 +12,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //NSString * euromsgmobilappSiteID = @"482B67724F524B5A6353633D";
+    //NSString * euromsgmobilappDataSource = @"euromsgmobilapp";
     
-    [Visilabs createAPI:@"325430485A5038696862633D" withSiteID:@"482B67724F524B5A6353633D" withSegmentURL:@"http://lgr.visilabs.net" withDataSource:@"euromsgmobilapp" withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson"];
+    NSString * visilabsDemoOID = @"53444A2B4B5071322F50303D";
+    NSString * visilabsDemoSiteID = @"515977535854504E506E413D";
+    NSString * visilabsDemoDataSource = @"mrhp";
+    
+    
+    [Visilabs createAPI:visilabsDemoOID withSiteID:visilabsDemoSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsDemoDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson"];
     // Override point for customization after application launch.
     return YES;
 }
