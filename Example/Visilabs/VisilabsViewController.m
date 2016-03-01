@@ -114,12 +114,19 @@
 
 
 - (IBAction)showMini:(id)sender {
-    [[Visilabs callAPI] showNotification:@"dene"];
+    //[[Visilabs callAPI] showNotification:@"dene"];
+    
+    [[Visilabs callAPI] customEvent:@"mini" withProperties:nil];
+    //[[Visilabs callAPI] showNotification:@"dene"];
 }
 
 
 - (IBAction)showFull:(id)sender {
-    [[Visilabs callAPI] showNotification:@"dene"];
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"zahir" forKey:@"OM.pv"];
+    [dic setObject:@"asdf" forKey:@"OM.exVisitorID"];
+    [[Visilabs callAPI] customEvent:@"full" withProperties:dic];
 }
 
 

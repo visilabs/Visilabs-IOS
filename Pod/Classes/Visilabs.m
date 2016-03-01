@@ -187,7 +187,7 @@ static VisilabsReachability *reachability;
 }
 
 
-- (void)checkForNotificationsResponseWithCompletion:(void (^)(NSArray *notifications))completion pageName:(NSString *)pageName
+- (void)checkForNotificationsResponseWithCompletion:(void (^)(NSArray *notifications))completion pageName:(NSString *)pageName properties:(NSMutableDictionary *)properties
 {
     
     self.notificationResponseCached = NO;
@@ -237,6 +237,29 @@ static VisilabsReachability *reachability;
                 for (NSString *key in [visilabsParameters allKeys])
                 {
                     NSString *value = [visilabsParameters objectForKey:key];
+                    if (value && [value length] > 0)
+                    {
+                        NSString* encodedValue = [[Visilabs callAPI] urlEncode:value];
+                        NSString *parameter = [NSString stringWithFormat:@"&%@=%@", key, encodedValue];
+                        actURL = [[actURL stringByAppendingString:parameter] mutableCopy];
+                    }
+                    
+                    if (properties && [properties objectForKey:key]) {
+                        [properties removeObjectForKey:key];
+                    }
+                    
+                }
+            }
+            
+            if(properties){
+                for (NSString *key in [properties allKeys])
+                {
+                    if ([key  isEqual: @"OM.cookieID"] || [key  isEqual: @"OM.siteID"] || [key  isEqual: @"OM.oid"] || [key  isEqual: @"OM.apiver"] || [key  isEqual: @"OM.uri"] || [key  isEqual: @"OM.exVisitorID"]) {
+                        continue;
+                    }
+                    
+                    
+                    NSString *value = [properties objectForKey:key];
                     if (value && [value length] > 0)
                     {
                         NSString* encodedValue = [[Visilabs callAPI] urlEncode:value];
@@ -338,8 +361,18 @@ static VisilabsReachability *reachability;
         if ([notifications count] > 0) {
             [self showNotificationWithObject:notifications[0]];
         }
-    } pageName:pageName];
+    } pageName:pageName properties:nil];
 }
+
+- (void)showNotification:(NSString *)pageName properties:(NSDictionary *)properties
+{
+    [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
+        if ([notifications count] > 0) {
+            [self showNotificationWithObject:notifications[0]];
+        }
+    } pageName:pageName properties:[properties mutableCopy]];
+}
+
 
 - (void)showNotificationWithObject:(VisilabsNotification *)notification
 {
@@ -506,7 +539,7 @@ static VisilabsReachability *reachability;
     self.realTimeCookieValue = nil;
     
     /*
-     if (self.checkForNotificationsOnActive) {
+     if (self.checkForNotificationsOnLoggerRequest) {
      [self checkForNotificationsResponseWithCompletion:^(NSArray *notifications) {
      if (self.showNotificationOnActive && notifications && [notifications count] > 0) {
      [self showNotificationWithObject:notifications[0]];
@@ -782,7 +815,7 @@ static VisilabsReachability *reachability;
     
     [self registerForNetworkReachabilityNotifications];
     
-    self.checkForNotificationsOnActive = NO;
+    self.checkForNotificationsOnLoggerRequest = YES;
     self.miniNotificationPresentationTime = 10.0;
     self.miniNotificationBackgroundColor = nil;
     NSString *label = [NSString stringWithFormat:@"visilabs.%@.%p", self.siteID, self];
@@ -1072,9 +1105,9 @@ static VisilabsReachability *reachability;
 {
     if(pageName == nil || [pageName length] == 0)
     {
-#ifdef DEBUG
-        NSLog(@"Visilabs: WARNING - Tried to record event with empty or nil name. Ignoring.");
-#endif
+        #ifdef DEBUG
+            NSLog(@"Visilabs: WARNING - Tried to record event with empty or nil name. Ignoring.");
+        #endif
         return;
     }
     
@@ -1153,6 +1186,10 @@ static VisilabsReachability *reachability;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
     {
         rtURL = [segURL stringByReplacingOccurrencesOfString:self.segmentURL withString:self.realTimeURL];
+    }
+    
+    if(self.checkForNotificationsOnLoggerRequest && self.targetURL != nil){
+        [self showNotification:pageName properties:properties];
     }
     
     

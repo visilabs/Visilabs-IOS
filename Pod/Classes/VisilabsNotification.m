@@ -65,7 +65,8 @@ NSString *const VisilabsNotificationTypeFull = @"full";
     NSURL *buttonURL = nil;
     NSObject *URLString = actionData[@"ios_lnk"];
     if (URLString != nil && ![URLString isKindOfClass:[NSNull class]]) {
-        if (![URLString isKindOfClass:[NSString class]] || [(NSString *)URLString length] == 0) {
+        //if (![URLString isKindOfClass:[NSString class]] || [(NSString *)URLString length] == 0) {
+        if (![URLString isKindOfClass:[NSString class]]) {
             DLog(@"invalid notification URL: %@", URLString);
             return nil;
         }

@@ -43,14 +43,12 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
  
  @abstract
  Controls whether to automatically check for notifications for the
- currently identified user when the application becomes active.
+ currently identified user after Visilabs logger request.
  
  @discussion
- Defaults to NO. Will fire a network request on
- <code>applicationDidBecomeActive</code> to retrieve a list of valid notifications
- for the currently identified user.
+ Defaults to YES.
  */
-@property (atomic) BOOL checkForNotificationsOnActive;
+@property (atomic) BOOL checkForNotificationsOnLoggerRequest;
 
 /*!
  @property

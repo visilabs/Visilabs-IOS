@@ -15,13 +15,21 @@
     //NSString * euromsgmobilappSiteID = @"482B67724F524B5A6353633D";
     //NSString * euromsgmobilappDataSource = @"euromsgmobilapp";
     
+    /*
     NSString * visilabsDemoOID = @"53444A2B4B5071322F50303D";
     NSString * visilabsDemoSiteID = @"515977535854504E506E413D";
     NSString * visilabsDemoDataSource = @"mrhp";
+    */
     
+    NSString * visilabsNewOID = @"53444A2B4B5071322F50303D";
+    NSString * visilabsNewSiteID = @"362F714E306C756B2B37593D";
+    NSString * visilabsNewDataSource = @"visilabsnew";
     
-    [Visilabs createAPI:visilabsDemoOID withSiteID:visilabsDemoSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsDemoDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson"];
+    [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson"];
     // Override point for customization after application launch.
+    
+    [Visilabs callAPI].checkForNotificationsOnLoggerRequest = NO;
+    
     return YES;
 }
 
