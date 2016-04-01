@@ -1164,7 +1164,7 @@ static VisilabsReachability *reachability;
                         ,@"OM.oid",self.organizationID,
                         @"dat", actualTimeOfevent,
                         @"OM.uri",escapedPageName,
-                        @"OM.mobileapplication",@"true"];
+                        @"OM.mappl",@"true"];
     
     if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
     {
@@ -1313,7 +1313,7 @@ static VisilabsReachability *reachability;
                         ,@"EventType", @"Login"
                         ,@"Login",escapedNewIdentity
                         ,@"dat", actualTimeOfevent
-                        ,@"OM.mobileapplication",@"true"];
+                        ,@"OM.mappl",@"true"];
     
     NSString *rtURL = nil;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
@@ -1370,7 +1370,7 @@ static VisilabsReachability *reachability;
                         ,@"EventType", @"SignUp"
                         ,@"SignUp",escapedNewIdentity
                         ,@"dat", actualTimeOfevent
-                        ,@"OM.mobileapplication",@"true"];
+                        ,@"OM.mappl",@"true"];
     
     NSString *rtURL = nil;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
