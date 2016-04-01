@@ -28,7 +28,7 @@
     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson"];
     // Override point for customization after application launch.
     
-    [Visilabs callAPI].checkForNotificationsOnLoggerRequest = NO;
+    [Visilabs callAPI].checkForNotificationsOnLoggerRequest = YES;
     
     return YES;
 }

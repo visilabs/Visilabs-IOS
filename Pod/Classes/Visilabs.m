@@ -1157,13 +1157,14 @@ static VisilabsReachability *reachability;
     int actualTimeOfevent = (int)[[NSDate date] timeIntervalSince1970];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.cookieID", self.cookieID
                         ,@"OM.vchannel", chan
                         ,@"OM.siteID",self.siteID
                         ,@"OM.oid",self.organizationID,
                         @"dat", actualTimeOfevent,
-                        @"OM.uri",escapedPageName];
+                        @"OM.uri",escapedPageName,
+                        @"OM.mobileapplication",@"true"];
     
     if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
     {
@@ -1188,7 +1189,7 @@ static VisilabsReachability *reachability;
         rtURL = [segURL stringByReplacingOccurrencesOfString:self.segmentURL withString:self.realTimeURL];
     }
     
-    if(self.checkForNotificationsOnLoggerRequest && self.targetURL != nil){
+    if(self.checkForNotificationsOnLoggerRequest && self.actionURL != nil){
         [self showNotification:pageName properties:properties];
     }
     
@@ -1302,7 +1303,7 @@ static VisilabsReachability *reachability;
     NSString *escapedPageName = [self urlEncode:@"LoginPage"];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.vchannel", self.channel
                         ,@"OM.uri", escapedPageName
                         ,@"OM.cookieID", self.cookieID
@@ -1311,7 +1312,8 @@ static VisilabsReachability *reachability;
                         ,@"OM.oid",self.organizationID
                         ,@"EventType", @"Login"
                         ,@"Login",escapedNewIdentity
-                        ,@"dat", actualTimeOfevent];
+                        ,@"dat", actualTimeOfevent
+                        ,@"OM.mobileapplication",@"true"];
     
     NSString *rtURL = nil;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
@@ -1358,7 +1360,7 @@ static VisilabsReachability *reachability;
     NSString *escapedPageName = [self urlEncode:@"SignUpPage"];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.vchannel", self.channel
                         ,@"OM.uri", escapedPageName
                         ,@"OM.cookieID", self.cookieID
@@ -1367,7 +1369,8 @@ static VisilabsReachability *reachability;
                         ,@"OM.oid",self.organizationID
                         ,@"EventType", @"SignUp"
                         ,@"SignUp",escapedNewIdentity
-                        ,@"dat", actualTimeOfevent];
+                        ,@"dat", actualTimeOfevent
+                        ,@"OM.mobileapplication",@"true"];
     
     NSString *rtURL = nil;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
