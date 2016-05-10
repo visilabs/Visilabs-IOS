@@ -6,6 +6,8 @@
 //  Copyright © 2015 Visilabs. All rights reserved.
 //
 
+#import <AdSupport/ASIdentifierManager.h>
+
 #import "VisilabsReachability.h"
 
 #import "Visilabs.h"
@@ -73,6 +75,7 @@ static Visilabs * API = nil;
 @property (nonatomic, retain) NSString *visitData;
 @property (nonatomic, retain) NSString *visitorData;
 
+@property (nonatomic, retain) NSString *identifierForAdvertising;
 
 - (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL  withChannel:(NSString *)chan  withRequestTimeout:(NSInteger)timeout withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)targetURL withActionURL:(NSString *)aURL;
 //- (void)applicationWillTerminate:(NSNotification *)notification;
@@ -642,7 +645,16 @@ static VisilabsReachability *reachability;
 
 
 
-
+- (NSString *)getIDFA
+{
+    if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled])
+    {
+        NSUUID *IDFA = [[ASIdentifierManager sharedManager] advertisingIdentifier];
+        return [IDFA UUIDString];
+    }
+    
+    return @"";
+}
 
 
 - (NSString *)description
@@ -859,14 +871,21 @@ static VisilabsReachability *reachability;
         self.userAgent = @"IOS";
     }
     
+    @try {
+        self.identifierForAdvertising = [self getIDFA];
+    }@catch(NSException *exception) {
+        #ifdef DEBUG
+            NSLog(@"Visilabs: Identifier for advertising can not be retrieved.");
+        #endif
+    }
     
     
     @try {
         self.cookieID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self cookieIDFilePath]];
     }@catch(NSException *exception) {
-    #ifdef DEBUG
-        NSLog(@"Visilabs: Error while unarchiving cookieID.");
-    #endif
+        #ifdef DEBUG
+            NSLog(@"Visilabs: Error while unarchiving cookieID.");
+        #endif
     }
     if(!self.cookieID)
     {
@@ -1143,6 +1162,11 @@ static VisilabsReachability *reachability;
         [properties removeObjectForKey:@"OM.exVisitorID"];
     }
     
+    if ([[properties allKeys] containsObject:@"OM.m_adid"])
+    {
+        [properties removeObjectForKey:@"OM.m_adid"];
+    }
+    
     NSString *chan = self.channel;
     if ([[properties allKeys] containsObject:@"OM.vchannel"])
     {
@@ -1157,14 +1181,15 @@ static VisilabsReachability *reachability;
     int actualTimeOfevent = (int)[[NSDate date] timeIntervalSince1970];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&%@=%@&", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.cookieID", self.cookieID
                         ,@"OM.vchannel", chan
                         ,@"OM.siteID",self.siteID
-                        ,@"OM.oid",self.organizationID,
-                        @"dat", actualTimeOfevent,
-                        @"OM.uri",escapedPageName,
-                        @"OM.mappl",@"true"];
+                        ,@"OM.oid",self.organizationID
+                        ,@"dat", actualTimeOfevent
+                        ,@"OM.uri",escapedPageName
+                        ,@"OM.mappl",@"true"
+                        ,@"OM.m_adid",self.identifierForAdvertising];
     
     if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
     {
@@ -1303,7 +1328,7 @@ static VisilabsReachability *reachability;
     NSString *escapedPageName = [self urlEncode:@"LoginPage"];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.vchannel", self.channel
                         ,@"OM.uri", escapedPageName
                         ,@"OM.cookieID", self.cookieID
@@ -1313,7 +1338,8 @@ static VisilabsReachability *reachability;
                         ,@"EventType", @"Login"
                         ,@"Login",escapedNewIdentity
                         ,@"dat", actualTimeOfevent
-                        ,@"OM.mappl",@"true"];
+                        ,@"OM.mappl",@"true"
+                        ,@"OM.m_adid",self.identifierForAdvertising];
     
     NSString *rtURL = nil;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
@@ -1360,7 +1386,7 @@ static VisilabsReachability *reachability;
     NSString *escapedPageName = [self urlEncode:@"SignUpPage"];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.vchannel", self.channel
                         ,@"OM.uri", escapedPageName
                         ,@"OM.cookieID", self.cookieID
@@ -1370,7 +1396,8 @@ static VisilabsReachability *reachability;
                         ,@"EventType", @"SignUp"
                         ,@"SignUp",escapedNewIdentity
                         ,@"dat", actualTimeOfevent
-                        ,@"OM.mappl",@"true"];
+                        ,@"OM.mappl",@"true"
+                        ,@"OM.m_adid",self.identifierForAdvertising];
     
     NSString *rtURL = nil;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
