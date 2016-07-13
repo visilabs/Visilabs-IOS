@@ -7,7 +7,7 @@
 //
 
 // cater for debug/release mode of logging
-#ifdef DEBUG
+#ifdef VISILABSDEBUG
 #define DLog(...) NSLog(@"%s(%p) %@", __PRETTY_FUNCTION__, self, [NSString stringWithFormat:__VA_ARGS__])
 #else
 #define DLog(...) /* */

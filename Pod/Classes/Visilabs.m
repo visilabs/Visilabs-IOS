@@ -137,9 +137,7 @@ static VisilabsReachability *reachability;
 {
     if(notification == nil || notification.ID < 1)
     {
-#ifdef DEBUG
-        NSLog(@"Visilabs: WARNING - Tried to record empty or nil notification. Ignoring.");
-#endif
+        DLog(@"Visilabs: WARNING - Tried to record empty or nil notification. Ignoring.");
         return;
     }
     
@@ -808,9 +806,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil)
         {
-#ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - Visilabs object is not created yet.");
-#endif
+            DLog(@"Visilabs: WARNING - Visilabs object is not created yet.");
         }
     }
     return API;
@@ -865,27 +861,21 @@ static VisilabsReachability *reachability;
         //[webView release];
         webView = nil;
     }@catch(NSException *exception) {
-        #ifdef DEBUG
-            NSLog(@"Visilabs: Error while unarchiving cookieID.");
-        #endif
+        DLog(@"Visilabs: Error while unarchiving cookieID.");
         self.userAgent = @"IOS";
     }
     
     @try {
         self.identifierForAdvertising = [self getIDFA];
     }@catch(NSException *exception) {
-        #ifdef DEBUG
-            NSLog(@"Visilabs: Identifier for advertising can not be retrieved.");
-        #endif
+        DLog(@"Visilabs: Identifier for advertising can not be retrieved.");
     }
     
     
     @try {
         self.cookieID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self cookieIDFilePath]];
     }@catch(NSException *exception) {
-        #ifdef DEBUG
-            NSLog(@"Visilabs: Error while unarchiving cookieID.");
-        #endif
+        DLog(@"Visilabs: Error while unarchiving cookieID.");
     }
     if(!self.cookieID)
     {
@@ -896,9 +886,7 @@ static VisilabsReachability *reachability;
     @try {
         self.exVisitorID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self exVisitorIDFilePath]];
     }@catch(NSException *exception) {
-    #ifdef DEBUG
-        NSLog(@"Visilabs: Error while unarchiving cookieID.");
-    #endif
+        DLog(@"Visilabs: Error while unarchiving cookieID.");
     }
     
     
@@ -975,14 +963,10 @@ static VisilabsReachability *reachability;
             referer = [nextAPICall stringBetweenString:@"OM.uri=" andString:@"&"];
         }
         
-        
         NSURL *url = [NSURL URLWithString:nextAPICall];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
         [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
         [request setValue:referer forHTTPHeaderField:@"Referer"];
-        
-        
-
         
         if([nextAPICall containsString:[VisilabsConfig LOGGER_URL] options:NSCaseInsensitiveSearch]
            && self.loggerCookieKey != nil && ![self.loggerCookieKey  isEqual: @""]
@@ -1047,9 +1031,7 @@ static VisilabsReachability *reachability;
     {
         if (![propKey isKindOfClass:[NSString class]])
         {
-#ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - property keys must be NSString. Dropping property.");
-#endif
+            DLog(@"Visilabs: WARNING - property keys must be NSString. Dropping property.");
             continue;
         }
         NSString *stringKey = (NSString *)propKey;
@@ -1057,18 +1039,14 @@ static VisilabsReachability *reachability;
         
         if([stringKey length] == 0)
         {
-#ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - property keys must not be empty strings. Dropping property.");
-#endif
+            DLog(@"Visilabs: WARNING - property keys must not be empty strings. Dropping property.");
             continue;
         }
         
         NSString *stringValue = nil;
         if([props objectForKey:stringKey] == nil)
         {
-#ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - property value cannot be nil. Dropping property.");
-#endif
+            DLog(@"Visilabs: WARNING - property value cannot be nil. Dropping property.");
             continue;
         }
         else if([[props objectForKey:stringKey] isKindOfClass:[NSNumber class]])
@@ -1083,17 +1061,13 @@ static VisilabsReachability *reachability;
         
         if(stringValue == nil)
         {
-#ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - property value cannot be of type %@. Dropping property.", [[[props objectForKey:stringKey] class] description]);
-#endif
+            DLog(@"Visilabs: WARNING - property value cannot be of type %@. Dropping property.", [[[props objectForKey:stringKey] class] description]);
             continue;
         }
         
         if([stringValue length] == 0)
         {
-#ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - property values must not be empty strings. Dropping property.");
-#endif
+            DLog(@"Visilabs: WARNING - property values must not be empty strings. Dropping property.");
             continue;
         }
         
@@ -1101,9 +1075,7 @@ static VisilabsReachability *reachability;
         NSString *escapedKey = [self urlEncode:stringKey];
         if([escapedKey length] > 255)
         {
-#ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - property key cannot longer than 255 characters. When URL escaped, your key is %lu characters long (the submitted value is %@, the URL escaped value is %@). Dropping property.", (unsigned long)[escapedKey length], stringKey, escapedKey);
-#endif
+            DLog(@"Visilabs: WARNING - property key cannot longer than 255 characters. When URL escaped, your key is %lu characters long (the submitted value is %@, the URL escaped value is %@). Dropping property.", (unsigned long)[escapedKey length], stringKey, escapedKey);
             continue;
         }
         
@@ -1124,9 +1096,7 @@ static VisilabsReachability *reachability;
 {
     if(pageName == nil || [pageName length] == 0)
     {
-        #ifdef DEBUG
-            NSLog(@"Visilabs: WARNING - Tried to record event with empty or nil name. Ignoring.");
-        #endif
+        DLog(@"Visilabs: WARNING - Tried to record event with empty or nil name. Ignoring.");
         return;
     }
     
@@ -1141,7 +1111,7 @@ static VisilabsReachability *reachability;
         self.cookieID = cookieid;
         if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[self cookieIDFilePath]])
         {
-            NSLog(@"Visilabs: WARNING - Unable to archive identity!!!");
+            DLog(@"Visilabs: WARNING - Unable to archive identity!!!");
         }
         [properties removeObjectForKey:@"OM.cookieID"];
     }
@@ -1157,7 +1127,7 @@ static VisilabsReachability *reachability;
         self.exVisitorID = exvisitorid;
         if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[self exVisitorIDFilePath]])
         {
-            NSLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
+            DLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
         }
         [properties removeObjectForKey:@"OM.exVisitorID"];
     }
@@ -1235,14 +1205,14 @@ static VisilabsReachability *reachability;
     
     if(properties == nil || [properties count] == 0)
     {
-        NSLog(@"Visilabs: WARNING - Tried to set properties with no properties in it..");
+        DLog(@"Visilabs: WARNING - Tried to set properties with no properties in it..");
         return;
     }
     
     NSString *additionalURL = [self urlizeProps:properties];
     if([additionalURL length] == 0)
     {
-        NSLog(@"Visilabs: WARNING - no valid properties in setProperties:. Ignoring call");
+        DLog(@"Visilabs: WARNING - no valid properties in setProperties:. Ignoring call");
         return;
     }
     
@@ -1276,7 +1246,7 @@ static VisilabsReachability *reachability;
 {
     if(exVisitorID == nil || [exVisitorID length] == 0)
     {
-        NSLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
+        DLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
         return;
     }
     else
@@ -1296,7 +1266,7 @@ static VisilabsReachability *reachability;
 {
     if(exVisitorID == nil || [exVisitorID length] == 0)
     {
-        NSLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
+        DLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
         return;
     }
     else
@@ -1317,7 +1287,7 @@ static VisilabsReachability *reachability;
     
     if(exVisitorID == nil || [exVisitorID length] == 0)
     {
-        NSLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
+        DLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
         return;
     }
     
@@ -1357,7 +1327,7 @@ static VisilabsReachability *reachability;
         
         if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[self exVisitorIDFilePath]])
         {
-            NSLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
+            DLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
         }
         
         [self.sendQueue addObject:segURL];
@@ -1375,7 +1345,7 @@ static VisilabsReachability *reachability;
     
     if(exVisitorID == nil || [exVisitorID length] == 0)
     {
-        NSLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
+        DLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
         return;
     }
     
@@ -1416,7 +1386,7 @@ static VisilabsReachability *reachability;
         
         if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[self exVisitorIDFilePath]])
         {
-            NSLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
+            DLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
         }
         
         [self.sendQueue addObject:segURL];
@@ -1435,10 +1405,7 @@ static VisilabsReachability *reachability;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
-    #ifdef DEBUG
-        NSLog(@"Response URL: %@", [response.URL absoluteString]);
-    #endif
-    
+    DLog(@"Response URL: %@", [response.URL absoluteString]);
     
     if ([response statusCode] == 200 || [response statusCode] == 304)
     {
@@ -1462,10 +1429,8 @@ static VisilabsReachability *reachability;
                                     forURL:[NSURL URLWithString:[response.URL absoluteString]]]; // send to URL, return NSArray
                             for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
                             {
-                                #ifdef DEBUG
-                                    NSLog(@"Cookie Key: %@", [cookie name]);
-                                    NSLog(@"Cookie Value: %@", [cookie value]);
-                                #endif
+                                DLog(@"Cookie Key: %@", [cookie name]);
+                                DLog(@"Cookie Value: %@", [cookie value]);
                                 
                                 if ([[cookie name] containsString:[VisilabsConfig LOAD_BALANCE_PREFIX] options:NSCaseInsensitiveSearch])
                                 {
@@ -1500,16 +1465,14 @@ static VisilabsReachability *reachability;
                      }
                  }
             }@catch(NSException *exception) {
-                #ifdef DEBUG
-                    NSLog(@"Visilabs: Error while reading cookie.");
-                #endif
+                DLog(@"Visilabs: Error while reading cookie.");
             }
     
         }
     }
     else
     {
-        NSLog(@"Visilabs: INFO - Failure %@", [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]);
+        DLog(@"Visilabs: INFO - Failure %@", [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]);
         
         @synchronized(self)
         {
@@ -1533,11 +1496,11 @@ static VisilabsReachability *reachability;
         {
             if([self.sendQueue count] == 0)
             {
-                NSLog(@"Visilabs: CATASTROPHIC FAILURE (%@). Dropping call..",[error localizedDescription]);
+                DLog(@"Visilabs: CATASTROPHIC FAILURE (%@). Dropping call..",[error localizedDescription]);
             }
             else
             {
-                NSLog(@"Visilabs: CATASTROPHIC FAILURE (%@) for URL (%@). Dropping call..",[error localizedDescription], [self.sendQueue objectAtIndex:0]);
+                DLog(@"Visilabs: CATASTROPHIC FAILURE (%@) for URL (%@). Dropping call..",[error localizedDescription], [self.sendQueue objectAtIndex:0]);
                 [self.sendQueue removeObjectAtIndex:0];
             }
         }
@@ -1593,7 +1556,7 @@ static VisilabsReachability *reachability;
     
     if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[self cookieIDFilePath]])
     {
-        NSLog(@"Visilabs: WARNING - Unable to archive identity!!!");
+        DLog(@"Visilabs: WARNING - Unable to archive identity!!!");
     }
 }
 

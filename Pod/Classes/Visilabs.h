@@ -42,6 +42,17 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
  @property
  
  @abstract
+ When set YES, logs .
+ 
+ @discussion
+ Defaults to NO.
+ */
+@property (atomic) BOOL loggingEnabled;
+
+/*!
+ @property
+ 
+ @abstract
  Controls whether to automatically check for notifications for the
  currently identified user after Visilabs logger request.
  
