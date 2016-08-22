@@ -65,6 +65,9 @@ static NSString *const kEXVISITORID_KEY = @"OM.exVisitorID";
 static NSString *const kZONE_ID_KEY = @"OM.zid";
 static NSString *const kBODY_KEY = @"OM.body";
 
+static NSString *const kACT_ID_KEY = @"actid";
+static NSString *const kACT_KEY = @"act";
+
 +(NSString *) LOGGER_URL
 {
     return kLOGGER_URL;
@@ -117,6 +120,16 @@ static NSString *const kBODY_KEY = @"OM.body";
 +(NSString *) BODY_KEY
 {
     return kBODY_KEY;
+}
+
++(NSString *) ACT_ID_KEY
+{
+    return kACT_ID_KEY;
+}
+
++(NSString *) ACT_KEY
+{
+    return kACT_KEY;
 }
 
 + (NSArray *)visilabsParameters

@@ -19,6 +19,11 @@
 #import "VisilabsNotificationViewController.h"
 #import "UIView+VisilabsHelpers.h"
 
+//#import "VisilabsGeofenceManager.h"
+
+#import "VisilabsGeofenceApp.h"
+#import "VisilabsGeofenceApp+Location.h"
+
 static Visilabs * API = nil;
 
 
@@ -105,6 +110,9 @@ static Visilabs * API = nil;
 
 @property (nonatomic, retain) NSString *loggerOM3rdCookieValue;
 @property (nonatomic, retain) NSString *realTimeOM3rdCookieValue;
+
+//@property (nonatomic, retain) NSString *geofenceURL;
+//@property (nonatomic) BOOL geofenceEnabled;
 
 @end
 
@@ -727,6 +735,19 @@ static VisilabsReachability *reachability;
     return request;
 }
 
+- (VisilabsGeofenceRequest *)buildGeofenceRequest:(NSString *)action withActionID:(NSString *)actionID{
+    VisilabsGeofenceRequest *request = (VisilabsGeofenceRequest *)[self buildGeofenceAction];
+    request.action = action;
+    request.actionID = actionID;
+    request.path = nil;
+    request.headers = nil;
+    request.method = @"GET";
+    request.requestMethod = @"GET";
+    [request setArgs:nil];
+    
+    return request;
+}
+
 - (VisilabsAction*)buildAction{
     if (API == nil) {
         @throw([NSException exceptionWithName:@"Visilabs Not Ready"
@@ -738,6 +759,17 @@ static VisilabsReachability *reachability;
     return action;
 }
 
+- (VisilabsAction*)buildGeofenceAction{
+    if (API == nil) {
+        @throw([NSException exceptionWithName:@"Visilabs Not Ready"
+                                       reason:@"Visilabs failed to initialize"
+                                     userInfo:@{}]);
+    }
+    VisilabsAction *action = nil;
+    action = [[VisilabsGeofenceRequest alloc] init];
+    return action;
+}
+
 
 + (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withRESTURL:(NSString *)RESTURL withEncryptedDataSource:(NSString *)encryptedDataSource
 {
@@ -745,7 +777,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds  withRESTURL:RESTURL withEncryptedDataSource:encryptedDataSource withTargetURL:nil  withActionURL:nil];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds  withRESTURL:RESTURL withEncryptedDataSource:encryptedDataSource withTargetURL:nil  withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO];
         }
     }
     return API;
@@ -757,7 +789,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO];
         }
     }
     return API;
@@ -769,7 +801,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:60 withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:60 withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO];
         }
     }
     return API;
@@ -781,7 +813,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:nil];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO];
         }
     }
     return API;
@@ -793,12 +825,23 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL withGeofenceURL: nil withGeofenceEnabled:NO];
         }
     }
     return API;
 }
 
++ (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withTargetURL:(NSString *)targetURL withActionURL:(NSString *)actionURL  withGeofenceURL:(NSString *)geofenceURL withGeofenceEnabled:(BOOL) geofenceEnabled
+{
+    @synchronized(self)
+    {
+        if (API == nil) {
+            API = [[Visilabs alloc] init];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL  withGeofenceURL: geofenceURL withGeofenceEnabled:geofenceEnabled];
+        }
+    }
+    return API;
+}
 
 + (Visilabs *) callAPI
 {
@@ -818,7 +861,7 @@ static VisilabsReachability *reachability;
 
 
 
-- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL withChannel:(NSString *)chan withRequestTimeout:(NSInteger)seconds  withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)tURL withActionURL:(NSString *)aURL
+- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL withChannel:(NSString *)chan withRequestTimeout:(NSInteger)seconds  withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)tURL withActionURL:(NSString *)aURL withGeofenceURL:(NSString *)gURL withGeofenceEnabled:(BOOL) gEnabled
 {
     
     [self registerForNetworkReachabilityNotifications];
@@ -841,6 +884,10 @@ static VisilabsReachability *reachability;
     self.channel = [self urlEncode:chan];
     self.RESTURL = restURL;
     self.encryptedDataSource = eDataSource;
+    
+    self.geofenceURL = gURL;
+    self.geofenceEnabled = gEnabled;
+    
     
     self.targetURL = tURL;
     
@@ -923,6 +970,11 @@ static VisilabsReachability *reachability;
     
     //TODO: buna bak niye çağırıyoruz?
     [self applicationWillEnterForeground:nil];
+    
+    if(self.geofenceEnabled && self.geofenceURL != nil){
+        [VisilabsGeofenceApp sharedInstance].isLocationServiceEnabled = YES;
+        //[[VisilabsGeofenceManager sharedInstance] start];
+    }
     
 }
 

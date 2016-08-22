@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		389651E21D654A9B0064B97F /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 389651E11D654A9B0064B97F /* Location.gpx */; };
+		38AA5BC61D65D0E200DB0692 /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 38AA5BC51D65D0E200DB0692 /* Location.gpx */; };
+		38E5EC3B1D648D4100309F55 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC0C1D648D4100309F55 /* BaseObject.m */; };
+		38E5EC3C1D648D4100309F55 /* EMBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC0E1D648D4100309F55 /* EMBaseRequest.m */; };
+		38E5EC3D1D648D4100309F55 /* EMConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC101D648D4100309F55 /* EMConnectionManager.m */; };
+		38E5EC3E1D648D4100309F55 /* EMInteractiveAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC121D648D4100309F55 /* EMInteractiveAction.m */; };
+		38E5EC3F1D648D4100309F55 /* EMLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC141D648D4100309F55 /* EMLocation.m */; };
+		38E5EC401D648D4100309F55 /* EMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC171D648D4100309F55 /* EMMessage.m */; };
+		38E5EC411D648D4100309F55 /* EMRegisterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC191D648D4100309F55 /* EMRegisterRequest.m */; };
+		38E5EC421D648D4100309F55 /* EMRetentionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC1B1D648D4100309F55 /* EMRetentionRequest.m */; };
+		38E5EC431D648D4100309F55 /* EMSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC1D1D648D4100309F55 /* EMSettingsModel.m */; };
+		38E5EC441D648D4100309F55 /* EMSettingsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC1F1D648D4100309F55 /* EMSettingsRequest.m */; };
+		38E5EC451D648D4100309F55 /* EMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC211D648D4100309F55 /* EMTools.m */; };
+		38E5EC461D648D4100309F55 /* EMURLSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC231D648D4100309F55 /* EMURLSessionDelegate.m */; };
+		38E5EC471D648D4100309F55 /* EuroManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC261D648D4100309F55 /* EuroManager.m */; };
+		38E5EC481D648D4100309F55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38E5EC271D648D4100309F55 /* Info.plist */; };
+		38E5EC491D648D4100309F55 /* EMJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC2C1D648D4100309F55 /* EMJSONModel.m */; };
+		38E5EC4A1D648D4100309F55 /* EMJSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC2E1D648D4100309F55 /* EMJSONModelArray.m */; };
+		38E5EC4B1D648D4100309F55 /* EMJSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC301D648D4100309F55 /* EMJSONModelClassProperty.m */; };
+		38E5EC4C1D648D4100309F55 /* EMJSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC321D648D4100309F55 /* EMJSONModelError.m */; };
+		38E5EC4D1D648D4100309F55 /* NSArray+EMJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC351D648D4100309F55 /* NSArray+EMJSONModel.m */; };
+		38E5EC4E1D648D4100309F55 /* EMJSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC381D648D4100309F55 /* EMJSONKeyMapper.m */; };
+		38E5EC4F1D648D4100309F55 /* EMJSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5EC3A1D648D4100309F55 /* EMJSONValueTransformer.m */; };
+		5BD1C865697F473C233AEB3B /* Pods_Visilabs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC3E98EDE72D1FA542C9B08 /* Pods_Visilabs_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,8 +45,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		97E2557AB33C24DF75DA36CE /* Pods_Visilabs_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A21BCD8078E2348CD309683 /* Pods_Visilabs_Tests.framework */; };
-		E77C05B4572393EF4A4C74BB /* Pods_Visilabs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C36EF8366059D8E6CECCDA /* Pods_Visilabs_Example.framework */; };
+		E332081BD85F3B4E5EC7019A /* Pods_Visilabs_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F8A6C102C917503A61C854 /* Pods_Visilabs_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +59,55 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		057008B68CC27FEDC42E8B29 /* Pods-Visilabs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		1B6A7911578DB4C1AE247686 /* Pods-Visilabs_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.release.xcconfig"; sourceTree = "<group>"; };
 		2D469D6657DB1137798D0294 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		3A21BCD8078E2348CD309683 /* Pods_Visilabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		389651E11D654A9B0064B97F /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		38AA5BC51D65D0E200DB0692 /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		38E5EC0B1D648D4100309F55 /* BaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseObject.h; sourceTree = "<group>"; };
+		38E5EC0C1D648D4100309F55 /* BaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseObject.m; sourceTree = "<group>"; };
+		38E5EC0D1D648D4100309F55 /* EMBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMBaseRequest.h; sourceTree = "<group>"; };
+		38E5EC0E1D648D4100309F55 /* EMBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMBaseRequest.m; sourceTree = "<group>"; };
+		38E5EC0F1D648D4100309F55 /* EMConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMConnectionManager.h; sourceTree = "<group>"; };
+		38E5EC101D648D4100309F55 /* EMConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMConnectionManager.m; sourceTree = "<group>"; };
+		38E5EC111D648D4100309F55 /* EMInteractiveAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMInteractiveAction.h; sourceTree = "<group>"; };
+		38E5EC121D648D4100309F55 /* EMInteractiveAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMInteractiveAction.m; sourceTree = "<group>"; };
+		38E5EC131D648D4100309F55 /* EMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMLocation.h; sourceTree = "<group>"; };
+		38E5EC141D648D4100309F55 /* EMLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMLocation.m; sourceTree = "<group>"; };
+		38E5EC151D648D4100309F55 /* EMLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMLogging.h; sourceTree = "<group>"; };
+		38E5EC161D648D4100309F55 /* EMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMessage.h; sourceTree = "<group>"; };
+		38E5EC171D648D4100309F55 /* EMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMMessage.m; sourceTree = "<group>"; };
+		38E5EC181D648D4100309F55 /* EMRegisterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMRegisterRequest.h; sourceTree = "<group>"; };
+		38E5EC191D648D4100309F55 /* EMRegisterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMRegisterRequest.m; sourceTree = "<group>"; };
+		38E5EC1A1D648D4100309F55 /* EMRetentionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMRetentionRequest.h; sourceTree = "<group>"; };
+		38E5EC1B1D648D4100309F55 /* EMRetentionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMRetentionRequest.m; sourceTree = "<group>"; };
+		38E5EC1C1D648D4100309F55 /* EMSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSettingsModel.h; sourceTree = "<group>"; };
+		38E5EC1D1D648D4100309F55 /* EMSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSettingsModel.m; sourceTree = "<group>"; };
+		38E5EC1E1D648D4100309F55 /* EMSettingsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSettingsRequest.h; sourceTree = "<group>"; };
+		38E5EC1F1D648D4100309F55 /* EMSettingsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSettingsRequest.m; sourceTree = "<group>"; };
+		38E5EC201D648D4100309F55 /* EMTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTools.h; sourceTree = "<group>"; };
+		38E5EC211D648D4100309F55 /* EMTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTools.m; sourceTree = "<group>"; };
+		38E5EC221D648D4100309F55 /* EMURLSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMURLSessionDelegate.h; sourceTree = "<group>"; };
+		38E5EC231D648D4100309F55 /* EMURLSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMURLSessionDelegate.m; sourceTree = "<group>"; };
+		38E5EC241D648D4100309F55 /* EuroFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EuroFramework.h; sourceTree = "<group>"; };
+		38E5EC251D648D4100309F55 /* EuroManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EuroManager.h; sourceTree = "<group>"; };
+		38E5EC261D648D4100309F55 /* EuroManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EuroManager.m; sourceTree = "<group>"; };
+		38E5EC271D648D4100309F55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38E5EC291D648D4100309F55 /* EMJSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSONModelLib.h; sourceTree = "<group>"; };
+		38E5EC2B1D648D4100309F55 /* EMJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSONModel.h; sourceTree = "<group>"; };
+		38E5EC2C1D648D4100309F55 /* EMJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJSONModel.m; sourceTree = "<group>"; };
+		38E5EC2D1D648D4100309F55 /* EMJSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSONModelArray.h; sourceTree = "<group>"; };
+		38E5EC2E1D648D4100309F55 /* EMJSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJSONModelArray.m; sourceTree = "<group>"; };
+		38E5EC2F1D648D4100309F55 /* EMJSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSONModelClassProperty.h; sourceTree = "<group>"; };
+		38E5EC301D648D4100309F55 /* EMJSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJSONModelClassProperty.m; sourceTree = "<group>"; };
+		38E5EC311D648D4100309F55 /* EMJSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSONModelError.h; sourceTree = "<group>"; };
+		38E5EC321D648D4100309F55 /* EMJSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJSONModelError.m; sourceTree = "<group>"; };
+		38E5EC341D648D4100309F55 /* NSArray+EMJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+EMJSONModel.h"; sourceTree = "<group>"; };
+		38E5EC351D648D4100309F55 /* NSArray+EMJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+EMJSONModel.m"; sourceTree = "<group>"; };
+		38E5EC371D648D4100309F55 /* EMJSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSONKeyMapper.h; sourceTree = "<group>"; };
+		38E5EC381D648D4100309F55 /* EMJSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJSONKeyMapper.m; sourceTree = "<group>"; };
+		38E5EC391D648D4100309F55 /* EMJSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSONValueTransformer.h; sourceTree = "<group>"; };
+		38E5EC3A1D648D4100309F55 /* EMJSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMJSONValueTransformer.m; sourceTree = "<group>"; };
+		3CC3E98EDE72D1FA542C9B08 /* Pods_Visilabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* Visilabs_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Visilabs_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,13 +127,13 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		613BA8892D4F0BCCC1EA5D22 /* Pods-Visilabs_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.release.xcconfig"; sourceTree = "<group>"; };
+		6ABCC028307EC4834952C15B /* Pods-Visilabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		7B90A869BAC0DC417616274C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		A7C36EF8366059D8E6CECCDA /* Pods_Visilabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC2236D3BD833E7A73B76F0D /* Pods-Visilabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		B468F38C2C8F9140E9AF3C94 /* Pods-Visilabs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C23E769B25F5DDADCE7BDBF8 /* Pods-Visilabs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CC85B6C35A5FDC0F6ED4562D /* Visilabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Visilabs.podspec; path = ../Visilabs.podspec; sourceTree = "<group>"; };
-		FF6221B42AD8A2832AD7845B /* Pods-Visilabs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		F7F8A6C102C917503A61C854 /* Pods_Visilabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +144,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				E77C05B4572393EF4A4C74BB /* Pods_Visilabs_Example.framework in Frameworks */,
+				5BD1C865697F473C233AEB3B /* Pods_Visilabs_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,13 +155,96 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				97E2557AB33C24DF75DA36CE /* Pods_Visilabs_Tests.framework in Frameworks */,
+				E332081BD85F3B4E5EC7019A /* Pods_Visilabs_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38E5EC0A1D648D4100309F55 /* EuroIOSFramework */ = {
+			isa = PBXGroup;
+			children = (
+				38E5EC0B1D648D4100309F55 /* BaseObject.h */,
+				38E5EC0C1D648D4100309F55 /* BaseObject.m */,
+				38E5EC0D1D648D4100309F55 /* EMBaseRequest.h */,
+				38E5EC0E1D648D4100309F55 /* EMBaseRequest.m */,
+				38E5EC0F1D648D4100309F55 /* EMConnectionManager.h */,
+				38E5EC101D648D4100309F55 /* EMConnectionManager.m */,
+				38E5EC111D648D4100309F55 /* EMInteractiveAction.h */,
+				38E5EC121D648D4100309F55 /* EMInteractiveAction.m */,
+				38E5EC131D648D4100309F55 /* EMLocation.h */,
+				38E5EC141D648D4100309F55 /* EMLocation.m */,
+				38E5EC151D648D4100309F55 /* EMLogging.h */,
+				38E5EC161D648D4100309F55 /* EMMessage.h */,
+				38E5EC171D648D4100309F55 /* EMMessage.m */,
+				38E5EC181D648D4100309F55 /* EMRegisterRequest.h */,
+				38E5EC191D648D4100309F55 /* EMRegisterRequest.m */,
+				38E5EC1A1D648D4100309F55 /* EMRetentionRequest.h */,
+				38E5EC1B1D648D4100309F55 /* EMRetentionRequest.m */,
+				38E5EC1C1D648D4100309F55 /* EMSettingsModel.h */,
+				38E5EC1D1D648D4100309F55 /* EMSettingsModel.m */,
+				38E5EC1E1D648D4100309F55 /* EMSettingsRequest.h */,
+				38E5EC1F1D648D4100309F55 /* EMSettingsRequest.m */,
+				38E5EC201D648D4100309F55 /* EMTools.h */,
+				38E5EC211D648D4100309F55 /* EMTools.m */,
+				38E5EC221D648D4100309F55 /* EMURLSessionDelegate.h */,
+				38E5EC231D648D4100309F55 /* EMURLSessionDelegate.m */,
+				38E5EC241D648D4100309F55 /* EuroFramework.h */,
+				38E5EC251D648D4100309F55 /* EuroManager.h */,
+				38E5EC261D648D4100309F55 /* EuroManager.m */,
+				38E5EC271D648D4100309F55 /* Info.plist */,
+				38E5EC281D648D4100309F55 /* JSONModel */,
+			);
+			path = EuroIOSFramework;
+			sourceTree = "<group>";
+		};
+		38E5EC281D648D4100309F55 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				38E5EC291D648D4100309F55 /* EMJSONModelLib.h */,
+				38E5EC2A1D648D4100309F55 /* JSONModel */,
+				38E5EC331D648D4100309F55 /* JSONModelCategories */,
+				38E5EC361D648D4100309F55 /* JSONModelTransformations */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		38E5EC2A1D648D4100309F55 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				38E5EC2B1D648D4100309F55 /* EMJSONModel.h */,
+				38E5EC2C1D648D4100309F55 /* EMJSONModel.m */,
+				38E5EC2D1D648D4100309F55 /* EMJSONModelArray.h */,
+				38E5EC2E1D648D4100309F55 /* EMJSONModelArray.m */,
+				38E5EC2F1D648D4100309F55 /* EMJSONModelClassProperty.h */,
+				38E5EC301D648D4100309F55 /* EMJSONModelClassProperty.m */,
+				38E5EC311D648D4100309F55 /* EMJSONModelError.h */,
+				38E5EC321D648D4100309F55 /* EMJSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		38E5EC331D648D4100309F55 /* JSONModelCategories */ = {
+			isa = PBXGroup;
+			children = (
+				38E5EC341D648D4100309F55 /* NSArray+EMJSONModel.h */,
+				38E5EC351D648D4100309F55 /* NSArray+EMJSONModel.m */,
+			);
+			path = JSONModelCategories;
+			sourceTree = "<group>";
+		};
+		38E5EC361D648D4100309F55 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				38E5EC371D648D4100309F55 /* EMJSONKeyMapper.h */,
+				38E5EC381D648D4100309F55 /* EMJSONKeyMapper.m */,
+				38E5EC391D648D4100309F55 /* EMJSONValueTransformer.h */,
+				38E5EC3A1D648D4100309F55 /* EMJSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +253,7 @@
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				F63583E6A3556725EFE5B5D9 /* Pods */,
+				B976BE209B2AA06006EDD131 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,8 +273,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				A7C36EF8366059D8E6CECCDA /* Pods_Visilabs_Example.framework */,
-				3A21BCD8078E2348CD309683 /* Pods_Visilabs_Tests.framework */,
+				3CC3E98EDE72D1FA542C9B08 /* Pods_Visilabs_Example.framework */,
+				F7F8A6C102C917503A61C854 /* Pods_Visilabs_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +282,7 @@
 		6003F593195388D20070C39A /* Example for Visilabs */ = {
 			isa = PBXGroup;
 			children = (
+				38E5EC0A1D648D4100309F55 /* EuroIOSFramework */,
 				6003F59C195388D20070C39A /* VisilabsAppDelegate.h */,
 				6003F59D195388D20070C39A /* VisilabsAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -137,6 +290,7 @@
 				6003F5A6195388D20070C39A /* VisilabsViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				389651E11D654A9B0064B97F /* Location.gpx */,
 			);
 			name = "Example for Visilabs";
 			path = Visilabs;
@@ -145,6 +299,7 @@
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				38AA5BC51D65D0E200DB0692 /* Location.gpx */,
 				6003F595195388D20070C39A /* Visilabs-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
@@ -182,13 +337,13 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		F63583E6A3556725EFE5B5D9 /* Pods */ = {
+		B976BE209B2AA06006EDD131 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AC2236D3BD833E7A73B76F0D /* Pods-Visilabs_Example.debug.xcconfig */,
-				613BA8892D4F0BCCC1EA5D22 /* Pods-Visilabs_Example.release.xcconfig */,
-				057008B68CC27FEDC42E8B29 /* Pods-Visilabs_Tests.debug.xcconfig */,
-				FF6221B42AD8A2832AD7845B /* Pods-Visilabs_Tests.release.xcconfig */,
+				6ABCC028307EC4834952C15B /* Pods-Visilabs_Example.debug.xcconfig */,
+				1B6A7911578DB4C1AE247686 /* Pods-Visilabs_Example.release.xcconfig */,
+				B468F38C2C8F9140E9AF3C94 /* Pods-Visilabs_Tests.debug.xcconfig */,
+				C23E769B25F5DDADCE7BDBF8 /* Pods-Visilabs_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -200,12 +355,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "Visilabs_Example" */;
 			buildPhases = (
-				F987CE434B38168548993B5B /* Check Pods Manifest.lock */,
+				1B84CC5425ABEFE74F7FDF3F /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				FCD555025683643FCEF80EFD /* Embed Pods Frameworks */,
-				390179388D0A257A9CA8E42F /* Copy Pods Resources */,
+				7FC4B7B49E1AD2669C919126 /* [CP] Embed Pods Frameworks */,
+				5ABBAA7A059BC688493BA0B1 /* [CP] Copy Pods Resources */,
+				961A3B0860697C8A58D5BA26 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,12 +376,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Visilabs_Tests" */;
 			buildPhases = (
-				39B9B4231CB9FE3FBC024123 /* Check Pods Manifest.lock */,
+				D03E881E4121CEEA62BEE197 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				37632D3FF59AC940DE2BAE78 /* Embed Pods Frameworks */,
-				19EE4A6150B3AF90BAF7BE09 /* Copy Pods Resources */,
+				F74EF9BECAFE37ACF65C33DB /* [CP] Embed Pods Frameworks */,
+				08ED66E1DCC26313EFFE409C /* [CP] Copy Pods Resources */,
+				222526395F25715E4FF2BC66 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +404,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = visilabs;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 5M383PCDJZ;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -276,8 +436,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E5EC481D648D4100309F55 /* Info.plist in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				389651E21D654A9B0064B97F /* Location.gpx in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				38AA5BC61D65D0E200DB0692 /* Location.gpx in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,14 +456,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19EE4A6150B3AF90BAF7BE09 /* Copy Pods Resources */ = {
+		08ED66E1DCC26313EFFE409C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +471,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		37632D3FF59AC940DE2BAE78 /* Embed Pods Frameworks */ = {
+		1B84CC5425ABEFE74F7FDF3F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		222526395F25715E4FF2BC66 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -323,14 +501,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		390179388D0A257A9CA8E42F /* Copy Pods Resources */ = {
+		5ABBAA7A059BC688493BA0B1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,37 +516,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		39B9B4231CB9FE3FBC024123 /* Check Pods Manifest.lock */ = {
+		7FC4B7B49E1AD2669C919126 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F987CE434B38168548993B5B /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FCD555025683643FCEF80EFD /* Embed Pods Frameworks */ = {
+		961A3B0860697C8A58D5BA26 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,6 +546,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D03E881E4121CEEA62BEE197 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F74EF9BECAFE37ACF65C33DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -390,9 +583,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E5EC4B1D648D4100309F55 /* EMJSONModelClassProperty.m in Sources */,
+				38E5EC431D648D4100309F55 /* EMSettingsModel.m in Sources */,
+				38E5EC491D648D4100309F55 /* EMJSONModel.m in Sources */,
+				38E5EC411D648D4100309F55 /* EMRegisterRequest.m in Sources */,
+				38E5EC421D648D4100309F55 /* EMRetentionRequest.m in Sources */,
+				38E5EC3C1D648D4100309F55 /* EMBaseRequest.m in Sources */,
+				38E5EC4D1D648D4100309F55 /* NSArray+EMJSONModel.m in Sources */,
 				6003F59E195388D20070C39A /* VisilabsAppDelegate.m in Sources */,
+				38E5EC3F1D648D4100309F55 /* EMLocation.m in Sources */,
+				38E5EC3E1D648D4100309F55 /* EMInteractiveAction.m in Sources */,
+				38E5EC4E1D648D4100309F55 /* EMJSONKeyMapper.m in Sources */,
+				38E5EC401D648D4100309F55 /* EMMessage.m in Sources */,
+				38E5EC4A1D648D4100309F55 /* EMJSONModelArray.m in Sources */,
+				38E5EC3B1D648D4100309F55 /* BaseObject.m in Sources */,
+				38E5EC461D648D4100309F55 /* EMURLSessionDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* VisilabsViewController.m in Sources */,
+				38E5EC441D648D4100309F55 /* EMSettingsRequest.m in Sources */,
+				38E5EC451D648D4100309F55 /* EMTools.m in Sources */,
+				38E5EC4C1D648D4100309F55 /* EMJSONModelError.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				38E5EC4F1D648D4100309F55 /* EMJSONValueTransformer.m in Sources */,
+				38E5EC471D648D4100309F55 /* EuroManager.m in Sources */,
+				38E5EC3D1D648D4100309F55 /* EMConnectionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +651,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -480,6 +694,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -512,11 +727,13 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC2236D3BD833E7A73B76F0D /* Pods-Visilabs_Example.debug.xcconfig */;
+			baseConfigurationReference = 6ABCC028307EC4834952C15B /* Pods-Visilabs_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Visilabs/Visilabs-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -528,17 +745,20 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 613BA8892D4F0BCCC1EA5D22 /* Pods-Visilabs_Example.release.xcconfig */;
+			baseConfigurationReference = 1B6A7911578DB4C1AE247686 /* Pods-Visilabs_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Visilabs/Visilabs-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -549,15 +769,17 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 057008B68CC27FEDC42E8B29 /* Pods-Visilabs_Tests.debug.xcconfig */;
+			baseConfigurationReference = B468F38C2C8F9140E9AF3C94 /* Pods-Visilabs_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -579,9 +801,10 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF6221B42AD8A2832AD7845B /* Pods-Visilabs_Tests.release.xcconfig */;
+			baseConfigurationReference = C23E769B25F5DDADCE7BDBF8 /* Pods-Visilabs_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

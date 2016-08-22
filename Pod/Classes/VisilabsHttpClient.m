@@ -64,10 +64,12 @@
     
     
     
-    DLog(@"Request URL is : %@", [apicall absoluteString]);
+    //DLog(@"Request URL is : %@", [apicall absoluteString]);
     
     NSMutableURLRequest* brequest = [self request:visilabsAction withUrl:apicall];
-    NSURLRequest* request = [brequest copy];
+    //NSURLRequest* request = [brequest copy];
+    [brequest copy];
+    
     brequest.timeoutInterval = visilabsAction.requestTimeout;
     
     NSURLSessionDataTask * task = [_session dataTaskWithRequest:brequest completionHandler:^(NSData* data, NSURLResponse* response, NSError* error) {
@@ -80,7 +82,7 @@
         int statusCode = (int)((NSHTTPURLResponse*)response).statusCode;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
-                DLog(@"Error %@", error.description);
+                //DLog(@"Error %@", error.description);
                 VisilabsResponse *visilabsResponse = [[VisilabsResponse alloc] init];
                 if(apicall){
                     visilabsResponse.targetURL = [apicall absoluteString];
@@ -92,9 +94,9 @@
                 return;
             }
             
-            DLog(@"reused cache %lu", (unsigned long)request.cachePolicy);
-            DLog(@"Response status : %d", statusCode);
-            DLog(@"Response data : %@", ((NSHTTPURLResponse*)response).description);
+            //DLog(@"reused cache %lu", (unsigned long)request.cachePolicy);
+            //DLog(@"Response status : %d", statusCode);
+            //DLog(@"Response data : %@", ((NSHTTPURLResponse*)response).description);
             
             // parse, build response, delegate
             VisilabsResponse *visilabsResponse = [[VisilabsResponse alloc] init];

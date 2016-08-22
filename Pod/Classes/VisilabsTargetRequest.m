@@ -19,7 +19,7 @@
         NSMutableString *targetURL = [[[Visilabs callAPI] targetURL] mutableCopy];
         NSString *queryParameters =[self getParametersAsQueryString];
         targetURL = [[targetURL stringByAppendingString:queryParameters] mutableCopy];
-        DLog(@"Request url is %@", targetURL);
+        //DLog(@"Request url is %@", targetURL);
         NSURL *uri = [[NSURL alloc] initWithString:targetURL];
         return uri;
     }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Visilabs"
-  s.version          = "2.5.3"
+  s.version          = "2.5.4"
   s.summary          = "Visilabs IOS SDK for Analytics and Target modules."
   s.description      = "Visilabs IOS SDK for Analytics and Target modules. SDK tracks user interactions and makes recommendations to enhance conversion and user retention."
   s.homepage         = "http://www.visilabs.com"
@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
+
+  s.dependency 'AFNetworking', '~> 2.3'
 
 #s.default_subspec = 'Visilabs'
 

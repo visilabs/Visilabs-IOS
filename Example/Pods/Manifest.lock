@@ -1,5 +1,27 @@
 PODS:
-  - Visilabs (2.5.3)
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Visilabs (2.5.4):
+    - AFNetworking (~> 2.3)
 
 DEPENDENCIES:
   - Visilabs (from `../`)
@@ -9,6 +31,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Visilabs: 413b6c08c6e84a523b702cdba3e7a56c1956767f
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  Visilabs: 1153e1d538422a935cb120a3dccca10beaeef0a3
 
 COCOAPODS: 0.39.0

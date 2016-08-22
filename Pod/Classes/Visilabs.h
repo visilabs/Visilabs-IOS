@@ -11,6 +11,7 @@
 #import "VisilabsTargetRequest.h"
 #import "VisilabsResponse.h"
 #import "VisilabsJSON.h"
+#import "VisilabsGeofenceRequest.h"
 
 typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
     VisilabsSDKNetworkOfflineErrorType = 1
@@ -34,6 +35,9 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 @property (nonatomic, strong) NSString *siteID;
 @property (nonatomic, strong) NSString *cookieID;
 @property (nonatomic, strong) NSString *exVisitorID;
+
+@property (nonatomic, strong) NSString *geofenceURL;
+@property (nonatomic) BOOL geofenceEnabled;
 
 @property (nonatomic) BOOL isOnline;
 
@@ -105,6 +109,9 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 
 - (VisilabsTargetRequest *)buildTargetRequest:(NSString *)zoneID withProductCode:(NSString *)productCode;
 
+- (VisilabsGeofenceRequest *)buildGeofenceRequest:(NSString *)action withActionID:(NSString *)actionID;
+
+
 +(Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel;
 
 +(Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds ;
@@ -114,6 +121,11 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 +(Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withRESTURL:(NSString *)RESTURL  withEncryptedDataSource:(NSString *)encryptedDataSource;
 
 + (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withTargetURL:(NSString *)targetURL withActionURL:(NSString *)actionURL;
+
+
++ (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withTargetURL:(NSString *)targetURL withActionURL:(NSString *)actionURL  withGeofenceURL:(NSString *)geofenceURL withGeofenceEnabled:(BOOL) geofenceEnabled;
+
+
 
 +(Visilabs *) callAPI ;
 

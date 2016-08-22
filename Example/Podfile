@@ -1,12 +1,22 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'Visilabs_Example', :exclusive => true do
+
+
+target 'Visilabs_Example' do
   pod "Visilabs", :path => "../"
 end
 
-target 'Visilabs_Tests', :exclusive => true do
+target 'Visilabs_Tests' do
   pod "Visilabs", :path => "../"
 
-  
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'VISILABSDEBUG=1']
+        end
+    end
+end
+
 end

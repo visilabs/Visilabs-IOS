@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Visilabs/Location.gpx">
+   </FileRef>
+   <FileRef
       location = "group:Visilabs.xcodeproj">
    </FileRef>
    <FileRef

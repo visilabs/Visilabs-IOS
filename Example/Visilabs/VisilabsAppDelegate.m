@@ -7,6 +7,7 @@
 //
 
 #import "VisilabsAppDelegate.h"
+#import "EuroIOSFramework/EuroManager.h"
 
 @implementation VisilabsAppDelegate
 
@@ -25,13 +26,80 @@
     NSString * visilabsNewSiteID = @"362F714E306C756B2B37593D";
     NSString * visilabsNewDataSource = @"visilabsnew";
     
-    [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson"];
+    [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:YES];
     // Override point for customization after application launch.
     
     [Visilabs callAPI].checkForNotificationsOnLoggerRequest = YES;
     
+    
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        #ifdef __IPHONE_8_0
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
+                                                                                             | UIUserNotificationTypeBadge
+                                                                                             | UIUserNotificationTypeSound) categories:nil];
+        [application registerUserNotificationSettings:settings];
+        #endif
+    } else {
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        [application registerForRemoteNotificationTypes:myTypes];
+    }
+    
+    
+    //[[VisilabsGFMainController sharedInstance] start];
+
     return YES;
 }
+
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    //register to receive notifications
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    //handle the actions
+    if ([identifier isEqualToString:@"declineAction"]){
+    }
+    else if ([identifier isEqualToString:@"answerAction"]){
+    }
+}
+#endif
+
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken");
+    [[EuroManager sharedManager:@"VisilabsIOSDemoTest2"] registerToken:deviceToken];
+    [[EuroManager sharedManager:@"VisilabsIOSDemoTest2"] synchronize];
+
+    
+    NSString *tokenString = [[[deviceToken description] stringByTrimmingCharactersInSet:
+                              [NSCharacterSet characterSetWithCharactersInString:@"<>"]]
+                             stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [[Visilabs callAPI] login:@"egemen@visilabs.com"];
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:tokenString forKey:@"OM.sys.TokenID"];
+    [dic setObject:@"VisilabsIOSDemoTest2" forKey:@"OM.sys.AppID"];
+    [[Visilabs callAPI] customEvent:@"RegisterToken" withProperties:dic];
+}
+
+- (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Registration failed : %@",error.description);
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //NSLog(@"didReceiveRemoteNotification : %@",userInfo);
+    [[EuroManager sharedManager:@"VisilabsIOSDemoTest2"] handlePush:userInfo];
+}
+
+
+
+
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
