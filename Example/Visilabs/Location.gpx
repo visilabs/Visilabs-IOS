@@ -25,6 +25,11 @@
     </wpt>
     
     
+    <wpt lat="41.067692" lon="29.013627">
+        <name>zincirlikuyu</name>
+        
+    </wpt>
+    
     <!--
     <wpt lat="41.0876018007459" lon="29.0436646342278">
         <name>kuzeypark</name>

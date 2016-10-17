@@ -77,6 +77,9 @@ static Visilabs * API = nil;
 @property (nonatomic, retain) NSString *exVisitorIDArchiveKey ;
 @property (nonatomic, retain) NSString *propertiesArchiveKey ;
 
+@property (nonatomic, retain) NSString *tokenIDArchiveKey ;
+@property (nonatomic, retain) NSString *appIDArchiveKey ;
+
 @property (nonatomic, retain) NSString *visitData;
 @property (nonatomic, retain) NSString *visitorData;
 
@@ -236,6 +239,17 @@ static VisilabsReachability *reachability;
             {
                 NSString *escapedVisitorData = [self urlEncode:self.visitorData];
                 actURL = [NSString stringWithFormat:@"%@&%@=%@",actURL,@"OM.viscap",escapedVisitorData];
+            }
+            
+            if(self.tokenID != nil &&  ![self.tokenID isEqual: @""])
+            {
+                NSString *escapedToken = [self urlEncode:self.tokenID];
+                actURL = [NSString stringWithFormat:@"%@&%@=%@",actURL,@"OM.sys.TokenID",escapedToken];
+            }
+            if(self.appID != nil &&  ![self.appID isEqual: @""])
+            {
+                NSString *escapedAppID = [self urlEncode:self.appID];
+                actURL = [NSString stringWithFormat:@"%@&%@=%@",actURL,@"OM.sys.AppID",escapedAppID];
             }
             
             
@@ -588,6 +602,19 @@ static VisilabsReachability *reachability;
     return [self filePathForData:self.exVisitorIDArchiveKey];
 }
 
+
+- (NSString *)tokenIDFilePath
+{
+    return [self filePathForData:self.tokenIDArchiveKey];
+}
+
+- (NSString *)appIDFilePath
+{
+    return [self filePathForData:self.appIDArchiveKey];
+}
+
+
+
 - (NSString *)propertiesFilePath
 {
     return [self filePathForData:self.propertiesArchiveKey];
@@ -607,7 +634,7 @@ static VisilabsReachability *reachability;
      //[dic setValue:self.shownNotifications forKey:@"shownNotifications"];
      [dic setValue:self.visitorData forKey:@"visitorData"];
      if (![NSKeyedArchiver archiveRootObject:dic toFile:filePath]) {
-     DLog(@"%@ unable to archive properties data", self);
+         DLog(@"%@ unable to archive properties data", self);
      }
     
 }
@@ -900,6 +927,9 @@ static VisilabsReachability *reachability;
     self.exVisitorIDArchiveKey = @"Visilabs.exVisitorID";
     self.propertiesArchiveKey = @"Visilabs.properties";
     
+    self.tokenIDArchiveKey = @"Visilabs.tokenID";
+    self.appIDArchiveKey = @"Visilabs.appID";
+    
     
     @try {
         UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
@@ -933,7 +963,7 @@ static VisilabsReachability *reachability;
     @try {
         self.exVisitorID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self exVisitorIDFilePath]];
     }@catch(NSException *exception) {
-        DLog(@"Visilabs: Error while unarchiving cookieID.");
+        DLog(@"Visilabs: Error while unarchiving exVisitorID.");
     }
     
     
@@ -941,6 +971,20 @@ static VisilabsReachability *reachability;
     {
         [self clearExVisitorID];
     }
+    
+    
+    @try {
+        self.tokenID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self tokenIDFilePath]];
+    }@catch(NSException *exception) {
+        DLog(@"Visilabs: Error while unarchiving tokenID.");
+    }
+    
+    @try {
+        self.appID = [NSKeyedUnarchiver unarchiveObjectWithFile:[self appIDFilePath]];
+    }@catch(NSException *exception) {
+        DLog(@"Visilabs: Error while unarchiving appID.");
+    }
+    
     
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -1184,6 +1228,31 @@ static VisilabsReachability *reachability;
         [properties removeObjectForKey:@"OM.exVisitorID"];
     }
     
+    if ([[properties allKeys] containsObject:@"OM.sys.TokenID"])
+    {
+        NSString *tokenid = [properties objectForKey: @"OM.sys.TokenID"];
+        self.tokenID = tokenid;
+        
+        if (![NSKeyedArchiver archiveRootObject:self.tokenID toFile:[self tokenIDFilePath]])
+        {
+            DLog(@"Visilabs: WARNING - Unable to archive tokenID!!!");
+        }
+        [properties removeObjectForKey:@"OM.sys.TokenID"];
+    }
+    
+    if ([[properties allKeys] containsObject:@"OM.sys.AppID"])
+    {
+        NSString *appid = [properties objectForKey: @"OM.sys.AppID"];
+        self.appID = appid;
+        
+        if (![NSKeyedArchiver archiveRootObject:self.appID toFile:[self appIDFilePath]])
+        {
+            DLog(@"Visilabs: WARNING - Unable to archive appID!!!");
+        }
+        [properties removeObjectForKey:@"OM.sys.AppID"];
+    }
+    
+    
     if ([[properties allKeys] containsObject:@"OM.m_adid"])
     {
         [properties removeObjectForKey:@"OM.m_adid"];
@@ -1218,6 +1287,18 @@ static VisilabsReachability *reachability;
         NSString *escapedIdentity = [self urlEncode:self.exVisitorID];
         segURL = [NSString stringWithFormat:@"%@%@=%@",segURL,@"OM.exVisitorID",escapedIdentity];
     }
+    
+    if(self.tokenID != nil &&  ![self.tokenID isEqual: @""])
+    {
+        NSString *escapedToken = [self urlEncode:self.tokenID];
+        segURL = [NSString stringWithFormat:@"%@&%@=%@",segURL,@"OM.sys.TokenID",escapedToken];
+    }
+    if(self.appID != nil &&  ![self.appID isEqual: @""])
+    {
+        NSString *escapedAppID = [self urlEncode:self.appID];
+        segURL = [NSString stringWithFormat:@"%@&%@=%@",segURL,@"OM.sys.AppID",escapedAppID];
+    }
+    
     
     if(properties != nil)
     {
@@ -1363,6 +1444,17 @@ static VisilabsReachability *reachability;
                         ,@"OM.mappl",@"true"
                         ,@"OM.m_adid",self.identifierForAdvertising];
     
+    if(self.tokenID != nil &&  ![self.tokenID isEqual: @""])
+    {
+        NSString *escapedToken = [self urlEncode:self.tokenID];
+        segURL = [NSString stringWithFormat:@"%@&%@=%@",segURL,@"OM.sys.TokenID",escapedToken];
+    }
+    if(self.appID != nil &&  ![self.appID isEqual: @""])
+    {
+        NSString *escapedAppID = [self urlEncode:self.appID];
+        segURL = [NSString stringWithFormat:@"%@&%@=%@",segURL,@"OM.sys.AppID",escapedAppID];
+    }
+    
     NSString *rtURL = nil;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
     {
@@ -1420,6 +1512,18 @@ static VisilabsReachability *reachability;
                         ,@"dat", actualTimeOfevent
                         ,@"OM.mappl",@"true"
                         ,@"OM.m_adid",self.identifierForAdvertising];
+    
+    if(self.tokenID != nil &&  ![self.tokenID isEqual: @""])
+    {
+        NSString *escapedToken = [self urlEncode:self.tokenID];
+        segURL = [NSString stringWithFormat:@"%@&%@=%@",segURL,@"OM.sys.TokenID",escapedToken];
+    }
+    if(self.appID != nil &&  ![self.appID isEqual: @""])
+    {
+        NSString *escapedAppID = [self urlEncode:self.appID];
+        segURL = [NSString stringWithFormat:@"%@&%@=%@",segURL,@"OM.sys.AppID",escapedAppID];
+    }
+    
     
     NSString *rtURL = nil;
     if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )

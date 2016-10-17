@@ -11,6 +11,8 @@
 
 @implementation VisilabsConfig
 
+static NSString *const kVERSION_NUMBER = @"2.5.5";
+
 static NSString *const kLOGGER_URL = @"lgr.visilabs.net";
 static NSString *const kREAL_TIME_URL = @"rt.visilabs.net";
 static NSString *const kLOAD_BALANCE_PREFIX = @"NSC";
@@ -61,6 +63,10 @@ static NSString *const kSITEID_KEY = @"OM.siteID";
 static NSString *const kCOOKIEID_KEY = @"OM.cookieID";
 static NSString *const kEXVISITORID_KEY = @"OM.exVisitorID";
 
+static NSString *const kTOKENID_KEY = @"OM.sys.TokenID";
+static NSString *const kAPPID_KEY = @"OM.sys.AppID";
+
+
 
 static NSString *const kZONE_ID_KEY = @"OM.zid";
 static NSString *const kBODY_KEY = @"OM.body";
@@ -109,6 +115,16 @@ static NSString *const kACT_KEY = @"act";
 +(NSString *) EXVISITORID_KEY
 {
     return kEXVISITORID_KEY;
+}
+
++(NSString *) TOKENID_KEY
+{
+    return kTOKENID_KEY;
+}
+
++(NSString *) APPID_KEY
+{
+    return kAPPID_KEY;
 }
 
 

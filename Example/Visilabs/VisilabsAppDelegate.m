@@ -31,7 +31,19 @@
     
     [Visilabs callAPI].checkForNotificationsOnLoggerRequest = YES;
     
+    /*sil sonra bunu*/
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"deneme" forKey:@"OM.sys.TokenID"];
+    [dic setObject:@"VisilabsIOSDemoTest2" forKey:@"OM.sys.AppID"];
+    [[Visilabs callAPI] customEvent:@"RegisterToken" withProperties:dic];
     
+    
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
+                                                                                         | UIUserNotificationTypeBadge
+                                                                                         | UIUserNotificationTypeSound) categories:nil];
+    [application registerUserNotificationSettings:settings];
+    
+    /*
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         #ifdef __IPHONE_8_0
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
@@ -43,6 +55,7 @@
         UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
         [application registerForRemoteNotificationTypes:myTypes];
     }
+     */
     
     
     //[[VisilabsGFMainController sharedInstance] start];

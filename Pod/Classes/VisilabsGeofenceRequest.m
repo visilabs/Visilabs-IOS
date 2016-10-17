@@ -19,7 +19,7 @@
         NSMutableString *geofenceURL = [[[Visilabs callAPI] geofenceURL] mutableCopy];
         NSString *queryParameters =[self getParametersAsQueryString];
         geofenceURL = [[geofenceURL stringByAppendingString:queryParameters] mutableCopy];
-        //DLog(@"Request url is %@", geofenceURL);
+        DLog(@"Geofence Request url is %@", geofenceURL);
         NSURL *uri = [[NSURL alloc] initWithString:geofenceURL];
         return uri;
     }
@@ -64,6 +64,20 @@
         NSString *actIDParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig ACT_ID_KEY], encodedActIDValue];
         queryParameters = [[queryParameters stringByAppendingString:actIDParameter] mutableCopy];
     }
+    
+    if([[Visilabs callAPI] tokenID] != nil &&  ![[[Visilabs callAPI] tokenID] isEqual: @""])
+    {
+        NSString* encodedTokenValue = [[Visilabs callAPI] urlEncode:[[Visilabs callAPI] tokenID]];
+        NSString *tokenParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig TOKENID_KEY], encodedTokenValue];
+        queryParameters = [[queryParameters stringByAppendingString:tokenParameter] mutableCopy];
+    }
+    if([[Visilabs callAPI] appID] != nil &&  ![[[Visilabs callAPI] appID] isEqual: @""])
+    {
+        NSString* encodedAppValue = [[Visilabs callAPI] urlEncode:[[Visilabs callAPI] appID]];
+        NSString *appParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig APPID_KEY], encodedAppValue];
+        queryParameters = [[queryParameters stringByAppendingString:appParameter] mutableCopy];
+    }
+    
     
     NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
     

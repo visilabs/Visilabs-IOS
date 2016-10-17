@@ -36,6 +36,10 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 @property (nonatomic, strong) NSString *cookieID;
 @property (nonatomic, strong) NSString *exVisitorID;
 
+@property (nonatomic, strong) NSString *tokenID;
+@property (nonatomic, strong) NSString *appID;
+
+
 @property (nonatomic, strong) NSString *geofenceURL;
 @property (nonatomic) BOOL geofenceEnabled;
 
