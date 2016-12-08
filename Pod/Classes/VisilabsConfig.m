@@ -74,6 +74,12 @@ static NSString *const kBODY_KEY = @"OM.body";
 static NSString *const kACT_ID_KEY = @"actid";
 static NSString *const kACT_KEY = @"act";
 
+static NSString *const kFILTER_KEY = @"OM.w.f";
+static NSString *const kAPIVER_KEY = @"OM.apiver";
+
+
+
+
 +(NSString *) LOGGER_URL
 {
     return kLOGGER_URL;
@@ -147,6 +153,19 @@ static NSString *const kACT_KEY = @"act";
 {
     return kACT_KEY;
 }
+
++(NSString *) FILTER_KEY
+{
+    return kFILTER_KEY;
+}
+
++(NSString *) APIVER_KEY
+{
+    return kAPIVER_KEY;
+}
+
+
+
 
 + (NSArray *)visilabsParameters
         {

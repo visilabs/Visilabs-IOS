@@ -36,6 +36,11 @@
         request = [[NSMutableURLRequest alloc] initWithURL: url];
     }
     request.HTTPMethod = visilabsAction.requestMethod;
+    
+    if([[Visilabs callAPI] userAgent]){
+        [request setValue:[[Visilabs callAPI] userAgent] forHTTPHeaderField:@"User-Agent"];
+    }
+    
     return request;
 }
 

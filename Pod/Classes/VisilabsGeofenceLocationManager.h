@@ -97,6 +97,8 @@ typedef enum SHiBeaconState SHiBeaconState;
 
 @property (nonatomic, readonly) CLLocationDistance geofenceMaximumRadius;
 
+@property (nonatomic) CLLocationCoordinate2D currentGeoLocationValue;
+
 
 - (void)requestPermissionSinceiOS8 NS_AVAILABLE_IOS(8_0);
 

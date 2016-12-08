@@ -79,6 +79,10 @@
     }
     
     
+    NSString *appParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig APPID_KEY], @"IOS"];
+    queryParameters = [[queryParameters stringByAppendingString:appParameter] mutableCopy];
+    
+    
     NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
     
     if(visilabsParameters)

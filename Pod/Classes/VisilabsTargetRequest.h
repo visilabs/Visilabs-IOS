@@ -8,8 +8,11 @@
 
 #import "VisilabsAction.h"
 #import "VisilabsConfig.h"
+#import "VisilabsTargetFilter.h"
 
 @interface VisilabsTargetRequest : VisilabsAction
     @property (nonatomic, strong) NSString *zoneID;
     @property (nonatomic, strong) NSString *productCode;
+    @property (nonatomic, strong) NSMutableDictionary *properties;
+    @property (nonatomic, strong) NSMutableArray<VisilabsTargetFilter *> *filters;
 @end

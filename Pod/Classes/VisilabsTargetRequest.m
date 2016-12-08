@@ -25,6 +25,71 @@
     }
 }
 
+- (void)cleanParameters {
+    if([self properties]){
+        for(NSString *propKey in [[self properties] allKeys]){
+            if(![propKey isEqual:[VisilabsConfig ORGANIZATIONID_KEY]] && ![propKey isEqual:[VisilabsConfig SITEID_KEY]]
+               && ![propKey isEqual:[VisilabsConfig EXVISITORID_KEY]] && ![propKey isEqual:[VisilabsConfig COOKIEID_KEY]]
+               && ![propKey isEqual:[VisilabsConfig ZONE_ID_KEY]] && ![propKey isEqual:[VisilabsConfig BODY_KEY]]
+               && ![propKey isEqual:[VisilabsConfig TOKENID_KEY]] && ![propKey isEqual:[VisilabsConfig APPID_KEY]]
+               && ![propKey isEqual:[VisilabsConfig APIVER_KEY]] && ![propKey isEqual:[VisilabsConfig FILTER_KEY]]){
+                continue;
+            }else{
+                [[self properties] removeObjectForKey:propKey];
+            }
+        }
+    }
+}
+
+- (NSString *)getFiltersQueryString:(NSArray<VisilabsTargetFilter *> *)filters{
+    if(!filters){
+        return nil;
+    }else{
+        NSError *writeError = nil;
+        //NSMutableArray<VisilabsTargetFilterAbbreviated *> * abbreviatedFilters = [[NSMutableArray alloc] init];
+        
+        NSMutableArray *abbFilters = [[NSMutableArray alloc] init];
+    
+        for(VisilabsTargetFilter *propKey in filters){
+            if(propKey){
+                if(propKey.attribute && propKey.attribute != @"" && propKey.filterType && propKey.filterType != @"" &&
+                   propKey.value && propKey.value != @"" ){
+                    /*
+                    VisilabsTargetFilterAbbreviated *abbreviatedFilter = [[VisilabsTargetFilterAbbreviated alloc] init];
+                    abbreviatedFilter.attr = propKey.attribute;
+                    abbreviatedFilter.ft = propKey.filterType;
+                    abbreviatedFilter.fv = propKey.value;
+                    [abbreviatedFilters addObject:abbreviatedFilter];
+                     */
+                    
+                    NSMutableDictionary *abbFilter =  [[NSMutableDictionary alloc] init];
+                    [abbFilter setObject:propKey.attribute forKey:@"attr"];
+                    [abbFilter setObject:propKey.filterType forKey:@"ft"];
+                    [abbFilter setObject:propKey.value forKey:@"fv"];
+                    [abbFilters addObject:abbFilter];
+                }
+            }
+        }
+    
+        if(abbFilters && abbFilters.count > 0){
+            @try {
+                
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:abbFilters options:0 error:&writeError];
+                NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                NSLog(@"JSON Output: %@", jsonString);
+                return jsonString;
+            }@catch(NSException *exception) {
+                NSLog(@"NSJSONSerialization Error Name: %@   Error Reason: %@", exception.name, exception.reason);
+                return nil;
+            }
+        }else{
+            return nil;
+        }
+    
+        
+    }
+}
+
 
 - (NSString *)getParametersAsQueryString {
     
@@ -79,14 +144,39 @@
     }
     
     
+    [self cleanParameters];
     
+    NSString* filtersString = [self getFiltersQueryString:[self filters]];
+    if(filtersString){
+        NSString *filterParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig FILTER_KEY], [[Visilabs callAPI] urlEncode:filtersString]];
+        queryParameters = [[queryParameters stringByAppendingString:filterParameter] mutableCopy];
+    }
     
-    NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
+    queryParameters = [[queryParameters stringByAppendingString:[NSString stringWithFormat:@"&%@=%@", [VisilabsConfig APIVER_KEY], @"IOS"]] mutableCopy];
+    
+    if([self properties]){
+        for (NSString *key in [[self properties] allKeys]){
+            NSString *value = [[self properties] objectForKey:key];
+            if (value && [value length] > 0)
+            {
+                NSString* encodedValue = [[Visilabs callAPI] urlEncode:value];
+                NSString *parameter = [NSString stringWithFormat:@"&%@=%@", key, encodedValue];
+                queryParameters = [[queryParameters stringByAppendingString:parameter] mutableCopy];
+            }
+        }
+    }
+    
+    NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters];
     
     if(visilabsParameters)
     {
         for (NSString *key in [visilabsParameters allKeys])
         {
+            if([[self properties] objectForKey:key]){
+                continue;
+            }
+            
+            
             NSString *value = [visilabsParameters objectForKey:key];
             if (value && [value length] > 0)
             {

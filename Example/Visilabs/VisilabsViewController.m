@@ -64,7 +64,23 @@
 }
 
 - (IBAction)suggest:(id)sender {
-    VisilabsTargetRequest *request = [[Visilabs callAPI] buildTargetRequest:@"9" withProductCode:productCodeText.text];
+    
+    NSMutableArray *filters = [[NSMutableArray alloc] init];
+    for (int i = 0; i<5; i++) {
+        VisilabsTargetFilter *filter = [[VisilabsTargetFilter alloc] init];
+        filter.attribute = [NSString stringWithFormat:@"A filter: %d", i];
+        filter.value = [NSString stringWithFormat:@"A valç: %d", i];
+        filter.filterType = [NSString stringWithFormat:@"A tıpğ: %d", i];
+        [filters addObject:filter];
+    }
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"what" forKey:@"OM.w.f"];
+    [dic setObject:@"the" forKey:@"OM.exVisitorID"];
+    [dic setObject:@"f" forKey:@"OM.lpvs"];
+    [dic setObject:@"the" forKey:@"OM.guru"];
+    
+    VisilabsTargetRequest *request = [[Visilabs callAPI] buildTargetRequest:@"9" withProductCode:productCodeText.text withProperties:dic withFilters:filters];
     
     void (^ successBlock)(VisilabsResponse *) = ^(VisilabsResponse * response) {
         NSLog(@"Response: %@", response.rawResponseAsString);
@@ -135,7 +151,10 @@
 }
 
 - (IBAction)show:(id)sender {
-    [[Visilabs callAPI] showNotification:@"dene"];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"zahir" forKey:@"OM.pv"];
+    [[Visilabs callAPI] customEvent:@"Kampanya_Detay_Ekrani_Erdost basit kampanya postu" withProperties:dic];
+    //[[Visilabs callAPI] showNotification:@"dene"];
 }
 
 

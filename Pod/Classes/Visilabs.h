@@ -12,6 +12,7 @@
 #import "VisilabsResponse.h"
 #import "VisilabsJSON.h"
 #import "VisilabsGeofenceRequest.h"
+#import "VisilabsTargetFilter.h"
 
 typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
     VisilabsSDKNetworkOfflineErrorType = 1
@@ -44,6 +45,8 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 @property (nonatomic) BOOL geofenceEnabled;
 
 @property (nonatomic) BOOL isOnline;
+
+@property (nonatomic,retain) NSString *userAgent;
 
 
 /*!
@@ -112,6 +115,8 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 - (NSString *)urlEncode:(NSString *)prior;
 
 - (VisilabsTargetRequest *)buildTargetRequest:(NSString *)zoneID withProductCode:(NSString *)productCode;
+
+- (VisilabsTargetRequest *)buildTargetRequest:(NSString *)zoneID withProductCode:(NSString *)productCode withProperties:(NSMutableDictionary *)properties withFilters:(NSMutableArray<VisilabsTargetFilter *> *)filters;
 
 - (VisilabsGeofenceRequest *)buildGeofenceRequest:(NSString *)action withActionID:(NSString *)actionID;
 

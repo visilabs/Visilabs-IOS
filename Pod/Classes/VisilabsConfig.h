@@ -32,4 +32,8 @@
 + (NSString *) LOAD_BALANCE_PREFIX;
 + (NSString *) OM_3_KEY;
 
+
++ (NSString *) FILTER_KEY;
++ (NSString *) APIVER_KEY;
+
 @end

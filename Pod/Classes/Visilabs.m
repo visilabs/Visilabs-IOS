@@ -68,7 +68,7 @@ static Visilabs * API = nil;
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic, retain) NSURLConnection *segmentConnection;
 @property (nonatomic, readwrite) NSInteger failureStatus;
-@property (nonatomic,retain) NSString *userAgent;
+//@property (nonatomic,retain) NSString *userAgent;
 @property (nonatomic,retain) NSString *channel;
 @property (nonatomic,retain) NSString *RESTURL;
 @property (nonatomic, retain) NSString *encryptedDataSource;
@@ -158,14 +158,15 @@ static VisilabsReachability *reachability;
     int actualTimeOfevent = (int)[[NSDate date] timeIntervalSince1970];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.cookieID", self.cookieID
                         ,@"OM.vchannel", self.channel
                         ,@"OM.siteID",self.siteID
                         ,@"OM.oid",self.organizationID
                         ,@"dat", actualTimeOfevent
                         ,@"OM.uri",[self urlEncode:@"/OM_evt.gif"]
-                        ,@"OM.domain",[NSString stringWithFormat:@"%@_%@", self.dataSource, @"Android"]];
+                        ,@"OM.domain",[NSString stringWithFormat:@"%@_%@", self.dataSource, @"IOS"]
+                        ,[VisilabsConfig APIVER_KEY], @"IOS"];
     
     if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
     {
@@ -220,7 +221,7 @@ static VisilabsReachability *reachability;
                                 ,@"OM.siteID",self.siteID
                                 ,@"OM.oid",self.organizationID
                                 ,@"dat", actualTimeOfevent
-                                ,@"OM.apiver", @"IOS"
+                                ,[VisilabsConfig APIVER_KEY], @"IOS"
                                 ,@"OM.uri", [self urlEncode:pageName]];
             
             if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
@@ -277,7 +278,8 @@ static VisilabsReachability *reachability;
             if(properties){
                 for (NSString *key in [properties allKeys])
                 {
-                    if ([key  isEqual: @"OM.cookieID"] || [key  isEqual: @"OM.siteID"] || [key  isEqual: @"OM.oid"] || [key  isEqual: @"OM.apiver"] || [key  isEqual: @"OM.uri"] || [key  isEqual: @"OM.exVisitorID"]) {
+                    if ([key  isEqual: @"OM.cookieID"] || [key  isEqual: @"OM.siteID"] || [key  isEqual: @"OM.oid"] || [key  isEqual: [VisilabsConfig APIVER_KEY]]
+                        || [key  isEqual: @"OM.uri"] || [key  isEqual: @"OM.exVisitorID"]) {
                         continue;
                     }
                     
@@ -296,6 +298,7 @@ static VisilabsReachability *reachability;
             
             NSURL *URL = [NSURL URLWithString:actURL];
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+            [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
             NSError *error = nil;
             NSURLResponse *urlResponse = nil;
             NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
@@ -758,9 +761,23 @@ static VisilabsReachability *reachability;
     request.method = @"GET";
     request.requestMethod = @"GET";
     [request setArgs:nil];
-    
     return request;
 }
+
+- (VisilabsTargetRequest *)buildTargetRequest:(NSString *)zoneID withProductCode:(NSString *)productCode withProperties:(NSMutableDictionary *)properties withFilters:(NSMutableArray<VisilabsTargetFilter *> *) filters{
+    VisilabsTargetRequest *request = (VisilabsTargetRequest *)[self buildAction];
+    request.zoneID = zoneID;
+    request.productCode = productCode;
+    request.path = nil;
+    request.headers = nil;
+    request.method = @"GET";
+    request.requestMethod = @"GET";
+    request.properties = properties;
+    request.filters = filters;
+    [request setArgs:nil];
+    return request;
+}
+
 
 - (VisilabsGeofenceRequest *)buildGeofenceRequest:(NSString *)action withActionID:(NSString *)actionID{
     VisilabsGeofenceRequest *request = (VisilabsGeofenceRequest *)[self buildGeofenceAction];
@@ -1258,6 +1275,12 @@ static VisilabsReachability *reachability;
         [properties removeObjectForKey:@"OM.m_adid"];
     }
     
+    if ([[properties allKeys] containsObject:[VisilabsConfig APIVER_KEY]])
+    {
+        [properties removeObjectForKey:[VisilabsConfig APIVER_KEY]];
+    }
+    
+    
     NSString *chan = self.channel;
     if ([[properties allKeys] containsObject:@"OM.vchannel"])
     {
@@ -1272,7 +1295,7 @@ static VisilabsReachability *reachability;
     int actualTimeOfevent = (int)[[NSDate date] timeIntervalSince1970];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&%@=%@&", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&%@=%@&%@=%@&", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.cookieID", self.cookieID
                         ,@"OM.vchannel", chan
                         ,@"OM.siteID",self.siteID
@@ -1280,7 +1303,8 @@ static VisilabsReachability *reachability;
                         ,@"dat", actualTimeOfevent
                         ,@"OM.uri",escapedPageName
                         ,@"OM.mappl",@"true"
-                        ,@"OM.m_adid",self.identifierForAdvertising];
+                        ,@"OM.m_adid",self.identifierForAdvertising
+                        ,[VisilabsConfig APIVER_KEY], @"IOS"];
     
     if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
     {
@@ -1390,7 +1414,7 @@ static VisilabsReachability *reachability;
         }
         [properties setObject:exVisitorID forKey: [VisilabsConfig EXVISITORID_KEY]];
         [properties setObject:exVisitorID forKey: @"Login"];
-        [properties setObject:@"Login" forKey: @"EventType"];
+        [properties setObject:@"Login" forKey: @"OM.b_login"];
         [self customEvent:@"LoginPage" withProperties:properties];
     }
 }
@@ -1410,7 +1434,7 @@ static VisilabsReachability *reachability;
         }
         [properties setObject:exVisitorID forKey: [VisilabsConfig EXVISITORID_KEY]];
         [properties setObject:exVisitorID forKey: @"SignUp"];
-        [properties setObject:@"SignUp" forKey: @"EventType"];
+        [properties setObject:@"SignUp" forKey: @"OM.b_sgnp"];
         [self customEvent:@"SignUpPage" withProperties:properties];
     }
 }
@@ -1431,18 +1455,21 @@ static VisilabsReachability *reachability;
     NSString *escapedPageName = [self urlEncode:@"LoginPage"];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.vchannel", self.channel
                         ,@"OM.uri", escapedPageName
                         ,@"OM.cookieID", self.cookieID
                         ,@"OM.exVisitorID" ,escapedNewIdentity
                         ,@"OM.siteID",self.siteID
                         ,@"OM.oid",self.organizationID
-                        ,@"EventType", @"Login"
+                        ,@"OM.b_login", @"Login"
                         ,@"Login",escapedNewIdentity
                         ,@"dat", actualTimeOfevent
                         ,@"OM.mappl",@"true"
-                        ,@"OM.m_adid",self.identifierForAdvertising];
+                        ,@"OM.m_adid",self.identifierForAdvertising
+                        ,[VisilabsConfig APIVER_KEY], @"IOS"];
+    
+    
     
     if(self.tokenID != nil &&  ![self.tokenID isEqual: @""])
     {
@@ -1500,18 +1527,19 @@ static VisilabsReachability *reachability;
     NSString *escapedPageName = [self urlEncode:@"SignUpPage"];
     
     
-    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&%@=%@", self.segmentURL,self.dataSource,@"om.gif"
                         ,@"OM.vchannel", self.channel
                         ,@"OM.uri", escapedPageName
                         ,@"OM.cookieID", self.cookieID
                         ,@"OM.exVisitorID" ,escapedNewIdentity
                         ,@"OM.siteID",self.siteID
                         ,@"OM.oid",self.organizationID
-                        ,@"EventType", @"SignUp"
+                        ,@"OM.b_sgnp", @"SignUp"
                         ,@"SignUp",escapedNewIdentity
                         ,@"dat", actualTimeOfevent
                         ,@"OM.mappl",@"true"
-                        ,@"OM.m_adid",self.identifierForAdvertising];
+                        ,@"OM.m_adid",self.identifierForAdvertising
+                        ,[VisilabsConfig APIVER_KEY], @"IOS"];
     
     if(self.tokenID != nil &&  ![self.tokenID isEqual: @""])
     {

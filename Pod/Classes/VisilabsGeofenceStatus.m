@@ -14,6 +14,8 @@
 #import "Visilabs.h"
 #import "VisilabsGeofenceRequest.h"
 
+
+
 #define APPSTATUS_GEOFENCE_FETCH_TIME       @"APPSTATUS_GEOFENCE_FETCH_TIME"  //last successfully fetch geofence list time
 #define APPSTATUS_GEOFENCE_FETCH_LIST       @"APPSTATUS_GEOFENCE_FETCH_LIST"  //geofence list fetched from server, it contains parent geofence with child node. This is used as geofence monitor region.
 
@@ -183,13 +185,19 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                 [[NSUserDefaults standardUserDefaults] setObject:@([serverTime timeIntervalSinceReferenceDate]) forKey:APPSTATUS_GEOFENCE_FETCH_TIME];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
+                
+                
+                
                 VisilabsGeofenceRequest *request=[[Visilabs callAPI] buildGeofenceRequest:@"getlist" withActionID: nil];
                 void (^ successBlock)(VisilabsResponse *) = ^(VisilabsResponse * response) {
                     NSMutableArray *returnedRegions = [[NSMutableArray alloc] init];
                     
-                    NSLog(@"Response: %@", response.rawResponseAsString);
+                    DLog(@"Response: %@", response.rawResponseAsString);
                     NSArray *parsedArray = [response responseArray];
                     if(parsedArray){
+                        
+                        int i = 0;
+                        
                         for (NSObject * object in parsedArray) {
                             if([object isKindOfClass:[NSDictionary class]]){
                                 NSDictionary *action = (NSDictionary*)object;
@@ -204,10 +212,11 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                 if(geoFences){
                                     NSArray *geoFencesArray = (NSArray *)geoFences;
                                     
-                                    int i = 0;
+                                    
                                     
                                     for (NSObject * geo in geoFencesArray) {
                                         if([geo isKindOfClass:[NSDictionary class]]){
+                                            
                                             NSDictionary *geofence = (NSDictionary*)geo;
                                             double latitude = [[geofence objectForKey:@"lat"] doubleValue];
                                             double longitude = [[geofence objectForKey:@"long"] doubleValue];
@@ -228,7 +237,23 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                             visilabsServerGeofence.type = targetEvent;
                                             visilabsServerGeofence.durationInSeconds = durationInSeconds;
                                             
+                                            visilabsServerGeofence.distanceFromCurrentLastKnownLocation = DBL_MAX;
+                                            
+                                            CLLocationCoordinate2D currentLocation =  [[VisilabsGeofenceLocationManager sharedInstance] currentGeoLocationValue];
+                                            CLLocationDegrees currentLatitude = currentLocation.latitude;
+                                            CLLocationDegrees currentLongitude = currentLocation.longitude;
+                                            
+                                            double distance = [self distanceSquaredForLat1:visilabsServerGeofence.latitude lng1:visilabsServerGeofence.longitude lat2:currentLatitude lng2: currentLongitude];
+                                            
+                                            visilabsServerGeofence.distanceFromCurrentLastKnownLocation = distance;
+                                            
                                             [returnedRegions addObject:visilabsServerGeofence];
+                                            
+                                            if(i == 0){
+                                                DLog(@"Current latitude: %g longitude:%g", currentLatitude, currentLongitude);
+                                            }
+                                            
+                                            i = i+1;
                                             /*
                                             NSMutableDictionary *regionDict = [[NSMutableDictionary alloc] init];
                                             [regionDict visilabsSetObject:[NSString stringWithFormat:@"%d_%d", actid, i] forKey:@"id"];
@@ -251,6 +276,21 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                         //Geofence would monitor parent or child, and it's possible `id` not change but latitude/longitude/radius change. When timestamp change, stop monitor existing geofences and start to monitor from new list totally.
                         [self stopMonitorPreviousGeofencesOnlyForOutside:NO parentCanKeepChild:NO]; //server's geofence change, stop monitor all.
                         //Update local cache and memory, start monitor parent.
+
+                        
+                        @try{
+                            if(returnedRegions && [returnedRegions count] > 20){
+                                NSSortDescriptor *sortDescriptor;
+                                sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromCurrentLastKnownLocation"
+                                                                         ascending:YES];
+                                NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+                                NSArray *sortedReturnedRegions = [returnedRegions sortedArrayUsingDescriptors:sortDescriptors];
+                                returnedRegions = [sortedReturnedRegions subarrayWithRange:NSMakeRange(0, 20)];
+                            }
+                        }@catch(NSException *ex){
+                            
+                        }
+                        
                         self.arrayGeofenceFetchList = returnedRegions;
                         [[NSUserDefaults standardUserDefaults] setObject:[VisilabsServerGeofence serializeToArrayDict:returnedRegions] forKey:APPSTATUS_GEOFENCE_FETCH_LIST];
                         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -262,7 +302,7 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                 };
                 
                 void (^ failBlock)(VisilabsResponse *) =^(VisilabsResponse * response){
-                    //NSLog(@"Failed to call. Response = %@", [actFailRes.error description]);
+
                 };
                 
                 [request execAsyncWithSuccess:successBlock AndFailure:failBlock];
@@ -279,6 +319,31 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
 }
 
 #pragma mark - private functions
+
+- (double)distanceSquaredForLat1:(double)lat1 lng1:(double)lng1 lat2:(double)lat2 lng2:(double)lng2
+{
+    double radius = (3.14159265358979323846 / 180.0);
+    double nauticalMilesPerLatitude = 60.00721;
+    double nauticalMilesPerLongitude = 60.10793;
+    double metersPerNauticalMile = 1852;
+    // simple pythagorean formula - for efficiency
+    float yDistance = (lat2 - lat1) * nauticalMilesPerLatitude;
+    float xDistance = (cos(lat1 * radius) + cos(lat2 * radius)) * (lng2 - lng1) * (nauticalMilesPerLongitude / 2.0);
+    return ((yDistance * yDistance) + (xDistance * xDistance)) * (metersPerNauticalMile * metersPerNauticalMile);
+}
+
+/*
+float const HAVERSINE_RADS_PER_DEGREE = 0.0174532925199433;
+
+- (float)distance:(float)lat1 lon1:(float)lat2 lat2:(float)lon1 lon2:(float)lon2 {
+    float lat1Rad = lat1 * HAVERSINE_RADS_PER_DEGREE;
+    float lat2Rad = lat2 * HAVERSINE_RADS_PER_DEGREE;
+    float dLonRad = ((lon2 - lon1) * HAVERSINE_RADS_PER_DEGREE);
+    float dLatRad = ((lat2 - lat1) * HAVERSINE_RADS_PER_DEGREE);
+    float a = pow(sin(dLatRad / 2), 2) + cos(lat1Rad) * cos(lat2Rad) * pow(sin(dLonRad / 2), 2);
+    return (2 * atan2(sqrt(a), sqrt(1 - a)));
+}
+ */
 
 - (NSMutableArray *)arrayGeofenceFetchList
 {

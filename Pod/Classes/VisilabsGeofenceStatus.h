@@ -54,6 +54,10 @@
  */
 @property (nonatomic) double radius;
 
+
+@property (nonatomic) double distanceFromCurrentLastKnownLocation;
+
+
 /**
  Internal unique id for object. Optional for leaf geofence, none for inner node.
  */

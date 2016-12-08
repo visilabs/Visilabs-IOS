@@ -50,5 +50,7 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Her zaman lokasyon kullan.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>NSLocationWhenInUseUsageDescription lokasyon kullan.</string>
 </dict>
 </plist>

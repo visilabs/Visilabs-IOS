@@ -22,28 +22,56 @@
     NSString * visilabsDemoDataSource = @"mrhp";
     */
     
+    
     NSString * visilabsNewOID = @"53444A2B4B5071322F50303D";
     NSString * visilabsNewSiteID = @"362F714E306C756B2B37593D";
     NSString * visilabsNewDataSource = @"visilabsnew";
     
+    
+    /*
+    NSString * visilabsNewOID = @"4B386D62426E72506654383D"; // Zubizu Apps Test
+    NSString * visilabsNewSiteID = @"352F57456A306D2B78584D3D"; // Zubizu Apps Test
+    NSString * visilabsNewDataSource = @"qclubtest"; //Zubizu Apps Test
+    */
+    
+    /*
     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:YES];
+     */
+    
+     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:YES];
+    
+    
+     [[Visilabs callAPI] login:@"123789456" withProperties:nil];
+    
+    /*
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"8365bb346feb332e654b41422f626fbfd8edb83e88a78c7ec5b76662cfd54c18" forKey:@"OM.sys.TokenID"];
+    [dic setObject:@"Internal_iOS_Zubizu" forKey:@"OM.sys.AppID"];
+    
+     [[Visilabs callAPI] login:@"674594557" withProperties:dic];
+     */
+    
+    
     // Override point for customization after application launch.
     
-    [Visilabs callAPI].checkForNotificationsOnLoggerRequest = YES;
+    //[Visilabs callAPI].checkForNotificationsOnLoggerRequest = YES;
     
     /*sil sonra bunu*/
+    /*
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"deneme" forKey:@"OM.sys.TokenID"];
     [dic setObject:@"VisilabsIOSDemoTest2" forKey:@"OM.sys.AppID"];
     [[Visilabs callAPI] customEvent:@"RegisterToken" withProperties:dic];
+     */
     
-    
+    /*
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
                                                                                          | UIUserNotificationTypeBadge
                                                                                          | UIUserNotificationTypeSound) categories:nil];
     [application registerUserNotificationSettings:settings];
+     */
     
-    /*
+    
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         #ifdef __IPHONE_8_0
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
@@ -55,7 +83,7 @@
         UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
         [application registerForRemoteNotificationTypes:myTypes];
     }
-     */
+    
     
     
     //[[VisilabsGFMainController sharedInstance] start];
@@ -81,22 +109,32 @@
 #endif
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken");
-    [[EuroManager sharedManager:@"VisilabsIOSDemoTest2"] registerToken:deviceToken];
-    [[EuroManager sharedManager:@"VisilabsIOSDemoTest2"] synchronize];
-
+    
     
     NSString *tokenString = [[[deviceToken description] stringByTrimmingCharactersInSet:
                               [NSCharacterSet characterSetWithCharactersInString:@"<>"]]
                              stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"Token: %@",tokenString);
+    
+    
+    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken");
+    [[EuroManager sharedManager:@"VisilabsIOSDemoTest"] registerToken:deviceToken];
+    [[EuroManager sharedManager:@"VisilabsIOSDemoTest"] synchronize];
+
+    
+    
     
     [[Visilabs callAPI] login:@"egemen@visilabs.com"];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:tokenString forKey:@"OM.sys.TokenID"];
-    [dic setObject:@"VisilabsIOSDemoTest2" forKey:@"OM.sys.AppID"];
+    [dic setObject:@"VisilabsIOSDemoTest" forKey:@"OM.sys.AppID"];
     [[Visilabs callAPI] customEvent:@"RegisterToken" withProperties:dic];
+    
 }
+
+
+
 
 - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Registration failed : %@",error.description);
@@ -104,7 +142,9 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     //NSLog(@"didReceiveRemoteNotification : %@",userInfo);
+    /*
     [[EuroManager sharedManager:@"VisilabsIOSDemoTest2"] handlePush:userInfo];
+     */
 }
 
 

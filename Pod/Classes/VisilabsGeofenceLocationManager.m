@@ -30,7 +30,7 @@
 @interface VisilabsGeofenceLocationManager()
 
 @property (nonatomic, strong) CLLocationManager *locationManager;  //The internal operating iOS object.
-@property (nonatomic) CLLocationCoordinate2D currentGeoLocationValue; //extent read-write access
+//@property (nonatomic) CLLocationCoordinate2D currentGeoLocationValue; //extent read-write access
 @property (nonatomic) CLLocationCoordinate2D sentGeoLocationValue; //sent by log location 20
 @property (nonatomic) NSTimeInterval sentGeoLocationTime;  //for calculate time delta to prevent too often location update notification send.
 
@@ -114,7 +114,19 @@
     _geolocationMonitorState = SHGeoLocationMonitorState_Stopped;
     
 
+    
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_StartMonitorGeoLocation" object:nil];
+    
+    
+    //bunu sonradan ekledim.
+    if ([CLLocationManager significantLocationChangeMonitoringAvailable])
+    {
+        DLog(@"LocationManager Action: Start significant location update.");
+        [self.locationManager startMonitoringSignificantLocationChanges];
+        _geolocationMonitorState = SHGeoLocationMonitorState_MonitorSignificant;
+        //[[NSNotificationCenter defaultCenter] postNotificationName:SHLMStartSignificantMonitorNotification object:self];
+    }
     
 
 }
@@ -356,7 +368,10 @@
 
 - (void)requestPermissionSinceiOS8
 {
-    if (VisiGeofence.isLocationServiceEnabled && [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    BOOL enabled = VisiGeofence.isLocationServiceEnabled;
+    
+    if (enabled && status == kCLAuthorizationStatusNotDetermined)
     {
         NSString *locationAlwaysStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"];
         if (locationAlwaysStr != nil) //if customer added "Always" uses this permission, recommended. cannot check length != 0 because Info.plist can add empty string for these key and location is enabled.
@@ -726,6 +741,13 @@
 }
 
 #pragma mark - CLLocationManagerDelegate implementation
+
+/*
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    DLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
+    DLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+}
+ */
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations  //since iOS 6.0
 {
