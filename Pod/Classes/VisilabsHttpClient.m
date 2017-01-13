@@ -114,11 +114,15 @@
             [visilabsResponse parseResponseData:data];
             
             
-            
-            if (statusCode == 200) {
-                [self successWithResponse:visilabsResponse AndAction:visilabsAction];
+            @try{
+                if (statusCode == 200) {
+                    [self successWithResponse:visilabsResponse AndAction:visilabsAction];
+                    return;
+            }
+            }@catch(NSException *ex){
                 return;
             }
+            
             NSString *msg = [visilabsResponse.parsedResponse valueForKey:@"msg"];
             if (nil == msg) {
                 msg = [visilabsResponse.parsedResponse valueForKey:@"message"];

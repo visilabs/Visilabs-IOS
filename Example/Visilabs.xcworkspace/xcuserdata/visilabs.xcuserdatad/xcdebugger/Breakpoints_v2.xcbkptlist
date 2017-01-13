@@ -643,5 +643,37 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Pod/Classes/Visilabs.m"
+            timestampString = "505827525.952901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "911"
+            endingLineNumber = "911"
+            landmarkName = "-initAPI:withSiteID:withSegmentURL:withDataSource:withRealTimeURL:withChannel:withRequestTimeout:withRESTURL:withEncryptedDataSource:withTargetURL:withActionURL:withGeofenceURL:withGeofenceEnabled:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Pod/Classes/Visilabs.m"
+            timestampString = "505827571.864157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1035"
+            endingLineNumber = "1035"
+            landmarkName = "-initAPI:withSiteID:withSegmentURL:withDataSource:withRealTimeURL:withChannel:withRequestTimeout:withRESTURL:withEncryptedDataSource:withTargetURL:withActionURL:withGeofenceURL:withGeofenceEnabled:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

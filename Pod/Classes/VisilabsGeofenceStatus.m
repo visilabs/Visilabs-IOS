@@ -198,6 +198,7 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                         
                         int i = 0;
                         
+                        @try{
                         for (NSObject * object in parsedArray) {
                             if([object isKindOfClass:[NSDictionary class]]){
                                 NSDictionary *action = (NSDictionary*)object;
@@ -254,16 +255,6 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                             }
                                             
                                             i = i+1;
-                                            /*
-                                            NSMutableDictionary *regionDict = [[NSMutableDictionary alloc] init];
-                                            [regionDict visilabsSetObject:[NSString stringWithFormat:@"%d_%d", actid, i] forKey:@"id"];
-                                            [regionDict visilabsSetObject:[NSString stringWithFormat:@"%d_%d", actid, i] forKey:@"name"];
-                                            [regionDict visilabsSetObject:[NSNumber numberWithDouble:radius] forKey:@"radiusMetres"];
-                                            [regionDict visilabsSetObject:@{@"longitude":[NSNumber numberWithDouble:longitude],
-                                                                            @"latitude":[NSNumber numberWithDouble:latitude]} forKey:@"centrePoint"];
-                                            [regionDict visilabsSetObject:@"Active" forKey:@"status"];
-                                            [returnedRegions addObject:regionDict];
-                                             */
                                         }
                                     }
                                     
@@ -271,8 +262,11 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                 
                             }
                         }
-                        
-                        
+                        }@catch(NSException *ex){
+                    
+                        }
+                
+                
                         //Geofence would monitor parent or child, and it's possible `id` not change but latitude/longitude/radius change. When timestamp change, stop monitor existing geofences and start to monitor from new list totally.
                         [self stopMonitorPreviousGeofencesOnlyForOutside:NO parentCanKeepChild:NO]; //server's geofence change, stop monitor all.
                         //Update local cache and memory, start monitor parent.
