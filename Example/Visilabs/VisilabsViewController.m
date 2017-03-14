@@ -74,7 +74,7 @@
         [filters addObject:filter];
     }
     
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"what" forKey:@"OM.w.f"];
     [dic setObject:@"the" forKey:@"OM.exVisitorID"];
     [dic setObject:@"f" forKey:@"OM.lpvs"];

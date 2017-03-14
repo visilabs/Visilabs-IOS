@@ -12,6 +12,8 @@
 
 #import "EMBaseRequest.h"
 
+#define IS_PROD YES
+
 @interface EMConnectionManager : NSObject
 
 - (void) setResponseBlock:(id) responseBlock;

@@ -167,8 +167,13 @@
         self.isFinishLaunchOptionCalled = NO;
         [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:SH_GEOLOCATION_LAT];
         [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:SH_GEOLOCATION_LNG];
+        
+        /*
         [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:SH_BEACON_BLUETOOTH];
         [[NSUserDefaults standardUserDefaults] setObject:@(3) forKey:SH_BEACON_iBEACON];
+         */
+        
+        
         [[NSUserDefaults standardUserDefaults] synchronize];
         //Then continue normal code.
         self.isDebugMode = NO;
@@ -924,7 +929,7 @@ NSString *SentInstall_IBeacon = @"SentInstall_IBeacon";
 -(BOOL)checkInstallChangeForLaunch
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_UpdateiBeaconStatus" object:nil];
-
+    return NO;
 }
 
 #pragma mark - private functions

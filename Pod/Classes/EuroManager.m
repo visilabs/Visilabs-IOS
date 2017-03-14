@@ -28,6 +28,7 @@ static NSString * const EURO_EMAIL_KEY = @"email";
 static NSString * const EURO_LOCATION_KEY = @"location";
 static NSString * const EURO_FACEBOOK_KEY = @"facebook";
 static NSString * const EURO_TWITTER_KEY = @"twitter";
+static NSString * const EURO_LAST_MESSAGE_KEY = @"em.lastMessage";
 
 static NSString * const EURO_RECEIVED_STATUS = @"D";
 static NSString * const EURO_READ_STATUS = @"O";
@@ -74,9 +75,13 @@ static NSString * const EURO_READ_STATUS = @"O";
     
 }
 
-- (void) reportRetention:(EMMessage *) message status:(NSString *)status  {
+- (void) reportRetention:(EMMessage *) message status:(NSString *)status {
     
     if(message.pushId == nil) {return;}
+    
+    if(self.debugMode) {
+        LogInfo(@"reportRetention: %@",message.toDictionary);
+    }
     
     EMRetentionRequest *rRequest = [EMRetentionRequest new];
     rRequest.key = self.registerRequest.appKey;
@@ -88,6 +93,7 @@ static NSString * const EURO_READ_STATUS = @"O";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [[EMConnectionManager sharedInstance] request:rRequest success:^(id response) {
             // retention report success
+            [EMTools removeUserDefaults:EURO_LAST_MESSAGE_KEY];
             
         } failure:^(NSError *error) {
             
@@ -102,9 +108,9 @@ static NSString * const EURO_READ_STATUS = @"O";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [[self alloc] init];
-        sharedMyManager.registerRequest.appKey = applicationKey;
         sharedMyManager.registerRequest.token = [EMTools retrieveUserDefaults:TOKEN_KEY];
     });
+    sharedMyManager.registerRequest.appKey = applicationKey;
     return sharedMyManager;
 }
 
@@ -112,8 +118,18 @@ static NSString * const EURO_READ_STATUS = @"O";
     if (self = [super init]) {
         // set the register request object ready
         self.registerRequest = [EMRegisterRequest new];
+        NSString *lastRegister = [NSString stringWithFormat:@"%@",[EMTools retrieveUserDefaults:REGISTER_KEY]];
+        NSError *jsonError = nil;
+        EMRegisterRequest *lastRequest = [[EMRegisterRequest alloc] initWithString:lastRegister error:&jsonError];
+        if(jsonError == nil) {
+            self.registerRequest.extra = lastRequest.extra;
+        }
         self.registerRequest.sdkVersion = SDK_VERSION;
         // set the observers ready - update user information on every application close
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(synchronize)
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(synchronize)
                                                      name:UIApplicationDidEnterBackgroundNotification
@@ -130,6 +146,7 @@ static NSString * const EURO_READ_STATUS = @"O";
     // Should never be called, but just here for clarity really.
     [[NSNotificationCenter defaultCenter] removeObserver:UIApplicationDidEnterBackgroundNotification];
     [[NSNotificationCenter defaultCenter] removeObserver:UIApplicationWillTerminateNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:UIApplicationDidBecomeActiveNotification];
 }
 
 #pragma mark public methods
@@ -154,6 +171,19 @@ static NSString * const EURO_READ_STATUS = @"O";
 
 - (void) synchronize {
     
+    // check whether the user have an unreported message
+    NSString *messageJson = [EMTools retrieveUserDefaults:EURO_LAST_MESSAGE_KEY];
+    if(messageJson) {
+        
+        LogInfo(@"Old message : %@",messageJson);
+        
+        NSError *jsonError;
+        EMMessage *lastMessage = [[EMMessage alloc] initWithString:messageJson usingEncoding:NSUTF8StringEncoding error:&jsonError];
+        if(!jsonError) {
+            [self reportRetention:lastMessage status:EURO_READ_STATUS];
+        }
+    }
+    
     __block NSString *currentRegister = self.registerRequest.toJSONString;
     NSString *lastRegister = [NSString stringWithFormat:@"%@",[EMTools retrieveUserDefaults:REGISTER_KEY]];
     
@@ -165,17 +195,23 @@ static NSString * const EURO_READ_STATUS = @"O";
         LogInfo(@"Current registration settings %@",currentRegister);
     }
     
+    [EMTools saveUserDefaults:TOKEN_KEY andValue:self.registerRequest.token]; // save the token just in case
+    
     NSDate *now = [NSDate date];
     NSDate *fiveMinsLater = [NSDate dateWithTimeInterval:15 * 60 sinceDate:now]; // check every 15 minutes
     
-    NSComparisonResult result = [now compare:[EMTools retrieveUserDefaults:LAST_REQUEST_DATE_KEY]];
-    
-    if ((result == NSOrderedAscending && [lastRegister isEqualToString:currentRegister]) || self.registerRequest.token == nil) {
-        if (self.debugMode) {
-            LogInfo(@"Register request not ready : %@",self.registerRequest.toDictionary);
+    if(![[EMTools getInfoString:@"CFBundleIdentifier"] isEqualToString:@"com.euromsg.EuroFramework"]) {
+        
+        NSComparisonResult result = [now compare:[EMTools retrieveUserDefaults:LAST_REQUEST_DATE_KEY]];
+        if ((result == NSOrderedAscending && [lastRegister isEqualToString:currentRegister]) || self.registerRequest.token == nil) {
+            if (self.debugMode) {
+                LogInfo(@"Register request not ready : %@",self.registerRequest.toDictionary);
+            }
+            return;
         }
-        return;
     }
+    
+    if(self.registerRequest.appKey == nil || [@"" isEqual:self.registerRequest.appKey]) { return; } // appkey should not be empty
     
     __weak __typeof__(self) weakSelf = self;
     [[EMConnectionManager sharedInstance] request:self.registerRequest success:^(id response) {
@@ -183,8 +219,6 @@ static NSString * const EURO_READ_STATUS = @"O";
         [EMTools saveUserDefaults:LAST_REQUEST_DATE_KEY andValue:fiveMinsLater]; // save request date
         
         [EMTools saveUserDefaults:REGISTER_KEY andValue:currentRegister];
-        
-        [EMTools saveUserDefaults:TOKEN_KEY andValue:weakSelf.registerRequest.token];
         
         if (weakSelf.debugMode) {
             LogInfo(@"Token registered to EuroMsg : %@",self.registerRequest.token);
@@ -202,11 +236,18 @@ static NSString * const EURO_READ_STATUS = @"O";
             [weakSelf.delegate didFailRegister:error];
         }
     }];
+    
 }
 
 - (void) setUserEmail:(NSString *) email {
     if([EMTools validateEmail:email]) {
         [self.registerRequest.extra setObject:email forKey:EURO_EMAIL_KEY];
+    }
+}
+
+- (void) addParams:(NSString *) key value:(id) value {
+    if(value) {
+        [self.registerRequest.extra setObject:value forKey:key];
     }
 }
 
@@ -274,6 +315,7 @@ static NSString * const EURO_READ_STATUS = @"O";
     
 }
 
+/*
 - (void) handleInteractiveAction:(NSString *) actionIdentifier userInfo:(NSDictionary *) userInfo {
     
     NSError *parseError;
@@ -297,69 +339,77 @@ static NSString * const EURO_READ_STATUS = @"O";
             
         }];
     }
-    
 }
+*/
 
 - (void) handlePush:(NSDictionary *) pushDictionary {
     
-    if(pushDictionary == nil) {
+    if(pushDictionary == nil || [pushDictionary objectForKey:@"pushId"] == nil) {
         return;
     }
     
     if(self.debugMode) {
-        LogInfo(@"User read the message %@",pushDictionary);
+        LogInfo(@"handlePush: %@",pushDictionary);
     }
+    
+    UIApplicationState state = [UIApplication sharedApplication].applicationState;
     
     NSError *error;
     EMMessage *message = [[EMMessage alloc] initWithDictionary:pushDictionary error:&error];
     
-    if (!error) {
-        // report retention
-        [self reportRetention:message status:EURO_READ_STATUS];
-        
-        [self reportDelegate:message];
-        
+    if (state != UIApplicationStateActive) {
+        [EMTools saveUserDefaults:EURO_LAST_MESSAGE_KEY andValue:message.toJSONString];
+    } else {
+        if (!error) {
+            // report retention
+            [self reportRetention:message status:EURO_READ_STATUS];
+            
+            [self reportDelegate:message];
+        }
     }
 }
 
-- (void) handlePush:(NSDictionary *) pushDictionary completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    UIApplicationState state = [UIApplication sharedApplication].applicationState;
-    [[EMConnectionManager sharedInstance] setResponseBlock:completionHandler];
-    
-    if(pushDictionary == nil) {
-        completionHandler(UIBackgroundFetchResultFailed);
-        return;
-    }
-    
-    if(self.debugMode) {
-        LogInfo(@"New push received %@",pushDictionary);
-    }
-    
-    NSError *parseError;
-    EMMessage *message = [[EMMessage alloc] initWithDictionary:pushDictionary error:&parseError];
-    
-    if (!parseError) {
-        // if background settings are received just read them and return
-        if ([message.contentAvailable boolValue] && message.pushType == nil && message.pushId == nil)  {
-            [self registerInteractiveSettings:[message getInteractiveSettings]];
-            return;
-        }
-        
-        if (state != UIApplicationStateActive) {
-            
-            // report retention
-            [self reportRetention:message status:EURO_RECEIVED_STATUS];
-            
-            [self reportDelegate:message];
-        } else {
-            [self handlePush:pushDictionary];
-        }
-    } else {
-        completionHandler(UIBackgroundFetchResultFailed);
-    }
-    
-}
+/*
+ - (void) handlePush:(NSDictionary *) pushDictionary completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+ 
+ UIApplicationState state = [UIApplication sharedApplication].applicationState;
+ [[EMConnectionManager sharedInstance] setResponseBlock:completionHandler];
+ 
+ if(pushDictionary == nil || [pushDictionary objectForKey:@"pushId"] == nil) {
+ completionHandler(UIBackgroundFetchResultFailed);
+ return;
+ }
+ 
+ if(self.debugMode) {
+ LogInfo(@"New push received %@",pushDictionary);
+ }
+ 
+ NSError *parseError;
+ EMMessage *message = [[EMMessage alloc] initWithDictionary:pushDictionary error:&parseError];
+ 
+ if (!parseError) {
+ // if background settings are received just read them and return
+ if ([message.contentAvailable boolValue] && message.pushType == nil && message.pushId == nil)  {
+ [self registerInteractiveSettings:[message getInteractiveSettings]];
+ return;
+ }
+ 
+ if (state != UIApplicationStateActive) {
+ 
+ // report retention
+ [self reportRetention:message status:EURO_RECEIVED_STATUS];
+ 
+ [self reportDelegate:message];
+ 
+ completionHandler(UIBackgroundFetchResultNoData);
+ } else {
+ [self handlePush:pushDictionary];
+ }
+ } else {
+ completionHandler(UIBackgroundFetchResultFailed);
+ }
+ }
+ */
 
 - (void) registerInteractiveSettings : (NSDictionary *) settingsDictionary {
     

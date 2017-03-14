@@ -9,6 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "EMTools.h"
 #import "EMConnectionManager.h"
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
@@ -20,15 +21,12 @@
 #define TEST_BASE_URL @"http://77.79.84.82"
 #define PROD_BASE_URL @".euromsg.com"
 
-#define IS_PROD YES
-
 
 @interface EMConnectionManager()
 
 @property (nonatomic, strong) EMURLSessionDelegate *sessionDelegate;
 
 + (id) urlSession;
-+ (id) urlBackgroundSession;
 
 @end
 
@@ -75,6 +73,7 @@
     }
 }
 
+/*
 + (id) urlBackgroundSession
 {
     LogInfo(@"Using background session");
@@ -106,6 +105,7 @@
         return nil;
     }
 }
+*/
 
 - (void) setResponseBlock:(id) responseBlock {
     [self.sessionDelegate setResponseBlock:responseBlock];
@@ -115,8 +115,13 @@
           success:(void (^)(id response)) success
           failure:(void (^)(NSError *error)) failure {
     
+    BOOL isProd = IS_PROD;
+    if([EMTools retrieveUserDefaults:@"em_is_prod"]) {
+        isProd = [[EMTools retrieveUserDefaults:@"em_is_prod"] intValue] == 1;
+    }
+    
     NSURL *url;
-    if(IS_PROD) {
+    if(isProd) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"https://%@%@/%@",requestModel.getSubdomain,PROD_BASE_URL,requestModel.getPath]];
     } else {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/%@",TEST_BASE_URL,requestModel.getPort,requestModel.getPath]];
@@ -124,7 +129,7 @@
     }
     LogDebug(@"URL : %@",url);
     
-    UIApplicationState appState = [UIApplication sharedApplication].applicationState;
+    //UIApplicationState appState = [UIApplication sharedApplication].applicationState;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = requestModel.getMethod;
@@ -215,14 +220,14 @@
             }
         }];
     } else {
-        if (appState != UIApplicationStateActive) {
+        /*if (appState != UIApplicationStateActive) {
             [request setNetworkServiceType:NSURLNetworkServiceTypeBackground];
             NSURLSessionDownloadTask *downloadTask = [[[self class] urlBackgroundSession] downloadTaskWithRequest:request];
             [downloadTask resume];
-        } else {
+        } else {*/
             NSURLSessionDataTask *dataTask = [[[self class] urlSession] dataTaskWithRequest:request completionHandler:connectionHandler];
             [dataTask resume];
-        }
+        //}
     }
 }
 

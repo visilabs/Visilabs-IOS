@@ -38,6 +38,12 @@
         return nil;
 }
 
++ (void) removeUserDefaults:(NSString *) userKey {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults objectForKey:userKey] != nil)
+       [defaults removeObjectForKey:userKey];
+}
+
 + (void) saveUserDefaults:(NSString *)key andValue:(id)value {
     if(key && value) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

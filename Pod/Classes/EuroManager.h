@@ -11,7 +11,7 @@
 #import "EMTools.h"
 #import <UIKit/UIKit.h>
 
-#define SDK_VERSION @"1.3.1"
+#define SDK_VERSION @"1.4"
 
 @protocol EuroManagerDelegate <NSObject>
 
@@ -50,11 +50,13 @@
 - (void) setAdvertisingIdentifier:(NSString *) adIdentifier;
 - (void) setUserLatitude:(double) lat andLongitude:(double) lon;
 - (void) removeUserParameters;
+- (void) addParams:(NSString *) key value:(id) value;
+
 
 - (void) registerToken:(NSData *) tokenData;
 - (void) handlePush:(NSDictionary *) pushDictionary;
-- (void) handlePush:(NSDictionary *) pushDictionary completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
-- (void) handleInteractiveAction:(NSString *) actionIdentifier userInfo:(NSDictionary *) userInfo;
+//- (void) handlePush:(NSDictionary *) pushDictionary completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+//- (void) handleInteractiveAction:(NSString *) actionIdentifier userInfo:(NSDictionary *) userInfo;
 
 - (void) synchronize;
 

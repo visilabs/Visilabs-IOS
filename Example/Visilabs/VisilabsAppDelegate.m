@@ -7,7 +7,7 @@
 //
 
 #import "VisilabsAppDelegate.h"
-#import "EuroIOSFramework/EuroManager.h"
+//#import "EuroIOSFramework/EuroManager.h"
 
 @implementation VisilabsAppDelegate
 
@@ -27,6 +27,15 @@
     NSString * visilabsNewSiteID = @"362F714E306C756B2B37593D";
     NSString * visilabsNewDataSource = @"visilabsnew";
     
+    NSString * markafoniNewOID = @"79686C6B5262452B744F633D";
+    NSString * markafoniNewSiteID = @"4348476C447A4F30386B413D";
+    NSString * markafoniNewDataSource = @"markafoni";
+    
+    NSString * trendyolNewOID = @"3876696C314F44337A56493D";
+    NSString * trendyolNewSiteID = @"3659756D4350385868686B3D";
+    NSString * trendyolNewDataSource = @"trendyol";
+    
+    
     
     /*
     NSString * visilabsNewOID = @"4B386D62426E72506654383D"; // Zubizu Apps Test
@@ -38,10 +47,10 @@
     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:YES];
      */
     
-     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:NO];
+     [Visilabs createAPI:trendyolNewOID withSiteID:trendyolNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:trendyolNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:NO];
     
     
-     [[Visilabs callAPI] login:@"123789456" withProperties:nil];
+     [[Visilabs callAPI] login:@"10620730" withProperties:nil];
     
     /*
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];

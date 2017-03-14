@@ -13,6 +13,7 @@
 + (BOOL) validatePhone:(NSString *) phone;
 + (BOOL) validateEmail:(NSString *) email;
 + (id) retrieveUserDefaults:(NSString *) userKey;
++ (void) removeUserDefaults:(NSString *) userKey;
 + (void) saveUserDefaults:(NSString *)key andValue:(id)value;
 + (NSString *) getInfoString : (NSString *) key;
 
