@@ -127,8 +127,8 @@
     
     
     NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken");
-    [[EuroManager sharedManager:@"VisilabsIOSDemoTest"] registerToken:deviceToken];
-    [[EuroManager sharedManager:@"VisilabsIOSDemoTest"] synchronize];
+    //[[EuroManager sharedManager:@"VisilabsIOSDemoTest"] registerToken:deviceToken];
+    //[[EuroManager sharedManager:@"VisilabsIOSDemoTest"] synchronize];
 
     
     

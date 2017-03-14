@@ -7,50 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01C34260C75CCEA14EA69E5B6E02BF85 /* EMBaseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C0FEE6A1A5225E79A874E972928192EC /* EMBaseRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		01CB62AEE566507130185533381A2020 /* EMConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE72991658F89497305731CBABFAF1 /* EMConnectionManager.m */; };
-		022FB2E55C3E716E0991CE879B0091AD /* EMJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C82EFA5E230C8CC841D34A1371B043B /* EMJSONModel.m */; };
 		041524104AB0DD98386E9F475BE6D136 /* UIImage+VisilabsAverageColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1363842C98AD9888BFBBB044FBD190 /* UIImage+VisilabsAverageColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		042AD2A989B05ABFA7E00EBC4E95247C /* VisilabsTargetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B8AE6F3AFB07EE2313C7CF8606866EB0 /* VisilabsTargetRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		072DDCFFFE1DB3AABCCFC9A39E2FC755 /* EMRetentionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A5E31CCD05823E6309D60F91274A00 /* EMRetentionRequest.m */; };
-		0880E0992DC56A102EE616D2EA94EC70 /* EMJSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1A6EBC28EBEE340C57F8FB909CE832 /* EMJSONModelClassProperty.m */; };
 		0AA61A65B7B3203DAE0B52ABE7BC85F1 /* VisilabsPersistentTargetManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 037D16497656C864654963330DB88239 /* VisilabsPersistentTargetManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C03BAE2F5BF8917E59A08C2F695CA7B /* EMJSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CBDC1CD87817752D0A6C97DA906DCBA6 /* EMJSONModelClassProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C0BF1B94EE181A989FED39919B93859 /* UIView+VisilabsHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2653E32783583F0386F1830FC268D52C /* UIView+VisilabsHelpers.m */; };
 		0C50E2A49741C0DD2DC8CB9228824C6C /* VisilabsJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD58A71B1CEFAB76EDEE71AAA4B10E0 /* VisilabsJSON.m */; };
 		0E10CBAB2C7C6BABC9EF725FB677DB19 /* UIView+VisilabsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9BEDBC53FA714ACCFD195CEDE0FBD3 /* UIView+VisilabsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		10717707CF85BD644656CB9859FA832F /* Visilabs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB256A94E955CA6DDF2C1CE64AB5C9DC /* Visilabs-dummy.m */; };
-		1516EE6293468234ABBB898FB28EEAD5 /* EMRetentionRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18F51333A27881A649535B7E10F0111A /* EMRetentionRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		152EBF559524A39E2B77FD86FEE38C94 /* EMJSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8B97E5181FD2EFC91D1228190689C /* EMJSONModelError.m */; };
-		1A1454B2BBF69DF3415FFC3835C2E139 /* EMBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C55DA752F861229AA965900A4A30 /* EMBaseRequest.m */; };
-		1E208CDC8841C63B12C06E7D4BBB3122 /* NSArray+EMJSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D63FA6617BAF2963049E59928C8D4AF3 /* NSArray+EMJSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1EFAE8B71551208FF64941C747CE6965 /* EMJSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED0D4A48AABF8E4253BE17C27A2FA05 /* EMJSONKeyMapper.m */; };
 		263863ECD1FC5194B3714DAB5F8A9205 /* Pods-Visilabs_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 976E3236B609FF1AD0043D55E79D1BD0 /* Pods-Visilabs_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		296D05A1825894433BCAF3A2DFB86B48 /* VisilabsGeofenceInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EF7B28735CC4D603698EB2CE06A62F5 /* VisilabsGeofenceInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DACB42868E83337DA7AF49D7A93FE84 /* VisilabsNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C35C1DE100538456D0FD9391BECC46 /* VisilabsNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3133A9B940383DA961EB60AD395E1EB2 /* BaseObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D9643F97F19F72C643B334A0808F72A1 /* BaseObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3718C322351BD3B40FAE9DD2507C42AA /* VisilabsParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7144D427EA5EC4E8EFECD0ADD819E80C /* VisilabsParameter.m */; };
 		3780D93F6CC756F16F2C80F42B3B7DE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		3D564D44836451438A975440E7884012 /* VisilabsNotification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA919DDE540D38CC630F19C562E774BC /* VisilabsNotification.storyboard */; };
-		3F3CBED30C0B565FDB54BBFE6F4D3A56 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A7331EB5184B7DA6405A64E3D38DE2 /* BaseObject.m */; };
 		41EF3EBF8A57132C1C0168AA6D03D4D5 /* Visilabs.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F4A7C7C4B0455286198FB1892ABAF5E /* Visilabs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48C546C894875568BA1F3604E9CE467C /* VisilabsGeofenceApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B9FBF478C949A5252541793AD20A93 /* VisilabsGeofenceApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4960F3A44F3F95B5543558FF2BEF8430 /* VisilabsDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 907EA77C1F9303A9602655F09029355D /* VisilabsDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4EF6A96070075F1090000E7C66875979 /* VisilabsTargetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D48A81F8320BD51B9D13CB6EF88ED0C /* VisilabsTargetRequest.m */; };
 		4EF7C8BB11D3D72FEE7AB4F0D197154E /* VisilabsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA4F7F68666406EDB3B7B847D7C77E8 /* VisilabsDataManager.m */; };
-		4FE5B63A18E0B06B8BB20506F01FD695 /* EMJSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6282FE3D463070010D74DAD84ED1CA0B /* EMJSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		544948B1E128F54C37A884589E15A83B /* VisilabsAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 86FB7C578C1AF8DE715F032961EBA000 /* VisilabsAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5C205763FA9BDF9EB569EBE8E289F8D4 /* EMJSONModelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 980991F7A0C6F5EB399BBC37244656A8 /* EMJSONModelError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6015B20EE4D30B987FD99DA1310DED72 /* VisilabsNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D0734A586AFE78C3B8990DBEFB1FCE40 /* VisilabsNotification.m */; };
-		620E9082BD1241623C53AE1C5DC1F373 /* EMJSONModelLib.h in Headers */ = {isa = PBXBuildFile; fileRef = F0D1E3603EED5AB50C84FE186A43E0CA /* EMJSONModelLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		629BCBEAE6C767066F715C8734E32A0D /* Visilabs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAD30E6498E022A85F896EFED6991A0 /* Visilabs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		630D149FF399E2FBAF22BF402854E532 /* EMLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF50AFC9480187017888152D8B71D73A /* EMLocation.m */; };
-		6622E709C7198054EB19A229362BB5CC /* EMSettingsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2E337180DB9F410C7CD3D7DAE04FD /* EMSettingsRequest.m */; };
 		67BA5A65A4EBEAE16FF2D546D3839577 /* VisilabsGeofenceApp.m in Sources */ = {isa = PBXBuildFile; fileRef = D143A30C01B097B12809304437D180FF /* VisilabsGeofenceApp.m */; };
 		6AEFB84E772CE896A68766E12ABC54AF /* Pods-Visilabs_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 770FCB00185ECB55CA7AD20DB56433DD /* Pods-Visilabs_Example-dummy.m */; };
-		6CB09722AF7D4FB79222852B005EF05F /* EMSettingsModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E71B2B426510C1B14B2F8E5F1A2A6E7D /* EMSettingsModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EEB9928DFCF0E30993087A84684DA33 /* Pods-Visilabs_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26823527808B6EE7980A0EA3C08EBD /* Pods-Visilabs_Tests-dummy.m */; };
-		6EECC60154DCA6EDC5CB117C68959A51 /* EMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EDE8B60C01572342FD9C70AA24971 /* EMTools.m */; };
 		6EF8DEEB930D36174AF44E076009A0AC /* UIImage+VisilabsAverageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 432AFCA6CFE5FB48D92C458B98B485D8 /* UIImage+VisilabsAverageColor.m */; };
 		74BE8B00830BD10EA34BE9608F3B2B27 /* VisilabsGeofenceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 591DC5A044D6B6867612336A972AAC63 /* VisilabsGeofenceRequest.m */; };
 		754D9B9CE52652FDA6506502E6859D0B /* UIImage+VisilabsImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 52BEA101294FD04FE73FFB95BA20C8D3 /* UIImage+VisilabsImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,62 +40,39 @@
 		79EC95EE81525D0CA66A97EDA792E784 /* VisilabsNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A09F017758B88E15299AE02E43B6A963 /* VisilabsNotificationViewController.m */; };
 		7D24D1C91AB6ED9C6F6622B1E9D89113 /* VisilabsConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6AFE2BF55F65145692F54960ABE44 /* VisilabsConfig.m */; };
 		7E5D200FD371389E33B1F5833592DE5C /* VisilabsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FE2D1637F1C369878DDFE73E35A29A6 /* VisilabsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E9365AF823357178B93D98C8D043742 /* EMInteractiveAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA48D390F7B33C9288FA6061F4A654F /* EMInteractiveAction.m */; };
-		7FEE72411B5CF3FCFC8726F77C074DE5 /* EMInteractiveAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 59EB2FE514D4BF617C879ADEB8267ECC /* EMInteractiveAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		81DFBFD48AA2557865602BE20ABFA36A /* EMConnectionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C97DC828EFF07755F482E14BB642AABF /* EMConnectionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8385C67CC7BEFFFB3224437115F2AFBA /* VisilabsGeofenceBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BD48C8769FF3C5C56366A19C568F70 /* VisilabsGeofenceBridge.m */; };
 		855EA7CD0A55C2B60BE0E1D472AF7506 /* VisilabsGeofenceInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A1BE9AD3BE1DB511AF7FAC44ABC044 /* VisilabsGeofenceInterceptor.m */; };
 		85746E6B6FCC2790AE0C902C6FA53FC8 /* Visilabs.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8CEE841A4A809EF628932990B456FC /* Visilabs.m */; };
 		87D6D11D287EF692725638C696B93FB0 /* VisilabsTargetFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C6631E4933EF342961197A36D4AB2536 /* VisilabsTargetFilter.m */; };
-		8A38832CCEE8E86F9F2A732D94649E48 /* EMRegisterRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 44A58950B121AE5F9D92434668118FF1 /* EMRegisterRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A5000A64126CC21D6C5178769A9C876 /* VisilabsGeofenceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 93E206026BE45274B2A401E823519FA4 /* VisilabsGeofenceRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8AFE8A050BF6539ED0F66A5E796F81F4 /* EMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DA5F37D5ABFED663412D3D067F155B /* EMMessage.m */; };
-		955627D1B7EB53379AD8172C830EDBB4 /* EuroFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E96EFB06F5A472EFFD81462F89370F0E /* EuroFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97A2C9BB704C8F98FDCB06C079A340AF /* VisilabsCloseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 60263A12FCD30B081F23CE90BFD42286 /* VisilabsCloseBtn.png */; };
 		99A711314C9C6F8264754B19458A5C74 /* Pods-Visilabs_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FBE87DA19832EA1EC54DE9D21DE9EBBA /* Pods-Visilabs_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AEF7E878B360B0FDF128D3527A75E0D /* VisilabsDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C9C711390E8627DF492E4AC52AF17D3 /* VisilabsDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9B6950BF8F0640539558ECCC9FDA681E /* EMJSONValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CEA2A1AC569B4A6949A35CBEA53D95F /* EMJSONValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BFB4DEA0CE993DD90455785135524B6 /* UIImage+VisilabsImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 478FCF54C29A99FE0A13CF9979D46681 /* UIImage+VisilabsImageEffects.m */; };
-		A6C0AF60A1543939695C8010E6062838 /* EMRegisterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66E0E95FB602B33C8B379599224CAF /* EMRegisterRequest.m */; };
 		A727582970896EC37580D2E7A5B9C41A /* VisilabsPersistentTargetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB13D3D09FF7E3E917220AEEDDCB0 /* VisilabsPersistentTargetManager.m */; };
-		A8647D79E67959A077FB198E20DFEBA9 /* EMLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1143BDCC97AC71CCAA64AAEBB80A658B /* EMLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB355A40D7F5086916709ABB8C76CB8A /* VisilabsGeofenceApp+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = CF74F480C8F16387F477DD52D98672BC /* VisilabsGeofenceApp+Location.m */; };
 		ABE0B7BC23455AE26A8BB7C1ADC6FEAC /* UIViewController+VisilabsGFRootViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B99547959252AD4740B3B9683B92BCE6 /* UIViewController+VisilabsGFRootViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AF281AA867BE1A832E05A2AE65EB3D15 /* EMTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C5508C888EAC7C6C2BAEE9C323B7C29 /* EMTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AFB3048C383B1E8B3A584693D48DC25C /* EMLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 68BA36A90550CB98C39D80DDFECE3BC4 /* EMLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AFEAB2A98E074321CE4AE32A739279FB /* UIColor+VisilabsColor.h in Headers */ = {isa = PBXBuildFile; fileRef = FB416E4F4DC339796A0F69C3D15C546E /* UIColor+VisilabsColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B03B857E3FA3AE337FBAB26F4CC03366 /* VisilabsGeofenceBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 530C47596FF2628E7FDA021EFFB7DACB /* VisilabsGeofenceBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B41864C693CC9F67223A804714E3DEBF /* VisilabsGeofenceStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC090C25536C5CEBE977CD92749CC1 /* VisilabsGeofenceStatus.m */; };
 		B4C2ADE270EA02657392672DA4D454FD /* VisilabsParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CB575F8E9F4BB6A75D955DE80661F95 /* VisilabsParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B52AC5803AF9EB8D989C745758C75301 /* VisilabsConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A4C42223EE57BE187025EFCB6BEEFF0 /* VisilabsConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B610E6EB638D08C49F829DB07D7E51C0 /* EMSettingsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C0186A4D9DEB4EA3E2BE102AAD1135E6 /* EMSettingsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B87D7A0A2D4D7E60637B7DDDAD967D27 /* EMJSONKeyMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = A937CAE8C9FBC0071B9020646F0B2206 /* EMJSONKeyMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1F74689CD1ACD8DF1AC1B1A9BD39495 /* EMURLSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 886BC8AF4C39354D98A5A6731DAAEC23 /* EMURLSessionDelegate.m */; };
-		C25B4F0DA3FF31E4089535DDD1F2A96D /* EMMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 80704BC461925653A08967D30D08140C /* EMMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3394769EC1BC580090ECDA55BF58D3E /* UIViewController+VisilabsGFRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F74988EE9282DBE0371353A56C0824EE /* UIViewController+VisilabsGFRootViewController.m */; };
 		C9D94854FDC0D541681892B28437EE39 /* VisilabsHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 968F25F37B6FF8D4FB74689C5A0F1B2A /* VisilabsHttpClient.m */; };
 		CDA3B3B96C8C94803E3F7BF0ECF8E5BE /* VisilabsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9211EF8DD2218DC6DBAB785047951766 /* VisilabsAction.m */; };
 		CDB711F7F72C4E438B368DD890156F30 /* VisilabsHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = E4AC195FEA300F81FE4C607535CC4004 /* VisilabsHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D08930A7890DC5ADC8DC609E92779414 /* VisilabsReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A70DAE179836A7AAEA7C1F8794E15699 /* VisilabsReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D41C2410495AA1E6A2E33C41DEA66FD9 /* EuroManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F82DE94A3862353813CC400BCE45E /* EuroManager.m */; };
-		D56ED22FA1D69E20AF7FA2D3AA0B007F /* EMJSONModelArray.h in Headers */ = {isa = PBXBuildFile; fileRef = DAD7719EEB0C8190457DA89222A1D803 /* EMJSONModelArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D57A5F942CBFCE91EF2862C06F40FA83 /* VisilabsCloseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72A891F296A256B5081CA5D5DDB5E476 /* VisilabsCloseBtn@2x.png */; };
 		D737ED009A8C258F444F562C78638BF0 /* VisilabsNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DC7ADD4FFF32CD55461D94C7D807D78 /* VisilabsNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E0E902772DFCDB8254B1C7B7AABD87FF /* EMJSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5616917437F91C596608963A82AA5A8F /* EMJSONValueTransformer.m */; };
 		E4FE1FB7924DE2B0173652B2C41CD16F /* VisilabsTargetFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 60B1251E49375A9C7AA6289CFB1E7BBD /* VisilabsTargetFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E67767E15DBBABDDA5B325BA5D13D788 /* VisilabsGeofenceLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 498C44EDCA22909192DE56B44988F2BF /* VisilabsGeofenceLocationManager.m */; };
 		E87E42B0AAE078E7BFBB38488BDE517D /* VisilabsJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D05949CA82BBA62CA2D5F35D692B28FA /* VisilabsJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EB17CD96ADE91678ACB43EE88265DAF5 /* EMJSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44D939237467F5C1E95DBCA3E75435 /* EMJSONModelArray.m */; };
 		ECB44F327D8BD1E03EC2195E416BD1BD /* VisilabsGeofenceApp+Location.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C44F04754DECBA2B19BD7223EE1654C /* VisilabsGeofenceApp+Location.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EFF7A8B47723DFCD12AB6B1FAFA5DD26 /* EuroManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BD43BE399801870DD63F4840B282825 /* EuroManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F02EF15546018948CB06DF689AC48930 /* NSArray+EMJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2033A170E56CB64CFD282C6E3C29024 /* NSArray+EMJSONModel.m */; };
 		F03047A11B362055D2F63253287E54E4 /* VisilabsResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F60EE713AB8C0C13C29F7A698D1131 /* VisilabsResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F16AD896EB45BC78CB0A7649CE816F8F /* VisilabsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69719665A08A5035A39D8CE15B41A2 /* VisilabsResponse.m */; };
 		F5DBDA012F6E968023FE0ADCD233642E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		F8179D17F72645AB9EF08DCB2379E555 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		FBC28E23D8A483FCA4EB4819D046F78C /* VisilabsReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 210C90E864D121A83D9B91B26734C573 /* VisilabsReachability.m */; };
-		FCCE9087BCECA63BB6C04D328EFF4378 /* EMSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BE45C8B8952D095E6A547EE52C4FF5 /* EMSettingsModel.m */; };
-		FF77E4B36B965309C13E686D6C4213A2 /* EMURLSessionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = BA921516900DEDE2B8374D9640FA019E /* EMURLSessionDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,64 +96,44 @@
 		0130FCBDB1457C1D39B9FD0606DB1872 /* Visilabs.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Visilabs.modulemap; sourceTree = "<group>"; };
 		037D16497656C864654963330DB88239 /* VisilabsPersistentTargetManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsPersistentTargetManager.h; sourceTree = "<group>"; };
 		0A4C42223EE57BE187025EFCB6BEEFF0 /* VisilabsConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsConfig.h; sourceTree = "<group>"; };
-		0D9EDE8B60C01572342FD9C70AA24971 /* EMTools.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMTools.m; sourceTree = "<group>"; };
 		0DC7ADD4FFF32CD55461D94C7D807D78 /* VisilabsNotificationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsNotificationViewController.h; sourceTree = "<group>"; };
-		1143BDCC97AC71CCAA64AAEBB80A658B /* EMLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMLocation.h; sourceTree = "<group>"; };
 		14364E2A485742A1E1BD4F99D3EC8C40 /* Pods-Visilabs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		16BE45C8B8952D095E6A547EE52C4FF5 /* EMSettingsModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMSettingsModel.m; sourceTree = "<group>"; };
-		17AE72991658F89497305731CBABFAF1 /* EMConnectionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMConnectionManager.m; sourceTree = "<group>"; };
 		1800F4741A84E0C510183B808C05E3B3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18AC090C25536C5CEBE977CD92749CC1 /* VisilabsGeofenceStatus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceStatus.m; sourceTree = "<group>"; };
 		18B9FBF478C949A5252541793AD20A93 /* VisilabsGeofenceApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceApp.h; sourceTree = "<group>"; };
-		18F51333A27881A649535B7E10F0111A /* EMRetentionRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMRetentionRequest.h; sourceTree = "<group>"; };
 		1BBC268A738F00B7F8FC5CE76641E474 /* VisilabsGeofenceLocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceLocationManager.h; sourceTree = "<group>"; };
 		1E9FA47C3F76D18833D6329602E9DD52 /* Visilabs-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Visilabs-prefix.pch"; sourceTree = "<group>"; };
 		210C90E864D121A83D9B91B26734C573 /* VisilabsReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsReachability.m; sourceTree = "<group>"; };
 		2653E32783583F0386F1830FC268D52C /* UIView+VisilabsHelpers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+VisilabsHelpers.m"; sourceTree = "<group>"; };
 		28E34BEA17645F88D484BC4999C529C6 /* Pods-Visilabs_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Visilabs_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		2C44F04754DECBA2B19BD7223EE1654C /* VisilabsGeofenceApp+Location.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VisilabsGeofenceApp+Location.h"; sourceTree = "<group>"; };
-		2C82EFA5E230C8CC841D34A1371B043B /* EMJSONModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMJSONModel.m; sourceTree = "<group>"; };
 		2C8CDEC7A30EDDEE7259C3295339FEE6 /* Pods-Visilabs_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Example-resources.sh"; sourceTree = "<group>"; };
-		2ED0D4A48AABF8E4253BE17C27A2FA05 /* EMJSONKeyMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMJSONKeyMapper.m; sourceTree = "<group>"; };
 		3270EA8E0B0DAFC7F147B09F52ECC149 /* Pods-Visilabs_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		334B697810C36E139D4D5715E7ACD85B /* Pods-Visilabs_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Tests-resources.sh"; sourceTree = "<group>"; };
-		3CEA2A1AC569B4A6949A35CBEA53D95F /* EMJSONValueTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMJSONValueTransformer.h; sourceTree = "<group>"; };
 		3D10453D841F7190BE677FDEAE571A76 /* Pods-Visilabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3EA4F7F68666406EDB3B7B847D7C77E8 /* VisilabsDataManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsDataManager.m; sourceTree = "<group>"; };
 		41AC28D6E615219F4C7A001A96749447 /* Pods_Visilabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		432AFCA6CFE5FB48D92C458B98B485D8 /* UIImage+VisilabsAverageColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImage+VisilabsAverageColor.m"; sourceTree = "<group>"; };
-		44A58950B121AE5F9D92434668118FF1 /* EMRegisterRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMRegisterRequest.h; sourceTree = "<group>"; };
-		464F82DE94A3862353813CC400BCE45E /* EuroManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EuroManager.m; sourceTree = "<group>"; };
 		478FCF54C29A99FE0A13CF9979D46681 /* UIImage+VisilabsImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImage+VisilabsImageEffects.m"; sourceTree = "<group>"; };
 		498C44EDCA22909192DE56B44988F2BF /* VisilabsGeofenceLocationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceLocationManager.m; sourceTree = "<group>"; };
-		4C5508C888EAC7C6C2BAEE9C323B7C29 /* EMTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMTools.h; sourceTree = "<group>"; };
 		513781ABAC1331C6EB69DDC29F69E519 /* Pods-Visilabs_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Visilabs_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		51A7331EB5184B7DA6405A64E3D38DE2 /* BaseObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BaseObject.m; sourceTree = "<group>"; };
 		52260F70CA8793F5A9213D4F6BA89644 /* UIColor+VisilabsColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VisilabsColor.m"; sourceTree = "<group>"; };
 		52BEA101294FD04FE73FFB95BA20C8D3 /* UIImage+VisilabsImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+VisilabsImageEffects.h"; sourceTree = "<group>"; };
 		530C47596FF2628E7FDA021EFFB7DACB /* VisilabsGeofenceBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceBridge.h; sourceTree = "<group>"; };
 		53167CB892B678F18A797E9D28445070 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55A1BE9AD3BE1DB511AF7FAC44ABC044 /* VisilabsGeofenceInterceptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceInterceptor.m; sourceTree = "<group>"; };
-		5616917437F91C596608963A82AA5A8F /* EMJSONValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMJSONValueTransformer.m; sourceTree = "<group>"; };
 		591DC5A044D6B6867612336A972AAC63 /* VisilabsGeofenceRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceRequest.m; sourceTree = "<group>"; };
-		59EB2FE514D4BF617C879ADEB8267ECC /* EMInteractiveAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMInteractiveAction.h; sourceTree = "<group>"; };
-		5BD43BE399801870DD63F4840B282825 /* EuroManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EuroManager.h; sourceTree = "<group>"; };
 		5C1363842C98AD9888BFBBB044FBD190 /* UIImage+VisilabsAverageColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+VisilabsAverageColor.h"; sourceTree = "<group>"; };
 		5C9C711390E8627DF492E4AC52AF17D3 /* VisilabsDataManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsDataManager.h; sourceTree = "<group>"; };
 		5F9BEDBC53FA714ACCFD195CEDE0FBD3 /* UIView+VisilabsHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+VisilabsHelpers.h"; sourceTree = "<group>"; };
 		60263A12FCD30B081F23CE90BFD42286 /* VisilabsCloseBtn.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = VisilabsCloseBtn.png; sourceTree = "<group>"; };
 		60B1251E49375A9C7AA6289CFB1E7BBD /* VisilabsTargetFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsTargetFilter.h; sourceTree = "<group>"; };
-		6282FE3D463070010D74DAD84ED1CA0B /* EMJSONModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMJSONModel.h; sourceTree = "<group>"; };
-		67A5E31CCD05823E6309D60F91274A00 /* EMRetentionRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMRetentionRequest.m; sourceTree = "<group>"; };
-		68BA36A90550CB98C39D80DDFECE3BC4 /* EMLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMLogging.h; sourceTree = "<group>"; };
 		68E9BD06918C3D6028877C761EF6E2D3 /* Visilabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visilabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACC20CE7E745E2DDD67599955ADD300 /* Pods-Visilabs_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Visilabs_Example.modulemap"; sourceTree = "<group>"; };
 		6AFDA792719DC8F82D6ABED5DA72333C /* Pods-Visilabs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6CB575F8E9F4BB6A75D955DE80661F95 /* VisilabsParameter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsParameter.h; sourceTree = "<group>"; };
-		6D44D939237467F5C1E95DBCA3E75435 /* EMJSONModelArray.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMJSONModelArray.m; sourceTree = "<group>"; };
 		6D48A81F8320BD51B9D13CB6EF88ED0C /* VisilabsTargetRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsTargetRequest.m; sourceTree = "<group>"; };
 		6EF7B28735CC4D603698EB2CE06A62F5 /* VisilabsGeofenceInterceptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceInterceptor.h; sourceTree = "<group>"; };
-		6FA48D390F7B33C9288FA6061F4A654F /* EMInteractiveAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMInteractiveAction.m; sourceTree = "<group>"; };
 		7144D427EA5EC4E8EFECD0ADD819E80C /* VisilabsParameter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsParameter.m; sourceTree = "<group>"; };
 		72A891F296A256B5081CA5D5DDB5E476 /* VisilabsCloseBtn@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "VisilabsCloseBtn@2x.png"; sourceTree = "<group>"; };
 		7702BE96A72B6D50F7339B68823F6B9D /* Pods-Visilabs_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Visilabs_Tests.modulemap"; sourceTree = "<group>"; };
@@ -204,22 +141,17 @@
 		7C19B76160847FE43FFF8017E6543E72 /* Visilabs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Visilabs.xcconfig; sourceTree = "<group>"; };
 		7F4A7C7C4B0455286198FB1892ABAF5E /* Visilabs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Visilabs.h; sourceTree = "<group>"; };
 		7FE2D1637F1C369878DDFE73E35A29A6 /* VisilabsResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsResponse.h; sourceTree = "<group>"; };
-		80704BC461925653A08967D30D08140C /* EMMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMMessage.h; sourceTree = "<group>"; };
 		80BD48C8769FF3C5C56366A19C568F70 /* VisilabsGeofenceBridge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceBridge.m; sourceTree = "<group>"; };
 		86FB7C578C1AF8DE715F032961EBA000 /* VisilabsAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsAction.h; sourceTree = "<group>"; };
 		87F60EE713AB8C0C13C29F7A698D1131 /* VisilabsResponseDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsResponseDelegate.h; sourceTree = "<group>"; };
-		886BC8AF4C39354D98A5A6731DAAEC23 /* EMURLSessionDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMURLSessionDelegate.m; sourceTree = "<group>"; };
 		8CD58A71B1CEFAB76EDEE71AAA4B10E0 /* VisilabsJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsJSON.m; sourceTree = "<group>"; };
-		8EB8C55DA752F861229AA965900A4A30 /* EMBaseRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMBaseRequest.m; sourceTree = "<group>"; };
 		907EA77C1F9303A9602655F09029355D /* VisilabsDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsDefines.h; sourceTree = "<group>"; };
 		9211EF8DD2218DC6DBAB785047951766 /* VisilabsAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsAction.m; sourceTree = "<group>"; };
-		92DA5F37D5ABFED663412D3D067F155B /* EMMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMMessage.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93E206026BE45274B2A401E823519FA4 /* VisilabsGeofenceRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceRequest.h; sourceTree = "<group>"; };
 		968F25F37B6FF8D4FB74689C5A0F1B2A /* VisilabsHttpClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsHttpClient.m; sourceTree = "<group>"; };
 		96C35C1DE100538456D0FD9391BECC46 /* VisilabsNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsNotification.h; sourceTree = "<group>"; };
 		976E3236B609FF1AD0043D55E79D1BD0 /* Pods-Visilabs_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Visilabs_Tests-umbrella.h"; sourceTree = "<group>"; };
-		980991F7A0C6F5EB399BBC37244656A8 /* EMJSONModelError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMJSONModelError.h; sourceTree = "<group>"; };
 		9A25C05294F6681FD08E7BCE5DE8D13E /* VisilabsGeofenceStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceStatus.h; sourceTree = "<group>"; };
 		9AE6AFE2BF55F65145692F54960ABE44 /* VisilabsConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsConfig.m; sourceTree = "<group>"; };
 		9B18FD0F50C4F065407D25130F8630A4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -227,46 +159,28 @@
 		A4FEB13D3D09FF7E3E917220AEEDDCB0 /* VisilabsPersistentTargetManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsPersistentTargetManager.m; sourceTree = "<group>"; };
 		A70DAE179836A7AAEA7C1F8794E15699 /* VisilabsReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsReachability.h; sourceTree = "<group>"; };
 		A725D67F57F8D3D32CA26CBD961D2C92 /* Pods-Visilabs_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Visilabs_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		A937CAE8C9FBC0071B9020646F0B2206 /* EMJSONKeyMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMJSONKeyMapper.h; sourceTree = "<group>"; };
 		AA919DDE540D38CC630F19C562E774BC /* VisilabsNotification.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = VisilabsNotification.storyboard; sourceTree = "<group>"; };
-		B0D2E337180DB9F410C7CD3D7DAE04FD /* EMSettingsRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMSettingsRequest.m; sourceTree = "<group>"; };
 		B8AE6F3AFB07EE2313C7CF8606866EB0 /* VisilabsTargetRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsTargetRequest.h; sourceTree = "<group>"; };
 		B99547959252AD4740B3B9683B92BCE6 /* UIViewController+VisilabsGFRootViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+VisilabsGFRootViewController.h"; sourceTree = "<group>"; };
-		BA921516900DEDE2B8374D9640FA019E /* EMURLSessionDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMURLSessionDelegate.h; sourceTree = "<group>"; };
-		BE1A6EBC28EBEE340C57F8FB909CE832 /* EMJSONModelClassProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMJSONModelClassProperty.m; sourceTree = "<group>"; };
 		BE26823527808B6EE7980A0EA3C08EBD /* Pods-Visilabs_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Visilabs_Tests-dummy.m"; sourceTree = "<group>"; };
 		BE8CEE841A4A809EF628932990B456FC /* Visilabs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Visilabs.m; sourceTree = "<group>"; };
-		C0186A4D9DEB4EA3E2BE102AAD1135E6 /* EMSettingsRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMSettingsRequest.h; sourceTree = "<group>"; };
-		C0FEE6A1A5225E79A874E972928192EC /* EMBaseRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMBaseRequest.h; sourceTree = "<group>"; };
-		C2033A170E56CB64CFD282C6E3C29024 /* NSArray+EMJSONModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+EMJSONModel.m"; sourceTree = "<group>"; };
 		C6631E4933EF342961197A36D4AB2536 /* VisilabsTargetFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsTargetFilter.m; sourceTree = "<group>"; };
-		C97DC828EFF07755F482E14BB642AABF /* EMConnectionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMConnectionManager.h; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CBDC1CD87817752D0A6C97DA906DCBA6 /* EMJSONModelClassProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMJSONModelClassProperty.h; sourceTree = "<group>"; };
 		CE69719665A08A5035A39D8CE15B41A2 /* VisilabsResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsResponse.m; sourceTree = "<group>"; };
 		CF74F480C8F16387F477DD52D98672BC /* VisilabsGeofenceApp+Location.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VisilabsGeofenceApp+Location.m"; sourceTree = "<group>"; };
 		D05949CA82BBA62CA2D5F35D692B28FA /* VisilabsJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsJSON.h; sourceTree = "<group>"; };
 		D0734A586AFE78C3B8990DBEFB1FCE40 /* VisilabsNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsNotification.m; sourceTree = "<group>"; };
 		D143A30C01B097B12809304437D180FF /* VisilabsGeofenceApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceApp.m; sourceTree = "<group>"; };
-		D63FA6617BAF2963049E59928C8D4AF3 /* NSArray+EMJSONModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+EMJSONModel.h"; sourceTree = "<group>"; };
-		D9643F97F19F72C643B334A0808F72A1 /* BaseObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BaseObject.h; sourceTree = "<group>"; };
-		DAD7719EEB0C8190457DA89222A1D803 /* EMJSONModelArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMJSONModelArray.h; sourceTree = "<group>"; };
 		E1BACF251DF8E535FD012A205AFDD508 /* Pods-Visilabs_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E4AC195FEA300F81FE4C607535CC4004 /* VisilabsHttpClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsHttpClient.h; sourceTree = "<group>"; };
 		E5B556B0DF9445F87811FB6D22FA59C3 /* Pods_Visilabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E71B2B426510C1B14B2F8E5F1A2A6E7D /* EMSettingsModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMSettingsModel.h; sourceTree = "<group>"; };
-		E96EFB06F5A472EFFD81462F89370F0E /* EuroFramework.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EuroFramework.h; sourceTree = "<group>"; };
-		EA66E0E95FB602B33C8B379599224CAF /* EMRegisterRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMRegisterRequest.m; sourceTree = "<group>"; };
 		EE9D09B7641E378B3B66E355FA3B8A4B /* Pods-Visilabs_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Visilabs_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F0D1E3603EED5AB50C84FE186A43E0CA /* EMJSONModelLib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EMJSONModelLib.h; sourceTree = "<group>"; };
 		F6F25C061288D7D1CAA1A673B2C28AAE /* Pods-Visilabs_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F74988EE9282DBE0371353A56C0824EE /* UIViewController+VisilabsGFRootViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+VisilabsGFRootViewController.m"; sourceTree = "<group>"; };
-		F7E8B97E5181FD2EFC91D1228190689C /* EMJSONModelError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMJSONModelError.m; sourceTree = "<group>"; };
 		FAAD30E6498E022A85F896EFED6991A0 /* Visilabs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Visilabs-umbrella.h"; sourceTree = "<group>"; };
 		FB256A94E955CA6DDF2C1CE64AB5C9DC /* Visilabs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Visilabs-dummy.m"; sourceTree = "<group>"; };
 		FB416E4F4DC339796A0F69C3D15C546E /* UIColor+VisilabsColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+VisilabsColor.h"; sourceTree = "<group>"; };
 		FBE87DA19832EA1EC54DE9D21DE9EBBA /* Pods-Visilabs_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Visilabs_Example-umbrella.h"; sourceTree = "<group>"; };
-		FF50AFC9480187017888152D8B71D73A /* EMLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EMLocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,49 +279,6 @@
 		5DE8D87E32ECF34E311DD3D2DCB7FC54 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D9643F97F19F72C643B334A0808F72A1 /* BaseObject.h */,
-				51A7331EB5184B7DA6405A64E3D38DE2 /* BaseObject.m */,
-				C0FEE6A1A5225E79A874E972928192EC /* EMBaseRequest.h */,
-				8EB8C55DA752F861229AA965900A4A30 /* EMBaseRequest.m */,
-				C97DC828EFF07755F482E14BB642AABF /* EMConnectionManager.h */,
-				17AE72991658F89497305731CBABFAF1 /* EMConnectionManager.m */,
-				59EB2FE514D4BF617C879ADEB8267ECC /* EMInteractiveAction.h */,
-				6FA48D390F7B33C9288FA6061F4A654F /* EMInteractiveAction.m */,
-				A937CAE8C9FBC0071B9020646F0B2206 /* EMJSONKeyMapper.h */,
-				2ED0D4A48AABF8E4253BE17C27A2FA05 /* EMJSONKeyMapper.m */,
-				6282FE3D463070010D74DAD84ED1CA0B /* EMJSONModel.h */,
-				2C82EFA5E230C8CC841D34A1371B043B /* EMJSONModel.m */,
-				DAD7719EEB0C8190457DA89222A1D803 /* EMJSONModelArray.h */,
-				6D44D939237467F5C1E95DBCA3E75435 /* EMJSONModelArray.m */,
-				CBDC1CD87817752D0A6C97DA906DCBA6 /* EMJSONModelClassProperty.h */,
-				BE1A6EBC28EBEE340C57F8FB909CE832 /* EMJSONModelClassProperty.m */,
-				980991F7A0C6F5EB399BBC37244656A8 /* EMJSONModelError.h */,
-				F7E8B97E5181FD2EFC91D1228190689C /* EMJSONModelError.m */,
-				F0D1E3603EED5AB50C84FE186A43E0CA /* EMJSONModelLib.h */,
-				3CEA2A1AC569B4A6949A35CBEA53D95F /* EMJSONValueTransformer.h */,
-				5616917437F91C596608963A82AA5A8F /* EMJSONValueTransformer.m */,
-				1143BDCC97AC71CCAA64AAEBB80A658B /* EMLocation.h */,
-				FF50AFC9480187017888152D8B71D73A /* EMLocation.m */,
-				68BA36A90550CB98C39D80DDFECE3BC4 /* EMLogging.h */,
-				80704BC461925653A08967D30D08140C /* EMMessage.h */,
-				92DA5F37D5ABFED663412D3D067F155B /* EMMessage.m */,
-				44A58950B121AE5F9D92434668118FF1 /* EMRegisterRequest.h */,
-				EA66E0E95FB602B33C8B379599224CAF /* EMRegisterRequest.m */,
-				18F51333A27881A649535B7E10F0111A /* EMRetentionRequest.h */,
-				67A5E31CCD05823E6309D60F91274A00 /* EMRetentionRequest.m */,
-				E71B2B426510C1B14B2F8E5F1A2A6E7D /* EMSettingsModel.h */,
-				16BE45C8B8952D095E6A547EE52C4FF5 /* EMSettingsModel.m */,
-				C0186A4D9DEB4EA3E2BE102AAD1135E6 /* EMSettingsRequest.h */,
-				B0D2E337180DB9F410C7CD3D7DAE04FD /* EMSettingsRequest.m */,
-				4C5508C888EAC7C6C2BAEE9C323B7C29 /* EMTools.h */,
-				0D9EDE8B60C01572342FD9C70AA24971 /* EMTools.m */,
-				BA921516900DEDE2B8374D9640FA019E /* EMURLSessionDelegate.h */,
-				886BC8AF4C39354D98A5A6731DAAEC23 /* EMURLSessionDelegate.m */,
-				E96EFB06F5A472EFFD81462F89370F0E /* EuroFramework.h */,
-				5BD43BE399801870DD63F4840B282825 /* EuroManager.h */,
-				464F82DE94A3862353813CC400BCE45E /* EuroManager.m */,
-				D63FA6617BAF2963049E59928C8D4AF3 /* NSArray+EMJSONModel.h */,
-				C2033A170E56CB64CFD282C6E3C29024 /* NSArray+EMJSONModel.m */,
 				FB416E4F4DC339796A0F69C3D15C546E /* UIColor+VisilabsColor.h */,
 				52260F70CA8793F5A9213D4F6BA89644 /* UIColor+VisilabsColor.m */,
 				5C1363842C98AD9888BFBBB044FBD190 /* UIImage+VisilabsAverageColor.h */,
@@ -573,29 +444,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3133A9B940383DA961EB60AD395E1EB2 /* BaseObject.h in Headers */,
-				01C34260C75CCEA14EA69E5B6E02BF85 /* EMBaseRequest.h in Headers */,
-				81DFBFD48AA2557865602BE20ABFA36A /* EMConnectionManager.h in Headers */,
-				7FEE72411B5CF3FCFC8726F77C074DE5 /* EMInteractiveAction.h in Headers */,
-				B87D7A0A2D4D7E60637B7DDDAD967D27 /* EMJSONKeyMapper.h in Headers */,
-				4FE5B63A18E0B06B8BB20506F01FD695 /* EMJSONModel.h in Headers */,
-				D56ED22FA1D69E20AF7FA2D3AA0B007F /* EMJSONModelArray.h in Headers */,
-				0C03BAE2F5BF8917E59A08C2F695CA7B /* EMJSONModelClassProperty.h in Headers */,
-				5C205763FA9BDF9EB569EBE8E289F8D4 /* EMJSONModelError.h in Headers */,
-				620E9082BD1241623C53AE1C5DC1F373 /* EMJSONModelLib.h in Headers */,
-				9B6950BF8F0640539558ECCC9FDA681E /* EMJSONValueTransformer.h in Headers */,
-				A8647D79E67959A077FB198E20DFEBA9 /* EMLocation.h in Headers */,
-				AFB3048C383B1E8B3A584693D48DC25C /* EMLogging.h in Headers */,
-				C25B4F0DA3FF31E4089535DDD1F2A96D /* EMMessage.h in Headers */,
-				8A38832CCEE8E86F9F2A732D94649E48 /* EMRegisterRequest.h in Headers */,
-				1516EE6293468234ABBB898FB28EEAD5 /* EMRetentionRequest.h in Headers */,
-				6CB09722AF7D4FB79222852B005EF05F /* EMSettingsModel.h in Headers */,
-				B610E6EB638D08C49F829DB07D7E51C0 /* EMSettingsRequest.h in Headers */,
-				AF281AA867BE1A832E05A2AE65EB3D15 /* EMTools.h in Headers */,
-				FF77E4B36B965309C13E686D6C4213A2 /* EMURLSessionDelegate.h in Headers */,
-				955627D1B7EB53379AD8172C830EDBB4 /* EuroFramework.h in Headers */,
-				EFF7A8B47723DFCD12AB6B1FAFA5DD26 /* EuroManager.h in Headers */,
-				1E208CDC8841C63B12C06E7D4BBB3122 /* NSArray+EMJSONModel.h in Headers */,
 				AFEAB2A98E074321CE4AE32A739279FB /* UIColor+VisilabsColor.h in Headers */,
 				041524104AB0DD98386E9F475BE6D136 /* UIImage+VisilabsAverageColor.h in Headers */,
 				754D9B9CE52652FDA6506502E6859D0B /* UIImage+VisilabsImageEffects.h in Headers */,
@@ -747,26 +595,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F3CBED30C0B565FDB54BBFE6F4D3A56 /* BaseObject.m in Sources */,
-				1A1454B2BBF69DF3415FFC3835C2E139 /* EMBaseRequest.m in Sources */,
-				01CB62AEE566507130185533381A2020 /* EMConnectionManager.m in Sources */,
-				7E9365AF823357178B93D98C8D043742 /* EMInteractiveAction.m in Sources */,
-				1EFAE8B71551208FF64941C747CE6965 /* EMJSONKeyMapper.m in Sources */,
-				022FB2E55C3E716E0991CE879B0091AD /* EMJSONModel.m in Sources */,
-				EB17CD96ADE91678ACB43EE88265DAF5 /* EMJSONModelArray.m in Sources */,
-				0880E0992DC56A102EE616D2EA94EC70 /* EMJSONModelClassProperty.m in Sources */,
-				152EBF559524A39E2B77FD86FEE38C94 /* EMJSONModelError.m in Sources */,
-				E0E902772DFCDB8254B1C7B7AABD87FF /* EMJSONValueTransformer.m in Sources */,
-				630D149FF399E2FBAF22BF402854E532 /* EMLocation.m in Sources */,
-				8AFE8A050BF6539ED0F66A5E796F81F4 /* EMMessage.m in Sources */,
-				A6C0AF60A1543939695C8010E6062838 /* EMRegisterRequest.m in Sources */,
-				072DDCFFFE1DB3AABCCFC9A39E2FC755 /* EMRetentionRequest.m in Sources */,
-				FCCE9087BCECA63BB6C04D328EFF4378 /* EMSettingsModel.m in Sources */,
-				6622E709C7198054EB19A229362BB5CC /* EMSettingsRequest.m in Sources */,
-				6EECC60154DCA6EDC5CB117C68959A51 /* EMTools.m in Sources */,
-				C1F74689CD1ACD8DF1AC1B1A9BD39495 /* EMURLSessionDelegate.m in Sources */,
-				D41C2410495AA1E6A2E33C41DEA66FD9 /* EuroManager.m in Sources */,
-				F02EF15546018948CB06DF689AC48930 /* NSArray+EMJSONModel.m in Sources */,
 				78BB51EFFA9077D0D4B6D634A6B7BE6F /* UIColor+VisilabsColor.m in Sources */,
 				6EF8DEEB930D36174AF44E076009A0AC /* UIImage+VisilabsAverageColor.m in Sources */,
 				9BFB4DEA0CE993DD90455785135524B6 /* UIImage+VisilabsImageEffects.m in Sources */,
