@@ -11,7 +11,7 @@
 
 @implementation VisilabsConfig
 
-static NSString *const kVERSION_NUMBER = @"2.5.10";
+static NSString *const kVERSION_NUMBER = @"2.5.11";
 
 static NSString *const kLOGGER_URL = @"lgr.visilabs.net";
 static NSString *const kREAL_TIME_URL = @"rt.visilabs.net";

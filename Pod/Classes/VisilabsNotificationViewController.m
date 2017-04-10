@@ -17,19 +17,19 @@
 
 
 
-@interface CircleLayer : CALayer {}
+@interface VisilabsCircleLayer : CALayer {}
 
 @property (nonatomic, assign) CGFloat circlePadding;
 
 @end
 
-@interface ElasticEaseOutAnimation : CAKeyframeAnimation {}
+@interface VisilabsElasticEaseOutAnimation : CAKeyframeAnimation {}
 
 - (instancetype)initWithStartValue:(CGRect)start endValue:(CGRect)end andDuration:(double)duration;
 
 @end
 
-@interface GradientMaskLayer : CAGradientLayer {}
+@interface VisilabsGradientMaskLayer : CAGradientLayer {}
 
 @end
 
@@ -202,7 +202,7 @@
 }
 
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) CircleLayer *circleLayer;
+@property (nonatomic, strong) VisilabsCircleLayer *VisilabsCircleLayer;
 @property (nonatomic, strong) UILabel *bodyLabel;
 
 @end
@@ -253,13 +253,13 @@
         }
     }
     
-    self.circleLayer = [CircleLayer layer];
-    self.circleLayer.contentsScale = [UIScreen mainScreen].scale;
-    [self.circleLayer setNeedsDisplay];
+    self.VisilabsCircleLayer = [VisilabsCircleLayer layer];
+    self.VisilabsCircleLayer.contentsScale = [UIScreen mainScreen].scale;
+    [self.VisilabsCircleLayer setNeedsDisplay];
     
     [self.view addSubview:self.imageView];
     [self.view addSubview:self.bodyLabel];
-    [self.view.layer addSublayer:self.circleLayer];
+    [self.view.layer addSublayer:self.VisilabsCircleLayer];
     
     self.view.frame = CGRectMake(0.0f, 0.0f, 0.0f, 30.0f);
     
@@ -295,8 +295,8 @@
     self.imageView.layer.position = CGPointMake(VisilabsNotificationHeight / 2.0f, VisilabsNotificationHeight / 2.0f);
     
     // Position circle around image
-    self.circleLayer.position = self.imageView.layer.position;
-    [self.circleLayer setNeedsDisplay];
+    self.VisilabsCircleLayer.position = self.imageView.layer.position;
+    [self.VisilabsCircleLayer setNeedsDisplay];
     
     // Position body label
     CGSize constraintSize = CGSizeMake(self.view.frame.size.width - VisilabsNotificationHeight - 12.5f, CGFLOAT_MAX);
@@ -401,17 +401,17 @@
     CGFloat duration = 0.5f;
     
     // Animate the circle around the image
-    CGRect before = _circleLayer.bounds;
-    CGRect after = CGRectMake(0.0f, 0.0f, imageViewSize.width + (_circleLayer.circlePadding * 2.0f), imageViewSize.height + (_circleLayer.circlePadding * 2.0f));
+    CGRect before = _VisilabsCircleLayer.bounds;
+    CGRect after = CGRectMake(0.0f, 0.0f, imageViewSize.width + (_VisilabsCircleLayer.circlePadding * 2.0f), imageViewSize.height + (_VisilabsCircleLayer.circlePadding * 2.0f));
     
-    ElasticEaseOutAnimation *circleAnimation = [[ElasticEaseOutAnimation alloc] initWithStartValue:before endValue:after andDuration:duration];
-    _circleLayer.bounds = after;
-    [_circleLayer addAnimation:circleAnimation forKey:@"bounds"];
+    VisilabsElasticEaseOutAnimation *circleAnimation = [[VisilabsElasticEaseOutAnimation alloc] initWithStartValue:before endValue:after andDuration:duration];
+    _VisilabsCircleLayer.bounds = after;
+    [_VisilabsCircleLayer addAnimation:circleAnimation forKey:@"bounds"];
     
     // Animate the image
     before = _imageView.bounds;
     after = CGRectMake(0.0f, 0.0f, imageViewSize.width, imageViewSize.height);
-    ElasticEaseOutAnimation *imageAnimation = [[ElasticEaseOutAnimation alloc] initWithStartValue:before endValue:after andDuration:duration];
+    VisilabsElasticEaseOutAnimation *imageAnimation = [[VisilabsElasticEaseOutAnimation alloc] initWithStartValue:before endValue:after andDuration:duration];
     _imageView.layer.bounds = after;
     [_imageView.layer addAnimation:imageAnimation forKey:@"bounds"];
 }
@@ -503,7 +503,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if(self = [super initWithCoder:aDecoder]) {
-        _maskLayer = [GradientMaskLayer layer];
+        _maskLayer = [VisilabsGradientMaskLayer layer];
         [self.layer setMask:_maskLayer];
         self.opaque = NO;
         _maskLayer.opaque = NO;
@@ -587,10 +587,10 @@
 
 @end
 
-@implementation CircleLayer
+@implementation VisilabsCircleLayer
 
 + (instancetype)layer {
-    CircleLayer *cl = (CircleLayer *)[super layer];
+    VisilabsCircleLayer *cl = (VisilabsCircleLayer *)[super layer];
     cl.circlePadding = 2.5f;
     return cl;
 }
@@ -616,7 +616,7 @@
 
 @end
 
-@implementation GradientMaskLayer
+@implementation VisilabsGradientMaskLayer
 
 - (void)drawInContext:(CGContextRef)ctx
 {
@@ -657,7 +657,7 @@
 
 @end
 
-@implementation ElasticEaseOutAnimation
+@implementation VisilabsElasticEaseOutAnimation
 
 - (instancetype)initWithStartValue:(CGRect)start endValue:(CGRect)end andDuration:(double)duration
 {
