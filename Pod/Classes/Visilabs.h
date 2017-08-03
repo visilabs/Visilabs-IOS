@@ -97,6 +97,10 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
  */
 @property (atomic) UIColor* miniNotificationBackgroundColor;
 
+
+@property (atomic) NSInteger maxGeofenceCount;
+
+
 /*!
  @method
  
@@ -134,6 +138,7 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 
 + (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withTargetURL:(NSString *)targetURL withActionURL:(NSString *)actionURL  withGeofenceURL:(NSString *)geofenceURL withGeofenceEnabled:(BOOL) geofenceEnabled;
 
++ (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withTargetURL:(NSString *)targetURL withActionURL:(NSString *)actionURL  withGeofenceURL:(NSString *)geofenceURL withGeofenceEnabled:(BOOL) geofenceEnabled withMaxGeofenceCount:(NSInteger)maxGeofenceCount ;
 
 
 +(Visilabs *) callAPI ;

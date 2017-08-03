@@ -821,7 +821,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds  withRESTURL:RESTURL withEncryptedDataSource:encryptedDataSource withTargetURL:nil  withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds  withRESTURL:RESTURL withEncryptedDataSource:encryptedDataSource withTargetURL:nil  withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO withMaxGeofenceCount : 20];
         }
     }
     return API;
@@ -833,7 +833,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO withMaxGeofenceCount : 20];
         }
     }
     return API;
@@ -845,7 +845,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:60 withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:60 withRESTURL:nil withEncryptedDataSource:nil withTargetURL:nil withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO withMaxGeofenceCount : 20];
         }
     }
     return API;
@@ -857,7 +857,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:nil withGeofenceURL: nil withGeofenceEnabled:NO withMaxGeofenceCount : 20];
         }
     }
     return API;
@@ -869,7 +869,7 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL withGeofenceURL: nil withGeofenceEnabled:NO];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL withGeofenceURL: nil withGeofenceEnabled:NO withMaxGeofenceCount : 20];
         }
     }
     return API;
@@ -881,10 +881,24 @@ static VisilabsReachability *reachability;
     {
         if (API == nil) {
             API = [[Visilabs alloc] init];
-            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL  withGeofenceURL: geofenceURL withGeofenceEnabled:geofenceEnabled];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL  withGeofenceURL: geofenceURL withGeofenceEnabled:geofenceEnabled withMaxGeofenceCount : 20];
         }
     }
     return API;
+}
+
++ (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withTargetURL:(NSString *)targetURL withActionURL:(NSString *)actionURL  withGeofenceURL:(NSString *)geofenceURL withGeofenceEnabled:(BOOL) geofenceEnabled withMaxGeofenceCount:(NSInteger)maxGeofenceCount
+{
+    @synchronized(self)
+    {
+        if (API == nil) {
+            API = [[Visilabs alloc] init];
+            [API initAPI:organizationID withSiteID:siteID withSegmentURL:segmentURL withDataSource:dataSource withRealTimeURL:realTimeURL withChannel:channel withRequestTimeout:seconds withRESTURL:nil withEncryptedDataSource:nil withTargetURL:targetURL withActionURL:actionURL  withGeofenceURL: geofenceURL withGeofenceEnabled:geofenceEnabled
+   withMaxGeofenceCount : maxGeofenceCount];
+        }
+    }
+    return API;
+    
 }
 
 + (Visilabs *) callAPI
@@ -905,7 +919,7 @@ static VisilabsReachability *reachability;
 
 
 
-- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL withChannel:(NSString *)chan withRequestTimeout:(NSInteger)seconds  withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)tURL withActionURL:(NSString *)aURL withGeofenceURL:(NSString *)gURL withGeofenceEnabled:(BOOL) gEnabled
+- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL withChannel:(NSString *)chan withRequestTimeout:(NSInteger)seconds  withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)tURL withActionURL:(NSString *)aURL withGeofenceURL:(NSString *)gURL withGeofenceEnabled:(BOOL) gEnabled  withMaxGeofenceCount:(NSInteger)maxGeofenceCount
 {
     
     [self registerForNetworkReachabilityNotifications];
@@ -918,6 +932,11 @@ static VisilabsReachability *reachability;
     self.actionURL = aURL;
     self.notificationResponseCached = NO;
     
+    self.maxGeofenceCount = 20;
+    if(maxGeofenceCount < 20 && maxGeofenceCount >0)
+    {
+        self.maxGeofenceCount = maxGeofenceCount;
+    }
     
     self.requestTimeout = seconds;
     self.organizationID = oID;

@@ -1,998 +1,3149 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		0592BB55EF2EA193EA8803C19D08EBF0 /* VisilabsGeofenceInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 50988508EE344AE6460F2A40AC5037BD /* VisilabsGeofenceInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F645761A9DC5670E112580A0C621283 /* VisilabsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1FC9823D6D11D083196A17C2432DFC /* VisilabsDataManager.m */; };
-		142D9056B6EF5C323A3FF8585228C295 /* UIImage+VisilabsImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = F3FC2CF9DFF1F49C4D8DBFA482D29462 /* UIImage+VisilabsImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		166D95A19A880C8C6977FB7EAB836EB0 /* VisilabsGeofenceLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A5FC78F3B5C7E183EEE87F55E2693 /* VisilabsGeofenceLocationManager.m */; };
-		192DFB1BE89D00B9EE5698DA6F9BDB79 /* Visilabs.m in Sources */ = {isa = PBXBuildFile; fileRef = 1591C6D97C8A92B82F97554EB5B3E1DC /* Visilabs.m */; };
-		234E94C43CEAAC5604B4BF5704E21C02 /* VisilabsNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D18BE822B5BBF79B8E65B6E73071745 /* VisilabsNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23E142EDA7B42BF3782EFC441C1AA3C9 /* VisilabsGeofenceApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD2045EDC8CDFD34C88D08FB0FAAF8B /* VisilabsGeofenceApp.m */; };
-		263863ECD1FC5194B3714DAB5F8A9205 /* Pods-Visilabs_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 976E3236B609FF1AD0043D55E79D1BD0 /* Pods-Visilabs_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26AE457992B37DB2DE1E23F51E440E4B /* VisilabsGeofenceStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAEC749A9802C5CF2E314C0628A62D /* VisilabsGeofenceStatus.m */; };
-		3780D93F6CC756F16F2C80F42B3B7DE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		3889FF8B74338F127EB76F35A1035E75 /* VisilabsTargetFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1529F4B3B990215D210B7122C73F3E19 /* VisilabsTargetFilter.m */; };
-		3D0F168CD742F4797D906EF7B986B471 /* VisilabsNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD25CD2B79CA29F08D012E0E7C5FE72 /* VisilabsNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3D564D44836451438A975440E7884012 /* VisilabsNotification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA919DDE540D38CC630F19C562E774BC /* VisilabsNotification.storyboard */; };
-		3FA0B503B6F85F90D8B3479B0D01690B /* VisilabsConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = AACB15C4B01B389B4372A3377727DEAE /* VisilabsConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		400D1000C4A524AD5565501E9440AD3D /* UIView+VisilabsHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F98D421114CE4021702C4038E284A90 /* UIView+VisilabsHelpers.m */; };
-		41AA60D23E9A36840847BEC2057A9FC0 /* VisilabsParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = D50B96E9DAE4BA1254392366C2954D24 /* VisilabsParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4524FDF7C57CF80FF58B82A1C39A217F /* UIImage+VisilabsAverageColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DCA4909CFB24182E10BACF11A3A21B /* UIImage+VisilabsAverageColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C0BA9EEFBA781D97AC0251FD9F08CE2 /* VisilabsGeofenceLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C098F0B46FDBCD418ADC39294F976E5 /* VisilabsGeofenceLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		509DFA1B9531694F6EAA1EFD9D22742A /* VisilabsConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE12F5B8598C56285B1C725CE018471 /* VisilabsConfig.m */; };
-		515B14EF9171B92CA616B61E63D77281 /* UIColor+VisilabsColor.h in Headers */ = {isa = PBXBuildFile; fileRef = E6CE1AAFA9EAC022CB4DD8176847030D /* UIColor+VisilabsColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		57A7BD22DB300A6F8EDAA7A0D1C9365A /* UIImage+VisilabsAverageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2844082BFC277DD4585C80498871E3F3 /* UIImage+VisilabsAverageColor.m */; };
-		5868B18DAD4067D6F4471A54CC7CF21D /* VisilabsPersistentTargetManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4040015E7B4EDB7B261C1B15CE541379 /* VisilabsPersistentTargetManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5CBFD8D6EF628DBC98507D5316E28A68 /* UIViewController+VisilabsGFRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C430BCAC46C3B3F4DEDD2FBCF2E95E44 /* UIViewController+VisilabsGFRootViewController.m */; };
-		638D96EDF9B41CFF1465FD54F7F5DD47 /* VisilabsGeofenceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0F5FBE67E422E63EB1FE426E174D9F /* VisilabsGeofenceRequest.m */; };
-		640652932968396B81864F04C005BEA6 /* VisilabsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FC01BDA8F367ABE562E80C57A1DD4456 /* VisilabsResponse.m */; };
-		6AEFB84E772CE896A68766E12ABC54AF /* Pods-Visilabs_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 770FCB00185ECB55CA7AD20DB56433DD /* Pods-Visilabs_Example-dummy.m */; };
-		6EBE57888719AB45E1DB10D1F42AA63A /* VisilabsParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = E58A348A6CDBDF3B2D77F006BA5C36C7 /* VisilabsParameter.m */; };
-		6ED9F01D68D953D2D1FEC866E169EC3B /* VisilabsGeofenceInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDC8B95CD20D504687FFAA551BD0C79 /* VisilabsGeofenceInterceptor.m */; };
-		6EEB9928DFCF0E30993087A84684DA33 /* Pods-Visilabs_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26823527808B6EE7980A0EA3C08EBD /* Pods-Visilabs_Tests-dummy.m */; };
-		78EE308D4A975254C3715F2FB23C2349 /* VisilabsJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE28D724CEB62AEE8E3876CBF843C9B /* VisilabsJSON.m */; };
-		7BB9431975D18E00049B241B1E8B3A8C /* VisilabsGeofenceBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA82FEB65EBDE005684CC360B180190 /* VisilabsGeofenceBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7CA5AA1FD90137D41D50EF251E9C87D4 /* VisilabsHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A08C007FD7761364F62A9A3244218AC /* VisilabsHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8274DA19C50E16383AFFF3EE54A1C8D6 /* VisilabsReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71556B5B17A616AC7C5868AD29CC54CD /* VisilabsReachability.m */; };
-		85D72F34D37F3F27FDE02132A34D5C65 /* Visilabs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAD30E6498E022A85F896EFED6991A0 /* Visilabs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		86E5109BD4E93E33CB2235100826939E /* VisilabsDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5609163CF5ACC067AC8CA2C503C9A7A1 /* VisilabsDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8EA767313403927DBC7A95EBEBF93CF3 /* VisilabsPersistentTargetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8646B4DBEF9900B133F62E918C9092E /* VisilabsPersistentTargetManager.m */; };
-		8F8553D47935094A1EE3DC6EC5E7A4B9 /* UIColor+VisilabsColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A637CC058C89B41F4E861A00C847ED /* UIColor+VisilabsColor.m */; };
-		92B1C6EB57CC3A89A68CCABBB2A4AFE3 /* VisilabsTargetFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1B5A16D97BCD566436A0B61734C4ED /* VisilabsTargetFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		93F305780D1D571E8AE4247DEDF89C88 /* VisilabsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 47A75CE2C827B77190953648AECE2158 /* VisilabsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97A2C9BB704C8F98FDCB06C079A340AF /* VisilabsCloseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 60263A12FCD30B081F23CE90BFD42286 /* VisilabsCloseBtn.png */; };
-		99A711314C9C6F8264754B19458A5C74 /* Pods-Visilabs_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FBE87DA19832EA1EC54DE9D21DE9EBBA /* Pods-Visilabs_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA3BECC3F4BDF628B9AA05BB439311DD /* Visilabs.h in Headers */ = {isa = PBXBuildFile; fileRef = 98F2E08419EF496D5D0ECE3DCE6AA619 /* Visilabs.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC7104CF4AE28873A8AC670258746705 /* VisilabsGeofenceApp+Location.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF7D46881F4A30DB95DC5E3D7926FA3 /* VisilabsGeofenceApp+Location.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AF9669998CFB6ACE8877F68582E9249D /* VisilabsAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C3A8021D16B13D97D533ADC534D574 /* VisilabsAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B27135CD48F8929B5C2CC8392C2AD05A /* UIViewController+VisilabsGFRootViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AEFC17D49BB1063C6D70E24CCA8BF09 /* UIViewController+VisilabsGFRootViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2A39A9C1D375EC202EA6018BDB78512 /* VisilabsHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB11E41ACC8CC45A67547BBA33699D /* VisilabsHttpClient.m */; };
-		B967014ACD5DFDE00C4726D1B222D84D /* VisilabsJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 77C534F6E60BFC615856A31582A4F3E3 /* VisilabsJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B999AAB54C8F9BC9D4663C09E6417794 /* VisilabsDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9564D36772BF2798E1A1F12B3A589E51 /* VisilabsDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDD783413E1F20ACEFA2F2B6BF899D1A /* VisilabsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 72ED634B2FCA40C88AE1F9504716F4A3 /* VisilabsAction.m */; };
-		BEBCA3844700519461A56E8708A6B5FC /* UIImage+VisilabsImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 759DC6886BEC9F69F3258190753C9BF0 /* UIImage+VisilabsImageEffects.m */; };
-		C1CC15F6B7E003EF2AA599CE49912875 /* VisilabsResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B384DC55B76CE22E84E8D77262F0967E /* VisilabsResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D57A5F942CBFCE91EF2862C06F40FA83 /* VisilabsCloseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72A891F296A256B5081CA5D5DDB5E476 /* VisilabsCloseBtn@2x.png */; };
-		DDF486B59C8EA465D64DE8E4AD755B8C /* VisilabsGeofenceBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 963015C87415C58450AC403F27CCA0C4 /* VisilabsGeofenceBridge.m */; };
-		DE992999A3889899E49B09CC497543CB /* VisilabsGeofenceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 35CD56758BA227CF6B356F24591FD3DA /* VisilabsGeofenceRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E26079D61BBC4F4411AB2E4F3C7232C0 /* VisilabsNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2854F0A84B864C86D36AC4CBD066B5 /* VisilabsNotification.m */; };
-		E264AB107C54EF31712988CA24695D68 /* Visilabs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB256A94E955CA6DDF2C1CE64AB5C9DC /* Visilabs-dummy.m */; };
-		E39488123F57ACB77FEB5EF20576BDDB /* VisilabsGeofenceStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 84AD1994AD3875BB5F23E92C142FF6F6 /* VisilabsGeofenceStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E5AE971600C3DDD76239E2F7F0377D7C /* VisilabsReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 40D0494E86894A11CDC03DB37AB7A903 /* VisilabsReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EC62A7748961639BAA2B5499BCCF778A /* VisilabsGeofenceApp+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = ED65241CB2D77BB15EBB1BF53E0CD474 /* VisilabsGeofenceApp+Location.m */; };
-		ED168454A7DC9F9E79102BC3306860CC /* UIView+VisilabsHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 68BC41569E8DC88E436D535233A04E59 /* UIView+VisilabsHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EFC3AFE63C6ABB7D2FCA38507FBC971A /* VisilabsNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12558F81DD3E43E2AC21F475E52AC7 /* VisilabsNotificationViewController.m */; };
-		F5DBDA012F6E968023FE0ADCD233642E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		F8179D17F72645AB9EF08DCB2379E555 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		FE10E66C31FF1FA07D62C962D09DC639 /* VisilabsTargetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E516E10D0949433100F764B3BFD7914 /* VisilabsTargetRequest.m */; };
-		FE8D94024C7A1436666149A9A83ECA41 /* VisilabsTargetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 115C8E2D7D886C3E6939C03181B90283 /* VisilabsTargetRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF43B9C28B4F79DC7F9E7921A779FA67 /* VisilabsGeofenceApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 08B1608C6E6C99C8A4B6EAAA6DA67BF7 /* VisilabsGeofenceApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		0F5FCAE685BCAD515AE48B91CD35358A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8041DF08B811F3E1F2325E476D1AC74;
-			remoteInfo = Visilabs;
-		};
-		F697DB87BCDF772625B0B38A1B5E41A4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8041DF08B811F3E1F2325E476D1AC74;
-			remoteInfo = Visilabs;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		0130FCBDB1457C1D39B9FD0606DB1872 /* Visilabs.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Visilabs.modulemap; sourceTree = "<group>"; };
-		08B1608C6E6C99C8A4B6EAAA6DA67BF7 /* VisilabsGeofenceApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceApp.h; sourceTree = "<group>"; };
-		115C8E2D7D886C3E6939C03181B90283 /* VisilabsTargetRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsTargetRequest.h; sourceTree = "<group>"; };
-		14364E2A485742A1E1BD4F99D3EC8C40 /* Pods-Visilabs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1529F4B3B990215D210B7122C73F3E19 /* VisilabsTargetFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsTargetFilter.m; sourceTree = "<group>"; };
-		1591C6D97C8A92B82F97554EB5B3E1DC /* Visilabs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Visilabs.m; sourceTree = "<group>"; };
-		1800F4741A84E0C510183B808C05E3B3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18DCA4909CFB24182E10BACF11A3A21B /* UIImage+VisilabsAverageColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+VisilabsAverageColor.h"; sourceTree = "<group>"; };
-		1E516E10D0949433100F764B3BFD7914 /* VisilabsTargetRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsTargetRequest.m; sourceTree = "<group>"; };
-		1E9FA47C3F76D18833D6329602E9DD52 /* Visilabs-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Visilabs-prefix.pch"; sourceTree = "<group>"; };
-		1F1B5A16D97BCD566436A0B61734C4ED /* VisilabsTargetFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsTargetFilter.h; sourceTree = "<group>"; };
-		2844082BFC277DD4585C80498871E3F3 /* UIImage+VisilabsAverageColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImage+VisilabsAverageColor.m"; sourceTree = "<group>"; };
-		28E34BEA17645F88D484BC4999C529C6 /* Pods-Visilabs_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Visilabs_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		2C8CDEC7A30EDDEE7259C3295339FEE6 /* Pods-Visilabs_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Example-resources.sh"; sourceTree = "<group>"; };
-		3270EA8E0B0DAFC7F147B09F52ECC149 /* Pods-Visilabs_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		334B697810C36E139D4D5715E7ACD85B /* Pods-Visilabs_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Tests-resources.sh"; sourceTree = "<group>"; };
-		35CD56758BA227CF6B356F24591FD3DA /* VisilabsGeofenceRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceRequest.h; sourceTree = "<group>"; };
-		3BD25CD2B79CA29F08D012E0E7C5FE72 /* VisilabsNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsNotification.h; sourceTree = "<group>"; };
-		3CD2045EDC8CDFD34C88D08FB0FAAF8B /* VisilabsGeofenceApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceApp.m; sourceTree = "<group>"; };
-		3D10453D841F7190BE677FDEAE571A76 /* Pods-Visilabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		4040015E7B4EDB7B261C1B15CE541379 /* VisilabsPersistentTargetManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsPersistentTargetManager.h; sourceTree = "<group>"; };
-		40D0494E86894A11CDC03DB37AB7A903 /* VisilabsReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsReachability.h; sourceTree = "<group>"; };
-		41AC28D6E615219F4C7A001A96749447 /* Pods_Visilabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		45C3A8021D16B13D97D533ADC534D574 /* VisilabsAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsAction.h; sourceTree = "<group>"; };
-		47A75CE2C827B77190953648AECE2158 /* VisilabsResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsResponse.h; sourceTree = "<group>"; };
-		4AEFC17D49BB1063C6D70E24CCA8BF09 /* UIViewController+VisilabsGFRootViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+VisilabsGFRootViewController.h"; sourceTree = "<group>"; };
-		4C12558F81DD3E43E2AC21F475E52AC7 /* VisilabsNotificationViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsNotificationViewController.m; sourceTree = "<group>"; };
-		4CDB11E41ACC8CC45A67547BBA33699D /* VisilabsHttpClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsHttpClient.m; sourceTree = "<group>"; };
-		4E0F5FBE67E422E63EB1FE426E174D9F /* VisilabsGeofenceRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceRequest.m; sourceTree = "<group>"; };
-		50988508EE344AE6460F2A40AC5037BD /* VisilabsGeofenceInterceptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceInterceptor.h; sourceTree = "<group>"; };
-		513781ABAC1331C6EB69DDC29F69E519 /* Pods-Visilabs_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Visilabs_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		53167CB892B678F18A797E9D28445070 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5609163CF5ACC067AC8CA2C503C9A7A1 /* VisilabsDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsDefines.h; sourceTree = "<group>"; };
-		5D18BE822B5BBF79B8E65B6E73071745 /* VisilabsNotificationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsNotificationViewController.h; sourceTree = "<group>"; };
-		60263A12FCD30B081F23CE90BFD42286 /* VisilabsCloseBtn.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = VisilabsCloseBtn.png; sourceTree = "<group>"; };
-		68BC41569E8DC88E436D535233A04E59 /* UIView+VisilabsHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+VisilabsHelpers.h"; sourceTree = "<group>"; };
-		68E9BD06918C3D6028877C761EF6E2D3 /* Visilabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visilabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6ACC20CE7E745E2DDD67599955ADD300 /* Pods-Visilabs_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Visilabs_Example.modulemap"; sourceTree = "<group>"; };
-		6AFDA792719DC8F82D6ABED5DA72333C /* Pods-Visilabs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		6B4A5FC78F3B5C7E183EEE87F55E2693 /* VisilabsGeofenceLocationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceLocationManager.m; sourceTree = "<group>"; };
-		6F98D421114CE4021702C4038E284A90 /* UIView+VisilabsHelpers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+VisilabsHelpers.m"; sourceTree = "<group>"; };
-		71556B5B17A616AC7C5868AD29CC54CD /* VisilabsReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsReachability.m; sourceTree = "<group>"; };
-		72A891F296A256B5081CA5D5DDB5E476 /* VisilabsCloseBtn@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "VisilabsCloseBtn@2x.png"; sourceTree = "<group>"; };
-		72ED634B2FCA40C88AE1F9504716F4A3 /* VisilabsAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsAction.m; sourceTree = "<group>"; };
-		759DC6886BEC9F69F3258190753C9BF0 /* UIImage+VisilabsImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImage+VisilabsImageEffects.m"; sourceTree = "<group>"; };
-		7702BE96A72B6D50F7339B68823F6B9D /* Pods-Visilabs_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Visilabs_Tests.modulemap"; sourceTree = "<group>"; };
-		770FCB00185ECB55CA7AD20DB56433DD /* Pods-Visilabs_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Visilabs_Example-dummy.m"; sourceTree = "<group>"; };
-		77C534F6E60BFC615856A31582A4F3E3 /* VisilabsJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsJSON.h; sourceTree = "<group>"; };
-		7C19B76160847FE43FFF8017E6543E72 /* Visilabs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Visilabs.xcconfig; sourceTree = "<group>"; };
-		7CE28D724CEB62AEE8E3876CBF843C9B /* VisilabsJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsJSON.m; sourceTree = "<group>"; };
-		84AD1994AD3875BB5F23E92C142FF6F6 /* VisilabsGeofenceStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceStatus.h; sourceTree = "<group>"; };
-		87A637CC058C89B41F4E861A00C847ED /* UIColor+VisilabsColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VisilabsColor.m"; sourceTree = "<group>"; };
-		8AFAEC749A9802C5CF2E314C0628A62D /* VisilabsGeofenceStatus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceStatus.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9564D36772BF2798E1A1F12B3A589E51 /* VisilabsDataManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsDataManager.h; sourceTree = "<group>"; };
-		963015C87415C58450AC403F27CCA0C4 /* VisilabsGeofenceBridge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceBridge.m; sourceTree = "<group>"; };
-		976E3236B609FF1AD0043D55E79D1BD0 /* Pods-Visilabs_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Visilabs_Tests-umbrella.h"; sourceTree = "<group>"; };
-		98F2E08419EF496D5D0ECE3DCE6AA619 /* Visilabs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Visilabs.h; sourceTree = "<group>"; };
-		9A08C007FD7761364F62A9A3244218AC /* VisilabsHttpClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsHttpClient.h; sourceTree = "<group>"; };
-		9B18FD0F50C4F065407D25130F8630A4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C098F0B46FDBCD418ADC39294F976E5 /* VisilabsGeofenceLocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceLocationManager.h; sourceTree = "<group>"; };
-		A725D67F57F8D3D32CA26CBD961D2C92 /* Pods-Visilabs_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Visilabs_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		AA919DDE540D38CC630F19C562E774BC /* VisilabsNotification.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = VisilabsNotification.storyboard; sourceTree = "<group>"; };
-		AACB15C4B01B389B4372A3377727DEAE /* VisilabsConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsConfig.h; sourceTree = "<group>"; };
-		AB1FC9823D6D11D083196A17C2432DFC /* VisilabsDataManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsDataManager.m; sourceTree = "<group>"; };
-		B384DC55B76CE22E84E8D77262F0967E /* VisilabsResponseDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsResponseDelegate.h; sourceTree = "<group>"; };
-		BE26823527808B6EE7980A0EA3C08EBD /* Pods-Visilabs_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Visilabs_Tests-dummy.m"; sourceTree = "<group>"; };
-		C430BCAC46C3B3F4DEDD2FBCF2E95E44 /* UIViewController+VisilabsGFRootViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+VisilabsGFRootViewController.m"; sourceTree = "<group>"; };
-		CAF7D46881F4A30DB95DC5E3D7926FA3 /* VisilabsGeofenceApp+Location.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VisilabsGeofenceApp+Location.h"; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CDA82FEB65EBDE005684CC360B180190 /* VisilabsGeofenceBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsGeofenceBridge.h; sourceTree = "<group>"; };
-		CDE12F5B8598C56285B1C725CE018471 /* VisilabsConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsConfig.m; sourceTree = "<group>"; };
-		D50B96E9DAE4BA1254392366C2954D24 /* VisilabsParameter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VisilabsParameter.h; sourceTree = "<group>"; };
-		D8646B4DBEF9900B133F62E918C9092E /* VisilabsPersistentTargetManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsPersistentTargetManager.m; sourceTree = "<group>"; };
-		E1BACF251DF8E535FD012A205AFDD508 /* Pods-Visilabs_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Example.release.xcconfig"; sourceTree = "<group>"; };
-		E58A348A6CDBDF3B2D77F006BA5C36C7 /* VisilabsParameter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsParameter.m; sourceTree = "<group>"; };
-		E5B556B0DF9445F87811FB6D22FA59C3 /* Pods_Visilabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6CE1AAFA9EAC022CB4DD8176847030D /* UIColor+VisilabsColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+VisilabsColor.h"; sourceTree = "<group>"; };
-		EC2854F0A84B864C86D36AC4CBD066B5 /* VisilabsNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsNotification.m; sourceTree = "<group>"; };
-		ED65241CB2D77BB15EBB1BF53E0CD474 /* VisilabsGeofenceApp+Location.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VisilabsGeofenceApp+Location.m"; sourceTree = "<group>"; };
-		EE9D09B7641E378B3B66E355FA3B8A4B /* Pods-Visilabs_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Visilabs_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F3FC2CF9DFF1F49C4D8DBFA482D29462 /* UIImage+VisilabsImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+VisilabsImageEffects.h"; sourceTree = "<group>"; };
-		F6F25C061288D7D1CAA1A673B2C28AAE /* Pods-Visilabs_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Example-frameworks.sh"; sourceTree = "<group>"; };
-		FAAD30E6498E022A85F896EFED6991A0 /* Visilabs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Visilabs-umbrella.h"; sourceTree = "<group>"; };
-		FB256A94E955CA6DDF2C1CE64AB5C9DC /* Visilabs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Visilabs-dummy.m"; sourceTree = "<group>"; };
-		FBDC8B95CD20D504687FFAA551BD0C79 /* VisilabsGeofenceInterceptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsGeofenceInterceptor.m; sourceTree = "<group>"; };
-		FBE87DA19832EA1EC54DE9D21DE9EBBA /* Pods-Visilabs_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Visilabs_Example-umbrella.h"; sourceTree = "<group>"; };
-		FC01BDA8F367ABE562E80C57A1DD4456 /* VisilabsResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VisilabsResponse.m; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		8B0C8C21EADBC0BE87178F69F481A34A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3780D93F6CC756F16F2C80F42B3B7DE4 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8F04A8775FDADABA2CB824CBC0A70D81 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F8179D17F72645AB9EF08DCB2379E555 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E83119FAFD48771A0292006FDF8AA9B1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F5DBDA012F6E968023FE0ADCD233642E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		0F1EB02369F31D16F15B66F00C07DDB5 /* Pods-Visilabs_Example */ = {
-			isa = PBXGroup;
-			children = (
-				9B18FD0F50C4F065407D25130F8630A4 /* Info.plist */,
-				6ACC20CE7E745E2DDD67599955ADD300 /* Pods-Visilabs_Example.modulemap */,
-				513781ABAC1331C6EB69DDC29F69E519 /* Pods-Visilabs_Example-acknowledgements.markdown */,
-				28E34BEA17645F88D484BC4999C529C6 /* Pods-Visilabs_Example-acknowledgements.plist */,
-				770FCB00185ECB55CA7AD20DB56433DD /* Pods-Visilabs_Example-dummy.m */,
-				F6F25C061288D7D1CAA1A673B2C28AAE /* Pods-Visilabs_Example-frameworks.sh */,
-				2C8CDEC7A30EDDEE7259C3295339FEE6 /* Pods-Visilabs_Example-resources.sh */,
-				FBE87DA19832EA1EC54DE9D21DE9EBBA /* Pods-Visilabs_Example-umbrella.h */,
-				3D10453D841F7190BE677FDEAE571A76 /* Pods-Visilabs_Example.debug.xcconfig */,
-				E1BACF251DF8E535FD012A205AFDD508 /* Pods-Visilabs_Example.release.xcconfig */,
-			);
-			name = "Pods-Visilabs_Example";
-			path = "Target Support Files/Pods-Visilabs_Example";
-			sourceTree = "<group>";
-		};
-		1A4E4FF5FF3A5D4A71D5ABFEAB9A7C5B /* Visilabs */ = {
-			isa = PBXGroup;
-			children = (
-				7235625E03CA9885A1883314817696F8 /* Pod */,
-				DAA6C3B1938A875979CEB15F8A3E795A /* Resources */,
-				B106B0D66FCE5B3CB81744F7366683F1 /* Support Files */,
-			);
-			name = Visilabs;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		2554BDCFC48D3D1B598F57DE235596D5 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				F7B7E7C1747BFC82C1CA0BA9ECFBCCF6 /* Classes */,
-			);
-			path = Pod;
-			sourceTree = "<group>";
-		};
-		340D515A079397D3500E664FA9E3CE17 /* Pods-Visilabs_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				1800F4741A84E0C510183B808C05E3B3 /* Info.plist */,
-				7702BE96A72B6D50F7339B68823F6B9D /* Pods-Visilabs_Tests.modulemap */,
-				EE9D09B7641E378B3B66E355FA3B8A4B /* Pods-Visilabs_Tests-acknowledgements.markdown */,
-				A725D67F57F8D3D32CA26CBD961D2C92 /* Pods-Visilabs_Tests-acknowledgements.plist */,
-				BE26823527808B6EE7980A0EA3C08EBD /* Pods-Visilabs_Tests-dummy.m */,
-				3270EA8E0B0DAFC7F147B09F52ECC149 /* Pods-Visilabs_Tests-frameworks.sh */,
-				334B697810C36E139D4D5715E7ACD85B /* Pods-Visilabs_Tests-resources.sh */,
-				976E3236B609FF1AD0043D55E79D1BD0 /* Pods-Visilabs_Tests-umbrella.h */,
-				6AFDA792719DC8F82D6ABED5DA72333C /* Pods-Visilabs_Tests.debug.xcconfig */,
-				14364E2A485742A1E1BD4F99D3EC8C40 /* Pods-Visilabs_Tests.release.xcconfig */,
-			);
-			name = "Pods-Visilabs_Tests";
-			path = "Target Support Files/Pods-Visilabs_Tests";
-			sourceTree = "<group>";
-		};
-		35B2FE1B276F0FDD22FC411000947894 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E5B556B0DF9445F87811FB6D22FA59C3 /* Pods_Visilabs_Example.framework */,
-				41AC28D6E615219F4C7A001A96749447 /* Pods_Visilabs_Tests.framework */,
-				68E9BD06918C3D6028877C761EF6E2D3 /* Visilabs.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		52155D5C82636D5187F1FDB2400D03B0 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				E6CE1AAFA9EAC022CB4DD8176847030D /* UIColor+VisilabsColor.h */,
-				87A637CC058C89B41F4E861A00C847ED /* UIColor+VisilabsColor.m */,
-				18DCA4909CFB24182E10BACF11A3A21B /* UIImage+VisilabsAverageColor.h */,
-				2844082BFC277DD4585C80498871E3F3 /* UIImage+VisilabsAverageColor.m */,
-				F3FC2CF9DFF1F49C4D8DBFA482D29462 /* UIImage+VisilabsImageEffects.h */,
-				759DC6886BEC9F69F3258190753C9BF0 /* UIImage+VisilabsImageEffects.m */,
-				68BC41569E8DC88E436D535233A04E59 /* UIView+VisilabsHelpers.h */,
-				6F98D421114CE4021702C4038E284A90 /* UIView+VisilabsHelpers.m */,
-				4AEFC17D49BB1063C6D70E24CCA8BF09 /* UIViewController+VisilabsGFRootViewController.h */,
-				C430BCAC46C3B3F4DEDD2FBCF2E95E44 /* UIViewController+VisilabsGFRootViewController.m */,
-				98F2E08419EF496D5D0ECE3DCE6AA619 /* Visilabs.h */,
-				1591C6D97C8A92B82F97554EB5B3E1DC /* Visilabs.m */,
-				45C3A8021D16B13D97D533ADC534D574 /* VisilabsAction.h */,
-				72ED634B2FCA40C88AE1F9504716F4A3 /* VisilabsAction.m */,
-				AACB15C4B01B389B4372A3377727DEAE /* VisilabsConfig.h */,
-				CDE12F5B8598C56285B1C725CE018471 /* VisilabsConfig.m */,
-				9564D36772BF2798E1A1F12B3A589E51 /* VisilabsDataManager.h */,
-				AB1FC9823D6D11D083196A17C2432DFC /* VisilabsDataManager.m */,
-				5609163CF5ACC067AC8CA2C503C9A7A1 /* VisilabsDefines.h */,
-				08B1608C6E6C99C8A4B6EAAA6DA67BF7 /* VisilabsGeofenceApp.h */,
-				3CD2045EDC8CDFD34C88D08FB0FAAF8B /* VisilabsGeofenceApp.m */,
-				CAF7D46881F4A30DB95DC5E3D7926FA3 /* VisilabsGeofenceApp+Location.h */,
-				ED65241CB2D77BB15EBB1BF53E0CD474 /* VisilabsGeofenceApp+Location.m */,
-				CDA82FEB65EBDE005684CC360B180190 /* VisilabsGeofenceBridge.h */,
-				963015C87415C58450AC403F27CCA0C4 /* VisilabsGeofenceBridge.m */,
-				50988508EE344AE6460F2A40AC5037BD /* VisilabsGeofenceInterceptor.h */,
-				FBDC8B95CD20D504687FFAA551BD0C79 /* VisilabsGeofenceInterceptor.m */,
-				9C098F0B46FDBCD418ADC39294F976E5 /* VisilabsGeofenceLocationManager.h */,
-				6B4A5FC78F3B5C7E183EEE87F55E2693 /* VisilabsGeofenceLocationManager.m */,
-				35CD56758BA227CF6B356F24591FD3DA /* VisilabsGeofenceRequest.h */,
-				4E0F5FBE67E422E63EB1FE426E174D9F /* VisilabsGeofenceRequest.m */,
-				84AD1994AD3875BB5F23E92C142FF6F6 /* VisilabsGeofenceStatus.h */,
-				8AFAEC749A9802C5CF2E314C0628A62D /* VisilabsGeofenceStatus.m */,
-				9A08C007FD7761364F62A9A3244218AC /* VisilabsHttpClient.h */,
-				4CDB11E41ACC8CC45A67547BBA33699D /* VisilabsHttpClient.m */,
-				77C534F6E60BFC615856A31582A4F3E3 /* VisilabsJSON.h */,
-				7CE28D724CEB62AEE8E3876CBF843C9B /* VisilabsJSON.m */,
-				3BD25CD2B79CA29F08D012E0E7C5FE72 /* VisilabsNotification.h */,
-				EC2854F0A84B864C86D36AC4CBD066B5 /* VisilabsNotification.m */,
-				5D18BE822B5BBF79B8E65B6E73071745 /* VisilabsNotificationViewController.h */,
-				4C12558F81DD3E43E2AC21F475E52AC7 /* VisilabsNotificationViewController.m */,
-				D50B96E9DAE4BA1254392366C2954D24 /* VisilabsParameter.h */,
-				E58A348A6CDBDF3B2D77F006BA5C36C7 /* VisilabsParameter.m */,
-				4040015E7B4EDB7B261C1B15CE541379 /* VisilabsPersistentTargetManager.h */,
-				D8646B4DBEF9900B133F62E918C9092E /* VisilabsPersistentTargetManager.m */,
-				40D0494E86894A11CDC03DB37AB7A903 /* VisilabsReachability.h */,
-				71556B5B17A616AC7C5868AD29CC54CD /* VisilabsReachability.m */,
-				47A75CE2C827B77190953648AECE2158 /* VisilabsResponse.h */,
-				FC01BDA8F367ABE562E80C57A1DD4456 /* VisilabsResponse.m */,
-				B384DC55B76CE22E84E8D77262F0967E /* VisilabsResponseDelegate.h */,
-				1F1B5A16D97BCD566436A0B61734C4ED /* VisilabsTargetFilter.h */,
-				1529F4B3B990215D210B7122C73F3E19 /* VisilabsTargetFilter.m */,
-				115C8E2D7D886C3E6939C03181B90283 /* VisilabsTargetRequest.h */,
-				1E516E10D0949433100F764B3BFD7914 /* VisilabsTargetRequest.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		715FE92A8AA24FFB389BC894D3E4274B /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0F1EB02369F31D16F15B66F00C07DDB5 /* Pods-Visilabs_Example */,
-				340D515A079397D3500E664FA9E3CE17 /* Pods-Visilabs_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		7235625E03CA9885A1883314817696F8 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				52155D5C82636D5187F1FDB2400D03B0 /* Classes */,
-			);
-			path = Pod;
-			sourceTree = "<group>";
-		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		7C10F118904DC24D1E6240FB3A2F51BE /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1A4E4FF5FF3A5D4A71D5ABFEAB9A7C5B /* Visilabs */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				7C10F118904DC24D1E6240FB3A2F51BE /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				35B2FE1B276F0FDD22FC411000947894 /* Products */,
-				715FE92A8AA24FFB389BC894D3E4274B /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		B106B0D66FCE5B3CB81744F7366683F1 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				53167CB892B678F18A797E9D28445070 /* Info.plist */,
-				0130FCBDB1457C1D39B9FD0606DB1872 /* Visilabs.modulemap */,
-				7C19B76160847FE43FFF8017E6543E72 /* Visilabs.xcconfig */,
-				FB256A94E955CA6DDF2C1CE64AB5C9DC /* Visilabs-dummy.m */,
-				1E9FA47C3F76D18833D6329602E9DD52 /* Visilabs-prefix.pch */,
-				FAAD30E6498E022A85F896EFED6991A0 /* Visilabs-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Visilabs";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DAA6C3B1938A875979CEB15F8A3E795A /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				2554BDCFC48D3D1B598F57DE235596D5 /* Pod */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		F7B7E7C1747BFC82C1CA0BA9ECFBCCF6 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				60263A12FCD30B081F23CE90BFD42286 /* VisilabsCloseBtn.png */,
-				72A891F296A256B5081CA5D5DDB5E476 /* VisilabsCloseBtn@2x.png */,
-				AA919DDE540D38CC630F19C562E774BC /* VisilabsNotification.storyboard */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		B325942A98DB6A95A55B43BF5A69D7E5 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				263863ECD1FC5194B3714DAB5F8A9205 /* Pods-Visilabs_Tests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D55D92EEF6701B2FEEDF81F17D9FEA04 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				99A711314C9C6F8264754B19458A5C74 /* Pods-Visilabs_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F6226C757E1E6CA19E7E32ABABAC969B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				515B14EF9171B92CA616B61E63D77281 /* UIColor+VisilabsColor.h in Headers */,
-				4524FDF7C57CF80FF58B82A1C39A217F /* UIImage+VisilabsAverageColor.h in Headers */,
-				142D9056B6EF5C323A3FF8585228C295 /* UIImage+VisilabsImageEffects.h in Headers */,
-				ED168454A7DC9F9E79102BC3306860CC /* UIView+VisilabsHelpers.h in Headers */,
-				B27135CD48F8929B5C2CC8392C2AD05A /* UIViewController+VisilabsGFRootViewController.h in Headers */,
-				85D72F34D37F3F27FDE02132A34D5C65 /* Visilabs-umbrella.h in Headers */,
-				AA3BECC3F4BDF628B9AA05BB439311DD /* Visilabs.h in Headers */,
-				AF9669998CFB6ACE8877F68582E9249D /* VisilabsAction.h in Headers */,
-				3FA0B503B6F85F90D8B3479B0D01690B /* VisilabsConfig.h in Headers */,
-				B999AAB54C8F9BC9D4663C09E6417794 /* VisilabsDataManager.h in Headers */,
-				86E5109BD4E93E33CB2235100826939E /* VisilabsDefines.h in Headers */,
-				AC7104CF4AE28873A8AC670258746705 /* VisilabsGeofenceApp+Location.h in Headers */,
-				FF43B9C28B4F79DC7F9E7921A779FA67 /* VisilabsGeofenceApp.h in Headers */,
-				7BB9431975D18E00049B241B1E8B3A8C /* VisilabsGeofenceBridge.h in Headers */,
-				0592BB55EF2EA193EA8803C19D08EBF0 /* VisilabsGeofenceInterceptor.h in Headers */,
-				4C0BA9EEFBA781D97AC0251FD9F08CE2 /* VisilabsGeofenceLocationManager.h in Headers */,
-				DE992999A3889899E49B09CC497543CB /* VisilabsGeofenceRequest.h in Headers */,
-				E39488123F57ACB77FEB5EF20576BDDB /* VisilabsGeofenceStatus.h in Headers */,
-				7CA5AA1FD90137D41D50EF251E9C87D4 /* VisilabsHttpClient.h in Headers */,
-				B967014ACD5DFDE00C4726D1B222D84D /* VisilabsJSON.h in Headers */,
-				3D0F168CD742F4797D906EF7B986B471 /* VisilabsNotification.h in Headers */,
-				234E94C43CEAAC5604B4BF5704E21C02 /* VisilabsNotificationViewController.h in Headers */,
-				41AA60D23E9A36840847BEC2057A9FC0 /* VisilabsParameter.h in Headers */,
-				5868B18DAD4067D6F4471A54CC7CF21D /* VisilabsPersistentTargetManager.h in Headers */,
-				E5AE971600C3DDD76239E2F7F0377D7C /* VisilabsReachability.h in Headers */,
-				93F305780D1D571E8AE4247DEDF89C88 /* VisilabsResponse.h in Headers */,
-				C1CC15F6B7E003EF2AA599CE49912875 /* VisilabsResponseDelegate.h in Headers */,
-				92B1C6EB57CC3A89A68CCABBB2A4AFE3 /* VisilabsTargetFilter.h in Headers */,
-				FE8D94024C7A1436666149A9A83ECA41 /* VisilabsTargetRequest.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		59CC8908844429FBD80BE64176B70927 /* Pods-Visilabs_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E8736E23DBA7DE65B83E86AC02A55F6D /* Build configuration list for PBXNativeTarget "Pods-Visilabs_Tests" */;
-			buildPhases = (
-				74C5363C50F72090E15F28A3D2B14F7D /* Sources */,
-				E83119FAFD48771A0292006FDF8AA9B1 /* Frameworks */,
-				B325942A98DB6A95A55B43BF5A69D7E5 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0D919A9A1AD051FFD6C606245460E291 /* PBXTargetDependency */,
-			);
-			name = "Pods-Visilabs_Tests";
-			productName = "Pods-Visilabs_Tests";
-			productReference = 41AC28D6E615219F4C7A001A96749447 /* Pods_Visilabs_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		B8041DF08B811F3E1F2325E476D1AC74 /* Visilabs */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4AFB59CAB8087A83750E8AEF56124A3E /* Build configuration list for PBXNativeTarget "Visilabs" */;
-			buildPhases = (
-				A7C3296C1D0D1894E66939A7673524AC /* Sources */,
-				8F04A8775FDADABA2CB824CBC0A70D81 /* Frameworks */,
-				F6226C757E1E6CA19E7E32ABABAC969B /* Headers */,
-				69AD1A4790E14C79E65A9EC1413E0046 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Visilabs;
-			productName = Visilabs;
-			productReference = 68E9BD06918C3D6028877C761EF6E2D3 /* Visilabs.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		ED256586CFCCF2C67B0CE9C9E46BCF0F /* Pods-Visilabs_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0982047803C53FF9C599E3DCFC574DB4 /* Build configuration list for PBXNativeTarget "Pods-Visilabs_Example" */;
-			buildPhases = (
-				6F30084E7504BF8BC0B53FC2614BC3DE /* Sources */,
-				8B0C8C21EADBC0BE87178F69F481A34A /* Frameworks */,
-				D55D92EEF6701B2FEEDF81F17D9FEA04 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				38E97A7E0922F01CE4DEC6CB8CB9F848 /* PBXTargetDependency */,
-			);
-			name = "Pods-Visilabs_Example";
-			productName = "Pods-Visilabs_Example";
-			productReference = E5B556B0DF9445F87811FB6D22FA59C3 /* Pods_Visilabs_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
-			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 35B2FE1B276F0FDD22FC411000947894 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				ED256586CFCCF2C67B0CE9C9E46BCF0F /* Pods-Visilabs_Example */,
-				59CC8908844429FBD80BE64176B70927 /* Pods-Visilabs_Tests */,
-				B8041DF08B811F3E1F2325E476D1AC74 /* Visilabs */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		69AD1A4790E14C79E65A9EC1413E0046 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				97A2C9BB704C8F98FDCB06C079A340AF /* VisilabsCloseBtn.png in Resources */,
-				D57A5F942CBFCE91EF2862C06F40FA83 /* VisilabsCloseBtn@2x.png in Resources */,
-				3D564D44836451438A975440E7884012 /* VisilabsNotification.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		6F30084E7504BF8BC0B53FC2614BC3DE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6AEFB84E772CE896A68766E12ABC54AF /* Pods-Visilabs_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		74C5363C50F72090E15F28A3D2B14F7D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6EEB9928DFCF0E30993087A84684DA33 /* Pods-Visilabs_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7C3296C1D0D1894E66939A7673524AC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F8553D47935094A1EE3DC6EC5E7A4B9 /* UIColor+VisilabsColor.m in Sources */,
-				57A7BD22DB300A6F8EDAA7A0D1C9365A /* UIImage+VisilabsAverageColor.m in Sources */,
-				BEBCA3844700519461A56E8708A6B5FC /* UIImage+VisilabsImageEffects.m in Sources */,
-				400D1000C4A524AD5565501E9440AD3D /* UIView+VisilabsHelpers.m in Sources */,
-				5CBFD8D6EF628DBC98507D5316E28A68 /* UIViewController+VisilabsGFRootViewController.m in Sources */,
-				E264AB107C54EF31712988CA24695D68 /* Visilabs-dummy.m in Sources */,
-				192DFB1BE89D00B9EE5698DA6F9BDB79 /* Visilabs.m in Sources */,
-				BDD783413E1F20ACEFA2F2B6BF899D1A /* VisilabsAction.m in Sources */,
-				509DFA1B9531694F6EAA1EFD9D22742A /* VisilabsConfig.m in Sources */,
-				0F645761A9DC5670E112580A0C621283 /* VisilabsDataManager.m in Sources */,
-				EC62A7748961639BAA2B5499BCCF778A /* VisilabsGeofenceApp+Location.m in Sources */,
-				23E142EDA7B42BF3782EFC441C1AA3C9 /* VisilabsGeofenceApp.m in Sources */,
-				DDF486B59C8EA465D64DE8E4AD755B8C /* VisilabsGeofenceBridge.m in Sources */,
-				6ED9F01D68D953D2D1FEC866E169EC3B /* VisilabsGeofenceInterceptor.m in Sources */,
-				166D95A19A880C8C6977FB7EAB836EB0 /* VisilabsGeofenceLocationManager.m in Sources */,
-				638D96EDF9B41CFF1465FD54F7F5DD47 /* VisilabsGeofenceRequest.m in Sources */,
-				26AE457992B37DB2DE1E23F51E440E4B /* VisilabsGeofenceStatus.m in Sources */,
-				B2A39A9C1D375EC202EA6018BDB78512 /* VisilabsHttpClient.m in Sources */,
-				78EE308D4A975254C3715F2FB23C2349 /* VisilabsJSON.m in Sources */,
-				E26079D61BBC4F4411AB2E4F3C7232C0 /* VisilabsNotification.m in Sources */,
-				EFC3AFE63C6ABB7D2FCA38507FBC971A /* VisilabsNotificationViewController.m in Sources */,
-				6EBE57888719AB45E1DB10D1F42AA63A /* VisilabsParameter.m in Sources */,
-				8EA767313403927DBC7A95EBEBF93CF3 /* VisilabsPersistentTargetManager.m in Sources */,
-				8274DA19C50E16383AFFF3EE54A1C8D6 /* VisilabsReachability.m in Sources */,
-				640652932968396B81864F04C005BEA6 /* VisilabsResponse.m in Sources */,
-				3889FF8B74338F127EB76F35A1035E75 /* VisilabsTargetFilter.m in Sources */,
-				FE10E66C31FF1FA07D62C962D09DC639 /* VisilabsTargetRequest.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0D919A9A1AD051FFD6C606245460E291 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Visilabs;
-			target = B8041DF08B811F3E1F2325E476D1AC74 /* Visilabs */;
-			targetProxy = 0F5FCAE685BCAD515AE48B91CD35358A /* PBXContainerItemProxy */;
-		};
-		38E97A7E0922F01CE4DEC6CB8CB9F848 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Visilabs;
-			target = B8041DF08B811F3E1F2325E476D1AC74 /* Visilabs */;
-			targetProxy = F697DB87BCDF772625B0B38A1B5E41A4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		015A368F878AC3E2CEAE21DDE8026304 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		27A4FDBFD1D694612F171DEF0267E31D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C19B76160847FE43FFF8017E6543E72 /* Visilabs.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Visilabs/Visilabs-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"VISILABSDEBUG=1",
-				);
-				INFOPLIST_FILE = "Target Support Files/Visilabs/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Visilabs/Visilabs.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Visilabs;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2A40FFDD164A8D1959FFE6E6A8413A1D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D10453D841F7190BE677FDEAE571A76 /* Pods-Visilabs_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"VISILABSDEBUG=1",
-				);
-				INFOPLIST_FILE = "Target Support Files/Pods-Visilabs_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Visilabs_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2EE21D7307C6B309FBA620BE69A148F1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1BACF251DF8E535FD012A205AFDD508 /* Pods-Visilabs_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"VISILABSDEBUG=1",
-				);
-				INFOPLIST_FILE = "Target Support Files/Pods-Visilabs_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Visilabs_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		BAA22847293060485FF895F38973D8B0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C19B76160847FE43FFF8017E6543E72 /* Visilabs.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Visilabs/Visilabs-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"VISILABSDEBUG=1",
-				);
-				INFOPLIST_FILE = "Target Support Files/Visilabs/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Visilabs/Visilabs.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Visilabs;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C010E8A60867868085BB289527C17E29 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14364E2A485742A1E1BD4F99D3EC8C40 /* Pods-Visilabs_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"VISILABSDEBUG=1",
-				);
-				INFOPLIST_FILE = "Target Support Files/Pods-Visilabs_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Visilabs_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		F4500DBA268C31BC9D54188B8D4B8589 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AFDA792719DC8F82D6ABED5DA72333C /* Pods-Visilabs_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"VISILABSDEBUG=1",
-				);
-				INFOPLIST_FILE = "Target Support Files/Pods-Visilabs_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Visilabs_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		0982047803C53FF9C599E3DCFC574DB4 /* Build configuration list for PBXNativeTarget "Pods-Visilabs_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2A40FFDD164A8D1959FFE6E6A8413A1D /* Debug */,
-				2EE21D7307C6B309FBA620BE69A148F1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				015A368F878AC3E2CEAE21DDE8026304 /* Debug */,
-				44CDBB6D11DE06DB64D6268622BDC47E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4AFB59CAB8087A83750E8AEF56124A3E /* Build configuration list for PBXNativeTarget "Visilabs" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27A4FDBFD1D694612F171DEF0267E31D /* Debug */,
-				BAA22847293060485FF895F38973D8B0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E8736E23DBA7DE65B83E86AC02A55F6D /* Build configuration list for PBXNativeTarget "Pods-Visilabs_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F4500DBA268C31BC9D54188B8D4B8589 /* Debug */,
-				C010E8A60867868085BB289527C17E29 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>0130FCBDB1457C1D39B9FD0606DB1872</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Visilabs.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>015A368F878AC3E2CEAE21DDE8026304</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGNING_REQUIRED</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>POD_CONFIGURATION_DEBUG=1</string>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>PROVISIONING_PROFILE_SPECIFIER</key>
+				<string>NO_SIGNING/</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>SYMROOT</key>
+				<string>${SRCROOT}/../build</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>0592BB55EF2EA193EA8803C19D08EBF0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>50988508EE344AE6460F2A40AC5037BD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>08B1608C6E6C99C8A4B6EAAA6DA67BF7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsGeofenceApp.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0982047803C53FF9C599E3DCFC574DB4</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>2A40FFDD164A8D1959FFE6E6A8413A1D</string>
+				<string>2EE21D7307C6B309FBA620BE69A148F1</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>0D919A9A1AD051FFD6C606245460E291</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>Visilabs</string>
+			<key>target</key>
+			<string>B8041DF08B811F3E1F2325E476D1AC74</string>
+			<key>targetProxy</key>
+			<string>0F5FCAE685BCAD515AE48B91CD35358A</string>
+		</dict>
+		<key>0F1EB02369F31D16F15B66F00C07DDB5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9B18FD0F50C4F065407D25130F8630A4</string>
+				<string>6ACC20CE7E745E2DDD67599955ADD300</string>
+				<string>513781ABAC1331C6EB69DDC29F69E519</string>
+				<string>28E34BEA17645F88D484BC4999C529C6</string>
+				<string>770FCB00185ECB55CA7AD20DB56433DD</string>
+				<string>F6F25C061288D7D1CAA1A673B2C28AAE</string>
+				<string>2C8CDEC7A30EDDEE7259C3295339FEE6</string>
+				<string>FBE87DA19832EA1EC54DE9D21DE9EBBA</string>
+				<string>3D10453D841F7190BE677FDEAE571A76</string>
+				<string>E1BACF251DF8E535FD012A205AFDD508</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-Visilabs_Example</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-Visilabs_Example</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0F5FCAE685BCAD515AE48B91CD35358A</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>B8041DF08B811F3E1F2325E476D1AC74</string>
+			<key>remoteInfo</key>
+			<string>Visilabs</string>
+		</dict>
+		<key>0F645761A9DC5670E112580A0C621283</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AB1FC9823D6D11D083196A17C2432DFC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>115C8E2D7D886C3E6939C03181B90283</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsTargetRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>142D9056B6EF5C323A3FF8585228C295</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F3FC2CF9DFF1F49C4D8DBFA482D29462</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>14364E2A485742A1E1BD4F99D3EC8C40</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1529F4B3B990215D210B7122C73F3E19</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsTargetFilter.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1591C6D97C8A92B82F97554EB5B3E1DC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Visilabs.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>166D95A19A880C8C6977FB7EAB836EB0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6B4A5FC78F3B5C7E183EEE87F55E2693</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1800F4741A84E0C510183B808C05E3B3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>18DCA4909CFB24182E10BACF11A3A21B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIImage+VisilabsAverageColor.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>192DFB1BE89D00B9EE5698DA6F9BDB79</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1591C6D97C8A92B82F97554EB5B3E1DC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1A4E4FF5FF3A5D4A71D5ABFEAB9A7C5B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7235625E03CA9885A1883314817696F8</string>
+				<string>DAA6C3B1938A875979CEB15F8A3E795A</string>
+				<string>B106B0D66FCE5B3CB81744F7366683F1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Visilabs</string>
+			<key>path</key>
+			<string>../..</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1E516E10D0949433100F764B3BFD7914</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsTargetRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1E9FA47C3F76D18833D6329602E9DD52</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Visilabs-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F1B5A16D97BCD566436A0B61734C4ED</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsTargetFilter.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>234E94C43CEAAC5604B4BF5704E21C02</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5D18BE822B5BBF79B8E65B6E73071745</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>23E142EDA7B42BF3782EFC441C1AA3C9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3CD2045EDC8CDFD34C88D08FB0FAAF8B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2554BDCFC48D3D1B598F57DE235596D5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F7B7E7C1747BFC82C1CA0BA9ECFBCCF6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pod</string>
+			<key>path</key>
+			<string>Pod</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>263863ECD1FC5194B3714DAB5F8A9205</key>
+		<dict>
+			<key>fileRef</key>
+			<string>976E3236B609FF1AD0043D55E79D1BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>26AE457992B37DB2DE1E23F51E440E4B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8AFAEC749A9802C5CF2E314C0628A62D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>27A4FDBFD1D694612F171DEF0267E31D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>7C19B76160847FE43FFF8017E6543E72</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Visilabs/Visilabs-prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>VISILABSDEBUG=1</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Visilabs/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Visilabs/Visilabs.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>PRODUCT_NAME</key>
+				<string>Visilabs</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>2844082BFC277DD4585C80498871E3F3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIImage+VisilabsAverageColor.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>28E34BEA17645F88D484BC4999C529C6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2A40FFDD164A8D1959FFE6E6A8413A1D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>3D10453D841F7190BE677FDEAE571A76</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>VISILABSDEBUG=1</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-Visilabs_Example/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_Visilabs_Example</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>2C8CDEC7A30EDDEE7259C3295339FEE6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>015A368F878AC3E2CEAE21DDE8026304</string>
+				<string>44CDBB6D11DE06DB64D6268622BDC47E</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>2EE21D7307C6B309FBA620BE69A148F1</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>E1BACF251DF8E535FD012A205AFDD508</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>VISILABSDEBUG=1</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-Visilabs_Example/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_Visilabs_Example</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>3270EA8E0B0DAFC7F147B09F52ECC149</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>334B697810C36E139D4D5715E7ACD85B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>340D515A079397D3500E664FA9E3CE17</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1800F4741A84E0C510183B808C05E3B3</string>
+				<string>7702BE96A72B6D50F7339B68823F6B9D</string>
+				<string>EE9D09B7641E378B3B66E355FA3B8A4B</string>
+				<string>A725D67F57F8D3D32CA26CBD961D2C92</string>
+				<string>BE26823527808B6EE7980A0EA3C08EBD</string>
+				<string>3270EA8E0B0DAFC7F147B09F52ECC149</string>
+				<string>334B697810C36E139D4D5715E7ACD85B</string>
+				<string>976E3236B609FF1AD0043D55E79D1BD0</string>
+				<string>6AFDA792719DC8F82D6ABED5DA72333C</string>
+				<string>14364E2A485742A1E1BD4F99D3EC8C40</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-Visilabs_Tests</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-Visilabs_Tests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>35B2FE1B276F0FDD22FC411000947894</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E5B556B0DF9445F87811FB6D22FA59C3</string>
+				<string>41AC28D6E615219F4C7A001A96749447</string>
+				<string>68E9BD06918C3D6028877C761EF6E2D3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>35CD56758BA227CF6B356F24591FD3DA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsGeofenceRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3780D93F6CC756F16F2C80F42B3B7DE4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CBB3DE36805AF21409EC968A9691732F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3889FF8B74338F127EB76F35A1035E75</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1529F4B3B990215D210B7122C73F3E19</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>38E97A7E0922F01CE4DEC6CB8CB9F848</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>Visilabs</string>
+			<key>target</key>
+			<string>B8041DF08B811F3E1F2325E476D1AC74</string>
+			<key>targetProxy</key>
+			<string>F697DB87BCDF772625B0B38A1B5E41A4</string>
+		</dict>
+		<key>3BD25CD2B79CA29F08D012E0E7C5FE72</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsNotification.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3CD2045EDC8CDFD34C88D08FB0FAAF8B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsGeofenceApp.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3D0F168CD742F4797D906EF7B986B471</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3BD25CD2B79CA29F08D012E0E7C5FE72</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>3D10453D841F7190BE677FDEAE571A76</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3D564D44836451438A975440E7884012</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AA919DDE540D38CC630F19C562E774BC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3FA0B503B6F85F90D8B3479B0D01690B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AACB15C4B01B389B4372A3377727DEAE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>400D1000C4A524AD5565501E9440AD3D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F98D421114CE4021702C4038E284A90</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4040015E7B4EDB7B261C1B15CE541379</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsPersistentTargetManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>40D0494E86894A11CDC03DB37AB7A903</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsReachability.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>41AA60D23E9A36840847BEC2057A9FC0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D50B96E9DAE4BA1254392366C2954D24</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>41AC28D6E615219F4C7A001A96749447</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_Visilabs_Tests.framework</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>44CDBB6D11DE06DB64D6268622BDC47E</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGNING_REQUIRED</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>POD_CONFIGURATION_RELEASE=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>PROVISIONING_PROFILE_SPECIFIER</key>
+				<string>NO_SIGNING/</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>SYMROOT</key>
+				<string>${SRCROOT}/../build</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>4524FDF7C57CF80FF58B82A1C39A217F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>18DCA4909CFB24182E10BACF11A3A21B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>45C3A8021D16B13D97D533ADC534D574</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsAction.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>47A75CE2C827B77190953648AECE2158</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsResponse.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4AEFC17D49BB1063C6D70E24CCA8BF09</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIViewController+VisilabsGFRootViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4AFB59CAB8087A83750E8AEF56124A3E</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>27A4FDBFD1D694612F171DEF0267E31D</string>
+				<string>BAA22847293060485FF895F38973D8B0</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>4C0BA9EEFBA781D97AC0251FD9F08CE2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9C098F0B46FDBCD418ADC39294F976E5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>4C12558F81DD3E43E2AC21F475E52AC7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsNotificationViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4CDB11E41ACC8CC45A67547BBA33699D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsHttpClient.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4E0F5FBE67E422E63EB1FE426E174D9F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsGeofenceRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>50988508EE344AE6460F2A40AC5037BD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsGeofenceInterceptor.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>509DFA1B9531694F6EAA1EFD9D22742A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CDE12F5B8598C56285B1C725CE018471</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>513781ABAC1331C6EB69DDC29F69E519</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>515B14EF9171B92CA616B61E63D77281</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E6CE1AAFA9EAC022CB4DD8176847030D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>52155D5C82636D5187F1FDB2400D03B0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E6CE1AAFA9EAC022CB4DD8176847030D</string>
+				<string>87A637CC058C89B41F4E861A00C847ED</string>
+				<string>18DCA4909CFB24182E10BACF11A3A21B</string>
+				<string>2844082BFC277DD4585C80498871E3F3</string>
+				<string>F3FC2CF9DFF1F49C4D8DBFA482D29462</string>
+				<string>759DC6886BEC9F69F3258190753C9BF0</string>
+				<string>68BC41569E8DC88E436D535233A04E59</string>
+				<string>6F98D421114CE4021702C4038E284A90</string>
+				<string>4AEFC17D49BB1063C6D70E24CCA8BF09</string>
+				<string>C430BCAC46C3B3F4DEDD2FBCF2E95E44</string>
+				<string>98F2E08419EF496D5D0ECE3DCE6AA619</string>
+				<string>1591C6D97C8A92B82F97554EB5B3E1DC</string>
+				<string>45C3A8021D16B13D97D533ADC534D574</string>
+				<string>72ED634B2FCA40C88AE1F9504716F4A3</string>
+				<string>AACB15C4B01B389B4372A3377727DEAE</string>
+				<string>CDE12F5B8598C56285B1C725CE018471</string>
+				<string>9564D36772BF2798E1A1F12B3A589E51</string>
+				<string>AB1FC9823D6D11D083196A17C2432DFC</string>
+				<string>5609163CF5ACC067AC8CA2C503C9A7A1</string>
+				<string>08B1608C6E6C99C8A4B6EAAA6DA67BF7</string>
+				<string>3CD2045EDC8CDFD34C88D08FB0FAAF8B</string>
+				<string>CAF7D46881F4A30DB95DC5E3D7926FA3</string>
+				<string>ED65241CB2D77BB15EBB1BF53E0CD474</string>
+				<string>CDA82FEB65EBDE005684CC360B180190</string>
+				<string>963015C87415C58450AC403F27CCA0C4</string>
+				<string>50988508EE344AE6460F2A40AC5037BD</string>
+				<string>FBDC8B95CD20D504687FFAA551BD0C79</string>
+				<string>9C098F0B46FDBCD418ADC39294F976E5</string>
+				<string>6B4A5FC78F3B5C7E183EEE87F55E2693</string>
+				<string>35CD56758BA227CF6B356F24591FD3DA</string>
+				<string>4E0F5FBE67E422E63EB1FE426E174D9F</string>
+				<string>84AD1994AD3875BB5F23E92C142FF6F6</string>
+				<string>8AFAEC749A9802C5CF2E314C0628A62D</string>
+				<string>9A08C007FD7761364F62A9A3244218AC</string>
+				<string>4CDB11E41ACC8CC45A67547BBA33699D</string>
+				<string>77C534F6E60BFC615856A31582A4F3E3</string>
+				<string>7CE28D724CEB62AEE8E3876CBF843C9B</string>
+				<string>3BD25CD2B79CA29F08D012E0E7C5FE72</string>
+				<string>EC2854F0A84B864C86D36AC4CBD066B5</string>
+				<string>5D18BE822B5BBF79B8E65B6E73071745</string>
+				<string>4C12558F81DD3E43E2AC21F475E52AC7</string>
+				<string>D50B96E9DAE4BA1254392366C2954D24</string>
+				<string>E58A348A6CDBDF3B2D77F006BA5C36C7</string>
+				<string>4040015E7B4EDB7B261C1B15CE541379</string>
+				<string>D8646B4DBEF9900B133F62E918C9092E</string>
+				<string>40D0494E86894A11CDC03DB37AB7A903</string>
+				<string>71556B5B17A616AC7C5868AD29CC54CD</string>
+				<string>47A75CE2C827B77190953648AECE2158</string>
+				<string>FC01BDA8F367ABE562E80C57A1DD4456</string>
+				<string>B384DC55B76CE22E84E8D77262F0967E</string>
+				<string>1F1B5A16D97BCD566436A0B61734C4ED</string>
+				<string>1529F4B3B990215D210B7122C73F3E19</string>
+				<string>115C8E2D7D886C3E6939C03181B90283</string>
+				<string>1E516E10D0949433100F764B3BFD7914</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Classes</string>
+			<key>path</key>
+			<string>Classes</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>53167CB892B678F18A797E9D28445070</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5609163CF5ACC067AC8CA2C503C9A7A1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsDefines.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>57A7BD22DB300A6F8EDAA7A0D1C9365A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2844082BFC277DD4585C80498871E3F3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5868B18DAD4067D6F4471A54CC7CF21D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4040015E7B4EDB7B261C1B15CE541379</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>59CC8908844429FBD80BE64176B70927</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E8736E23DBA7DE65B83E86AC02A55F6D</string>
+			<key>buildPhases</key>
+			<array>
+				<string>74C5363C50F72090E15F28A3D2B14F7D</string>
+				<string>E83119FAFD48771A0292006FDF8AA9B1</string>
+				<string>B325942A98DB6A95A55B43BF5A69D7E5</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>0D919A9A1AD051FFD6C606245460E291</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-Visilabs_Tests</string>
+			<key>productName</key>
+			<string>Pods-Visilabs_Tests</string>
+			<key>productReference</key>
+			<string>41AC28D6E615219F4C7A001A96749447</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>5CBFD8D6EF628DBC98507D5316E28A68</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C430BCAC46C3B3F4DEDD2FBCF2E95E44</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5D18BE822B5BBF79B8E65B6E73071745</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsNotificationViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>60263A12FCD30B081F23CE90BFD42286</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>VisilabsCloseBtn.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>638D96EDF9B41CFF1465FD54F7F5DD47</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4E0F5FBE67E422E63EB1FE426E174D9F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>640652932968396B81864F04C005BEA6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FC01BDA8F367ABE562E80C57A1DD4456</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>68BC41569E8DC88E436D535233A04E59</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIView+VisilabsHelpers.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>68E9BD06918C3D6028877C761EF6E2D3</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Visilabs.framework</string>
+			<key>path</key>
+			<string>Visilabs.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>69AD1A4790E14C79E65A9EC1413E0046</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>97A2C9BB704C8F98FDCB06C079A340AF</string>
+				<string>D57A5F942CBFCE91EF2862C06F40FA83</string>
+				<string>3D564D44836451438A975440E7884012</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6ACC20CE7E745E2DDD67599955ADD300</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6AEFB84E772CE896A68766E12ABC54AF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>770FCB00185ECB55CA7AD20DB56433DD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6AFDA792719DC8F82D6ABED5DA72333C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6B4A5FC78F3B5C7E183EEE87F55E2693</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsGeofenceLocationManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6EBE57888719AB45E1DB10D1F42AA63A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E58A348A6CDBDF3B2D77F006BA5C36C7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6ED9F01D68D953D2D1FEC866E169EC3B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FBDC8B95CD20D504687FFAA551BD0C79</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6EEB9928DFCF0E30993087A84684DA33</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BE26823527808B6EE7980A0EA3C08EBD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F30084E7504BF8BC0B53FC2614BC3DE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6AEFB84E772CE896A68766E12ABC54AF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6F98D421114CE4021702C4038E284A90</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIView+VisilabsHelpers.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>71556B5B17A616AC7C5868AD29CC54CD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsReachability.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>715FE92A8AA24FFB389BC894D3E4274B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>0F1EB02369F31D16F15B66F00C07DDB5</string>
+				<string>340D515A079397D3500E664FA9E3CE17</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7235625E03CA9885A1883314817696F8</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52155D5C82636D5187F1FDB2400D03B0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pod</string>
+			<key>path</key>
+			<string>Pod</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>72A891F296A256B5081CA5D5DDB5E476</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>VisilabsCloseBtn@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>72ED634B2FCA40C88AE1F9504716F4A3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsAction.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>74C5363C50F72090E15F28A3D2B14F7D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6EEB9928DFCF0E30993087A84684DA33</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>7531C8F8DE19F1AA3C8A7AC97A91DC29</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CBB3DE36805AF21409EC968A9691732F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>759DC6886BEC9F69F3258190753C9BF0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIImage+VisilabsImageEffects.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7702BE96A72B6D50F7339B68823F6B9D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>770FCB00185ECB55CA7AD20DB56433DD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>77C534F6E60BFC615856A31582A4F3E3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsJSON.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>78EE308D4A975254C3715F2FB23C2349</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7CE28D724CEB62AEE8E3876CBF843C9B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7BB9431975D18E00049B241B1E8B3A8C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CDA82FEB65EBDE005684CC360B180190</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>7C10F118904DC24D1E6240FB3A2F51BE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1A4E4FF5FF3A5D4A71D5ABFEAB9A7C5B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Development Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7C19B76160847FE43FFF8017E6543E72</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Visilabs.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7CA5AA1FD90137D41D50EF251E9C87D4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9A08C007FD7761364F62A9A3244218AC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>7CE28D724CEB62AEE8E3876CBF843C9B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsJSON.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7DB346D0F39D3F0E887471402A8071AB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>93A4A3777CF96A4AAC1D13BA6DCCEA73</string>
+				<string>7C10F118904DC24D1E6240FB3A2F51BE</string>
+				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
+				<string>35B2FE1B276F0FDD22FC411000947894</string>
+				<string>715FE92A8AA24FFB389BC894D3E4274B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8274DA19C50E16383AFFF3EE54A1C8D6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>71556B5B17A616AC7C5868AD29CC54CD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>84AD1994AD3875BB5F23E92C142FF6F6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsGeofenceStatus.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>85D72F34D37F3F27FDE02132A34D5C65</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FAAD30E6498E022A85F896EFED6991A0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>86E5109BD4E93E33CB2235100826939E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5609163CF5ACC067AC8CA2C503C9A7A1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>87A637CC058C89B41F4E861A00C847ED</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIColor+VisilabsColor.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8AFAEC749A9802C5CF2E314C0628A62D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsGeofenceStatus.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8B0C8C21EADBC0BE87178F69F481A34A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>3780D93F6CC756F16F2C80F42B3B7DE4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8EA767313403927DBC7A95EBEBF93CF3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D8646B4DBEF9900B133F62E918C9092E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8F04A8775FDADABA2CB824CBC0A70D81</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>F8179D17F72645AB9EF08DCB2379E555</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8F8553D47935094A1EE3DC6EC5E7A4B9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>87A637CC058C89B41F4E861A00C847ED</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>92B1C6EB57CC3A89A68CCABBB2A4AFE3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F1B5A16D97BCD566436A0B61734C4ED</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>93A4A3777CF96A4AAC1D13BA6DCCEA73</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>text.script.ruby</string>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>Podfile</string>
+			<key>path</key>
+			<string>../Podfile</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+			<key>xcLanguageSpecificationIdentifier</key>
+			<string>xcode.lang.ruby</string>
+		</dict>
+		<key>93F305780D1D571E8AE4247DEDF89C88</key>
+		<dict>
+			<key>fileRef</key>
+			<string>47A75CE2C827B77190953648AECE2158</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>9564D36772BF2798E1A1F12B3A589E51</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsDataManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>963015C87415C58450AC403F27CCA0C4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsGeofenceBridge.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>976E3236B609FF1AD0043D55E79D1BD0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>97A2C9BB704C8F98FDCB06C079A340AF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>60263A12FCD30B081F23CE90BFD42286</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>98F2E08419EF496D5D0ECE3DCE6AA619</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Visilabs.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>99A711314C9C6F8264754B19458A5C74</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FBE87DA19832EA1EC54DE9D21DE9EBBA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>9A08C007FD7761364F62A9A3244218AC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsHttpClient.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9B18FD0F50C4F065407D25130F8630A4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9C098F0B46FDBCD418ADC39294F976E5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsGeofenceLocationManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A725D67F57F8D3D32CA26CBD961D2C92</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A7C3296C1D0D1894E66939A7673524AC</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8F8553D47935094A1EE3DC6EC5E7A4B9</string>
+				<string>57A7BD22DB300A6F8EDAA7A0D1C9365A</string>
+				<string>BEBCA3844700519461A56E8708A6B5FC</string>
+				<string>400D1000C4A524AD5565501E9440AD3D</string>
+				<string>5CBFD8D6EF628DBC98507D5316E28A68</string>
+				<string>E264AB107C54EF31712988CA24695D68</string>
+				<string>192DFB1BE89D00B9EE5698DA6F9BDB79</string>
+				<string>BDD783413E1F20ACEFA2F2B6BF899D1A</string>
+				<string>509DFA1B9531694F6EAA1EFD9D22742A</string>
+				<string>0F645761A9DC5670E112580A0C621283</string>
+				<string>EC62A7748961639BAA2B5499BCCF778A</string>
+				<string>23E142EDA7B42BF3782EFC441C1AA3C9</string>
+				<string>DDF486B59C8EA465D64DE8E4AD755B8C</string>
+				<string>6ED9F01D68D953D2D1FEC866E169EC3B</string>
+				<string>166D95A19A880C8C6977FB7EAB836EB0</string>
+				<string>638D96EDF9B41CFF1465FD54F7F5DD47</string>
+				<string>26AE457992B37DB2DE1E23F51E440E4B</string>
+				<string>B2A39A9C1D375EC202EA6018BDB78512</string>
+				<string>78EE308D4A975254C3715F2FB23C2349</string>
+				<string>E26079D61BBC4F4411AB2E4F3C7232C0</string>
+				<string>EFC3AFE63C6ABB7D2FCA38507FBC971A</string>
+				<string>6EBE57888719AB45E1DB10D1F42AA63A</string>
+				<string>8EA767313403927DBC7A95EBEBF93CF3</string>
+				<string>8274DA19C50E16383AFFF3EE54A1C8D6</string>
+				<string>640652932968396B81864F04C005BEA6</string>
+				<string>3889FF8B74338F127EB76F35A1035E75</string>
+				<string>FE10E66C31FF1FA07D62C962D09DC639</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>AA3BECC3F4BDF628B9AA05BB439311DD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>98F2E08419EF496D5D0ECE3DCE6AA619</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>AA919DDE540D38CC630F19C562E774BC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>VisilabsNotification.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AACB15C4B01B389B4372A3377727DEAE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsConfig.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AB1FC9823D6D11D083196A17C2432DFC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsDataManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AC7104CF4AE28873A8AC670258746705</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CAF7D46881F4A30DB95DC5E3D7926FA3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>AF9669998CFB6ACE8877F68582E9249D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>45C3A8021D16B13D97D533ADC534D574</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B106B0D66FCE5B3CB81744F7366683F1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>53167CB892B678F18A797E9D28445070</string>
+				<string>0130FCBDB1457C1D39B9FD0606DB1872</string>
+				<string>7C19B76160847FE43FFF8017E6543E72</string>
+				<string>FB256A94E955CA6DDF2C1CE64AB5C9DC</string>
+				<string>1E9FA47C3F76D18833D6329602E9DD52</string>
+				<string>FAAD30E6498E022A85F896EFED6991A0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>Example/Pods/Target Support Files/Visilabs</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B27135CD48F8929B5C2CC8392C2AD05A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4AEFC17D49BB1063C6D70E24CCA8BF09</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B2A39A9C1D375EC202EA6018BDB78512</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4CDB11E41ACC8CC45A67547BBA33699D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>B325942A98DB6A95A55B43BF5A69D7E5</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>263863ECD1FC5194B3714DAB5F8A9205</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>B384DC55B76CE22E84E8D77262F0967E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsResponseDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B8041DF08B811F3E1F2325E476D1AC74</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>4AFB59CAB8087A83750E8AEF56124A3E</string>
+			<key>buildPhases</key>
+			<array>
+				<string>A7C3296C1D0D1894E66939A7673524AC</string>
+				<string>8F04A8775FDADABA2CB824CBC0A70D81</string>
+				<string>F6226C757E1E6CA19E7E32ABABAC969B</string>
+				<string>69AD1A4790E14C79E65A9EC1413E0046</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Visilabs</string>
+			<key>productName</key>
+			<string>Visilabs</string>
+			<key>productReference</key>
+			<string>68E9BD06918C3D6028877C761EF6E2D3</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>B967014ACD5DFDE00C4726D1B222D84D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>77C534F6E60BFC615856A31582A4F3E3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B999AAB54C8F9BC9D4663C09E6417794</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9564D36772BF2798E1A1F12B3A589E51</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>BAA22847293060485FF895F38973D8B0</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>7C19B76160847FE43FFF8017E6543E72</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Visilabs/Visilabs-prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>VISILABSDEBUG=1</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Visilabs/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Visilabs/Visilabs.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>PRODUCT_NAME</key>
+				<string>Visilabs</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>BC3CA7F9E30CC8F7E2DD044DD34432FC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7531C8F8DE19F1AA3C8A7AC97A91DC29</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BDD783413E1F20ACEFA2F2B6BF899D1A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>72ED634B2FCA40C88AE1F9504716F4A3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BE26823527808B6EE7980A0EA3C08EBD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BEBCA3844700519461A56E8708A6B5FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>759DC6886BEC9F69F3258190753C9BF0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C010E8A60867868085BB289527C17E29</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>14364E2A485742A1E1BD4F99D3EC8C40</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>VISILABSDEBUG=1</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-Visilabs_Tests/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_Visilabs_Tests</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>C1CC15F6B7E003EF2AA599CE49912875</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B384DC55B76CE22E84E8D77262F0967E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>C430BCAC46C3B3F4DEDD2FBCF2E95E44</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIViewController+VisilabsGFRootViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAF7D46881F4A30DB95DC5E3D7926FA3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsGeofenceApp+Location.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CBB3DE36805AF21409EC968A9691732F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>CDA82FEB65EBDE005684CC360B180190</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsGeofenceBridge.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CDE12F5B8598C56285B1C725CE018471</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsConfig.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D41D8CD98F00B204E9800998ECF8427E</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0730</string>
+				<key>LastUpgradeCheck</key>
+				<string>0700</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>2D8E8EC45A3A1A1D94AE762CB5028504</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>7DB346D0F39D3F0E887471402A8071AB</string>
+			<key>productRefGroup</key>
+			<string>35B2FE1B276F0FDD22FC411000947894</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>ED256586CFCCF2C67B0CE9C9E46BCF0F</string>
+				<string>59CC8908844429FBD80BE64176B70927</string>
+				<string>B8041DF08B811F3E1F2325E476D1AC74</string>
+			</array>
+		</dict>
+		<key>D50B96E9DAE4BA1254392366C2954D24</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>VisilabsParameter.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D55D92EEF6701B2FEEDF81F17D9FEA04</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>99A711314C9C6F8264754B19458A5C74</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D57A5F942CBFCE91EF2862C06F40FA83</key>
+		<dict>
+			<key>fileRef</key>
+			<string>72A891F296A256B5081CA5D5DDB5E476</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D8646B4DBEF9900B133F62E918C9092E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsPersistentTargetManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DAA6C3B1938A875979CEB15F8A3E795A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2554BDCFC48D3D1B598F57DE235596D5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DDF486B59C8EA465D64DE8E4AD755B8C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>963015C87415C58450AC403F27CCA0C4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE992999A3889899E49B09CC497543CB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>35CD56758BA227CF6B356F24591FD3DA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E1BACF251DF8E535FD012A205AFDD508</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E26079D61BBC4F4411AB2E4F3C7232C0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EC2854F0A84B864C86D36AC4CBD066B5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E264AB107C54EF31712988CA24695D68</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FB256A94E955CA6DDF2C1CE64AB5C9DC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E39488123F57ACB77FEB5EF20576BDDB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>84AD1994AD3875BB5F23E92C142FF6F6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E58A348A6CDBDF3B2D77F006BA5C36C7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsParameter.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E5AE971600C3DDD76239E2F7F0377D7C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>40D0494E86894A11CDC03DB37AB7A903</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E5B556B0DF9445F87811FB6D22FA59C3</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_Visilabs_Example.framework</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E6CE1AAFA9EAC022CB4DD8176847030D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIColor+VisilabsColor.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E83119FAFD48771A0292006FDF8AA9B1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>F5DBDA012F6E968023FE0ADCD233642E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E8736E23DBA7DE65B83E86AC02A55F6D</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>F4500DBA268C31BC9D54188B8D4B8589</string>
+				<string>C010E8A60867868085BB289527C17E29</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>EC2854F0A84B864C86D36AC4CBD066B5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsNotification.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EC62A7748961639BAA2B5499BCCF778A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>ED65241CB2D77BB15EBB1BF53E0CD474</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ED168454A7DC9F9E79102BC3306860CC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>68BC41569E8DC88E436D535233A04E59</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>ED256586CFCCF2C67B0CE9C9E46BCF0F</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>0982047803C53FF9C599E3DCFC574DB4</string>
+			<key>buildPhases</key>
+			<array>
+				<string>6F30084E7504BF8BC0B53FC2614BC3DE</string>
+				<string>8B0C8C21EADBC0BE87178F69F481A34A</string>
+				<string>D55D92EEF6701B2FEEDF81F17D9FEA04</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>38E97A7E0922F01CE4DEC6CB8CB9F848</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-Visilabs_Example</string>
+			<key>productName</key>
+			<string>Pods-Visilabs_Example</string>
+			<key>productReference</key>
+			<string>E5B556B0DF9445F87811FB6D22FA59C3</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>ED65241CB2D77BB15EBB1BF53E0CD474</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsGeofenceApp+Location.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EE9D09B7641E378B3B66E355FA3B8A4B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Tests-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EFC3AFE63C6ABB7D2FCA38507FBC971A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4C12558F81DD3E43E2AC21F475E52AC7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F3FC2CF9DFF1F49C4D8DBFA482D29462</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIImage+VisilabsImageEffects.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F4500DBA268C31BC9D54188B8D4B8589</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>6AFDA792719DC8F82D6ABED5DA72333C</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>VISILABSDEBUG=1</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-Visilabs_Tests/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_Visilabs_Tests</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>F5DBDA012F6E968023FE0ADCD233642E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CBB3DE36805AF21409EC968A9691732F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F6226C757E1E6CA19E7E32ABABAC969B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>515B14EF9171B92CA616B61E63D77281</string>
+				<string>4524FDF7C57CF80FF58B82A1C39A217F</string>
+				<string>142D9056B6EF5C323A3FF8585228C295</string>
+				<string>ED168454A7DC9F9E79102BC3306860CC</string>
+				<string>B27135CD48F8929B5C2CC8392C2AD05A</string>
+				<string>85D72F34D37F3F27FDE02132A34D5C65</string>
+				<string>AA3BECC3F4BDF628B9AA05BB439311DD</string>
+				<string>AF9669998CFB6ACE8877F68582E9249D</string>
+				<string>3FA0B503B6F85F90D8B3479B0D01690B</string>
+				<string>B999AAB54C8F9BC9D4663C09E6417794</string>
+				<string>86E5109BD4E93E33CB2235100826939E</string>
+				<string>AC7104CF4AE28873A8AC670258746705</string>
+				<string>FF43B9C28B4F79DC7F9E7921A779FA67</string>
+				<string>7BB9431975D18E00049B241B1E8B3A8C</string>
+				<string>0592BB55EF2EA193EA8803C19D08EBF0</string>
+				<string>4C0BA9EEFBA781D97AC0251FD9F08CE2</string>
+				<string>DE992999A3889899E49B09CC497543CB</string>
+				<string>E39488123F57ACB77FEB5EF20576BDDB</string>
+				<string>7CA5AA1FD90137D41D50EF251E9C87D4</string>
+				<string>B967014ACD5DFDE00C4726D1B222D84D</string>
+				<string>3D0F168CD742F4797D906EF7B986B471</string>
+				<string>234E94C43CEAAC5604B4BF5704E21C02</string>
+				<string>41AA60D23E9A36840847BEC2057A9FC0</string>
+				<string>5868B18DAD4067D6F4471A54CC7CF21D</string>
+				<string>E5AE971600C3DDD76239E2F7F0377D7C</string>
+				<string>93F305780D1D571E8AE4247DEDF89C88</string>
+				<string>C1CC15F6B7E003EF2AA599CE49912875</string>
+				<string>92B1C6EB57CC3A89A68CCABBB2A4AFE3</string>
+				<string>FE8D94024C7A1436666149A9A83ECA41</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F697DB87BCDF772625B0B38A1B5E41A4</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>B8041DF08B811F3E1F2325E476D1AC74</string>
+			<key>remoteInfo</key>
+			<string>Visilabs</string>
+		</dict>
+		<key>F6F25C061288D7D1CAA1A673B2C28AAE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F7B7E7C1747BFC82C1CA0BA9ECFBCCF6</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>60263A12FCD30B081F23CE90BFD42286</string>
+				<string>72A891F296A256B5081CA5D5DDB5E476</string>
+				<string>AA919DDE540D38CC630F19C562E774BC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Classes</string>
+			<key>path</key>
+			<string>Classes</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F8179D17F72645AB9EF08DCB2379E555</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CBB3DE36805AF21409EC968A9691732F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FAAD30E6498E022A85F896EFED6991A0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Visilabs-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FB256A94E955CA6DDF2C1CE64AB5C9DC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Visilabs-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FBDC8B95CD20D504687FFAA551BD0C79</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsGeofenceInterceptor.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FBE87DA19832EA1EC54DE9D21DE9EBBA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-Visilabs_Example-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FC01BDA8F367ABE562E80C57A1DD4456</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>VisilabsResponse.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE10E66C31FF1FA07D62C962D09DC639</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1E516E10D0949433100F764B3BFD7914</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE8D94024C7A1436666149A9A83ECA41</key>
+		<dict>
+			<key>fileRef</key>
+			<string>115C8E2D7D886C3E6939C03181B90283</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>FF43B9C28B4F79DC7F9E7921A779FA67</key>
+		<dict>
+			<key>fileRef</key>
+			<string>08B1608C6E6C99C8A4B6EAAA6DA67BF7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>D41D8CD98F00B204E9800998ECF8427E</string>
+</dict>
+</plist>
