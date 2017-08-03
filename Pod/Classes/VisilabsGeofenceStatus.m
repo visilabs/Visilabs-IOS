@@ -279,7 +279,7 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                 maxGeofenceCount = 20;
                             }
                             
-                            if(returnedRegions && [returnedRegions count] > 20){
+                            if(returnedRegions && [returnedRegions count] > maxGeofenceCount){
                                 NSSortDescriptor *sortDescriptor;
                                 sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromCurrentLastKnownLocation"
                                                                          ascending:YES];
