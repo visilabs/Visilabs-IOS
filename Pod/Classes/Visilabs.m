@@ -97,6 +97,7 @@ static Visilabs * API = nil;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
+- (void)setExVisitorIDToNull;
 
 /*Notification Properties*/
 @property (nonatomic, strong) dispatch_queue_t serialQueue;
@@ -1256,6 +1257,12 @@ static VisilabsReachability *reachability;
             [VisilabsPersistentTargetManager clearParameters];
         }
         
+        if([self exVisitorID] != nil &&  ![[self exVisitorID] isEqualToString:exvisitorid])
+        {
+            [self setCookieID];
+        }
+        
+        
         self.exVisitorID = exvisitorid;
         if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[self exVisitorIDFilePath]])
         {
@@ -1427,6 +1434,11 @@ static VisilabsReachability *reachability;
     }
     else
     {
+        if([self exVisitorID] != nil &&  ![[self exVisitorID]isEqualToString:exVisitorID])
+        {
+            [self setCookieID];
+        }
+        
         if(!properties)
         {
             properties = [[NSMutableDictionary alloc] init];
@@ -1447,6 +1459,11 @@ static VisilabsReachability *reachability;
     }
     else
     {
+        if([self exVisitorID] != nil &&  ![[self exVisitorID] isEqualToString:exVisitorID])
+        {
+            [self setCookieID];
+        }
+        
         if(!properties)
         {
             properties = [[NSMutableDictionary alloc] init];
@@ -1465,6 +1482,13 @@ static VisilabsReachability *reachability;
     {
         DLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
         return;
+    }
+    
+    BOOL b = [[self exVisitorID] isEqualToString:exVisitorID];
+    
+    if([self exVisitorID]!= nil &&  ![[self exVisitorID] isEqualToString:exVisitorID])
+    {
+        [self setCookieID];
     }
     
     NSString *escapedNewIdentity = [self urlEncode:exVisitorID];
@@ -1537,6 +1561,11 @@ static VisilabsReachability *reachability;
     {
         DLog(@"Visilabs: WARNING - attempted to use nil or empty identity. Ignoring.");
         return;
+    }
+    
+    if([self exVisitorID]!= nil &&  ![[self exVisitorID] isEqualToString:exVisitorID])
+    {
+        [self setCookieID];
     }
     
     NSString *escapedNewIdentity = [self urlEncode:exVisitorID];
@@ -1807,6 +1836,10 @@ static VisilabsReachability *reachability;
     return  pushURL;
 }
 
+-(void)setExVisitorIDToNull
+{
+    self.exVisitorID = nil;
+}
 
 @end
 

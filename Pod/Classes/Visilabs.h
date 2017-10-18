@@ -141,7 +141,9 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 + (Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dataSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel withRequestTimeout:(NSInteger)seconds withTargetURL:(NSString *)targetURL withActionURL:(NSString *)actionURL  withGeofenceURL:(NSString *)geofenceURL withGeofenceEnabled:(BOOL) geofenceEnabled withMaxGeofenceCount:(NSInteger)maxGeofenceCount ;
 
 
-+(Visilabs *) callAPI ;
++ (Visilabs *) callAPI ;
+
+
 
 - (void)customEvent:(NSString *)pageName withProperties:(NSMutableDictionary *)properties;
 - (void)login:(NSString *)exVisitorID;
@@ -150,5 +152,6 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 - (void)signUp:(NSString *)exVisitorID withProperties:(NSMutableDictionary *)properties;
 - (NSString *)getPushURL:(NSString *)source withCampaign:(NSString *)campaign withMedium:(NSString *)medium withContent:(NSString *)content;
 
+- (void)setExVisitorIDToNull;
 
 @end

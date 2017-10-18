@@ -37,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self testExVisitorIDChange];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -157,7 +158,23 @@
     //[[Visilabs callAPI] showNotification:@"dene"];
 }
 
+- (void)testExVisitorIDChange{
+    [[Visilabs callAPI] setExVisitorIDToNull];
+    [[Visilabs callAPI] customEvent:@"deneme" withProperties:nil];
+    [[Visilabs callAPI] customEvent:@"deneme2" withProperties:nil];
+    [[Visilabs callAPI] login:@"ex1"];
+    [[Visilabs callAPI] customEvent:@"deneme3" withProperties:nil];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"zahir" forKey:@"OM.pv"];
+    [[Visilabs callAPI] customEvent:@"deneme4" withProperties:dic];
+    
+     [[Visilabs callAPI] login:@"ex2"];
+    [[Visilabs callAPI] customEvent:@"deneme5" withProperties:dic];
+    
+    [dic setObject:@"ex3" forKey:@"OM.exVisitorID"];
+    [[Visilabs callAPI] customEvent:@"deneme6" withProperties:dic];
 
+}
 
 
 
