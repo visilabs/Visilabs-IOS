@@ -35,7 +35,9 @@
     NSString * trendyolNewSiteID = @"3659756D4350385868686B3D";
     NSString * trendyolNewDataSource = @"trendyol";
     
-    
+    NSString * zubizuOID = @"4B386D62426E72506654383D";
+    NSString * zubizuSiteID = @"42512F6A767749464169633D";
+    NSString * zubizuDataSource = @"qclub";
     
     /*
     NSString * visilabsNewOID = @"4B386D62426E72506654383D"; // Zubizu Apps Test
@@ -47,7 +49,8 @@
     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:YES];
      */
     
-     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"https://s.visilabs.net/json" withActionURL:@"https://s.visilabs.net/actjson" withGeofenceURL:@"https://s.visilabs.net/geojson" withGeofenceEnabled:NO];
+     [Visilabs createAPI:zubizuOID withSiteID:zubizuSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:zubizuDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"https://s.visilabs.net/json" withActionURL:@"https://s.visilabs.net/actjson" withGeofenceURL:@"https://s.visilabs.net/geojson" withGeofenceEnabled:YES
+    withMaxGeofenceCount: 12];
     
     
      [[Visilabs callAPI] login:@"10620730" withProperties:nil];

@@ -285,7 +285,7 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                                                          ascending:YES];
                                 NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
                                 NSArray *sortedReturnedRegions = [returnedRegions sortedArrayUsingDescriptors:sortDescriptors];
-                                returnedRegions = [sortedReturnedRegions subarrayWithRange:NSMakeRange(0, 20)];
+                                returnedRegions = [sortedReturnedRegions subarrayWithRange:NSMakeRange(0, maxGeofenceCount)];
                             }
                         }@catch(NSException *ex){
                             
