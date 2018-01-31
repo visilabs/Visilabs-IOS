@@ -20,6 +20,9 @@
 + (NSString *) ZONE_ID_KEY;
 + (NSString *) BODY_KEY;
 
++ (NSString *) LATITUDE_KEY;
++ (NSString *) LONGITUDE_KEY;
+
 + (NSString *) ACT_ID_KEY;
 + (NSString *) ACT_KEY;
 

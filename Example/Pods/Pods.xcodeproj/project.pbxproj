@@ -94,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		00B0AC58EEF00C6C8E1F5E826EAFED09 /* VisilabsResponseDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VisilabsResponseDelegate.h; path = Pod/Classes/VisilabsResponseDelegate.h; sourceTree = "<group>"; };
+		02F7F2E53579B13F34778A0B4EC72630 /* QGSdk.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QGSdk.h; sourceTree = "<group>"; };
 		1212935125A68BA064B19B070950285B /* Visilabs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Visilabs-umbrella.h"; sourceTree = "<group>"; };
 		14364E2A485742A1E1BD4F99D3EC8C40 /* Pods-Visilabs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		15CF41CE8CEC93BD28C673D0166DF0A9 /* VisilabsAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VisilabsAction.h; path = Pod/Classes/VisilabsAction.h; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 		B3B889F03403CD74D120A24D2654AE6F /* VisilabsTargetRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VisilabsTargetRequest.h; path = Pod/Classes/VisilabsTargetRequest.h; sourceTree = "<group>"; };
 		BA28554EC454CCC0CD420953B45F3CF9 /* UIImage+VisilabsImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+VisilabsImageEffects.m"; path = "Pod/Classes/UIImage+VisilabsImageEffects.m"; sourceTree = "<group>"; };
 		BE26823527808B6EE7980A0EA3C08EBD /* Pods-Visilabs_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Visilabs_Tests-dummy.m"; sourceTree = "<group>"; };
+		BED28604595F53B919E8750C2D2A18B0 /* libQGSdk.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libQGSdk.a; sourceTree = "<group>"; };
 		C41BFDB98D9C793F7324417FD95F2FF6 /* VisilabsGeofenceApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VisilabsGeofenceApp.h; path = Pod/Classes/VisilabsGeofenceApp.h; sourceTree = "<group>"; };
 		CC2B1F78E51B35423FA7068E058AA7BE /* Visilabs-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Visilabs-prefix.pch"; sourceTree = "<group>"; };
 		CEFB175B71CDE71BF06A69B72BDBF764 /* VisilabsNotificationViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VisilabsNotificationViewController.m; path = Pod/Classes/VisilabsNotificationViewController.m; sourceTree = "<group>"; };
@@ -211,6 +213,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02863B35C1BDFFFE89C069F2C23B2A4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BED28604595F53B919E8750C2D2A18B0 /* libQGSdk.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0F1EB02369F31D16F15B66F00C07DDB5 /* Pods-Visilabs_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +331,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3E3282D51C2ACFC7A0A3C227CB1D806C /* ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				02F7F2E53579B13F34778A0B4EC72630 /* QGSdk.h */,
+				02863B35C1BDFFFE89C069F2C23B2A4D /* Frameworks */,
+			);
+			name = "ios-sdk";
+			sourceTree = "<group>";
+		};
 		56F0CBE67C0EF5373A29A419C4F64B5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +348,14 @@
 				665F95B6762C3748227FF1EA1AD04DDE /* VisilabsNotification.storyboard */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		5FC43C27D45ECD3385F176F2989BDE58 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9BFB936C7B14412F247D9ECF0B56FE8D /* quantumgraph */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		715FE92A8AA24FFB389BC894D3E4274B /* Targets Support Files */ = {
@@ -346,9 +373,19 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				A803997A22AB2893CCEC92E8814C2C3E /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				5FC43C27D45ECD3385F176F2989BDE58 /* Pods */,
 				35B2FE1B276F0FDD22FC411000947894 /* Products */,
 				715FE92A8AA24FFB389BC894D3E4274B /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		9BFB936C7B14412F247D9ECF0B56FE8D /* quantumgraph */ = {
+			isa = PBXGroup;
+			children = (
+				3E3282D51C2ACFC7A0A3C227CB1D806C /* ios-sdk */,
+			);
+			name = quantumgraph;
+			path = quantumgraph;
 			sourceTree = "<group>";
 		};
 		A803997A22AB2893CCEC92E8814C2C3E /* Development Pods */ = {

@@ -780,7 +780,7 @@ static VisilabsReachability *reachability;
 }
 
 
-- (VisilabsGeofenceRequest *)buildGeofenceRequest:(NSString *)action withActionID:(NSString *)actionID{
+- (VisilabsGeofenceRequest *)buildGeofenceRequest:(NSString *)action withActionID:(NSString *)actionID withLatitude:(double)latitude withLongitude:(double)longitude{
     VisilabsGeofenceRequest *request = (VisilabsGeofenceRequest *)[self buildGeofenceAction];
     request.action = action;
     request.actionID = actionID;
@@ -788,6 +788,8 @@ static VisilabsReachability *reachability;
     request.headers = nil;
     request.method = @"GET";
     request.requestMethod = @"GET";
+    request.lastKnownLatitude = latitude;
+    request.lastKnownLongitude = longitude;
     [request setArgs:nil];
     
     return request;

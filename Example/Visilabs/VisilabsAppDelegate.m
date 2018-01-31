@@ -7,12 +7,19 @@
 //
 
 #import "VisilabsAppDelegate.h"
+//#import "QGSdk.h"
 //#import "EuroIOSFramework/EuroManager.h"
+
 
 @implementation VisilabsAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+
+    
+    
+    
     //NSString * euromsgmobilappSiteID = @"482B67724F524B5A6353633D";
     //NSString * euromsgmobilappDataSource = @"euromsgmobilapp";
     
@@ -35,6 +42,7 @@
     NSString * trendyolNewSiteID = @"3659756D4350385868686B3D";
     NSString * trendyolNewDataSource = @"trendyol";
     
+    
     NSString * zubizuOID = @"4B386D62426E72506654383D";
     NSString * zubizuSiteID = @"42512F6A767749464169633D";
     NSString * zubizuDataSource = @"qclub";
@@ -49,56 +57,54 @@
     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:YES];
      */
     
-     [Visilabs createAPI:zubizuOID withSiteID:zubizuSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:zubizuDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"https://s.visilabs.net/json" withActionURL:@"https://s.visilabs.net/actjson" withGeofenceURL:@"https://s.visilabs.net/geojson" withGeofenceEnabled:YES
-    withMaxGeofenceCount: 12];
+     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"https://s.visilabs.net/json" withActionURL:@"https://s.visilabs.net/actjson" withGeofenceURL:@"https://s.visilabs.net/geojson" withGeofenceEnabled:YES
+    withMaxGeofenceCount: 8];
     
     
-     [[Visilabs callAPI] login:@"10620730" withProperties:nil];
+    [[Visilabs callAPI] login:@"10620730" withProperties:nil];
+
     
-    /*
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"8365bb346feb332e654b41422f626fbfd8edb83e88a78c7ec5b76662cfd54c18" forKey:@"OM.sys.TokenID"];
-    [dic setObject:@"Internal_iOS_Zubizu" forKey:@"OM.sys.AppID"];
-    
-     [[Visilabs callAPI] login:@"674594557" withProperties:dic];
-     */
-    
-    
-    // Override point for customization after application launch.
-    
-    //[Visilabs callAPI].checkForNotificationsOnLoggerRequest = YES;
-    
-    /*sil sonra bunu*/
-    /*
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"deneme" forKey:@"OM.sys.TokenID"];
-    [dic setObject:@"VisilabsIOSDemoTest2" forKey:@"OM.sys.AppID"];
-    [[Visilabs callAPI] customEvent:@"RegisterToken" withProperties:dic];
-     */
-    
-    /*
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
-                                                                                         | UIUserNotificationTypeBadge
-                                                                                         | UIUserNotificationTypeSound) categories:nil];
-    [application registerUserNotificationSettings:settings];
-     */
-    
-    
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        #ifdef __IPHONE_8_0
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
-                                                                                             | UIUserNotificationTypeBadge
-                                                                                             | UIUserNotificationTypeSound) categories:nil];
-        [application registerUserNotificationSettings:settings];
-        #endif
-    } else {
-        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
-        [application registerForRemoteNotificationTypes:myTypes];
+    if (@available(iOS 10, *))
+    {
+        UNNotificationAction *ackAction = [UNNotificationAction actionWithIdentifier:@"com.elonchan.yes"
+                                                                               title:@"Acknowledge"
+                                                                             options:UNNotificationActionOptionForeground];
+        UNNotificationAction *detailsAction = [UNNotificationAction actionWithIdentifier:@"com.elonchan.no"
+                                                                                   title:@"Details"
+                                                                                 options:UNNotificationActionOptionForeground];
+        NSArray *notificationActions = @[ ackAction, detailsAction ];
+        UNNotificationCategory *cat = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategory"
+            actions:notificationActions intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center setNotificationCategories: [NSSet setWithObjects:@[cat], nil]];
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error)
+         {
+             if(!error) {
+                 [[UIApplication sharedApplication] registerForRemoteNotifications];
+                 // required to get the app to do anything at all about push notifications
+                 NSLog( @"Push registration success." );
+             } else {
+                 NSLog( @"Push registration FAILED" );
+                 NSLog( @"ERROR: %@ - %@", error.localizedFailureReason, error.localizedDescription );
+                 NSLog( @"SUGGESTIONS: %@ - %@", error.localizedRecoveryOptions, error.localizedRecoverySuggestion );
+             }
+         }];
+    }
+    else
+    {
+        if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            #ifdef __IPHONE_8_0
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
+                          | UIUserNotificationTypeBadge| UIUserNotificationTypeSound) categories:nil];
+            [application registerUserNotificationSettings:settings];
+            #endif
+        } else {
+            UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+            [application registerForRemoteNotificationTypes:myTypes];
+        }
     }
     
-    
-    
-    //[[VisilabsGFMainController sharedInstance] start];
 
     return YES;
 }
@@ -122,6 +128,9 @@
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
+    //[[QGSdk getSharedInstance] setToken:deviceToken];
+
+    
     
     NSString *tokenString = [[[deviceToken description] stringByTrimmingCharactersInSet:
                               [NSCharacterSet characterSetWithCharactersInString:@"<>"]]
@@ -140,7 +149,7 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:tokenString forKey:@"OM.sys.TokenID"];
-    [dic setObject:@"VisilabsIOSDemoTest" forKey:@"OM.sys.AppID"];
+    [dic setObject:@"VisilabsIOSDemo" forKey:@"OM.sys.AppID"];
     [[Visilabs callAPI] customEvent:@"RegisterToken" withProperties:dic];
     
 }
@@ -150,6 +159,13 @@
 
 - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Registration failed : %@",error.description);
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"User Info Description: %@",userInfo.debugDescription);
+
+    
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -192,5 +208,19 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+//Called when a notification is delivered to a foreground app.
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    NSLog(@"User Info : %@",notification.request.content.userInfo);
+    completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+}
+
+//Called to let your app know which action was selected by the user for a given notification.
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler{
+    NSLog(@"User Info : %@",response.notification.request.content.userInfo);
+    completionHandler();
+}
+
+
 
 @end

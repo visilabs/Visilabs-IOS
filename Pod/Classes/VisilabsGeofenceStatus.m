@@ -151,7 +151,10 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
 
 - (void)setGeofenceTimestamp:(NSString *)geofenceTimestamp
 {
-    if (![VisilabsGeofenceLocationManager locationServiceEnabledForApp:NO] || ![CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]])
+    BOOL locationServiceEnabledForApp = [VisilabsGeofenceLocationManager locationServiceEnabledForApp:NO];
+    BOOL isMonitoringAvailableForClass = [CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]];
+    
+    if (!locationServiceEnabledForApp || !isMonitoringAvailableForClass)
     {
         return;
     }
@@ -160,35 +163,21 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
         NSDate *serverTime = visilabsParseDate(geofenceTimestamp, 0);
         if (serverTime != nil)
         {
-            BOOL needFetch = NO;
-            NSObject *localTimeVal = [[NSUserDefaults standardUserDefaults] objectForKey:APPSTATUS_GEOFENCE_FETCH_TIME];
-            if (localTimeVal == nil || ![localTimeVal isKindOfClass:[NSNumber class]])
-            {
-                needFetch = YES;  //local never fetched, do fetch.
-            }
-            else
-            {
-                //NSDate *localTime = [NSDate dateWithTimeIntervalSinceReferenceDate:[(NSNumber *)localTimeVal doubleValue]];
-                
-                //TODO:egemen karşılaştırmayı yapmıyor artık.
-                needFetch = YES;
-                /*
-                if ([localTime compare:serverTime] == NSOrderedAscending)
-                {
-                    needFetch = YES;  //local fetched, but too old, do fetch.
-                }
-                */
-            }
+            BOOL needFetch = YES;
             if (needFetch)
             {
                 //update local cache time before send request, because this request has same format as others {app_status:..., code:0, value:...}, it will trigger `setGeofenceTimestamp` again. If fail to get request, clear local cache time in callback handler, make next fetch happen.
                 [[NSUserDefaults standardUserDefaults] setObject:@([serverTime timeIntervalSinceReferenceDate]) forKey:APPSTATUS_GEOFENCE_FETCH_TIME];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
+                CLLocationCoordinate2D lastKnownLocation =  [[VisilabsGeofenceLocationManager sharedInstance] currentGeoLocationValue];
+                CLLocationDegrees lastKnownLocationLatitude = lastKnownLocation.latitude;
+                CLLocationDegrees lastKnownLocationLongitude = lastKnownLocation.longitude;
                 
                 
+                VisilabsGeofenceRequest *request=[[Visilabs callAPI] buildGeofenceRequest:@"getlist" withActionID:nil
+                   withLatitude:lastKnownLocationLatitude withLongitude:lastKnownLocationLongitude];
                 
-                VisilabsGeofenceRequest *request=[[Visilabs callAPI] buildGeofenceRequest:@"getlist" withActionID: nil];
                 void (^ successBlock)(VisilabsResponse *) = ^(VisilabsResponse * response) {
                     NSMutableArray *returnedRegions = [[NSMutableArray alloc] init];
                     
@@ -207,13 +196,8 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                 int durationInSeconds = [[action objectForKey:@"dis"] intValue];
                                 NSObject *geoFences = [action objectForKey:@"geo"];
                                 
-                                //VisilabsGFRegion *regionDict = [[VisilabsGFRegion alloc] init];
-                                //NSObject *regionDict = [[NSObject alloc] init];
-                                
                                 if(geoFences){
                                     NSArray *geoFencesArray = (NSArray *)geoFences;
-                                    
-                                    
                                     
                                     for (NSObject * geo in geoFencesArray) {
                                         if([geo isKindOfClass:[NSDictionary class]]){
@@ -224,9 +208,9 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                             double radius = [[geofence objectForKey:@"rds"] doubleValue];
                                             
                                             VisilabsServerGeofence *visilabsServerGeofence = [[VisilabsServerGeofence alloc] init];
-                                            visilabsServerGeofence.serverId = [NSString stringWithFormat:@"%d_%d", actid, i];
-                                            visilabsServerGeofence.suid = [NSString stringWithFormat:@"%d_%d", actid, i];
-                                            visilabsServerGeofence.title = [NSString stringWithFormat:@"%d_%d", actid, i];
+                                            visilabsServerGeofence.serverId = [NSString stringWithFormat:@"visilabs_%d_%d", actid, i];
+                                            visilabsServerGeofence.suid = [NSString stringWithFormat:@"visilabs_%d_%d", actid, i];
+                                            visilabsServerGeofence.title = [NSString stringWithFormat:@"visilabs_%d_%d", actid, i];
                                             
                                             visilabsServerGeofence.latitude = latitude;
                                             visilabsServerGeofence.longitude = longitude;
@@ -279,7 +263,10 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                 maxGeofenceCount = 20;
                             }
                             
+                            
+                            
                             if(returnedRegions && [returnedRegions count] > maxGeofenceCount){
+                                
                                 NSSortDescriptor *sortDescriptor;
                                 sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromCurrentLastKnownLocation"
                                                                          ascending:YES];
@@ -290,7 +277,7 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                         }@catch(NSException *ex){
                             
                         }
-                        
+
                         self.arrayGeofenceFetchList = returnedRegions;
                         [[NSUserDefaults standardUserDefaults] setObject:[VisilabsServerGeofence serializeToArrayDict:returnedRegions] forKey:APPSTATUS_GEOFENCE_FETCH_LIST];
                         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -347,10 +334,13 @@ float const HAVERSINE_RADS_PER_DEGREE = 0.0174532925199433;
 
 - (NSMutableArray *)arrayGeofenceFetchList
 {
+    
     if (_arrayGeofenceFetchList == nil) //never initialized
     {
-        _arrayGeofenceFetchList = [NSMutableArray arrayWithArray:[VisilabsServerGeofence deserializeToArrayObj:[[NSUserDefaults standardUserDefaults] objectForKey:APPSTATUS_GEOFENCE_FETCH_LIST]]]; //it will not get nil even empty
+        _arrayGeofenceFetchList = [[NSMutableArray alloc] init];
+        //_arrayGeofenceFetchList = [NSMutableArray arrayWithArray:[VisilabsServerGeofence deserializeToArrayObj:[[NSUserDefaults standardUserDefaults] objectForKey:APPSTATUS_GEOFENCE_FETCH_LIST]]]; //it will not get nil even empty
     }
+    
     return _arrayGeofenceFetchList;
 }
 
@@ -379,9 +369,20 @@ float const HAVERSINE_RADS_PER_DEGREE = 0.0174532925199433;
 
 - (void)stopMonitorPreviousGeofencesOnlyForOutside:(BOOL)onlyForOutside parentCanKeepChild:(BOOL)parentKeep
 {
+    long monitoredRegionsCount = VisiGeofence.locationManager.monitoredRegions.count;
+    
+    
+    
     for (CLRegion *monitorRegion in VisiGeofence.locationManager.monitoredRegions)
     {
         //only stop if this region is previous geofence, should not affect if it's iBeacon or from other source monitor.
+        if ([monitorRegion.identifier rangeOfString:@"visilabs"].location != NSNotFound) {
+            [VisiGeofence.locationManager stopMonitorRegion:monitorRegion];
+            DLog(@"%@ stopped.", monitorRegion.identifier);
+        }
+            
+        
+        /*
         VisilabsServerGeofence *matchGeofence = [self findServerGeofenceForRegion:monitorRegion];
         if (matchGeofence != nil) //stop monitor this as it's previous geofence
         {
@@ -406,7 +407,10 @@ float const HAVERSINE_RADS_PER_DEGREE = 0.0174532925199433;
                 [self stopMonitorSelfAndChildGeofence:matchGeofence];
             }
         }
+         */
     }
+    
+    monitoredRegionsCount = VisiGeofence.locationManager.monitoredRegions.count;
 }
 
 - (void)startMonitorGeofences:(NSArray *)arrayGeofences
@@ -604,7 +608,10 @@ NSString *visilabsBoolToString(BOOL boolVal)
 - (BOOL)isEqualToCircleRegion:(CLCircularRegion *)geoRegion
 {
     //region only compares by `identifier`.
-    return ([self.serverId compare:geoRegion.identifier] == NSOrderedSame);
+    DLog(@"self.serverId: %@", self.serverId);
+    DLog(@"geoRegion.identifier: %@", geoRegion.identifier);
+    BOOL isEqual = ([self.serverId compare:geoRegion.identifier] == NSOrderedSame);
+    return isEqual;
 }
 
 - (NSDictionary *)serializeGeofeneToDict

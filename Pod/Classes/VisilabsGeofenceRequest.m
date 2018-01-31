@@ -79,6 +79,20 @@
     }
     
     
+    if(self.lastKnownLatitude > 0)
+    {
+        NSString* encodedLatitudeValue = [NSString stringWithFormat:@"%.013f", self.lastKnownLatitude];
+        NSString *latitudeParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig LATITUDE_KEY], encodedLatitudeValue];
+        queryParameters = [[queryParameters stringByAppendingString:latitudeParameter] mutableCopy];
+    }
+    
+    if(self.lastKnownLongitude > 0)
+    {
+        NSString* encodedLongitudeValue = [NSString stringWithFormat:@"%.013f", self.lastKnownLongitude];
+        NSString *longitudeParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig LONGITUDE_KEY], encodedLongitudeValue];
+        queryParameters = [[queryParameters stringByAppendingString:longitudeParameter] mutableCopy];
+    }
+    
     NSString *appParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig APPID_KEY], @"IOS"];
     queryParameters = [[queryParameters stringByAppendingString:appParameter] mutableCopy];
     

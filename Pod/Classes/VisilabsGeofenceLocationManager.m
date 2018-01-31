@@ -11,7 +11,7 @@
 #import "VisilabsGeofenceLocationManager.h"
 #import "VisilabsGeofenceApp.h" 
 #import <CoreBluetooth/CoreBluetooth.h>
-#import <UIKit/UIKit.h> 
+#import <UIKit/UIKit.h>
 #import "VisilabsReachability.h"
 #import "VisilabsGeofenceStatus.h"
 #import "VisilabsGeofenceRequest.h"
@@ -794,7 +794,7 @@
 
 -(void) sendPushNotification:(NSString *)actID
 {
-    VisilabsGeofenceRequest *request=[[Visilabs callAPI] buildGeofenceRequest:@"process" withActionID: actID];
+    VisilabsGeofenceRequest *request=[[Visilabs callAPI] buildGeofenceRequest:@"process" withActionID: actID withLatitude:0 withLongitude:0];
     void (^ successBlock)(VisilabsResponse *) = ^(VisilabsResponse * response) {};
     void (^ failBlock)(VisilabsResponse *) =^(VisilabsResponse * response){};
     [request execAsyncWithSuccess:successBlock AndFailure:failBlock];
@@ -811,24 +811,10 @@
             
                 if(geofence.isInside){
                     NSArray *elements = [geofenceID componentsSeparatedByString:@"_"];
-                    if(elements && elements.count == 2){
-                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[0]];
+                    if(elements && elements.count == 3){
+                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
                     }
                 }
-                
-                /*
-                CLLocationCoordinate2D geofenceCoordinate = CLLocationCoordinate2DMake(geofence.latitude,geofence.longitude);
-                MKMapPoint currentPoint = MKMapPointForCoordinate(_locationManager.location.coordinate);
-                MKMapPoint geofencePoint = MKMapPointForCoordinate(geofenceCoordinate);
-                CLLocationDistance distance = MKMetersBetweenMapPoints(currentPoint, geofencePoint);
-                if(geofence.radius > distance){
-                    NSArray *elements = [geofenceID componentsSeparatedByString:@"_"];
-                    if(elements && elements.count == 2){
-                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[0]];
-                    }
-                }
-                */
-                
                 return;
             }
         }
@@ -846,8 +832,8 @@
             if([geofence.suid isEqualToString:region.identifier]){
                 if([geofence.type isEqualToString:@"OnEnter"]){
                     NSArray *elements = [region.identifier componentsSeparatedByString:@"_"];
-                    if(elements && elements.count == 2){
-                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[0]];
+                    if(elements && elements.count == 3){
+                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
                     }
                 }
                 else if([geofence.type isEqualToString:@"Dwell"]){
@@ -895,15 +881,14 @@
             if([geofence.suid isEqualToString:region.identifier]){
                 if([geofence.type isEqualToString:@"OnExit"]){
                     NSArray *elements = [region.identifier componentsSeparatedByString:@"_"];
-                    if(elements && elements.count == 2){
-                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[0]];
+                    if(elements && elements.count == 3){
+                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
                     }
                 }
             }
         }
     }
     
-
     if (!VisiGeofence.isLocationServiceEnabled)
     {
         return;  //initialize CLLocationManager but cannot call any function to avoid promote.

@@ -15,5 +15,7 @@
 
 @property (nonatomic, strong) NSString *action;
 @property (nonatomic, strong) NSString *actionID;
+@property double lastKnownLatitude;
+@property double lastKnownLongitude;
 
 @end

@@ -8,6 +8,9 @@
 
 #import "VisilabsViewController.h"
 
+#import <CoreLocation/CoreLocation.h>
+
+
 @interface VisilabsViewController ()
 
 @property (strong, nonatomic) IBOutlet UITextField *exVisitorIDText;

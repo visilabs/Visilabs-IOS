@@ -6,11 +6,12 @@
 //  Copyright (c) 2015 visilabs. All rights reserved.
 //
 
+
 @import UIKit;
 @import Visilabs;
+@import UserNotifications;
 
-
-@interface VisilabsAppDelegate : UIResponder <UIApplicationDelegate>
+@interface VisilabsAppDelegate : UIResponder <UIApplicationDelegate,UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
