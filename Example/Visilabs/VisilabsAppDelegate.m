@@ -30,6 +30,8 @@
     */
     
     
+    
+    
     NSString * visilabsNewOID = @"53444A2B4B5071322F50303D";
     NSString * visilabsNewSiteID = @"362F714E306C756B2B37593D";
     NSString * visilabsNewDataSource = @"visilabsnew";
@@ -57,11 +59,25 @@
     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:YES];
      */
     
-     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"https://s.visilabs.net/json" withActionURL:@"https://s.visilabs.net/actjson" withGeofenceURL:@"https://s.visilabs.net/geojson" withGeofenceEnabled:YES
-    withMaxGeofenceCount: 8];
+    //NSString * geofenceURL = @"https://s.visilabs.net/geojson";
+    //NSString * targetURL = @"https://s.visilabs.net/json";
+    //NSString * actionURL = @"https://s.visilabs.net/actjson";
+    
+    /*
+    NSString * geofenceURL = @"https://testappvisilabsios.ngrok.io/adservertestweb/geojson";
+    NSString * targetURL = @"https://testappvisilabsios.ngrok.io/adservertestweb/json";
+    NSString * actionURL = @"https://testappvisilabsios.ngrok.io/adservertestweb/actjson";
+    */
+    
+    NSString * geofenceURL = @"http://tests.visilabs.net/geojson";
+    NSString * targetURL = @"http://tests.visilabs.net/json";
+    NSString * actionURL = @"http://tests.visilabs.net/actjson";
+    
+     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:targetURL withActionURL:actionURL withGeofenceURL:geofenceURL withGeofenceEnabled:YES
+    withMaxGeofenceCount: 20];
     
     
-    [[Visilabs callAPI] login:@"10620730" withProperties:nil];
+    [[Visilabs callAPI] login:@"egemen-deneme" withProperties:nil];
 
     
     if (@available(iOS 10, *))
@@ -145,7 +161,7 @@
     
     
     
-    [[Visilabs callAPI] login:@"egemen@visilabs.com"];
+    [[Visilabs callAPI] login:@"sedat-deneme"];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:tokenString forKey:@"OM.sys.TokenID"];

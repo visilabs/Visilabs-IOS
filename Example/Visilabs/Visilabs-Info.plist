@@ -24,17 +24,14 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Her zaman ve uygulama açıkken lokasyon kullan.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Her zaman lokasyon kullan.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Uygulama açıkken lokasyon kullan.</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Her zaman ve uygulama açıkken lokasyon kullan.</string>
-    
 	<key>UIBackgroundModes</key>
-	<array>
-		<string>remote-notification</string>
-	</array>
+	<array/>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -54,5 +51,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>tests.visilabs.net</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
 </dict>
 </plist>

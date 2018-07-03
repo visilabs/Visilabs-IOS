@@ -176,7 +176,7 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                 
                 
                 VisilabsGeofenceRequest *request=[[Visilabs callAPI] buildGeofenceRequest:@"getlist" withActionID:nil
-                   withLatitude:lastKnownLocationLatitude withLongitude:lastKnownLocationLongitude];
+                   withLatitude:lastKnownLocationLatitude withLongitude:lastKnownLocationLongitude withGeofenceID:nil withIsDwell:NO withIsEnter:NO];
                 
                 void (^ successBlock)(VisilabsResponse *) = ^(VisilabsResponse * response) {
                     NSMutableArray *returnedRegions = [[NSMutableArray alloc] init];
@@ -207,10 +207,11 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                             double longitude = [[geofence objectForKey:@"long"] doubleValue];
                                             double radius = [[geofence objectForKey:@"rds"] doubleValue];
                                             
+                                            NSString *geoID = [geofence objectForKey:@"id"];
+
+                                            
                                             VisilabsServerGeofence *visilabsServerGeofence = [[VisilabsServerGeofence alloc] init];
-                                            visilabsServerGeofence.serverId = [NSString stringWithFormat:@"visilabs_%d_%d", actid, i];
-                                            visilabsServerGeofence.suid = [NSString stringWithFormat:@"visilabs_%d_%d", actid, i];
-                                            visilabsServerGeofence.title = [NSString stringWithFormat:@"visilabs_%d_%d", actid, i];
+                                            
                                             
                                             visilabsServerGeofence.latitude = latitude;
                                             visilabsServerGeofence.longitude = longitude;
@@ -232,7 +233,43 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                             
                                             visilabsServerGeofence.distanceFromCurrentLastKnownLocation = distance;
                                             
+                                            
+                                            visilabsServerGeofence.serverId = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
+                                            visilabsServerGeofence.suid = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
+                                            visilabsServerGeofence.title = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
                                             [returnedRegions addObject:visilabsServerGeofence];
+                                            
+                                            /*
+                                            if ([targetEvent isEqualToString:@"OnEnter"] || [targetEvent isEqualToString:@"OnExit"]){
+                                                visilabsServerGeofence.serverId = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
+                                                visilabsServerGeofence.suid = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
+                                                visilabsServerGeofence.title = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
+                                                [returnedRegions addObject:visilabsServerGeofence];
+                                            }
+                                            else{
+                                                visilabsServerGeofence.type = @"OnEnter";
+                                                visilabsServerGeofence.serverId = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnEnter", geoID];
+                                                visilabsServerGeofence.suid = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnEnter", geoID];
+                                                visilabsServerGeofence.title = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnEnter", geoID];
+                                                [returnedRegions addObject:visilabsServerGeofence];
+                                                
+                                                VisilabsServerGeofence *visilabsServerGeofenceExit = [[VisilabsServerGeofence alloc] init];
+                                                visilabsServerGeofenceExit.latitude = latitude;
+                                                visilabsServerGeofenceExit.longitude = longitude;
+                                                visilabsServerGeofenceExit.radius = radius;
+                                                visilabsServerGeofenceExit.isInside = NO;
+                                                visilabsServerGeofenceExit.type = @"OnExit";
+                                                visilabsServerGeofenceExit.durationInSeconds = durationInSeconds;
+                                                visilabsServerGeofenceExit.distanceFromCurrentLastKnownLocation = DBL_MAX;
+                                                visilabsServerGeofenceExit.distanceFromCurrentLastKnownLocation = distance;
+                                                visilabsServerGeofenceExit.serverId = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnExit", geoID];
+                                                visilabsServerGeofenceExit.suid = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnExit", geoID];
+                                                visilabsServerGeofenceExit.title = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnExit", geoID];
+                                                [returnedRegions addObject:visilabsServerGeofenceExit];
+                                            }
+                                            */
+                                            
+                                            
                                             
                                             if(i == 0){
                                                 DLog(@"Current latitude: %g longitude:%g", currentLatitude, currentLongitude);
@@ -262,16 +299,14 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                             {
                                 maxGeofenceCount = 20;
                             }
-                            
-                            
-                            
+      
                             if(returnedRegions && [returnedRegions count] > maxGeofenceCount){
                                 
                                 NSSortDescriptor *sortDescriptor;
                                 sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromCurrentLastKnownLocation"
                                                                          ascending:YES];
-                                NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-                                NSArray *sortedReturnedRegions = [returnedRegions sortedArrayUsingDescriptors:sortDescriptors];
+                                NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:sortDescriptor];
+                                NSMutableArray *sortedReturnedRegions = [returnedRegions sortedArrayUsingDescriptors:sortDescriptors];
                                 returnedRegions = [sortedReturnedRegions subarrayWithRange:NSMakeRange(0, maxGeofenceCount)];
                             }
                         }@catch(NSException *ex){
@@ -724,6 +759,7 @@ NSString *visilabsBoolToString(BOOL boolVal)
     return array;
 }
 
+/*
 + (NSArray *)deserializeToArrayObj:(NSArray *)arrayDict
 {
     NSMutableArray *array = [NSMutableArray array];
@@ -733,5 +769,6 @@ NSString *visilabsBoolToString(BOOL boolVal)
     }
     return array;
 }
+ */
 
 @end

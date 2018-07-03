@@ -24,13 +24,6 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		653BD086CFE2DEDB76DCA39D /* Pods_Visilabs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 569B719174EBFBB6255E1C9A /* Pods_Visilabs_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		CC4961DC1FBAE31500FF6833 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4961DB1FBAE31500FF6833 /* NotificationService.m */; };
-		CC4961E01FBAE31500FF6833 /* ServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CC4961D81FBAE31500FF6833 /* ServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CC4961EB1FBB0FA300FF6833 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4961EA1FBB0FA300FF6833 /* UserNotifications.framework */; };
-		CC4961ED1FBB0FA300FF6833 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4961EC1FBB0FA300FF6833 /* UserNotificationsUI.framework */; };
-		CC4961F11FBB0FA300FF6833 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4961F01FBB0FA300FF6833 /* NotificationViewController.m */; };
-		CC4961F41FBB0FA300FF6833 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4961F21FBB0FA300FF6833 /* MainInterface.storyboard */; };
-		CC4961F81FBB0FA300FF6833 /* ContentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CC4961E91FBB0FA300FF6833 /* ContentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,20 +34,6 @@
 			remoteGlobalIDString = 6003F589195388D20070C39A;
 			remoteInfo = Visilabs;
 		};
-		CC4961DE1FBAE31500FF6833 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6003F582195388D10070C39A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CC4961D71FBAE31500FF6833;
-			remoteInfo = ServiceExtension;
-		};
-		CC4961F61FBB0FA300FF6833 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6003F582195388D10070C39A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CC4961E81FBB0FA300FF6833;
-			remoteInfo = ContentExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,8 +43,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CC4961F81FBB0FA300FF6833 /* ContentExtension.appex in Embed App Extensions */,
-				CC4961E01FBAE31500FF6833 /* ServiceExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,17 +79,8 @@
 		7A6712CC4E38220274A10BBB /* Pods_Visilabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B90A869BAC0DC417616274C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		CC4961D81FBAE31500FF6833 /* ServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC4961DA1FBAE31500FF6833 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
-		CC4961DB1FBAE31500FF6833 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
-		CC4961DD1FBAE31500FF6833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC4961E91FBB0FA300FF6833 /* ContentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ContentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4961EA1FBB0FA300FF6833 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		CC4961EC1FBB0FA300FF6833 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		CC4961EF1FBB0FA300FF6833 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
-		CC4961F01FBB0FA300FF6833 /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
-		CC4961F31FBB0FA300FF6833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		CC4961F51FBB0FA300FF6833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC85B6C35A5FDC0F6ED4562D /* Visilabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Visilabs.podspec; path = ../Visilabs.podspec; sourceTree = "<group>"; };
 		EB182A46C0D422E631AED90B /* Pods-Visilabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		EED7F946BE1B60F709FAFFF9 /* Pods-Visilabs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Visilabs_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,22 +109,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC4961D51FBAE31500FF6833 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC4961E61FBB0FA300FF6833 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC4961ED1FBB0FA300FF6833 /* UserNotificationsUI.framework in Frameworks */,
-				CC4961EB1FBB0FA300FF6833 /* UserNotifications.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -167,8 +119,6 @@
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for Visilabs */,
 				6003F5B5195388D20070C39A /* Tests */,
-				CC4961D91FBAE31500FF6833 /* ServiceExtension */,
-				CC4961EE1FBB0FA300FF6833 /* ContentExtension */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				E5D11253C47C5FC55951371E /* Pods */,
@@ -180,8 +130,6 @@
 			children = (
 				6003F58A195388D20070C39A /* Visilabs_Example.app */,
 				6003F5AE195388D20070C39A /* Visilabs_Tests.xctest */,
-				CC4961D81FBAE31500FF6833 /* ServiceExtension.appex */,
-				CC4961E91FBB0FA300FF6833 /* ContentExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,27 +206,6 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		CC4961D91FBAE31500FF6833 /* ServiceExtension */ = {
-			isa = PBXGroup;
-			children = (
-				CC4961DA1FBAE31500FF6833 /* NotificationService.h */,
-				CC4961DB1FBAE31500FF6833 /* NotificationService.m */,
-				CC4961DD1FBAE31500FF6833 /* Info.plist */,
-			);
-			path = ServiceExtension;
-			sourceTree = "<group>";
-		};
-		CC4961EE1FBB0FA300FF6833 /* ContentExtension */ = {
-			isa = PBXGroup;
-			children = (
-				CC4961EF1FBB0FA300FF6833 /* NotificationViewController.h */,
-				CC4961F01FBB0FA300FF6833 /* NotificationViewController.m */,
-				CC4961F21FBB0FA300FF6833 /* MainInterface.storyboard */,
-				CC4961F51FBB0FA300FF6833 /* Info.plist */,
-			);
-			path = ContentExtension;
-			sourceTree = "<group>";
-		};
 		E5D11253C47C5FC55951371E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,14 +229,11 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				60AD5A8DFE79340AD2E6B557 /* [CP] Embed Pods Frameworks */,
-				9D803AFAA75EA506BB6CFAE2 /* [CP] Copy Pods Resources */,
 				CC4961E41FBAE31500FF6833 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CC4961DF1FBAE31500FF6833 /* PBXTargetDependency */,
-				CC4961F71FBB0FA300FF6833 /* PBXTargetDependency */,
 			);
 			name = Visilabs_Example;
 			productName = Visilabs;
@@ -325,7 +249,6 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				E3B11BDC5F6A00D00EA8235A /* [CP] Embed Pods Frameworks */,
-				69AAADA7451BA64906531052 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -336,40 +259,6 @@
 			productName = VisilabsTests;
 			productReference = 6003F5AE195388D20070C39A /* Visilabs_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CC4961D71FBAE31500FF6833 /* ServiceExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CC4961E31FBAE31500FF6833 /* Build configuration list for PBXNativeTarget "ServiceExtension" */;
-			buildPhases = (
-				CC4961D41FBAE31500FF6833 /* Sources */,
-				CC4961D51FBAE31500FF6833 /* Frameworks */,
-				CC4961D61FBAE31500FF6833 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ServiceExtension;
-			productName = ServiceExtension;
-			productReference = CC4961D81FBAE31500FF6833 /* ServiceExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		CC4961E81FBB0FA300FF6833 /* ContentExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CC4961F91FBB0FA300FF6833 /* Build configuration list for PBXNativeTarget "ContentExtension" */;
-			buildPhases = (
-				CC4961E51FBB0FA300FF6833 /* Sources */,
-				CC4961E61FBB0FA300FF6833 /* Frameworks */,
-				CC4961E71FBB0FA300FF6833 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ContentExtension;
-			productName = ContentExtension;
-			productReference = CC4961E91FBB0FA300FF6833 /* ContentExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -383,6 +272,7 @@
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = 5M383PCDJZ;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -394,16 +284,6 @@
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
-					};
-					CC4961D71FBAE31500FF6833 = {
-						CreatedOnToolsVersion = 9.0.1;
-						DevelopmentTeam = 5M383PCDJZ;
-						ProvisioningStyle = Automatic;
-					};
-					CC4961E81FBB0FA300FF6833 = {
-						CreatedOnToolsVersion = 9.0.1;
-						DevelopmentTeam = 5M383PCDJZ;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -422,8 +302,6 @@
 			targets = (
 				6003F589195388D20070C39A /* Visilabs_Example */,
 				6003F5AD195388D20070C39A /* Visilabs_Tests */,
-				CC4961D71FBAE31500FF6833 /* ServiceExtension */,
-				CC4961E81FBB0FA300FF6833 /* ContentExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -445,21 +323,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC4961D61FBAE31500FF6833 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC4961E71FBB0FA300FF6833 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC4961F41FBB0FA300FF6833 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,21 +365,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		69AAADA7451BA64906531052 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7B8B5AEB8A2B9F19E3C865C7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,21 +381,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9D803AFAA75EA506BB6CFAE2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3B11BDC5F6A00D00EA8235A /* [CP] Embed Pods Frameworks */ = {
@@ -589,22 +422,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC4961D41FBAE31500FF6833 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC4961DC1FBAE31500FF6833 /* NotificationService.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC4961E51FBB0FA300FF6833 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC4961F11FBB0FA300FF6833 /* NotificationViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -612,16 +429,6 @@
 			isa = PBXTargetDependency;
 			target = 6003F589195388D20070C39A /* Visilabs_Example */;
 			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
-		};
-		CC4961DF1FBAE31500FF6833 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CC4961D71FBAE31500FF6833 /* ServiceExtension */;
-			targetProxy = CC4961DE1FBAE31500FF6833 /* PBXContainerItemProxy */;
-		};
-		CC4961F71FBB0FA300FF6833 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CC4961E81FBB0FA300FF6833 /* ContentExtension */;
-			targetProxy = CC4961F61FBB0FA300FF6833 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -640,14 +447,6 @@
 				6003F5B9195388D20070C39A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CC4961F21FBB0FA300FF6833 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC4961F31FBB0FA300FF6833 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -751,6 +550,7 @@
 				CODE_SIGN_ENTITLEMENTS = Visilabs_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5M383PCDJZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Visilabs/Visilabs-Prefix.pch";
@@ -765,6 +565,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -779,6 +580,7 @@
 				CODE_SIGN_ENTITLEMENTS = Visilabs_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5M383PCDJZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Visilabs/Visilabs-Prefix.pch";
@@ -792,6 +594,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -842,140 +645,6 @@
 			};
 			name = Release;
 		};
-		CC4961E11FBAE31500FF6833 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 5M383PCDJZ;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Visilabs-Example.ServiceExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CC4961E21FBAE31500FF6833 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 5M383PCDJZ;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Visilabs-Example.ServiceExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		CC4961FA1FBB0FA300FF6833 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 5M383PCDJZ;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ContentExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Visilabs-Example.ContentExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CC4961FB1FBB0FA300FF6833 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 5M383PCDJZ;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ContentExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Visilabs-Example.ContentExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1002,24 +671,6 @@
 			buildConfigurations = (
 				6003F5C3195388D20070C39A /* Debug */,
 				6003F5C4195388D20070C39A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CC4961E31FBAE31500FF6833 /* Build configuration list for PBXNativeTarget "ServiceExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CC4961E11FBAE31500FF6833 /* Debug */,
-				CC4961E21FBAE31500FF6833 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CC4961F91FBB0FA300FF6833 /* Build configuration list for PBXNativeTarget "ContentExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CC4961FA1FBB0FA300FF6833 /* Debug */,
-				CC4961FB1FBB0FA300FF6833 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

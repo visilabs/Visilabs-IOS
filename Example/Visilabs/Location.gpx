@@ -6,37 +6,35 @@
             waypoint, Xcode will simulate that specific location. If you provide multiple waypoints,
             Xcode will simulate a route visitng each waypoint.
      -->
-    <wpt lat="41.0862693786621" lon="29.043758392334">
-         <name>teknopark</name>
-         
-         <!--   
-                Optionally provide a time element for each waypoint. Xcode will interpolate movement
-                at a rate of speed based on the time elapsed between each waypoint. If you do not provide
-                a time element, then Xcode will use a fixed rate of speed.
-          
-                Waypoints must be sorted by time in ascending order.
-          -->
+    
+    
+    <!--
+    <wpt lat="39.925533" lon="32.866287">
+        <name>ankara</name>
+    </wpt>
+    -->
+     
+     
+    <wpt lat="41.0886320178827" lon="29.0414509652661">
+        <name>gülal</name>
+    </wpt>
+    
+    
+   
 
-	</wpt>
     
     <wpt lat="41.077550" lon="29.013383">
         <name>levent</name>
-        
     </wpt>
     
-    
+     <!--
     <wpt lat="41.067692" lon="29.013627">
         <name>zincirlikuyu</name>
-        
     </wpt>
     
-    <!--
-    <wpt lat="41.0876018007459" lon="29.0436646342278">
-        <name>kuzeypark</name>
-        
 
-    </wpt>
-    
+     
+     
     <wpt lat="41.0886146125453" lon="29.0504264831543">
         <name>hisar-kampüs</name>
         

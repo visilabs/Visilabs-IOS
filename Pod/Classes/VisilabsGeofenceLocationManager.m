@@ -792,15 +792,15 @@
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
--(void) sendPushNotification:(NSString *)actID
+-(void) sendPushNotification:(NSString *)actID withGeofenceID:(NSString *)geofenceID withIsDwell:(BOOL) isDwell withIsEnter:(BOOL) isEnter
 {
-    VisilabsGeofenceRequest *request=[[Visilabs callAPI] buildGeofenceRequest:@"process" withActionID: actID withLatitude:0 withLongitude:0];
+    VisilabsGeofenceRequest *request=[[Visilabs callAPI] buildGeofenceRequest:@"processV2" withActionID: actID withLatitude:0 withLongitude:0 withGeofenceID:geofenceID withIsDwell:isDwell withIsEnter:isEnter];
     void (^ successBlock)(VisilabsResponse *) = ^(VisilabsResponse * response) {};
     void (^ failBlock)(VisilabsResponse *) =^(VisilabsResponse * response){};
     [request execAsyncWithSuccess:successBlock AndFailure:failBlock];
     
 }
-
+/*
 -(void) checkDwell:(NSTimer*)theTimer
 {
     NSString *geofenceID =  (NSString*)[theTimer userInfo];
@@ -811,7 +811,7 @@
             
                 if(geofence.isInside){
                     NSArray *elements = [geofenceID componentsSeparatedByString:@"_"];
-                    if(elements && elements.count == 3){
+                    if(elements && elements.count >= 3){
                         [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
                     }
                 }
@@ -821,6 +821,7 @@
     }
     
 }
+ */
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
@@ -830,14 +831,23 @@
     if(geofences){
         for (VisilabsServerGeofence *geofence in geofences){
             if([geofence.suid isEqualToString:region.identifier]){
+                NSArray *elements = [region.identifier componentsSeparatedByString:@"_"];
                 if([geofence.type isEqualToString:@"OnEnter"]){
-                    NSArray *elements = [region.identifier componentsSeparatedByString:@"_"];
-                    if(elements && elements.count == 3){
-                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
+                    if(elements && elements.count >= 6){
+                        NSString * geoID = elements[5];
+                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1] withGeofenceID: geoID withIsDwell:NO withIsEnter:NO] ;
                     }
                 }
                 else if([geofence.type isEqualToString:@"Dwell"]){
-                   
+                    if(elements && elements.count >= 6){
+                        NSString * geoID = elements[5];
+                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1] withGeofenceID: geoID withIsDwell:YES withIsEnter:YES] ;
+                    }
+                }
+                
+                
+                /*
+                else if([geofence.type isEqualToString:@"Dwell"]){                   
                     if(_geofenceDwellTimers == nil)
                     {
                         _geofenceDwellTimers = [[NSMutableDictionary alloc] init];
@@ -849,7 +859,6 @@
                         previousTimer = nil;
                         _geofenceDwellTimers[geofence.suid] = nil;
                     }
-                    
                     NSTimer *dwellTimer = [NSTimer scheduledTimerWithTimeInterval:geofence.durationInSeconds
                                                                            target:self
                                                                          selector:@selector(checkDwell:)
@@ -858,6 +867,7 @@
                     [_geofenceDwellTimers setObject:dwellTimer forKey:geofence.suid];
                     
                 }
+                */
             }
         }
     }
@@ -879,10 +889,17 @@
     if(geofences){
         for (VisilabsServerGeofence *geofence in geofences){
             if([geofence.suid isEqualToString:region.identifier]){
+                NSArray *elements = [region.identifier componentsSeparatedByString:@"_"];
                 if([geofence.type isEqualToString:@"OnExit"]){
-                    NSArray *elements = [region.identifier componentsSeparatedByString:@"_"];
-                    if(elements && elements.count == 3){
-                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
+                    if(elements && elements.count >= 6){
+                        NSString * geoID = elements[5];
+                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1] withGeofenceID:geoID withIsDwell:NO withIsEnter:NO];
+                    }
+                }
+                else if([geofence.type isEqualToString:@"Dwell"]){
+                    if(elements && elements.count >= 6){
+                        NSString * geoID = elements[5];
+                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1] withGeofenceID: geoID withIsDwell:YES withIsEnter:NO] ;
                     }
                 }
             }

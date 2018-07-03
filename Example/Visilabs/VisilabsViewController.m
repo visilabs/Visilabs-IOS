@@ -161,7 +161,28 @@
     //[[Visilabs callAPI] showNotification:@"dene"];
 }
 
+-(void)bringGeofences{
+    //NSString *geofenceID =  (NSString*)[theTimer userInfo];
+    NSArray *geofences = [[VisilabsGeofenceStatus sharedInstance] arrayGeofenceFetchList];
+    if(geofences){
+        for (VisilabsServerGeofence *geofence in geofences){
+            /*if([geofence.suid isEqualToString:geofenceID]){
+                
+                if(geofence.isInside){
+                    NSArray *elements = [geofenceID componentsSeparatedByString:@"_"];
+                    if(elements && elements.count == 3){
+                        //[[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
+                    }
+                }
+                return;
+            }*/
+        }
+    }
+    
+}
+
 - (void)testExVisitorIDChange{
+    /*
     [[Visilabs callAPI] setExVisitorIDToNull];
     [[Visilabs callAPI] customEvent:@"deneme" withProperties:nil];
     [[Visilabs callAPI] customEvent:@"deneme2" withProperties:nil];
@@ -176,7 +197,7 @@
     
     [dic setObject:@"ex3" forKey:@"OM.exVisitorID"];
     [[Visilabs callAPI] customEvent:@"deneme6" withProperties:dic];
-
+     */
 }
 
 

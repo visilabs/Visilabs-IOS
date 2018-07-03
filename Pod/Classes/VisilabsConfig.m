@@ -11,7 +11,7 @@
 
 @implementation VisilabsConfig
 
-static NSString *const kVERSION_NUMBER = @"2.5.16";
+static NSString *const kVERSION_NUMBER = @"2.5.17";
 
 static NSString *const kLOGGER_URL = @"lgr.visilabs.net";
 static NSString *const kREAL_TIME_URL = @"rt.visilabs.net";
@@ -80,6 +80,9 @@ static NSString *const kFILTER_KEY = @"OM.w.f";
 static NSString *const kAPIVER_KEY = @"OM.apiver";
 
 
+static NSString *const kGEO_ID_KEY = @"OM.locationid";
+
+static NSString *const kTRIGGER_EVENT_KEY = @"OM.triggerevent";
 
 
 +(NSString *) LOGGER_URL
@@ -176,6 +179,15 @@ static NSString *const kAPIVER_KEY = @"OM.apiver";
     return kLONGITUDE_KEY;
 }
 
++(NSString *) GEO_ID_KEY
+{
+    return kGEO_ID_KEY;
+}
+
++(NSString *) TRIGGER_EVENT_KEY
+{
+    return kTRIGGER_EVENT_KEY;
+}
 
 + (NSArray *)visilabsParameters
         {

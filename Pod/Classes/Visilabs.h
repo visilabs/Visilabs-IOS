@@ -122,7 +122,7 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 
 - (VisilabsTargetRequest *)buildTargetRequest:(NSString *)zoneID withProductCode:(NSString *)productCode withProperties:(NSMutableDictionary *)properties withFilters:(NSMutableArray<VisilabsTargetFilter *> *)filters;
 
-- (VisilabsGeofenceRequest *)buildGeofenceRequest:(NSString *)action withActionID:(NSString *)actionID withLatitude:(double)latitude withLongitude:(double)longitude;
+- (VisilabsGeofenceRequest *)buildGeofenceRequest:(NSString *)action withActionID:(NSString *)actionID withLatitude:(double)latitude withLongitude:(double)longitude withGeofenceID:(NSString *)geofenceID withIsDwell:(BOOL) isDwell withIsEnter:(BOOL) isEnter;
 
 
 +(Visilabs *) createAPI : (NSString *) organizationID  withSiteID: (NSString *) siteID withSegmentURL: (NSString *) segmentURL withDataSource :(NSString *) dSource withRealTimeURL:(NSString *)realTimeURL withChannel:(NSString *)channel;

@@ -18,4 +18,8 @@
 @property double lastKnownLatitude;
 @property double lastKnownLongitude;
 
+@property (nonatomic, strong) NSString *geofenceID;
+@property BOOL isDwell;
+@property BOOL isEnter;
+
 @end

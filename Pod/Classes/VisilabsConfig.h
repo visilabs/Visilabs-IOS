@@ -39,4 +39,8 @@
 + (NSString *) FILTER_KEY;
 + (NSString *) APIVER_KEY;
 
++ (NSString *) GEO_ID_KEY;
+
++ (NSString *) TRIGGER_EVENT_KEY;
+
 @end

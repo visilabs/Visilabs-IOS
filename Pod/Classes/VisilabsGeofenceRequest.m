@@ -71,6 +71,7 @@
         NSString *tokenParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig TOKENID_KEY], encodedTokenValue];
         queryParameters = [[queryParameters stringByAppendingString:tokenParameter] mutableCopy];
     }
+    
     if([[Visilabs callAPI] appID] != nil &&  ![[[Visilabs callAPI] appID] isEqual: @""])
     {
         NSString* encodedAppValue = [[Visilabs callAPI] urlEncode:[[Visilabs callAPI] appID]];
@@ -93,8 +94,33 @@
         queryParameters = [[queryParameters stringByAppendingString:longitudeParameter] mutableCopy];
     }
     
-    NSString *appParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig APPID_KEY], @"IOS"];
-    queryParameters = [[queryParameters stringByAppendingString:appParameter] mutableCopy];
+    
+    
+    if([self geofenceID] && [[self geofenceID] length] > 0)
+    {
+        NSString* encodedGeofenceID = [[Visilabs callAPI] urlEncode:[self geofenceID]];
+        NSString *geofenceIDParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig GEO_ID_KEY], encodedGeofenceID];
+        queryParameters = [[queryParameters stringByAppendingString:geofenceIDParameter] mutableCopy];
+    }
+    
+    if([self isDwell])
+    {
+        if([self isEnter])
+        {
+            NSString *triggerEventParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig TRIGGER_EVENT_KEY], @"OnEnter"];
+            queryParameters = [[queryParameters stringByAppendingString:triggerEventParameter] mutableCopy];
+        }
+        else
+        {
+            NSString *triggerEventParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig TRIGGER_EVENT_KEY], @"OnExit"];
+            queryParameters = [[queryParameters stringByAppendingString:triggerEventParameter] mutableCopy];
+        }
+    }
+    
+    
+    //Yukarıda yapılmış bu. Tekrar gönderme
+    //NSString *appParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig APPID_KEY], @"IOS"];
+    //queryParameters = [[queryParameters stringByAppendingString:appParameter] mutableCopy];
     
     
     NSDictionary * visilabsParameters = [VisilabsPersistentTargetManager getParameters] ;
