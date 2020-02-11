@@ -9,7 +9,7 @@
 
 #import "VisilabsDefines.h"
 #import "VisilabsGeofenceLocationManager.h"
-#import "VisilabsGeofenceApp.h" 
+#import "VisilabsGeofenceApp.h"
 #import <UIKit/UIKit.h>
 #import "VisilabsReachability.h"
 #import "VisilabsGeofenceStatus.h"
@@ -37,11 +37,10 @@
 - (double)distanceSquaredForLat1:(double)lat1 lng1:(double)lng1 lat2:(double)lat2 lng2:(double)lng2; //Calculates the square of distance between two lat/longs. Geared for speed over accuracy.
 - (void)sendGeoLocationUpdate;
 
-- (NSString *)formatBeaconRegion:(CLBeaconRegion *)region;  //format beacon region to a string in format UUID-major-minor-identifier.
 - (BOOL)isRegionSame:(CLRegion *)r1 with:(CLRegion *)r2;  //compare two iBeacon region is same.
 
-@property (nonatomic, strong) CBCentralManager *bluetoothManager; //report bluetooth status to detech iBeacon, only initialized for iOS 7.0 above.
-- (void)createBluetoothManager;
+//@property (nonatomic, strong) CBCentralManager *bluetoothManager; //report bluetooth status to detech iBeacon, only initialized for iOS 7.0 above.
+//- (void)createBluetoothManager;
 
 @property (nonatomic, strong) VisilabsReachability *reachability;
 - (void)createNetworkMonitor; //create Reachability to monitor network status change.
@@ -132,10 +131,12 @@
 
 - (void)createBluetoothManager
 {
+    /*
     if ([CBCentralManager instancesRespondToSelector:@selector(initWithDelegate:queue:options:)])  //`options` since iOS 7.0, must have this to depress system dialog
     {
         self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil options:@{CBCentralManagerOptionShowPowerAlertKey: @(0)}];
     }
+     */
 }
 
 - (void)createNetworkMonitor
@@ -327,30 +328,11 @@
     }
 }
 
-#pragma mark - detecting result
-
-- (SHiBeaconState)iBeaconSupportState
-{
-    if ([CLLocationManager respondsToSelector:@selector(isRangingAvailable)]) //since iOS 7.0
-    {
-        if ([VisilabsGeofenceLocationManager locationServiceEnabledForApp:NO] && [CLLocationManager isRangingAvailable] && [CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]])
-        {
-            if (self.bluetoothState == CBCentralManagerStatePoweredOn)  //bluetooth is turn on and ready for use
-            {
-                return SHiBeaconState_Support;
-            }
-            else if (self.bluetoothState == CBCentralManagerStateUnknown)  //bluetooth state is not determined yet, need to wait some time.
-            {
-                return SHiBeaconState_Unknown;
-            }
-        }
-    }
-    return SHiBeaconState_NotSupport;
-}
 
 - (NSInteger)bluetoothState
 {
-    return self.bluetoothManager.state;  //if not 7.0 self.bluetoothManager=nil because it's not alloc, return 0 as unknown.
+    return 0;
+    //return self.bluetoothManager.state;  //if not 7.0 self.bluetoothManager=nil because it's not alloc, return 0 as unknown.
 }
 
 - (NSArray *)monitoredRegions
@@ -548,61 +530,6 @@
     }
 }
 
-- (BOOL)startRangeiBeaconRegion:(CLBeaconRegion *)iBeaconRegion
-{
-    if (!VisiGeofence.isLocationServiceEnabled)
-    {
-        return NO;  //initialize CLLocationManager but cannot call any function to avoid promote.
-    }
-    if (self.iBeaconSupportState == SHiBeaconState_NotSupport) //if support contine; if unknown that's caused by bluetooth, continue; if not support, means iOS version less than 7, stop to avoid crash.
-    {
-        return NO;
-    }
-    [self requestPermissionSinceiOS8]; //request before action, it simply return if not suitable.
-    __block BOOL isFound = NO;
-    [self.locationManager.rangedRegions enumerateObjectsUsingBlock:^(id obj, BOOL *stop)
-     {
-         CLBeaconRegion *rangedRegion = (CLBeaconRegion *)obj;
-         if ([self isRegionSame:rangedRegion with:iBeaconRegion]) //CLBeaconRegion isEqual is not correct, for example, after I change UUID it still return equal. So compare beacon region manually.
-         {
-             isFound = YES;
-             *stop = YES;
-         }
-     }];
-    if (!isFound)
-    {
-        DLog(@"LocationManager Action: Start range region %@.", iBeaconRegion);
-        [self.locationManager startRangingBeaconsInRegion:iBeaconRegion];
-        NSDictionary *userInfo = @{SHLMNotification_kRegion: iBeaconRegion};
-        [[NSNotificationCenter defaultCenter] postNotificationName:SHLMStartRangeiBeaconRegionNotification object:self userInfo:userInfo];
-    }
-    return !isFound;
-}
-
-- (void)stopRangeiBeaconRegion:(CLBeaconRegion *)iBeaconRegion
-{
-    if (!VisiGeofence.isLocationServiceEnabled)
-    {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
-    }
-    __block BOOL isFound = NO;
-    [self.locationManager.rangedRegions enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        CLRegion *rangedRegion = (CLBeaconRegion *)obj;
-        if ([self isRegionSame:rangedRegion with:iBeaconRegion])
-        {
-            isFound = YES;
-            *stop = YES;
-        }
-    }];
-    if (isFound)
-    {
-        DLog(@"LocationManager Action: Stop range region %@.", iBeaconRegion);
-        [self.locationManager stopRangingBeaconsInRegion:iBeaconRegion];
-        NSDictionary *userInfo = @{SHLMNotification_kRegion: iBeaconRegion};
-        [[NSNotificationCenter defaultCenter] postNotificationName:SHLMStopRangeiBeaconRegionNotification object:self userInfo:userInfo];
-    }
-}
-
 #pragma mark - private functions
 
 - (double)distanceSquaredForLat1:(double)lat1 lng1:(double)lng1 lat2:(double)lat2 lng2:(double)lng2
@@ -650,20 +577,6 @@
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_SendGeoLocationLogline" object:nil userInfo:@{@"comment": NONULL(visilabsSerializeObjToJson(dictLoc))}];
         
     }
-}
-
-- (NSString *)formatBeaconRegion:(CLBeaconRegion *)region
-{
-    //major and minor can be null or int value, int value is from 0~65535. Check nil as nil.intValue=0.
-    if (region.minor != nil)
-    {
-        return [NSString stringWithFormat:@"%@-%d-%d-%@", region.proximityUUID.UUIDString, region.major.intValue, region.minor.intValue, region.identifier];
-    }
-    if (region.major != nil)
-    {
-        return [NSString stringWithFormat:@"%@-%d-(null)-%@", region.proximityUUID.UUIDString, region.major.intValue, region.identifier];
-    }
-    return [NSString stringWithFormat:@"%@-(null)-(null)-%@", region.proximityUUID.UUIDString, region.identifier];
 }
 
 - (BOOL)isRegionSame:(CLRegion *)r1 with:(CLRegion *)r2
@@ -968,30 +881,6 @@
     DLog(@"LocationManager Delegate: Determine State %@ for Region %@", strState, region);
     NSDictionary *userInfo = @{SHLMNotification_kRegion: region, SHLMNotification_kRegionState: @(state)};
     NSNotification *notification = [NSNotification notificationWithName:SHLMRegionStateChangeNotification object:self userInfo:userInfo];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
-{
-    if (!VisiGeofence.isLocationServiceEnabled)
-    {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
-    }
-    DLog(@"LocationManager Delegate: did range beacons: %@ for region: %@.", beacons, region);
-    NSDictionary *userInfo = @{SHLMNotification_kRegion: region, SHLMNotification_kBeacons: beacons};
-    NSNotification *notification = [NSNotification notificationWithName:SHLMRangeiBeaconChangedNotification object:self userInfo:userInfo];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
-}
-
-- (void)locationManager:(CLLocationManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error
-{
-    if (!VisiGeofence.isLocationServiceEnabled)
-    {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
-    }
-    DLog(@"LocationManager Delegate: range location Failed for Region(%@): %@", region, [error localizedDescription]);
-    NSDictionary *userInfo = @{SHLMNotification_kRegion: region, SHLMNotification_kError: error};
-    NSNotification *notification = [NSNotification notificationWithName:SHLMRangeiBeaconFailNotification object:self userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 

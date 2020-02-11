@@ -29,30 +29,6 @@ enum SHGeoLocationMonitorState
 };
 typedef enum SHGeoLocationMonitorState SHGeoLocationMonitorState;
 
-/**
- The status of current device's iBeacon support.
- */
-enum SHiBeaconState
-{
-    /**
-     Bluetooth state not determined yet, unknown at this moment.
-     */
-    SHiBeaconState_Unknown = 0,
-    /**
-     Current device is ready to use iBeacon, means it's iOS 7.0+, location service enabled, Bluetooth on.
-     */
-    SHiBeaconState_Support = 1,
-    /**
-     Current device not ready to use iBeacon, one condition not match.
-     */
-    SHiBeaconState_NotSupport = 2,
-    /**
-     Not have Beacon module, ignore this statue.
-     */
-    SHiBeaconState_Ignore = 3,
-};
-typedef enum SHiBeaconState SHiBeaconState;
-
 
 @interface VisilabsGeofenceLocationManager : NSObject<CLLocationManagerDelegate>
 
@@ -85,10 +61,6 @@ typedef enum SHiBeaconState SHiBeaconState;
 
 @property (nonatomic) float bgMinDistanceBetweenEvents;
 
-
-@property (nonatomic, readonly) SHiBeaconState iBeaconSupportState;
-
-
 @property (nonatomic, readonly) NSInteger bluetoothState;
 
 
@@ -113,12 +85,6 @@ typedef enum SHiBeaconState SHiBeaconState;
 
 
 - (void)stopMonitorRegion:(CLRegion *)region;
-
-
-- (BOOL)startRangeiBeaconRegion:(CLBeaconRegion *)iBeaconRegion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0);
-
-
-- (void)stopRangeiBeaconRegion:(CLBeaconRegion *)iBeaconRegion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_7_0);
 
 //TODO:added by egemen
 @property(nonatomic, strong) NSMutableDictionary *geofenceDwellTimers;

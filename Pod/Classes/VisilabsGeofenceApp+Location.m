@@ -17,8 +17,6 @@ NSString * const SHLMStartSignificantMonitorNotification = @"SHLMStartSignifican
 NSString * const SHLMStopSignificantMonitorNotification = @"SHLMStopSignificantMonitorNotification";
 NSString * const SHLMStartMonitorRegionNotification = @"SHLMStartMonitorRegionNotification";
 NSString * const SHLMStopMonitorRegionNotification = @"SHLMStopMonitorRegionNotification";
-NSString * const SHLMStartRangeiBeaconRegionNotification = @"SHLMStartRangeiBeaconRegionNotification";
-NSString * const SHLMStopRangeiBeaconRegionNotification = @"SHLMStopRangeiBeaconRegionNotification";
 
 NSString * const SHLMUpdateLocationSuccessNotification = @"SHLMUpdateLocationSuccessNotification";
 NSString * const SHLMUpdateFailNotification = @"SHLMUpdateFailNotification";
@@ -27,19 +25,13 @@ NSString * const SHLMExitRegionNotification = @"SHLMExitRegionNotification";
 NSString * const SHLMRegionStateChangeNotification = @"SHLMRegionStateChangeNotification";
 NSString * const SHLMMonitorRegionSuccessNotification = @"SHLMMonitorRegionSuccessNotification";
 NSString * const SHLMMonitorRegionFailNotification = @"SHLMMonitorRegionFailNotification";
-NSString * const SHLMRangeiBeaconChangedNotification = @"SHLMRangeiBeaconChangedNotification";
-NSString * const SHLMRangeiBeaconFailNotification = @"SHLMRangeiBeaconFailNotification";
 NSString * const SHLMChangeAuthorizationStatusNotification = @"SHLMChangeAuthorizationStatusNotification";
-
-NSString * const SHLMEnterExitGeofenceNotification = @"SHLMEnterExitGeofenceNotification";
-NSString * const SHLMEnterExitBeaconNotification = @"SHLMEnterExitBeaconNotification";
 
 NSString * const SHLMNotification_kNewLocation = @"NewLocation";
 NSString * const SHLMNotification_kOldLocation = @"OldLocation";
 NSString * const SHLMNotification_kError = @"Error";
 NSString * const SHLMNotification_kRegion = @"Region";
 NSString * const SHLMNotification_kRegionState = @"RegionState";
-NSString * const SHLMNotification_kBeacons = @"Beacons";
 NSString * const SHLMNotification_kAuthStatus = @"AuthStatus";
 
 int const SHLocation_FG_Interval = 1;

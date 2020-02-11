@@ -118,7 +118,6 @@
 				385649AB1DEF71EF000CDFEE /* Visilabs_Example.entitlements */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for Visilabs */,
-				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				E5D11253C47C5FC55951371E /* Pods */,
@@ -160,6 +159,7 @@
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				389651E11D654A9B0064B97F /* Location.gpx */,
+				6003F5B5195388D20070C39A /* Tests */,
 			);
 			name = "Example for Visilabs";
 			path = Visilabs;
@@ -292,6 +292,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -353,7 +354,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Visilabs/Visilabs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -362,7 +363,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Visilabs_Example/Pods-Visilabs_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7B8B5AEB8A2B9F19E3C865C7 /* [CP] Check Pods Manifest.lock */ = {
@@ -389,7 +390,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Visilabs/Visilabs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -398,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Visilabs_Tests/Pods-Visilabs_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -1489,8 +1489,6 @@ static VisilabsReachability *reachability;
         return;
     }
     
-    BOOL b = [[self exVisitorID] isEqualToString:exVisitorID];
-    
     if([self exVisitorID]!= nil &&  ![[self exVisitorID] isEqualToString:exVisitorID])
     {
         [self setCookieID];

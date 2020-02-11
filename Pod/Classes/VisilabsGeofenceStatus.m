@@ -410,39 +410,11 @@ float const HAVERSINE_RADS_PER_DEGREE = 0.0174532925199433;
     
     for (CLRegion *monitorRegion in VisiGeofence.locationManager.monitoredRegions)
     {
-        //only stop if this region is previous geofence, should not affect if it's iBeacon or from other source monitor.
+        //only stop if this region is previous geofence
         if ([monitorRegion.identifier rangeOfString:@"visilabs"].location != NSNotFound) {
             [VisiGeofence.locationManager stopMonitorRegion:monitorRegion];
             DLog(@"%@ stopped.", monitorRegion.identifier);
         }
-            
-        
-        /*
-        VisilabsServerGeofence *matchGeofence = [self findServerGeofenceForRegion:monitorRegion];
-        if (matchGeofence != nil) //stop monitor this as it's previous geofence
-        {
-            BOOL shouldStop = YES;
-            if (onlyForOutside) //otherwise for both inside and outside, means stop all
-            {
-                if (matchGeofence.isInside)  //this one is inside, cannot stop
-                {
-                    shouldStop = NO;
-                }
-                else
-                {
-                    if (parentKeep && matchGeofence.parentFence != nil && matchGeofence.parentFence.isInside) //although this one is outside, but its parent is inside and can keep it.
-                    {
-                        shouldStop = NO;
-                    }
-                }
-            }
-            if (shouldStop)
-            {
-                //Test multiple levels case: level1 inner->level 2 inner->leave. Before exit it's inside leave. Suddenly exit them all, when exit leave it's kept monitor by level 2, when exit level 2 it stops monitor, but still leave is monitor. In this case should remove level geofence too.
-                [self stopMonitorSelfAndChildGeofence:matchGeofence];
-            }
-        }
-         */
     }
     
     monitoredRegionsCount = VisiGeofence.locationManager.monitoredRegions.count;

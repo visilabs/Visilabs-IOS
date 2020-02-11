@@ -30,14 +30,6 @@
 #define SH_GEOLOCATION_LAT      @"SH_GEOLOCATION_LAT"
 #define SH_GEOLOCATION_LNG      @"SH_GEOLOCATION_LNG"
 
-/*
-//For get Beacon module's bluetooth status, before use it must have notification "SH_LMBridge_UpdateBluetoothStatus" to update the value.
-#define SH_BEACON_BLUETOOTH     @"SH_BEACON_BLUETOOTH"
-//For get Beacon module's iBeacon support status, before use it must have notification "SH_LMBridge_UpdateiBeaconStatus" to update the value.
-#define SH_BEACON_iBEACON       @"SH_BEACON_iBEACON"
-//For get location permission status, before use it must have notification "SH_LMBridge_UpdateLocationPermissionStatus" to update the value.
-*/
-
 
 #define SH_LOCATION_STATUS      @"SH_LOCATION_STATUS"
 

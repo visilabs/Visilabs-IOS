@@ -168,11 +168,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:SH_GEOLOCATION_LAT];
         [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:SH_GEOLOCATION_LNG];
         
-        /*
-        [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:SH_BEACON_BLUETOOTH];
-        [[NSUserDefaults standardUserDefaults] setObject:@(3) forKey:SH_BEACON_iBEACON];
-         */
-        
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         //Then continue normal code.
@@ -924,13 +919,6 @@ NSString *SentInstall_ShVersion = @"SentInstall_ShVersion";
 NSString *SentInstall_Mode = @"SentInstall_Mode";
 NSString *SentInstall_Carrier = @"SentInstall_Carrier";
 NSString *SentInstall_OSVersion = @"SentInstall_OSVersion";
-NSString *SentInstall_IBeacon = @"SentInstall_IBeacon";
-
--(BOOL)checkInstallChangeForLaunch
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_UpdateiBeaconStatus" object:nil];
-    return NO;
-}
 
 #pragma mark - private functions
 

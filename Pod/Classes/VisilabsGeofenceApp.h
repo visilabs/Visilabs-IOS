@@ -111,6 +111,4 @@ typedef void (^SHOpenUrlHandler)(NSURL *openUrl);
 
 - (void)registerOrUpdateInstallWithHandler:(VisilabsCallbackHandler)handler;
 
-- (BOOL)checkInstallChangeForLaunch;
-
 @end

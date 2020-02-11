@@ -21,10 +21,6 @@ extern NSString * const SHLMStartMonitorRegionNotification;
 
 extern NSString * const SHLMStopMonitorRegionNotification;
 
-extern NSString * const SHLMStartRangeiBeaconRegionNotification;
-
-extern NSString * const SHLMStopRangeiBeaconRegionNotification;
-
 extern NSString * const SHLMUpdateLocationSuccessNotification;
 
 extern NSString * const SHLMUpdateFailNotification;
@@ -39,23 +35,15 @@ extern NSString * const SHLMMonitorRegionSuccessNotification;
 
 extern NSString * const SHLMMonitorRegionFailNotification;
 
-extern NSString * const SHLMRangeiBeaconChangedNotification;
-
-extern NSString * const SHLMRangeiBeaconFailNotification;
-
 extern NSString * const SHLMChangeAuthorizationStatusNotification;
 
 extern NSString * const SHLMEnterExitGeofenceNotification;
-
-extern NSString * const SHLMEnterExitBeaconNotification;
-
 
 extern NSString * const SHLMNotification_kNewLocation; //string @"NewLocation", get CLLocation.
 extern NSString * const SHLMNotification_kOldLocation; //string @"OldLocation", get CLLocation.
 extern NSString * const SHLMNotification_kError; //string @"Error", get NSError.
 extern NSString * const SHLMNotification_kRegion; //string @"Region", get CLRegion.
 extern NSString * const SHLMNotification_kRegionState; //string @"RegionState", get CLRegionState enum.
-extern NSString * const SHLMNotification_kBeacons; //string @"Beacons", get NSArray for CLBeacon.
 extern NSString * const SHLMNotification_kAuthStatus;  //string @"AuthStatus", get NSNumber for int representing CLAuthorizationStatus.
 
 extern int const SHLocation_FG_Interval; //Default minimum time interval for updating location when App in FG, 1 mins.
