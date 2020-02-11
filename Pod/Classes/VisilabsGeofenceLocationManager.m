@@ -10,7 +10,6 @@
 #import "VisilabsDefines.h"
 #import "VisilabsGeofenceLocationManager.h"
 #import "VisilabsGeofenceApp.h" 
-#import <CoreBluetooth/CoreBluetooth.h>
 #import <UIKit/UIKit.h>
 #import "VisilabsReachability.h"
 #import "VisilabsGeofenceStatus.h"

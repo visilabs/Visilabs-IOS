@@ -16,22 +16,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-
-    
-    
-    
-    //NSString * euromsgmobilappSiteID = @"482B67724F524B5A6353633D";
-    //NSString * euromsgmobilappDataSource = @"euromsgmobilapp";
-    
-    /*
-    NSString * visilabsDemoOID = @"53444A2B4B5071322F50303D";
-    NSString * visilabsDemoSiteID = @"515977535854504E506E413D";
-    NSString * visilabsDemoDataSource = @"mrhp";
-    */
-    
-    
-    
-    
     NSString * visilabsNewOID = @"53444A2B4B5071322F50303D";
     NSString * visilabsNewSiteID = @"362F714E306C756B2B37593D";
     NSString * visilabsNewDataSource = @"visilabsnew";
