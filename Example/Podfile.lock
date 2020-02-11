@@ -2,7 +2,7 @@ PODS:
   - quantumgraph (5.2.1):
     - quantumgraph/ios-sdk (= 5.2.1)
   - quantumgraph/ios-sdk (5.2.1)
-  - Visilabs (2.5.17)
+  - Visilabs (2.5.18)
 
 DEPENDENCIES:
   - quantumgraph
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   quantumgraph: 677a219d7406fc3c316647591c32a07572ca6e6c
-  Visilabs: e47d9caaca8b60d15c2e6636b154bc6e0f8cfcff
+  Visilabs: 62fc0ae17627622a38d6fddc0511c3224d82f309
 
 PODFILE CHECKSUM: b149eab7facc8fdd5a6e8c7daa6b7ee42d2fa504
 

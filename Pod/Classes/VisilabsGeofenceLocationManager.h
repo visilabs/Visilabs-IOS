@@ -61,9 +61,6 @@ typedef enum SHGeoLocationMonitorState SHGeoLocationMonitorState;
 
 @property (nonatomic) float bgMinDistanceBetweenEvents;
 
-@property (nonatomic, readonly) NSInteger bluetoothState;
-
-
 @property (weak, nonatomic, readonly) NSArray *monitoredRegions;
 
 

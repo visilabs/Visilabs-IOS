@@ -37,10 +37,7 @@
 - (double)distanceSquaredForLat1:(double)lat1 lng1:(double)lng1 lat2:(double)lat2 lng2:(double)lng2; //Calculates the square of distance between two lat/longs. Geared for speed over accuracy.
 - (void)sendGeoLocationUpdate;
 
-- (BOOL)isRegionSame:(CLRegion *)r1 with:(CLRegion *)r2;  //compare two iBeacon region is same.
-
-//@property (nonatomic, strong) CBCentralManager *bluetoothManager; //report bluetooth status to detech iBeacon, only initialized for iOS 7.0 above.
-//- (void)createBluetoothManager;
+- (BOOL)isRegionSame:(CLRegion *)r1 with:(CLRegion *)r2;
 
 @property (nonatomic, strong) VisilabsReachability *reachability;
 - (void)createNetworkMonitor; //create Reachability to monitor network status change.
@@ -83,7 +80,6 @@
     if ((self = [super init]))
     {
         [self createLocationManager];
-        [self createBluetoothManager];
         [self createNetworkMonitor];
     }
     return self;
@@ -127,16 +123,6 @@
     }
     
 
-}
-
-- (void)createBluetoothManager
-{
-    /*
-    if ([CBCentralManager instancesRespondToSelector:@selector(initWithDelegate:queue:options:)])  //`options` since iOS 7.0, must have this to depress system dialog
-    {
-        self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil options:@{CBCentralManagerOptionShowPowerAlertKey: @(0)}];
-    }
-     */
 }
 
 - (void)createNetworkMonitor
@@ -326,13 +312,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:@(bgMinDistanceBetweenEvents) forKey:SH_BG_DISTANCE];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-}
-
-
-- (NSInteger)bluetoothState
-{
-    return 0;
-    //return self.bluetoothManager.state;  //if not 7.0 self.bluetoothManager=nil because it's not alloc, return 0 as unknown.
 }
 
 - (NSArray *)monitoredRegions
@@ -585,26 +564,7 @@
     {
         return YES;
     }
-    //CLBeaconRegion isEqual is not correct, it compares memory, for example, after I change UUID it still return equal. So compare beacon region manually.
-    if (r1 != nil && r2 != nil && [r1 isKindOfClass:[CLBeaconRegion class]] && [r2 isKindOfClass:[CLBeaconRegion class]])
-    {
-        CLBeaconRegion *br1 = (CLBeaconRegion *)r1;
-        CLBeaconRegion *br2 = (CLBeaconRegion *)r2;
-        if ([br1.proximityUUID.UUIDString compare:br2.proximityUUID.UUIDString options:NSCaseInsensitiveSearch] == NSOrderedSame)
-        {
-            if ((br1.identifier == nil && br2.identifier == nil)
-                || (br1.identifier != nil && br2.identifier != nil && [br1.identifier compare:br2.identifier options:NSCaseInsensitiveSearch] == NSOrderedSame))
-            {
-                if ((br1.major == nil && br2.major == nil) || (br1.major != nil && br2.major != nil && br1.major.intValue == br2.major.intValue))
-                {
-                    if ((br1.minor == nil && br2.minor == nil) || (br1.minor != nil && br2.minor != nil && br1.minor.intValue == br2.minor.intValue))
-                    {
-                        return YES;
-                    }
-                }
-            }
-        }
-    }
+    
     //CLCircularRegion compares identifier.
     if (r1 != nil && r2 != nil && [r1 isKindOfClass:[CLCircularRegion class]] && [r2 isKindOfClass:[CLCircularRegion class]])
     {
@@ -838,7 +798,7 @@
     NSDictionary *userInfo = @{SHLMNotification_kRegion: region};
     NSNotification *notification = [NSNotification notificationWithName:SHLMMonitorRegionSuccessNotification object:self userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
-    //If iBeacon inside region, previous launch is inside region, this time will not trigger delegate until cross border. To not igore this time, forcibily to trigger status delegate.
+
     if ([self.locationManager respondsToSelector:@selector(requestStateForRegion:)])
     {
         [self.locationManager requestStateForRegion:region];
