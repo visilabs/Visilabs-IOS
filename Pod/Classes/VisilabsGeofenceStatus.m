@@ -238,39 +238,7 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                                             visilabsServerGeofence.suid = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
                                             visilabsServerGeofence.title = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
                                             [returnedRegions addObject:visilabsServerGeofence];
-                                            
-                                            /*
-                                            if ([targetEvent isEqualToString:@"OnEnter"] || [targetEvent isEqualToString:@"OnExit"]){
-                                                visilabsServerGeofence.serverId = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
-                                                visilabsServerGeofence.suid = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
-                                                visilabsServerGeofence.title = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, targetEvent, geoID];
-                                                [returnedRegions addObject:visilabsServerGeofence];
-                                            }
-                                            else{
-                                                visilabsServerGeofence.type = @"OnEnter";
-                                                visilabsServerGeofence.serverId = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnEnter", geoID];
-                                                visilabsServerGeofence.suid = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnEnter", geoID];
-                                                visilabsServerGeofence.title = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnEnter", geoID];
-                                                [returnedRegions addObject:visilabsServerGeofence];
-                                                
-                                                VisilabsServerGeofence *visilabsServerGeofenceExit = [[VisilabsServerGeofence alloc] init];
-                                                visilabsServerGeofenceExit.latitude = latitude;
-                                                visilabsServerGeofenceExit.longitude = longitude;
-                                                visilabsServerGeofenceExit.radius = radius;
-                                                visilabsServerGeofenceExit.isInside = NO;
-                                                visilabsServerGeofenceExit.type = @"OnExit";
-                                                visilabsServerGeofenceExit.durationInSeconds = durationInSeconds;
-                                                visilabsServerGeofenceExit.distanceFromCurrentLastKnownLocation = DBL_MAX;
-                                                visilabsServerGeofenceExit.distanceFromCurrentLastKnownLocation = distance;
-                                                visilabsServerGeofenceExit.serverId = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnExit", geoID];
-                                                visilabsServerGeofenceExit.suid = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnExit", geoID];
-                                                visilabsServerGeofenceExit.title = [NSString stringWithFormat:@"visilabs_%d_%d_%@_%@_%@", actid, i, targetEvent, @"OnExit", geoID];
-                                                [returnedRegions addObject:visilabsServerGeofenceExit];
-                                            }
-                                            */
-                                            
-                                            
-                                            
+
                                             if(i == 0){
                                                 DLog(@"Current latitude: %g longitude:%g", currentLatitude, currentLongitude);
                                             }
