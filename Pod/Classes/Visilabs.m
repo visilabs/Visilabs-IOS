@@ -7,9 +7,8 @@
 //
 
 #import <AdSupport/ASIdentifierManager.h>
-
+#import <WebKit/WebKit.h>
 #import "VisilabsReachability.h"
-
 #import "Visilabs.h"
 #import "VisilabsDefines.h"
 #import "VisilabsParameter.h"
@@ -18,9 +17,6 @@
 #import "VisilabsNotification.h"
 #import "VisilabsNotificationViewController.h"
 #import "UIView+VisilabsHelpers.h"
-
-//#import "VisilabsGeofenceManager.h"
-
 #import "VisilabsGeofenceApp.h"
 #import "VisilabsGeofenceApp+Location.h"
 
@@ -68,7 +64,6 @@ static Visilabs * API = nil;
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic, retain) NSURLConnection *segmentConnection;
 @property (nonatomic, readwrite) NSInteger failureStatus;
-//@property (nonatomic,retain) NSString *userAgent;
 @property (nonatomic,retain) NSString *channel;
 @property (nonatomic,retain) NSString *RESTURL;
 @property (nonatomic, retain) NSString *encryptedDataSource;
@@ -85,10 +80,7 @@ static Visilabs * API = nil;
 
 @property (nonatomic, retain) NSString *identifierForAdvertising;
 
-- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL  withChannel:(NSString *)chan  withRequestTimeout:(NSInteger)timeout withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)targetURL withActionURL:(NSString *)aURL;
-//- (void)applicationWillTerminate:(NSNotification *)notification;
-//- (void)applicationWillEnterForeground:(NSNotificationCenter*) notification;
-//- (void)applicationDidBecomeActive:(NSNotification *)notification;
+- (void) initAPI:(NSString *)oID withSiteID:(NSString*) sID withSegmentURL:(NSString *) sURL withDataSource:(NSString *) dSource withRealTimeURL:(NSString *)rURL withChannel:(NSString *)chan withRequestTimeout:(NSInteger)seconds  withRESTURL:(NSString *)restURL withEncryptedDataSource:(NSString *) eDataSource withTargetURL:(NSString *)tURL withActionURL:(NSString *)aURL withGeofenceURL:(NSString *)gURL withGeofenceEnabled:(BOOL) gEnabled  withMaxGeofenceCount:(NSInteger)maxGeofenceCount;
 - (void) send;
 - (NSString *)urlizeProps:(NSDictionary *)props;
 - (void)setProperties:(NSDictionary *)properties;
@@ -501,7 +493,7 @@ static VisilabsReachability *reachability;
         return;
     }
     
-    void (^completionBlock)()  = ^void(){
+    void (^completionBlock)(void)  = ^void(){
         self.currentlyShowingNotification = nil;
         self.notificationViewController = nil;
     };
@@ -973,16 +965,50 @@ static VisilabsReachability *reachability;
     self.appIDArchiveKey = @"Visilabs.appID";
     
     
+    NSString * ag = nil;
+    
     @try {
         UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
-        self.userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-        //TODO: doğru mu?
-        //[webView release];
+        ag = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+        NSLog(@"ag");
+        NSLog(@"%@", ag);
         webView = nil;
+    }@catch(NSException *exception) {
+        DLog(@"Visilabs: Error while unarchiving cookieID.");
+        ag = @"IOS";
+    }
+    
+    
+    /*
+    
+    @try {
+        
+        //TODO:EGEMEN BU TEST EDİLECEK
+        WKWebView *visilabsWebView = [[WKWebView alloc]initWithFrame: CGRectMake(1.0, 1.0, 1.0, 1.0)];
+        [visilabsWebView loadHTMLString:@"<html></html>" baseURL:nil];
+        [visilabsWebView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id __nullable userAgent, NSError * __nullable error) {
+            self.userAgent = userAgent;
+            
+            NSLog(@"self.userAgent");
+            NSLog(@"%@", self.userAgent);
+            
+            
+            NSLog(@"error.description");
+            NSLog(@"%@",error.description);
+            
+            //NSLog(@"%@", userAgent);
+            // iOS 8.3
+            // Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12F70
+            // iOS 9.0
+            // Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.32 (KHTML, like Gecko) Mobile/13A4254v
+        }];
+        visilabsWebView = nil;
     }@catch(NSException *exception) {
         DLog(@"Visilabs: Error while unarchiving cookieID.");
         self.userAgent = @"IOS";
     }
+     
+     */
     
     @try {
         self.identifierForAdvertising = [self getIDFA];
