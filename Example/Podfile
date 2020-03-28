@@ -4,12 +4,13 @@ use_frameworks!
 
 
 target 'Visilabs_Example' do
+  platform :ios, '8.0'
   pod "quantumgraph" #asd SİL SONRA
-  #pod "qgnotification" #asd SİL SONRA
   pod "Visilabs", :path => "../"
 end
 
 target 'Visilabs_Tests' do
+  platform :ios, '8.0'
   pod "Visilabs", :path => "../"
 
 

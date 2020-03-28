@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Visilabs"
-  s.version          = "2.5.20"
+  s.version          = "2.5.21"
   s.summary          = "Visilabs IOS SDK for Analytics and Target modules."
   s.description      = "Visilabs IOS SDK for Analytics and Target modules. SDK tracks user interactions and makes recommendations to enhance conversion and user retention."
   s.homepage         = "http://www.visilabs.com"
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
  #s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.ios.deployment_target = '7.0'
+  s.ios.deployment_target = '8.0'
 #s.tvos.deployment_target = '9.0'
 
 
