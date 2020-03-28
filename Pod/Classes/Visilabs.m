@@ -74,6 +74,7 @@ static Visilabs * API = nil;
 
 @property (nonatomic, retain) NSString *tokenIDArchiveKey ;
 @property (nonatomic, retain) NSString *appIDArchiveKey ;
+@property (nonatomic, retain) NSString *userAgentArchiveKey ;
 
 @property (nonatomic, retain) NSString *visitData;
 @property (nonatomic, retain) NSString *visitorData;
@@ -107,8 +108,7 @@ static Visilabs * API = nil;
 @property (nonatomic, retain) NSString *loggerOM3rdCookieValue;
 @property (nonatomic, retain) NSString *realTimeOM3rdCookieValue;
 
-//@property (nonatomic, retain) NSString *geofenceURL;
-//@property (nonatomic) BOOL geofenceEnabled;
+@property(nonatomic, strong) WKWebView *webView;
 
 @end
 
@@ -129,10 +129,40 @@ static Visilabs * API = nil;
 static VisilabsReachability *reachability;
 
 
+void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t block) {
+    if ([NSThread isMainThread]) {
+        dispatch_once(predicate, block);
+    } else {
+        if (DISPATCH_EXPECT(*predicate == 0L, NO)) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                dispatch_once(predicate, block);
+            });
+        }
+    }
+}
+
+- (void)computeWebViewUserAgent {
+    static dispatch_once_t onceToken;
+    self.webView = [[WKWebView alloc] initWithFrame:CGRectZero];
+    [self.webView loadHTMLString:@"<html></html>" baseURL:nil];
+    __weak typeof(self) weakSelf = self;
+    dispatch_once_on_main_thread(&onceToken, ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id __nullable userAgent, NSError * __nullable error) {
+            strongSelf.userAgent = userAgent;
+            strongSelf.webView = nil;
+            if (![NSKeyedArchiver archiveRootObject:strongSelf.userAgent toFile:[strongSelf userAgentFilePath]])
+            {
+                DLog(@"Visilabs: WARNING - Unable to archive userAgent!!!");
+            }
+        }];
+    });
+}
+
+
 //TODO shownNotifications keyedarchive'lenecek
 
 /*Notification Methods*/
-
 
 #pragma mark - Notification
 
@@ -300,25 +330,11 @@ static VisilabsReachability *reachability;
                 return;
             }
             
-            
-            //TODO: buralar değişecek
-            
-            
-            
-            
-            
             NSArray *rawNotifications = (NSArray *)[NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:&error];
             if (error) {
                 DLog(@"%@ notification check json error: %@, data: %@", self, error, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                 return;
             }
-            
-            //NSArray *rawNotifications = object[@"notifications"];
-            
-            
-            
-            
-            
             
             if (rawNotifications && [rawNotifications isKindOfClass:[NSArray class]]) {
                 for (id obj in rawNotifications) {
@@ -598,7 +614,6 @@ static VisilabsReachability *reachability;
     return [self filePathForData:self.exVisitorIDArchiveKey];
 }
 
-
 - (NSString *)tokenIDFilePath
 {
     return [self filePathForData:self.tokenIDArchiveKey];
@@ -609,7 +624,10 @@ static VisilabsReachability *reachability;
     return [self filePathForData:self.appIDArchiveKey];
 }
 
-
+- (NSString *)userAgentFilePath
+{
+    return [self filePathForData:self.userAgentArchiveKey];
+}
 
 - (NSString *)propertiesFilePath
 {
@@ -620,7 +638,6 @@ static VisilabsReachability *reachability;
 {
     [self archiveProperties];
 }
-
 
 - (void)archiveProperties
 {
@@ -672,8 +689,6 @@ static VisilabsReachability *reachability;
     
 }
 
-
-
 - (NSString *)getIDFA
 {
     if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled])
@@ -684,7 +699,6 @@ static VisilabsReachability *reachability;
     
     return @"";
 }
-
 
 - (NSString *)description
 {
@@ -963,52 +977,7 @@ static VisilabsReachability *reachability;
     
     self.tokenIDArchiveKey = @"Visilabs.tokenID";
     self.appIDArchiveKey = @"Visilabs.appID";
-    
-    
-    NSString * ag = nil;
-    
-    @try {
-        UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
-        ag = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-        NSLog(@"ag");
-        NSLog(@"%@", ag);
-        webView = nil;
-    }@catch(NSException *exception) {
-        DLog(@"Visilabs: Error while unarchiving cookieID.");
-        ag = @"IOS";
-    }
-    
-    
-    /*
-    
-    @try {
-        
-        //TODO:EGEMEN BU TEST EDİLECEK
-        WKWebView *visilabsWebView = [[WKWebView alloc]initWithFrame: CGRectMake(1.0, 1.0, 1.0, 1.0)];
-        [visilabsWebView loadHTMLString:@"<html></html>" baseURL:nil];
-        [visilabsWebView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id __nullable userAgent, NSError * __nullable error) {
-            self.userAgent = userAgent;
-            
-            NSLog(@"self.userAgent");
-            NSLog(@"%@", self.userAgent);
-            
-            
-            NSLog(@"error.description");
-            NSLog(@"%@",error.description);
-            
-            //NSLog(@"%@", userAgent);
-            // iOS 8.3
-            // Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12F70
-            // iOS 9.0
-            // Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.32 (KHTML, like Gecko) Mobile/13A4254v
-        }];
-        visilabsWebView = nil;
-    }@catch(NSException *exception) {
-        DLog(@"Visilabs: Error while unarchiving cookieID.");
-        self.userAgent = @"IOS";
-    }
-     
-     */
+    self.userAgentArchiveKey = @"Visilabs.userAgent";
     
     @try {
         self.identifierForAdvertising = [self getIDFA];
@@ -1052,6 +1021,17 @@ static VisilabsReachability *reachability;
     }@catch(NSException *exception) {
         DLog(@"Visilabs: Error while unarchiving appID.");
     }
+
+    self.userAgent = @"IOS";
+    @try {
+        self.userAgent = [NSKeyedUnarchiver unarchiveObjectWithFile:[self userAgentFilePath]];
+    }@catch(NSException *exception) {
+        DLog(@"Visilabs: Error while unarchiving userAgent.");
+    }
+    
+    [self computeWebViewUserAgent];
+    
+    
     
     
     
@@ -1089,8 +1069,6 @@ static VisilabsReachability *reachability;
     }
     
 }
-
-
 
 
 - (void) send
@@ -1455,7 +1433,6 @@ static VisilabsReachability *reachability;
     [self send];
 }
 
-
 - (void)login:(NSString *)exVisitorID  withProperties:(NSMutableDictionary *)properties
 {
     if(exVisitorID == nil || [exVisitorID length] == 0)
@@ -1811,8 +1788,6 @@ static VisilabsReachability *reachability;
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     CFRelease(theUUID);
-    //    self.cookieID = [(NSString *)string autorelease];
-    //    self.cookieID = [(__bridge NSString *)string autorelease];
     self.cookieID =(__bridge NSString *)string;
     
     if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[self cookieIDFilePath]])
