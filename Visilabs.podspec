@@ -8,12 +8,12 @@
 
 Pod::Spec.new do |s|
   s.name             = "Visilabs"
-  s.version          = "2.5.21"
+  s.version          = "2.5.22"
   s.summary          = "Visilabs IOS SDK for Analytics and Target modules."
   s.description      = "Visilabs IOS SDK for Analytics and Target modules. SDK tracks user interactions and makes recommendations to enhance conversion and user retention."
   s.homepage         = "http://www.visilabs.com"
   s.license          = 'Visilabs'
-  s.author           = { "visilabs" => "egemen@visilabs.com" }
+  s.author           = { "visilabs" => "egemen.gulkilik@relateddigital.com" }
   s.source           = { :git => "https://github.com/visilabs/Visilabs-IOS.git", :tag => s.version.to_s }
   s.social_media_url = 'https://www.facebook.com/visilabs/'
 
