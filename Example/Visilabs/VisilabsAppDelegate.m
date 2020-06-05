@@ -20,41 +20,8 @@
     NSString * visilabsNewSiteID = @"362F714E306C756B2B37593D";
     NSString * visilabsNewDataSource = @"visilabsnew";
     
-    NSString * markafoniNewOID = @"79686C6B5262452B744F633D";
-    NSString * markafoniNewSiteID = @"4348476C447A4F30386B413D";
-    NSString * markafoniNewDataSource = @"markafoni";
-    
-    NSString * trendyolNewOID = @"3876696C314F44337A56493D";
-    NSString * trendyolNewSiteID = @"3659756D4350385868686B3D";
-    NSString * trendyolNewDataSource = @"trendyol";
-    
-    
-    NSString * zubizuOID = @"4B386D62426E72506654383D";
-    NSString * zubizuSiteID = @"42512F6A767749464169633D";
-    NSString * zubizuDataSource = @"qclub";
-    
-    /*
-    NSString * visilabsNewOID = @"4B386D62426E72506654383D"; // Zubizu Apps Test
-    NSString * visilabsNewSiteID = @"352F57456A306D2B78584D3D"; // Zubizu Apps Test
-    NSString * visilabsNewDataSource = @"qclubtest"; //Zubizu Apps Test
-    */
-    
-    /*
-    [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"http://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"http://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:@"http://s.visilabs.net/json" withActionURL:@"http://s.visilabs.net/actjson" withGeofenceURL:@"http://s.visilabs.net/geojson" withGeofenceEnabled:YES];
-     */
-    
-    
-    
-    /*
-    NSString * geofenceURL = @"https://testappvisilabsios.ngrok.io/adservertestweb/geojson";
-    NSString * targetURL = @"https://testappvisilabsios.ngrok.io/adservertestweb/json";
-    NSString * actionURL = @"https://testappvisilabsios.ngrok.io/adservertestweb/actjson";
-    */
-    /*
-    NSString * geofenceURL = @"http://tests.visilabs.net/geojson";
-    NSString * targetURL = @"http://tests.visilabs.net/json";
-    NSString * actionURL = @"http://tests.visilabs.net/actjson";
-     */
+
+
     
     NSString * geofenceURL = @"https://s.visilabs.net/geojson";
     NSString * targetURL = @"https://s.visilabs.net/json";
@@ -64,50 +31,8 @@
     withMaxGeofenceCount: 20];
     
     
-    [[Visilabs callAPI] login:@"egemen-deneme" withProperties:nil];
+    [[Visilabs callAPI] login:@"egemengulkilik@gmail.com" withProperties:nil];
 
-    
-    if (@available(iOS 10, *))
-    {
-        UNNotificationAction *ackAction = [UNNotificationAction actionWithIdentifier:@"com.elonchan.yes"
-                                                                               title:@"Acknowledge"
-                                                                             options:UNNotificationActionOptionForeground];
-        UNNotificationAction *detailsAction = [UNNotificationAction actionWithIdentifier:@"com.elonchan.no"
-                                                                                   title:@"Details"
-                                                                                 options:UNNotificationActionOptionForeground];
-        NSArray *notificationActions = @[ ackAction, detailsAction ];
-        UNNotificationCategory *cat = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategory"
-            actions:notificationActions intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-        [center setNotificationCategories: [NSSet setWithObjects:@[cat], nil]];
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error)
-         {
-             if(!error) {
-                 [[UIApplication sharedApplication] registerForRemoteNotifications];
-                 // required to get the app to do anything at all about push notifications
-                 NSLog( @"Push registration success." );
-             } else {
-                 NSLog( @"Push registration FAILED" );
-                 NSLog( @"ERROR: %@ - %@", error.localizedFailureReason, error.localizedDescription );
-                 NSLog( @"SUGGESTIONS: %@ - %@", error.localizedRecoveryOptions, error.localizedRecoverySuggestion );
-             }
-         }];
-    }
-    else
-    {
-        if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-            #ifdef __IPHONE_8_0
-            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
-                          | UIUserNotificationTypeBadge| UIUserNotificationTypeSound) categories:nil];
-            [application registerUserNotificationSettings:settings];
-            #endif
-        } else {
-            UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
-            [application registerForRemoteNotificationTypes:myTypes];
-        }
-    }
-    
 
     return YES;
 }
@@ -145,7 +70,7 @@
     
     
     
-    [[Visilabs callAPI] login:@"sedat-deneme"];
+    [[Visilabs callAPI] login:@"egemengulkilik@gmail.com"];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:tokenString forKey:@"OM.sys.TokenID"];
