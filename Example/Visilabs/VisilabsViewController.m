@@ -41,6 +41,7 @@
 {
     [super viewDidLoad];
     [self testExVisitorIDChange];
+    exVisitorIDText.text = @"egemengulkilik@gmail.com";
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -53,18 +54,23 @@
 
 - (IBAction)login:(id)sender {
     [[Visilabs callAPI] login:exVisitorIDText.text];
+    [self.view endEditing:YES];
 }
 
 
 - (IBAction)signUp:(id)sender {
     [[Visilabs callAPI] signUp:exVisitorIDText.text];
+    [self.view endEditing:YES];
 }
 
 - (IBAction)customEvent:(id)sender {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:productCodeText.text forKey:@"OM.pv"];
+    [dic setObject:@"isveren" forKey:@"OM.kullanici_tipi"];
+    
     
     [[Visilabs callAPI] customEvent:pageNameText.text withProperties:dic];
+    [self.view endEditing:YES];
 }
 
 - (IBAction)suggest:(id)sender {
