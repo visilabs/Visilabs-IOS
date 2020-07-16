@@ -118,7 +118,7 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 
 - (NSString *)urlEncode:(NSString *)prior;
 
-- (VisilabsTargetRequest *)buildFavoriteRequest:(NSString *)actionID withCompletion:(NSString *)completion;
+- (VisilabsTargetRequest *)buildFavoriteRequest:(NSString *)actionID;
 
 - (VisilabsTargetRequest *)buildTargetRequest:(NSString *)zoneID withProductCode:(NSString *)productCode;
 
