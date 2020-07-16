@@ -11,6 +11,7 @@
 #import "VisilabsTargetFilter.h"
 
 @interface VisilabsTargetRequest : VisilabsAction
+    @property (nonatomic, strong) NSString *actionID;
     @property (nonatomic, strong) NSString *zoneID;
     @property (nonatomic, strong) NSString *productCode;
     @property (nonatomic, strong) NSMutableDictionary *properties;
