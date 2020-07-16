@@ -1,0 +1,6 @@
+framework module Visilabs {
+  umbrella header "Visilabs-umbrella.h"
+
+  export *
+  module * { export * }
+}
