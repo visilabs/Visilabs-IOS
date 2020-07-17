@@ -12,13 +12,13 @@
 
 enum VisilabsTargetRequestType
 {
-    Recommendation,
-    Favorite
+    VisilabsTargetRequestTypeRecommendation,
+    VisilabsTargetRequestTypeFavorite
 };
 typedef enum VisilabsTargetRequestType VisilabsTargetRequestType;
 
 @interface VisilabsTargetRequest : VisilabsAction
-    @property (nonatomic, readonly) VisilabsTargetRequestType targetRequestType;
+    @property (nonatomic) VisilabsTargetRequestType targetRequestType;
     @property (nonatomic, strong) NSString *actionID;
     @property (nonatomic, strong) NSString *zoneID;
     @property (nonatomic, strong) NSString *productCode;
