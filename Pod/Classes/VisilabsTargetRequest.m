@@ -16,10 +16,19 @@
 - (NSURL *)buildURL {
     @synchronized(self)
     {
-        NSMutableString *targetURL = [[[Visilabs callAPI] targetURL] mutableCopy];
+        NSMutableString *targetURL = nil;
+        if(self.targetRequestType == VisilabsTargetRequestTypeFavorite)
+        {
+            targetURL = [[[Visilabs callAPI] actionURL] mutableCopy];
+        }
+        else
+        {
+            targetURL = [[[Visilabs callAPI] targetURL] mutableCopy];
+        }
         NSString *queryParameters =[self getParametersAsQueryString];
         targetURL = [[targetURL stringByAppendingString:queryParameters] mutableCopy];
-        //DLog(@"Request url is %@", targetURL);
+        //TODO: DLog'u sil
+        DLog(@"Request url is %@", targetURL);
         NSURL *uri = [[NSURL alloc] initWithString:targetURL];
         return uri;
     }
