@@ -766,6 +766,7 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
 
 - (VisilabsTargetRequest *)buildFavoriteRequest:(NSString *)actionID{
     VisilabsTargetRequest *request = (VisilabsTargetRequest *)[self buildAction];
+    request.targetRequestType = VisilabsTargetRequestTypeFavorite;
     request.actionID = actionID;
     request.path = nil;
     request.headers = nil;
@@ -777,6 +778,7 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
 
 - (VisilabsTargetRequest *)buildTargetRequest:(NSString *)zoneID withProductCode:(NSString *)productCode{
     VisilabsTargetRequest *request = (VisilabsTargetRequest *)[self buildAction];
+    request.targetRequestType = VisilabsTargetRequestTypeRecommendation;
     request.zoneID = zoneID;
     request.productCode = productCode;
     request.path = nil;
@@ -789,6 +791,7 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
 
 - (VisilabsTargetRequest *)buildTargetRequest:(NSString *)zoneID withProductCode:(NSString *)productCode withProperties:(NSMutableDictionary *)properties withFilters:(NSMutableArray<VisilabsTargetFilter *> *) filters{
     VisilabsTargetRequest *request = (VisilabsTargetRequest *)[self buildAction];
+    request.targetRequestType = VisilabsTargetRequestTypeRecommendation;
     request.zoneID = zoneID;
     request.productCode = productCode;
     request.path = nil;
