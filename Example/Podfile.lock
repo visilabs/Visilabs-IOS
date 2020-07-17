@@ -1,25 +1,16 @@
 PODS:
-  - quantumgraph (5.2.1):
-    - quantumgraph/ios-sdk (= 5.2.1)
-  - quantumgraph/ios-sdk (5.2.1)
   - Visilabs (2.5.22)
 
 DEPENDENCIES:
-  - quantumgraph
   - Visilabs (from `../`)
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - quantumgraph
 
 EXTERNAL SOURCES:
   Visilabs:
     :path: "../"
 
 SPEC CHECKSUMS:
-  quantumgraph: 677a219d7406fc3c316647591c32a07572ca6e6c
   Visilabs: b69958fd31b4d95170d3777353b32627b82d127d
 
-PODFILE CHECKSUM: 64f1b9eba643a685ace6df39e8757d528c6186f1
+PODFILE CHECKSUM: 2a62de14d88864d6c9dc5f92464c2b9218659bc8
 
 COCOAPODS: 1.9.1
