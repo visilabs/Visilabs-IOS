@@ -10,7 +10,15 @@
 #import "VisilabsConfig.h"
 #import "VisilabsTargetFilter.h"
 
+enum VisilabsTargetRequestType
+{
+    Recommendation,
+    Favorite
+};
+typedef enum VisilabsTargetRequestType VisilabsTargetRequestType;
+
 @interface VisilabsTargetRequest : VisilabsAction
+    @property (nonatomic, readonly) VisilabsTargetRequestType targetRequestType;
     @property (nonatomic, strong) NSString *actionID;
     @property (nonatomic, strong) NSString *zoneID;
     @property (nonatomic, strong) NSString *productCode;
