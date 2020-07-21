@@ -84,6 +84,8 @@ static NSString *const kGEO_ID_KEY = @"OM.locationid";
 
 static NSString *const kTRIGGER_EVENT_KEY = @"OM.triggerevent";
 
+static NSString *const kMOBILEENDPOINT = @"https://s.visilabs.net/mobile";
+
 
 +(NSString *) LOGGER_URL
 {
@@ -187,6 +189,11 @@ static NSString *const kTRIGGER_EVENT_KEY = @"OM.triggerevent";
 +(NSString *) TRIGGER_EVENT_KEY
 {
     return kTRIGGER_EVENT_KEY;
+}
+
++(NSString *) MOBILEENDPOINT
+{
+    return kMOBILEENDPOINT;
 }
 
 + (NSArray *)visilabsParameters

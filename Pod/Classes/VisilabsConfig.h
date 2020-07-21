@@ -43,4 +43,6 @@
 
 + (NSString *) TRIGGER_EVENT_KEY;
 
++ (NSString *) MOBILEENDPOINT;
+
 @end
