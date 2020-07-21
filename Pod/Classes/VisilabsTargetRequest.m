@@ -19,7 +19,7 @@
         NSMutableString *targetURL = nil;
         if(self.targetRequestType == VisilabsTargetRequestTypeFavorite)
         {
-            targetURL = [[[Visilabs callAPI] actionURL] mutableCopy];
+            targetURL = [[[Visilabs callAPI] mobileEndPoint] mutableCopy];
         }
         else
         {

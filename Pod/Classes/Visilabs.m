@@ -984,6 +984,7 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
     
     
     self.targetURL = tURL;
+    self.mobileEndPoint = [[VisilabsConfig MOBILEENDPOINT] mutableCopy];
     
     
     if(self.channel == nil)

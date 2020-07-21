@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 
 @interface Visilabs : NSObject
 
-
+@property (nonatomic, strong) NSString *mobileEndPoint;
 @property (nonatomic, strong) NSString *actionURL;
 @property (nonatomic, strong) NSString *targetURL;
 @property (nonatomic, strong) NSString *organizationID;
