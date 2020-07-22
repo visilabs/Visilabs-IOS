@@ -132,12 +132,27 @@
         queryParameters = [[queryParameters stringByAppendingString:zoneIDParameter] mutableCopy];
     }
     
+
     if([self productCode] && [[self productCode] length] > 0)
     {
         NSString* encodedProductCodeValue = [[Visilabs callAPI] urlEncode:[self productCode]];
         NSString *productCodeParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig BODY_KEY], encodedProductCodeValue];
         queryParameters = [[queryParameters stringByAppendingString:productCodeParameter] mutableCopy];
     }
+
+    if(self.targetRequestType == VisilabsTargetRequestTypeFavorite)
+    {
+        if([self actionID] && [[self actionID] length] > 0)
+        {
+            NSString* encodedActionIDValue = [[Visilabs callAPI] urlEncode:[self actionID]];
+            NSString *actionIDParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig ACTION_ID_KEY], encodedActionIDValue];
+            queryParameters = [[queryParameters stringByAppendingString:actionIDParameter] mutableCopy];
+        }
+        NSString* encodedActionTypeValue = [[Visilabs callAPI] urlEncode:@"FavoriteAttributeAction"];
+        NSString *actionTypeParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig ACTION_TYPE_KEY], encodedActionTypeValue];
+        queryParameters = [[queryParameters stringByAppendingString:actionTypeParameter] mutableCopy];
+    }
+
     
     if([[Visilabs callAPI] tokenID] != nil &&  ![[[Visilabs callAPI] tokenID] isEqual: @""])
     {
