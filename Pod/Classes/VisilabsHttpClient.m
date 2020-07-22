@@ -44,6 +44,8 @@
     return request;
 }
 
+
+//TODO: favorite için bu metod değişecek
 - (void)sendRequest:(VisilabsAction *)visilabsAction
          AndSuccess:(void (^)(VisilabsResponse *success))sucornil
          AndFailure:(void (^)(VisilabsResponse *failed))failornil {
