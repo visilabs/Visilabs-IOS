@@ -19,6 +19,8 @@
 + (NSString *) EXVISITORID_KEY;
 + (NSString *) ZONE_ID_KEY;
 + (NSString *) BODY_KEY;
++ (NSString *) ACTION_ID_KEY;
++ (NSString *) ACTION_TYPE_KEY;
 
 + (NSString *) LATITUDE_KEY;
 + (NSString *) LONGITUDE_KEY;

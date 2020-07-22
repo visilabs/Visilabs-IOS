@@ -72,6 +72,9 @@ static NSString *const kLONGITUDE_KEY = @"OM.longitude";
 
 static NSString *const kZONE_ID_KEY = @"OM.zid";
 static NSString *const kBODY_KEY = @"OM.body";
+static NSString *const kACTION_ID_KEY = @"action_id";
+static NSString *const kACTION_TYPE_KEY = @"action_type";
+
 
 static NSString *const kACT_ID_KEY = @"actid";
 static NSString *const kACT_KEY = @"act";
@@ -149,6 +152,16 @@ static NSString *const kMOBILEENDPOINT = @"https://s.visilabs.net/mobile";
 +(NSString *) BODY_KEY
 {
     return kBODY_KEY;
+}
+
++(NSString *) ACTION_ID_KEY
+{
+    return kACTION_ID_KEY;
+}
+
++(NSString *) ACTION_TYPE_KEY
+{
+    return kACTION_TYPE_KEY;
 }
 
 +(NSString *) ACT_ID_KEY
