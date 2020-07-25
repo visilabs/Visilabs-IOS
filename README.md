@@ -22,7 +22,7 @@ pod "Visilabs"
 ## Favorite Attributes
 
 ```objc
-VisilabsTargetRequest * targetRequest = [[Visilabs callAPI] buildActionRequest:VisilabsTargetRequestTypeFavorite withActionID:@"188"];
+VisilabsTargetRequest * targetRequest = [[Visilabs callAPI] buildActionRequest:VisilabsTargetRequestTypeFavorite];
 void (^ successBlock)(VisilabsResponse *) = ^(VisilabsResponse * response) {
     NSArray *favoriteAttributeActions = [response favoriteAttributeActions];
     if(favoriteAttributeActions){
@@ -83,6 +83,11 @@ void (^ failBlock)(VisilabsResponse *) =^(VisilabsResponse * response){
 [targetRequest execAsyncWithSuccess:successBlock AndFailure:failBlock];
 ```
 
+You may also make favorite attribute request for a specific targeting action. Below there is an example of buildActionRequest call specifying the action id.
+
+```objc
+VisilabsTargetRequest * targetRequest = [[Visilabs callAPI] buildActionRequest:VisilabsTargetRequestTypeFavorite withActionID:@"188"];
+```
 
 ## Author
 
