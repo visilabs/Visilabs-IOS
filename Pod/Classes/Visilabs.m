@@ -764,9 +764,13 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
     DLog(@"Visilabs network status changed. Current status: %d", _isOnline);
 }
 
-- (VisilabsTargetRequest *)buildFavoriteRequest:(NSString *)actionID{
+- (VisilabsTargetRequest *)buildActionRequest:(VisilabsTargetRequestType)actionType{
+    return [self buildActionRequest:actionType withActionID:nil];
+}
+
+- (VisilabsTargetRequest *)buildActionRequest:(VisilabsTargetRequestType)actionType withActionID:(NSString *)actionID{
     VisilabsTargetRequest *request = (VisilabsTargetRequest *)[self buildAction];
-    request.targetRequestType = VisilabsTargetRequestTypeFavorite;
+    request.targetRequestType = actionType;
     request.actionID = actionID;
     request.path = nil;
     request.headers = nil;
