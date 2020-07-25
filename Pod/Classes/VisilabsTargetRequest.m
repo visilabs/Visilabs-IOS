@@ -63,14 +63,6 @@
             if(propKey){
                 if(propKey.attribute && propKey.attribute != @"" && propKey.filterType && propKey.filterType != @"" &&
                    propKey.value && propKey.value != @"" ){
-                    /*
-                    VisilabsTargetFilterAbbreviated *abbreviatedFilter = [[VisilabsTargetFilterAbbreviated alloc] init];
-                    abbreviatedFilter.attr = propKey.attribute;
-                    abbreviatedFilter.ft = propKey.filterType;
-                    abbreviatedFilter.fv = propKey.value;
-                    [abbreviatedFilters addObject:abbreviatedFilter];
-                     */
-                    
                     NSMutableDictionary *abbFilter =  [[NSMutableDictionary alloc] init];
                     [abbFilter setObject:propKey.attribute forKey:@"attr"];
                     [abbFilter setObject:propKey.filterType forKey:@"ft"];
@@ -148,7 +140,8 @@
             NSString *actionIDParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig ACTION_ID_KEY], encodedActionIDValue];
             queryParameters = [[queryParameters stringByAppendingString:actionIDParameter] mutableCopy];
         }
-        NSString* encodedActionTypeValue = [[Visilabs callAPI] urlEncode:@"FavoriteAttributeAction"];
+        NSString* visilabsTargetRequestTypeFavoriteString = @"FavoriteAttributeAction";
+        NSString* encodedActionTypeValue = [[Visilabs callAPI] urlEncode:visilabsTargetRequestTypeFavoriteString];
         NSString *actionTypeParameter = [NSString stringWithFormat:@"&%@=%@", [VisilabsConfig ACTION_TYPE_KEY], encodedActionTypeValue];
         queryParameters = [[queryParameters stringByAppendingString:actionTypeParameter] mutableCopy];
     }
