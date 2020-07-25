@@ -31,7 +31,7 @@
     withMaxGeofenceCount: 20];
     
     
-    [[Visilabs callAPI] login:@"merve@visilabs.com" withProperties:nil];
+    [[Visilabs callAPI] login:@"ogun.ozturk@euromsg.com" withProperties:nil];
 
 
     return YES;
