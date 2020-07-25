@@ -1,124 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="whP-gf-Uak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v8B-8P-pQt">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Visilabs View Controller-->
-        <scene sceneID="wQg-tq-qST">
+        <scene sceneID="nBu-MZ-Skr">
             <objects>
-                <viewController id="whP-gf-Uak" customClass="VisilabsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uEw-UM-LJ8"/>
-                        <viewControllerLayoutGuide type="bottom" id="Mvr-aV-6Um"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TpU-gO-2f1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="v8B-8P-pQt" customClass="VisilabsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wWM-rI-a8Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnt-sO-lKu">
-                                <frame key="frameInset" minX="170" minY="28" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0I-qn-bms">
+                                <rect key="frame" x="107" y="44" width="200" height="30"/>
+                                <state key="normal" title="Test Favorite Attribute"/>
                                 <connections>
-                                    <action selector="login:" destination="whP-gf-Uak" eventType="touchUpInside" id="x9j-RZ-LYm"/>
+                                    <action selector="testFavoriteAttribute:" destination="v8B-8P-pQt" eventType="touchUpInside" id="Urd-N9-B6H"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ExVisitorID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45y-bd-mCQ">
-                                <frame key="frameInset" minX="20" minY="28" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ProductCode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lrM-za-Q7B">
-                                <frame key="frameInset" minX="20" minY="67" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ZoneID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g6H-Bd-lGF">
-                                <frame key="frameInset" minX="20" minY="106" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zub-ti-X1J">
-                                <frame key="frameInset" minX="157" minY="66" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Suggest"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fav Attr Results" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnB-ZJ-efd">
+                                <rect key="frame" x="20" y="91" width="374" height="237"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="237" id="cxv-tf-dOW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYi-RO-u1g">
+                                <rect key="frame" x="107" y="357" width="200" height="30"/>
+                                <state key="normal" title="Test Recommendation"/>
                                 <connections>
-                                    <action selector="suggest:" destination="whP-gf-Uak" eventType="touchUpInside" id="9y9-bY-iyf"/>
+                                    <action selector="testRecommendation:" destination="v8B-8P-pQt" eventType="touchUpInside" id="KMZ-rM-YhS"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PageName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SZv-lc-ASy">
-                                <frame key="frameInset" minX="20" minY="144" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZZ-J6-UPP">
-                                <frame key="frameInset" minX="157" minY="144" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Custom"/>
-                                <connections>
-                                    <action selector="customEvent:" destination="whP-gf-Uak" eventType="touchUpInside" id="xxc-Nx-5KA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVv-Mh-yKt">
-                                <frame key="frameInset" minX="261" minY="28" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SignUp"/>
-                                <connections>
-                                    <action selector="signUp:" destination="whP-gf-Uak" eventType="touchUpInside" id="B7x-RP-l4G"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAU-u9-HfA">
-                                <frame key="frameInset" minX="20" minY="189" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show Mini"/>
-                                <connections>
-                                    <action selector="showMini:" destination="whP-gf-Uak" eventType="touchUpInside" id="fF8-qh-qk5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31y-hj-caE">
-                                <frame key="frameInset" minX="120" minY="189" width="66" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show Full"/>
-                                <connections>
-                                    <action selector="showFull:" destination="whP-gf-Uak" eventType="touchUpInside" id="Iih-hw-CHI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r57-v6-eDz">
-                                <frame key="frameInset" minX="217" minY="189" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show 3"/>
-                                <connections>
-                                    <action selector="show3:" destination="whP-gf-Uak" eventType="touchUpInside" id="Ne8-hl-rgp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7q-E5-lua">
-                                <frame key="frameInset" minX="298" minY="189" width="38" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show"/>
-                                <connections>
-                                    <action selector="show:" destination="whP-gf-Uak" eventType="touchUpInside" id="RJf-WP-dvi"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommendation Results" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1A-u3-EJi">
+                                <rect key="frame" x="20" y="395" width="374" height="237"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="237" id="Wel-ff-BhI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yYi-RO-u1g" firstAttribute="trailing" secondItem="L0I-qn-bms" secondAttribute="trailing" id="3ih-Kb-dsU"/>
+                            <constraint firstItem="L0I-qn-bms" firstAttribute="centerX" secondItem="wWM-rI-a8Y" secondAttribute="centerX" id="51G-zf-HSD"/>
+                            <constraint firstItem="L0I-qn-bms" firstAttribute="top" secondItem="arT-gL-PB2" secondAttribute="top" id="6ON-nh-hS3"/>
+                            <constraint firstItem="z1A-u3-EJi" firstAttribute="trailing" secondItem="GnB-ZJ-efd" secondAttribute="trailing" id="8Zj-A5-ssf"/>
+                            <constraint firstItem="z1A-u3-EJi" firstAttribute="leading" secondItem="GnB-ZJ-efd" secondAttribute="leading" id="AZ4-tM-Z34"/>
+                            <constraint firstItem="GnB-ZJ-efd" firstAttribute="top" secondItem="L0I-qn-bms" secondAttribute="bottom" constant="17" id="ET9-OF-yIm"/>
+                            <constraint firstItem="GnB-ZJ-efd" firstAttribute="leading" secondItem="wWM-rI-a8Y" secondAttribute="leadingMargin" id="L13-4Q-oLp"/>
+                            <constraint firstItem="GnB-ZJ-efd" firstAttribute="centerX" secondItem="L0I-qn-bms" secondAttribute="centerX" id="Yab-du-oqr"/>
+                            <constraint firstItem="L0I-qn-bms" firstAttribute="leading" secondItem="arT-gL-PB2" secondAttribute="leading" constant="107" id="iTc-gX-fon"/>
+                            <constraint firstItem="yYi-RO-u1g" firstAttribute="top" secondItem="GnB-ZJ-efd" secondAttribute="bottom" constant="29" id="mBs-zU-yku"/>
+                            <constraint firstItem="yYi-RO-u1g" firstAttribute="leading" secondItem="L0I-qn-bms" secondAttribute="leading" id="v3l-3S-7wl"/>
+                            <constraint firstItem="z1A-u3-EJi" firstAttribute="top" secondItem="yYi-RO-u1g" secondAttribute="bottom" constant="8" id="y4M-D4-zU6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="arT-gL-PB2"/>
                     </view>
                     <connections>
-                        <outlet property="exVisitorIDText" destination="45y-bd-mCQ" id="Pe9-kD-lWF"/>
-                        <outlet property="pageNameText" destination="SZv-lc-ASy" id="xXc-y5-4Sj"/>
-                        <outlet property="productCodeText" destination="lrM-za-Q7B" id="HXt-Mo-WJm"/>
-                        <outlet property="zoneIDText" destination="g6H-Bd-lGF" id="bj1-6e-c7W"/>
+                        <outlet property="favoriteAttributeResultsLabel" destination="GnB-ZJ-efd" id="xVb-mU-zmM"/>
+                        <outlet property="recommendationResultsLabel" destination="z1A-u3-EJi" id="LmD-Gd-all"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOU-D2-W5s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="396"/>
+            <point key="canvasLocation" x="-191.30434782608697" y="76.339285714285708"/>
         </scene>
     </scenes>
 </document>

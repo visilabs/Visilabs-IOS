@@ -16,9 +16,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    NSString * visilabsNewOID = @"53444A2B4B5071322F50303D";
-    NSString * visilabsNewSiteID = @"362F714E306C756B2B37593D";
-    NSString * visilabsNewDataSource = @"visilabsnew";
+    NSString * visilabsNewOID = @"676D325830564761676D453D";
+    NSString * visilabsNewSiteID = @"356467332F6533766975593D";
+    NSString * visilabsNewDataSource = @"visistore";
     
 
 
@@ -27,11 +27,11 @@
     NSString * targetURL = @"https://s.visilabs.net/json";
     NSString * actionURL = @"https://s.visilabs.net/actjson";
     
-     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:targetURL withActionURL:actionURL withGeofenceURL:geofenceURL withGeofenceEnabled:YES
+     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:targetURL withActionURL:actionURL withGeofenceURL:geofenceURL withGeofenceEnabled:NO
     withMaxGeofenceCount: 20];
     
     
-    [[Visilabs callAPI] login:@"egemengulkilik@gmail.com" withProperties:nil];
+    [[Visilabs callAPI] login:@"merve@visilabs.com" withProperties:nil];
 
 
     return YES;
