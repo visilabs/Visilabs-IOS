@@ -89,7 +89,6 @@
         int statusCode = (int)((NSHTTPURLResponse*)response).statusCode;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
-                //DLog(@"Error %@", error.description);
                 VisilabsResponse *visilabsResponse = [[VisilabsResponse alloc] init];
                 if(apicall){
                     visilabsResponse.targetURL = [apicall absoluteString];
@@ -97,19 +96,17 @@
                 visilabsResponse.rawResponseAsString = reponseAsRawString;
                 visilabsResponse.rawResponse = data;
                 visilabsResponse.error = error;
+                visilabsResponse.targetRequestType = visilabsAction.targetRequestType;
                 [self failWithResponse:visilabsResponse AndAction:visilabsAction];
                 return;
             }
-            
-            //DLog(@"reused cache %lu", (unsigned long)request.cachePolicy);
-            //DLog(@"Response status : %d", statusCode);
-            //DLog(@"Response data : %@", ((NSHTTPURLResponse*)response).description);
             
             // parse, build response, delegate
             VisilabsResponse *visilabsResponse = [[VisilabsResponse alloc] init];
             visilabsResponse.responseStatusCode = (int)((NSHTTPURLResponse*)response).statusCode;
             visilabsResponse.rawResponseAsString = reponseAsRawString;
             visilabsResponse.rawResponse = data;
+            visilabsResponse.targetRequestType = visilabsAction.targetRequestType;
             if(apicall){
                 visilabsResponse.targetURL = [apicall absoluteString];
             }
