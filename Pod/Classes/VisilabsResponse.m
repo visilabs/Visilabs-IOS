@@ -17,10 +17,13 @@
 
 - (void)parseResponseData:(NSData *)dat {
     self.parsedResponse = [dat objectFromJSONData];
-    
-    /*egemen*/
     self.responseArray = [dat objectFromJSONData];
-    /*egemen*/
+    
+    if(self.parsedResponse && self.targetRequestType == VisilabsTargetRequestTypeFavorite)
+    {
+        self.favoriteAttributeActions = [self.parsedResponse objectForKey:@"FavoriteAttributeAction"];    
+    }
+    
     
 }
 

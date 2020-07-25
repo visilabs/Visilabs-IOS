@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VisilabsAction.h"
 
 
 @interface VisilabsResponse : NSObject
+
+@property (nonatomic) VisilabsTargetRequestType targetRequestType;
+@property (nonatomic, strong) NSArray *favoriteAttributeActions;
 
 
 /** Get the generated target URL as NSString */
