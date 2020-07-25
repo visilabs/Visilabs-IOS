@@ -8,6 +8,13 @@
 
 #import "VisilabsResponseDelegate.h"
 
+enum VisilabsTargetRequestType
+{
+    VisilabsTargetRequestTypeRecommendation,
+    VisilabsTargetRequestTypeFavorite
+};
+typedef enum VisilabsTargetRequestType VisilabsTargetRequestType;
+
 @class VisilabsHttpClient;
 
 /**
@@ -21,6 +28,7 @@
     VisilabsHttpClient *_httpClient;
 }
 
+@property (nonatomic) VisilabsTargetRequestType targetRequestType;
     
 /** The type of the request */
 @property (nonatomic, strong) NSString *method;
