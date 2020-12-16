@@ -1258,6 +1258,148 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
     return after;
 }
 
+- (void)sendCampaignParameters:(NSMutableDictionary *)properties
+{
+    if ([[properties allKeys] containsObject:@"OM.cookieID"])
+    {
+        NSString *cookieid = [properties objectForKey: @"OM.cookieID"];
+        
+        if(![self.cookieID isEqualToString:cookieid]){
+            [VisilabsPersistentTargetManager clearParameters];
+        }
+        
+        self.cookieID = cookieid;
+        if (![NSKeyedArchiver archiveRootObject:self.cookieID toFile:[self cookieIDFilePath]])
+        {
+            DLog(@"Visilabs: WARNING - Unable to archive identity!!!");
+        }
+        [properties removeObjectForKey:@"OM.cookieID"];
+    }
+    
+    if ([[properties allKeys] containsObject:@"OM.exVisitorID"])
+    {
+        NSString     *exvisitorid = [properties objectForKey: @"OM.exVisitorID"];
+        
+        if(![self.exVisitorID isEqualToString:exvisitorid]){
+            [VisilabsPersistentTargetManager clearParameters];
+        }
+        
+        if([self exVisitorID] != nil &&  ![[self exVisitorID] isEqualToString:exvisitorid])
+        {
+            [self setCookieID];
+        }
+        
+        
+        self.exVisitorID = exvisitorid;
+        if (![NSKeyedArchiver archiveRootObject:self.exVisitorID toFile:[self exVisitorIDFilePath]])
+        {
+            DLog(@"Visilabs: WARNING - Unable to archive new identity!!!");
+        }
+        [properties removeObjectForKey:@"OM.exVisitorID"];
+    }
+    
+    if ([[properties allKeys] containsObject:@"OM.sys.TokenID"])
+    {
+        NSString *tokenid = [properties objectForKey: @"OM.sys.TokenID"];
+        self.tokenID = tokenid;
+        
+        if (![NSKeyedArchiver archiveRootObject:self.tokenID toFile:[self tokenIDFilePath]])
+        {
+            DLog(@"Visilabs: WARNING - Unable to archive tokenID!!!");
+        }
+        [properties removeObjectForKey:@"OM.sys.TokenID"];
+    }
+    
+    if ([[properties allKeys] containsObject:@"OM.sys.AppID"])
+    {
+        NSString *appid = [properties objectForKey: @"OM.sys.AppID"];
+        self.appID = appid;
+        
+        if (![NSKeyedArchiver archiveRootObject:self.appID toFile:[self appIDFilePath]])
+        {
+            DLog(@"Visilabs: WARNING - Unable to archive appID!!!");
+        }
+        [properties removeObjectForKey:@"OM.sys.AppID"];
+    }
+    
+    
+    if ([[properties allKeys] containsObject:@"OM.m_adid"])
+    {
+        [properties removeObjectForKey:@"OM.m_adid"];
+    }
+    
+    if ([[properties allKeys] containsObject:[VisilabsConfig APIVER_KEY]])
+    {
+        [properties removeObjectForKey:[VisilabsConfig APIVER_KEY]];
+    }
+    
+    
+    NSString *chan = self.channel;
+    if ([[properties allKeys] containsObject:@"OM.vchannel"])
+    {
+        chan = [self urlEncode:[properties objectForKey: @"OM.vchannel"]];
+        [properties removeObjectForKey:@"OM.vchannel"];
+    }
+
+    int actualTimeOfevent = (int)[[NSDate date] timeIntervalSince1970];
+    
+    NSString *segURL = [NSString stringWithFormat:@"%@/%@/%@?%@=%@&%@=%@&%@=%@&%@=%@&%@=%i&%@=%@&%@=%@&%@=%@&", self.segmentURL,self.dataSource,@"om.gif"
+                        ,@"OM.cookieID", self.cookieID
+                        ,@"OM.vchannel", chan
+                        ,@"OM.siteID",self.siteID
+                        ,@"OM.oid",self.organizationID
+                        ,@"dat", actualTimeOfevent
+                        ,@"OM.mappl",@"true"
+                        ,@"OM.m_adid",self.identifierForAdvertising
+                        ,[VisilabsConfig APIVER_KEY], @"IOS"];
+    
+    if(self.exVisitorID != nil &&  ![self.exVisitorID isEqual: @""])
+    {
+        NSString *escapedIdentity = [self urlEncode:self.exVisitorID];
+        segURL = [NSString stringWithFormat:@"%@%@=%@",segURL,@"OM.exVisitorID",escapedIdentity];
+    }
+    
+    if(self.tokenID != nil &&  ![self.tokenID isEqual: @""])
+    {
+        NSString *escapedToken = [self urlEncode:self.tokenID];
+        segURL = [NSString stringWithFormat:@"%@&%@=%@",segURL,@"OM.sys.TokenID",escapedToken];
+    }
+    if(self.appID != nil &&  ![self.appID isEqual: @""])
+    {
+        NSString *escapedAppID = [self urlEncode:self.appID];
+        segURL = [NSString stringWithFormat:@"%@&%@=%@",segURL,@"OM.sys.AppID",escapedAppID];
+    }
+    
+    
+    if(properties != nil)
+    {
+        //TODO: kontrol et.
+        [VisilabsPersistentTargetManager saveParameters:properties];
+        NSString *additionalURL = [self urlizeProps:properties];
+        if([additionalURL length] > 0)
+        {
+            segURL = [NSString stringWithFormat:@"%@%@", segURL,additionalURL];
+        }
+    }
+    
+    NSString *rtURL = nil;
+    if(self.realTimeURL != nil && ![self.realTimeURL isEqualToString:@""] )
+    {
+        rtURL = [segURL stringByReplacingOccurrencesOfString:self.segmentURL withString:self.realTimeURL];
+    }
+
+    @synchronized(self)
+    {
+        [self.sendQueue addObject:segURL];
+        if(rtURL != nil)
+        {
+            [self.sendQueue addObject:rtURL];
+        }
+    }
+    [self send];
+    
+}
+
 - (void)customEvent:(NSString *)pageName withProperties:(NSMutableDictionary *)properties
 {
     if(pageName == nil || [pageName length] == 0)

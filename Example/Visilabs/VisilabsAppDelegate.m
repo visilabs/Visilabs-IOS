@@ -27,7 +27,7 @@
     NSString * targetURL = @"https://s.visilabs.net/json";
     NSString * actionURL = @"https://s.visilabs.net/actjson";
     
-     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:targetURL withActionURL:actionURL withGeofenceURL:geofenceURL withGeofenceEnabled:NO
+     [Visilabs createAPI:visilabsNewOID withSiteID:visilabsNewSiteID withSegmentURL:@"https://lgr.visilabs.net" withDataSource:visilabsNewDataSource withRealTimeURL:@"https://rt.visilabs.net" withChannel:@"IOS" withRequestTimeout:30 withTargetURL:targetURL withActionURL:actionURL withGeofenceURL:geofenceURL withGeofenceEnabled:YES
     withMaxGeofenceCount: 20];
     
     

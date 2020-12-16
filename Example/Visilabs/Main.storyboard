@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v8B-8P-pQt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v8B-8P-pQt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0I-qn-bms">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0I-qn-bms">
                                 <rect key="frame" x="107" y="44" width="200" height="30"/>
                                 <state key="normal" title="Test Favorite Attribute"/>
                                 <connections>
@@ -24,49 +25,59 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fav Attr Results" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnB-ZJ-efd">
-                                <rect key="frame" x="20" y="91" width="374" height="237"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="91" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="237" id="cxv-tf-dOW"/>
+                                    <constraint firstAttribute="height" constant="50" id="cxv-tf-dOW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYi-RO-u1g">
-                                <rect key="frame" x="107" y="357" width="200" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYi-RO-u1g">
+                                <rect key="frame" x="107" y="170" width="200" height="30"/>
                                 <state key="normal" title="Test Recommendation"/>
                                 <connections>
                                     <action selector="testRecommendation:" destination="v8B-8P-pQt" eventType="touchUpInside" id="KMZ-rM-YhS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommendation Results" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1A-u3-EJi">
-                                <rect key="frame" x="20" y="395" width="374" height="237"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="208" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="237" id="Wel-ff-BhI"/>
+                                    <constraint firstAttribute="height" constant="50" id="Wel-ff-BhI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xo-C3-47D">
+                                <rect key="frame" x="112" y="282" width="190" height="30"/>
+                                <state key="normal" title="Send Campaign Parameters"/>
+                                <connections>
+                                    <action selector="sendCampaignParameters:" destination="v8B-8P-pQt" eventType="touchUpInside" id="zji-nd-kKm"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="arT-gL-PB2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="yYi-RO-u1g" firstAttribute="trailing" secondItem="L0I-qn-bms" secondAttribute="trailing" id="3ih-Kb-dsU"/>
                             <constraint firstItem="L0I-qn-bms" firstAttribute="centerX" secondItem="wWM-rI-a8Y" secondAttribute="centerX" id="51G-zf-HSD"/>
                             <constraint firstItem="L0I-qn-bms" firstAttribute="top" secondItem="arT-gL-PB2" secondAttribute="top" id="6ON-nh-hS3"/>
+                            <constraint firstItem="9Xo-C3-47D" firstAttribute="top" secondItem="z1A-u3-EJi" secondAttribute="bottom" constant="24" id="7R8-0U-yLB"/>
                             <constraint firstItem="z1A-u3-EJi" firstAttribute="trailing" secondItem="GnB-ZJ-efd" secondAttribute="trailing" id="8Zj-A5-ssf"/>
                             <constraint firstItem="z1A-u3-EJi" firstAttribute="leading" secondItem="GnB-ZJ-efd" secondAttribute="leading" id="AZ4-tM-Z34"/>
                             <constraint firstItem="GnB-ZJ-efd" firstAttribute="top" secondItem="L0I-qn-bms" secondAttribute="bottom" constant="17" id="ET9-OF-yIm"/>
                             <constraint firstItem="GnB-ZJ-efd" firstAttribute="leading" secondItem="wWM-rI-a8Y" secondAttribute="leadingMargin" id="L13-4Q-oLp"/>
                             <constraint firstItem="GnB-ZJ-efd" firstAttribute="centerX" secondItem="L0I-qn-bms" secondAttribute="centerX" id="Yab-du-oqr"/>
                             <constraint firstItem="L0I-qn-bms" firstAttribute="leading" secondItem="arT-gL-PB2" secondAttribute="leading" constant="107" id="iTc-gX-fon"/>
+                            <constraint firstItem="9Xo-C3-47D" firstAttribute="leading" secondItem="arT-gL-PB2" secondAttribute="leading" constant="112" id="jvv-MC-pI8"/>
                             <constraint firstItem="yYi-RO-u1g" firstAttribute="top" secondItem="GnB-ZJ-efd" secondAttribute="bottom" constant="29" id="mBs-zU-yku"/>
+                            <constraint firstItem="9Xo-C3-47D" firstAttribute="centerX" secondItem="z1A-u3-EJi" secondAttribute="centerX" id="or0-2E-5DI"/>
                             <constraint firstItem="yYi-RO-u1g" firstAttribute="leading" secondItem="L0I-qn-bms" secondAttribute="leading" id="v3l-3S-7wl"/>
                             <constraint firstItem="z1A-u3-EJi" firstAttribute="top" secondItem="yYi-RO-u1g" secondAttribute="bottom" constant="8" id="y4M-D4-zU6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="arT-gL-PB2"/>
                     </view>
                     <connections>
                         <outlet property="favoriteAttributeResultsLabel" destination="GnB-ZJ-efd" id="xVb-mU-zmM"/>
@@ -78,4 +89,15 @@
             <point key="canvasLocation" x="-191.30434782608697" y="76.339285714285708"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

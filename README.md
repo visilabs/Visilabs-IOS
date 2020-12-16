@@ -89,6 +89,20 @@ You may also make favorite attribute request for a specific targeting action. Be
 VisilabsTargetRequest * targetRequest = [[Visilabs callAPI] buildActionRequest:VisilabsTargetRequestTypeFavorite withActionID:@"188"];
 ```
 
+
+## Sending Campaign Parameters
+
+You can send campaign parameters using sendCampaignParameters :
+
+```objc
+NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
+[properties setObject:@"euromsg campaign" forKey:@"utm_campaign"];
+[properties setObject:@"euromsg" forKey:@"utm_source"];
+[properties setObject:@"push" forKey:@"utm_medium"];
+[[Visilabs callAPI] sendCampaignParameters:properties];
+```
+
+
 ## Author
 
 visilabs, contact@visilabs.com

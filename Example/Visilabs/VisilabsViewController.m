@@ -33,6 +33,15 @@
 @synthesize zoneIDText;
 @synthesize pageNameText;
 
+
+- (IBAction)sendCampaignParameters:(id)sender {
+    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
+    [properties setObject:@"euromsg campaign" forKey:@"utm_campaign"];
+    [properties setObject:@"euromsg" forKey:@"utm_source"];
+    [properties setObject:@"push" forKey:@"utm_medium"];
+    [[Visilabs callAPI] sendCampaignParameters:properties];
+}
+
 - (IBAction)testFavoriteAttribute:(id)sender {
     VisilabsTargetRequest * targetRequest = [[Visilabs callAPI] buildActionRequest:VisilabsTargetRequestTypeFavorite withActionID:@"188"];
     void (^ successBlock)(VisilabsResponse *) = ^(VisilabsResponse * response) {

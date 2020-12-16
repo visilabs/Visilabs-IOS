@@ -155,6 +155,8 @@ typedef NS_ENUM(NSInteger, VisilabsSDKNetworkErrorType) {
 - (void)login:(NSString *)exVisitorID withProperties:(NSMutableDictionary *)properties;
 - (void)signUp:(NSString *)exVisitorID withProperties:(NSMutableDictionary *)properties;
 - (NSString *)getPushURL:(NSString *)source withCampaign:(NSString *)campaign withMedium:(NSString *)medium withContent:(NSString *)content;
+- (void)sendCampaignParameters:(NSMutableDictionary *)properties;
+
 
 - (void)setExVisitorIDToNull;
 
