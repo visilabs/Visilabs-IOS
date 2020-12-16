@@ -96,9 +96,9 @@
 		02E58EA9864B2F16E6A28519C0AA54FF /* Visilabs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Visilabs.debug.xcconfig; sourceTree = "<group>"; };
 		081507CAD2EA1D3AA88FC86305EA51A1 /* Pods-Visilabs_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Visilabs_Tests-dummy.m"; sourceTree = "<group>"; };
 		0949D445B433436DFDA1E2B4D2591D2C /* VisilabsAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VisilabsAction.m; path = Pod/Classes/VisilabsAction.m; sourceTree = "<group>"; };
-		0C386C8A1508A9497EA574BA2EBDEF17 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0C386C8A1508A9497EA574BA2EBDEF17 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		19BC3D8F78379CDC67B4BC4431313E01 /* VisilabsGeofenceApp+Location.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "VisilabsGeofenceApp+Location.h"; path = "Pod/Classes/VisilabsGeofenceApp+Location.h"; sourceTree = "<group>"; };
-		1A0A188D2E98BEA088ADD103FC3A62C2 /* Pods_Visilabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0A188D2E98BEA088ADD103FC3A62C2 /* Pods_Visilabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Visilabs_Example.framework; path = "Pods-Visilabs_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C71D28CBAB3047942AC4E26A7BF43BE /* Pods-Visilabs_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Example.release.xcconfig"; sourceTree = "<group>"; };
 		1DEEC195EF8F842A7CBAA86D86EA9248 /* VisilabsTargetRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VisilabsTargetRequest.m; path = Pod/Classes/VisilabsTargetRequest.m; sourceTree = "<group>"; };
 		20AFCBCDD863E135D84DB36BC51F747F /* VisilabsGeofenceApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VisilabsGeofenceApp.h; path = Pod/Classes/VisilabsGeofenceApp.h; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		5B6623D7AED479FF6FD42DF400BCB730 /* VisilabsNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VisilabsNotification.h; path = Pod/Classes/VisilabsNotification.h; sourceTree = "<group>"; };
 		5BC45F9913148EFC98EE98F67BF1242C /* UIImage+VisilabsImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+VisilabsImageEffects.m"; path = "Pod/Classes/UIImage+VisilabsImageEffects.m"; sourceTree = "<group>"; };
 		5C8F78465B7E0886DF7D03C67B743DEE /* Pods-Visilabs_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Visilabs_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		5E7D06967E8F8B7DA7EB3D0135394265 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5E7D06967E8F8B7DA7EB3D0135394265 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		5FD712E5DDC7F720E7B981DC0457D324 /* Pods-Visilabs_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Visilabs_Example-dummy.m"; sourceTree = "<group>"; };
 		64B3DF632CB657B10A1728E5E0A4F855 /* Pods-Visilabs_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Visilabs_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6979022AFADF3204A46BF307F0F7A406 /* VisilabsNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VisilabsNotification.m; path = Pod/Classes/VisilabsNotification.m; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		6D1477C35D0BF3F435AF74E44A61D63D /* UIImage+VisilabsAverageColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+VisilabsAverageColor.h"; path = "Pod/Classes/UIImage+VisilabsAverageColor.h"; sourceTree = "<group>"; };
 		712429B225C28557877B6B5B6949B096 /* UIView+VisilabsHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+VisilabsHelpers.h"; path = "Pod/Classes/UIView+VisilabsHelpers.h"; sourceTree = "<group>"; };
 		723342E914DEA61999C36B567C5F29D4 /* Visilabs-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Visilabs-Info.plist"; sourceTree = "<group>"; };
-		731E8FCE06E6C84ACCA8145D76DCDD77 /* Visilabs.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Visilabs.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		731E8FCE06E6C84ACCA8145D76DCDD77 /* Visilabs.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Visilabs.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7B8FCFC9EDD2B6287F57A5443075D995 /* Visilabs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Visilabs-umbrella.h"; sourceTree = "<group>"; };
 		7C8D8427CE4BEA07DC03EC442074475B /* VisilabsJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VisilabsJSON.m; path = Pod/Classes/VisilabsJSON.m; sourceTree = "<group>"; };
 		7D4C91A49ECD82907614DC93FDA962C3 /* VisilabsReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VisilabsReachability.h; path = Pod/Classes/VisilabsReachability.h; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		9AC0C8F79979FFCB6DAA8C0C579F987E /* Pods-Visilabs_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Visilabs_Example-umbrella.h"; sourceTree = "<group>"; };
 		9B59D0067FFABE45A45648BFB952D0BD /* Pods-Visilabs_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Visilabs_Example-frameworks.sh"; sourceTree = "<group>"; };
 		9D1248DE8F51A7EF0A2C78C45F4CE05F /* Pods-Visilabs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0E1379F853DFA83C2F62FA2BF4DE070 /* VisilabsDataManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VisilabsDataManager.m; path = Pod/Classes/VisilabsDataManager.m; sourceTree = "<group>"; };
 		A373FBF743C3CB9D87EE99866EEAE788 /* UIColor+VisilabsColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+VisilabsColor.m"; path = "Pod/Classes/UIColor+VisilabsColor.m"; sourceTree = "<group>"; };
 		A62BB3B6D0EBABE7EAF6A67DD69AB5D8 /* Pods-Visilabs_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Visilabs_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -176,9 +176,9 @@
 		E8409310E74A20A6C98A902A2B68FD6C /* Visilabs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Visilabs.h; path = Pod/Classes/Visilabs.h; sourceTree = "<group>"; };
 		E8F28CA1A7030771BD1FBC90EA24BCEB /* VisilabsGeofenceLocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VisilabsGeofenceLocationManager.h; path = Pod/Classes/VisilabsGeofenceLocationManager.h; sourceTree = "<group>"; };
 		F0556EFA2888A088B933026A4199EE15 /* Visilabs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Visilabs.m; path = Pod/Classes/Visilabs.m; sourceTree = "<group>"; };
-		F4AEF4684D88CD3A3479C71C2BBA5349 /* Pods_Visilabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Visilabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4AEF4684D88CD3A3479C71C2BBA5349 /* Pods_Visilabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Visilabs_Tests.framework; path = "Pods-Visilabs_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F84F2A850BF5A414EE6FCBC8A7671E81 /* Pods-Visilabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Visilabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		F9E1857973A3D3C98F3D0786048A1A48 /* Visilabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visilabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9E1857973A3D3C98F3D0786048A1A48 /* Visilabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Visilabs.framework; path = Visilabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9F71532B681DB263B1A1215E9347373 /* VisilabsGeofenceApp+Location.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "VisilabsGeofenceApp+Location.m"; path = "Pod/Classes/VisilabsGeofenceApp+Location.m"; sourceTree = "<group>"; };
 		FE1A70695B0F97B61F163D2BC33EB007 /* Pods-Visilabs_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Visilabs_Tests-Info.plist"; sourceTree = "<group>"; };
 		FE8520AFDA1A8C375C6FD0979DD294E6 /* VisilabsCloseBtn.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = VisilabsCloseBtn.png; path = Pod/Classes/VisilabsCloseBtn.png; sourceTree = "<group>"; };
@@ -662,7 +662,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 2.5.24;
 				MODULEMAP_FILE = "Target Support Files/Visilabs/Visilabs.modulemap";
 				PRODUCT_MODULE_NAME = Visilabs;
 				PRODUCT_NAME = Visilabs;
@@ -729,7 +728,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -971,7 +971,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 2.5.24;
 				MODULEMAP_FILE = "Target Support Files/Visilabs/Visilabs.modulemap";
 				PRODUCT_MODULE_NAME = Visilabs;
 				PRODUCT_NAME = Visilabs;
