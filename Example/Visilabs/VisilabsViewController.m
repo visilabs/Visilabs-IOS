@@ -35,11 +35,22 @@
 
 
 - (IBAction)sendCampaignParameters:(id)sender {
+    
+    
+    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
+    [properties setObject:@"123456" forKey:@"OM.pbid"];
+    [properties setObject:@"" forKey:@"OM.ppr"];
+    [properties setObject:@"" forKey:@"OM.pu"];
+    [properties setObject:@"" forKey:@"OM.pb"];
+    [[Visilabs callAPI] customEvent:@"basket" withProperties:properties];
+    
+    /*
     NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
     [properties setObject:@"euromsg campaign" forKey:@"utm_campaign"];
     [properties setObject:@"euromsg" forKey:@"utm_source"];
     [properties setObject:@"push" forKey:@"utm_medium"];
     [[Visilabs callAPI] sendCampaignParameters:properties];
+     */
 }
 
 - (IBAction)testFavoriteAttribute:(id)sender {

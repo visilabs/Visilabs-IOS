@@ -1231,11 +1231,13 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
             continue;
         }
         
+        /*
         if([stringValue length] == 0)
         {
             DLog(@"Visilabs: WARNING - property values must not be empty strings. Dropping property.");
             continue;
         }
+        */
         
         
         NSString *escapedKey = [self urlEncode:stringKey];
