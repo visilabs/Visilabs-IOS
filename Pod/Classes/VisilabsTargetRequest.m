@@ -61,8 +61,8 @@
     
         for(VisilabsTargetFilter *propKey in filters){
             if(propKey){
-                if(propKey.attribute && propKey.attribute != @"" && propKey.filterType && propKey.filterType != @"" &&
-                   propKey.value && propKey.value != @"" ){
+                if(propKey.attribute && ![propKey.attribute  isEqual: @""] && propKey.filterType && ![propKey.filterType  isEqual: @""] &&
+                   propKey.value && ![propKey.value  isEqual: @""] ){
                     NSMutableDictionary *abbFilter =  [[NSMutableDictionary alloc] init];
                     [abbFilter setObject:propKey.attribute forKey:@"attr"];
                     [abbFilter setObject:propKey.filterType forKey:@"ft"];

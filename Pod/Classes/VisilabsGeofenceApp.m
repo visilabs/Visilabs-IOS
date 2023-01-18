@@ -462,7 +462,7 @@
 
 #pragma mark - UIAppDelegate auto integration
 
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings  //since iOS 8.0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
     NSMutableDictionary *dictUserInfo = [NSMutableDictionary dictionary];
     if (notificationSettings != nil)
@@ -531,7 +531,7 @@
 //2. NOT called when App in FG.
 //3. NOT called when click notification banner directly.
 //This delegate callback not mixed with above `didReceiveRemoteNotification`.
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)(void))completionHandler
 {
     BOOL customerAppResponse = [self.appDelegateInterceptor.secondResponder respondsToSelector:@selector(application:handleActionWithIdentifier:forRemoteNotification:completionHandler:)];
     NSMutableDictionary *dictUserInfo = [NSMutableDictionary dictionary];
@@ -570,7 +570,7 @@
     }
 }
 
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)(void))completionHandler
 {
     BOOL customerAppResponse = [self.appDelegateInterceptor.secondResponder respondsToSelector:@selector(application:handleActionWithIdentifier:forLocalNotification:completionHandler:)];
     NSMutableDictionary *dictUserInfo = [NSMutableDictionary dictionary];
@@ -603,19 +603,22 @@
     }
 }
 
-//since iOS 9 uses this delegate callback, and `- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation` is not called when this new delegate present.
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
     BOOL customerHandled = NO;
     if ([self.appDelegateInterceptor.secondResponder respondsToSelector:@selector(application:openURL:options:)])
     {
-        customerHandled = [self.appDelegateInterceptor.secondResponder application:app openURL:url options:options];
+        if (@available(iOS 9.0, *)) {
+            customerHandled = [self.appDelegateInterceptor.secondResponder application:app openURL:url options:options];
+        }
     }
     if (!customerHandled)
     {
         if ([self.appDelegateInterceptor.secondResponder respondsToSelector:@selector(application:openURL:sourceApplication:annotation:)]) //try old style handle
         {
-            customerHandled = [self.appDelegateInterceptor.secondResponder application:app openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+            if (@available(iOS 9.0, *)) {
+                customerHandled = [self.appDelegateInterceptor.secondResponder application:app openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+            }
         }
     }
     if (!customerHandled)
@@ -797,7 +800,6 @@
     NSAssert3(NO, @"Crash intentionally: NSAssert3 in SDK, %@, %@, %@.", @"param1", @"param2", @"param3");
     NSAssert4(NO, @"Crash intentionally: NSAssert4 in SDK, %@, %@, %@, %@.", @"param1", @"param2", @"param3", @"param4");
     NSAssert5(NO, @"Crash intentionally: NSAssert5 in SDK, %@, %@, %@, %@, %@.", @"param1", @"param2", @"param3", @"param4", @"param5");
-    assert(NO && @"Crash intentionally: assert in SDK.");
 }
 
 @end

@@ -20,15 +20,12 @@
 
 @implementation VisilabsGeofenceBridge
 
-
-
 + (void)bridgeHandler:(NSNotification *)notification
 {    VisiGeofence.isDefaultLocationServiceEnabled = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createLocationManagerHandler:) name:@"SH_LMBridge_CreateLocationManager" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setGeofenceTimestampHandler:) name:@"SH_LMBridge_SetGeofenceTimestamp" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_SetGeofenceTimestamp" object:nil userInfo:@{@"timestamp": NONULL(@"2016-01-01")}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_SetGeofenceTimestamp" object:nil userInfo:@{@"timestamp": @"2016-01-01"}];
 }
 
 #pragma mark - private functions
@@ -37,18 +34,12 @@
 {
     if (VisiGeofence.locationManager == nil)
     {
-        VisiGeofence.locationManager = [VisilabsGeofenceLocationManager sharedInstance];  //cannot move to `init` because it starts `startMonitorGeoLocationStandard` when create.
+        VisiGeofence.locationManager = [VisilabsGeofenceLocationManager sharedInstance];
     }
 }
 
 + (void)setGeofenceTimestampHandler:(NSNotification *)notification
-{
-    /*
-    VisilabsGeofenceBridge.geofenceTimestampTimer = nil;
-    NSString *timestamp = notification.userInfo[@"timestamp"];
-    [VisilabsGeofenceStatus sharedInstance].geofenceTimestamp = timestamp;
-     */
-    
+{    
     if(self.geofenceTimestampTimer != nil)
     {
         [self.geofenceTimestampTimer invalidate];

@@ -249,20 +249,10 @@
 }
 
 -(void)bringGeofences{
-    //NSString *geofenceID =  (NSString*)[theTimer userInfo];
     NSArray *geofences = [[VisilabsGeofenceStatus sharedInstance] arrayGeofenceFetchList];
     if(geofences){
         for (VisilabsServerGeofence *geofence in geofences){
-            /*if([geofence.suid isEqualToString:geofenceID]){
-                
-                if(geofence.isInside){
-                    NSArray *elements = [geofenceID componentsSeparatedByString:@"_"];
-                    if(elements && elements.count == 3){
-                        //[[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
-                    }
-                }
-                return;
-            }*/
+
         }
     }
     

@@ -64,7 +64,6 @@ int const SHLocation_BG_Distance = 500;
 
 - (BOOL)isLocationServiceEnabled
 {
-    //if never manually set isLocationServiceEnabled, use default value
     NSObject *setObj = [[NSUserDefaults standardUserDefaults] objectForKey:ENABLE_LOCATION_SERVICE];
     if (setObj == nil || ![setObj isKindOfClass:[NSNumber class]])
     {
@@ -80,7 +79,6 @@ int const SHLocation_BG_Distance = 500;
     {
         if (isLocationServiceEnabled) 
         {
-            //if enable update first, as next part will consider it.
             [[NSUserDefaults standardUserDefaults] setBool:isLocationServiceEnabled forKey:ENABLE_LOCATION_SERVICE];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [VisiGeofence.locationManager requestPermissionSinceiOS8];
@@ -89,11 +87,10 @@ int const SHLocation_BG_Distance = 500;
         else
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_StopMonitorGeoLocation" object:nil];
-            //if disable update after take effect, otherwise above function will ignore it.
             [[NSUserDefaults standardUserDefaults] setBool:isLocationServiceEnabled forKey:ENABLE_LOCATION_SERVICE];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
-        [VisiGeofence registerOrUpdateInstallWithHandler:nil]; //update "feature_locations"
+        [VisiGeofence registerOrUpdateInstallWithHandler:nil];
     }
 }
 

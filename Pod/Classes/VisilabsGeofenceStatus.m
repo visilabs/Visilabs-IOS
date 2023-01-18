@@ -23,7 +23,6 @@
 
 @interface VisilabsGeofenceStatus ()
 
-//@property (strong, nonatomic) NSMutableArray *arrayGeofenceFetchList; //simiar as above but for geofence fetch list.
 - (void)sendLogForGeoFence:(VisilabsServerGeofence *)geoFence isInside:(BOOL)isInside; //Send install/log for enter/exit server geofence.
 - (VisilabsServerGeofence *)findServerGeofenceForRegion:(CLRegion *)region;  //get VisilabsServerGeofence list, subset of self.arrayGeofenceFetchList, which match this region. It searches both parent and child list.
 - (void)stopMonitorPreviousGeofencesOnlyForOutside:(BOOL)onlyForOutside parentCanKeepChild:(BOOL)parentKeep;  //Geofence monitor region need to change, stop previous monitor for server's geofence. If `onlyForOutside`=YES, only stop monitor those outside; otherwise stop all regardless inside or outside. `parentKeep`=YES take effect when `onlyForOutside`=YES, if it's parent fence is inside, child fence not stop although it's outside.
@@ -166,11 +165,15 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
             BOOL needFetch = YES;
             if (needFetch)
             {
-                //update local cache time before send request, because this request has same format as others {app_status:..., code:0, value:...}, it will trigger `setGeofenceTimestamp` again. If fail to get request, clear local cache time in callback handler, make next fetch happen.
                 [[NSUserDefaults standardUserDefaults] setObject:@([serverTime timeIntervalSinceReferenceDate]) forKey:APPSTATUS_GEOFENCE_FETCH_TIME];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
+                
+                
+                
                 CLLocationCoordinate2D lastKnownLocation =  [[VisilabsGeofenceLocationManager sharedInstance] currentGeoLocationValue];
+                                
+                
                 CLLocationDegrees lastKnownLocationLatitude = lastKnownLocation.latitude;
                 CLLocationDegrees lastKnownLocationLongitude = lastKnownLocation.longitude;
                 
@@ -255,11 +258,7 @@ NSDate *visilabsParseDate(NSString *input, int offsetSeconds)
                     
                         }
                 
-                
-                        //Geofence would monitor parent or child, and it's possible `id` not change but latitude/longitude/radius change. When timestamp change, stop monitor existing geofences and start to monitor from new list totally.
-                        [self stopMonitorPreviousGeofencesOnlyForOutside:NO parentCanKeepChild:NO]; //server's geofence change, stop monitor all.
-                        //Update local cache and memory, start monitor parent.
-
+                        [self stopMonitorPreviousGeofencesOnlyForOutside:NO parentCanKeepChild:NO];
                         
                         @try{
                             NSInteger maxGeofenceCount = [[Visilabs callAPI] maxGeofenceCount];

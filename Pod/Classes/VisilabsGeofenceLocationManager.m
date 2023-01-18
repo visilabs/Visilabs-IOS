@@ -29,12 +29,11 @@
 @interface VisilabsGeofenceLocationManager()
 
 @property (nonatomic, strong) CLLocationManager *locationManager;  //The internal operating iOS object.
-//@property (nonatomic) CLLocationCoordinate2D currentGeoLocationValue; //extent read-write access
 @property (nonatomic) CLLocationCoordinate2D sentGeoLocationValue; //sent by log location 20
 @property (nonatomic) NSTimeInterval sentGeoLocationTime;  //for calculate time delta to prevent too often location update notification send.
 
 - (void)createLocationManager;  //create internal operating iOS object.
-- (double)distanceSquaredForLat1:(double)lat1 lng1:(double)lng1 lat2:(double)lat2 lng2:(double)lng2; //Calculates the square of distance between two lat/longs. Geared for speed over accuracy.
+- (double)distanceSquaredForLat1:(double)lat1 lng1:(double)lng1 lat2:(double)lat2 lng2:(double)lng2;
 - (void)sendGeoLocationUpdate;
 
 - (BOOL)isRegionSame:(CLRegion *)r1 with:(CLRegion *)r2;
@@ -100,29 +99,26 @@
     self.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     self.distanceFilter = 10.0f;
     
-    //initialize detecting location
-    self.currentGeoLocationValue = CLLocationCoordinate2DMake(0, 0);
+    if(self.locationManager.location != nil) {
+        self.currentGeoLocationValue = self.locationManager.location.coordinate;
+    } else {
+        self.currentGeoLocationValue = CLLocationCoordinate2DMake(0, 0);
+    }
+    
+    
     
     self.sentGeoLocationValue = CLLocationCoordinate2DMake(0, 0);
-    self.sentGeoLocationTime = 0;  //not update yet
+    self.sentGeoLocationTime = 0;
     _geolocationMonitorState = SHGeoLocationMonitorState_Stopped;
-    
-
-    
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_StartMonitorGeoLocation" object:nil];
     
-    
-    //bunu sonradan ekledim.
     if ([CLLocationManager significantLocationChangeMonitoringAvailable])
     {
         DLog(@"LocationManager Action: Start significant location update.");
         [self.locationManager startMonitoringSignificantLocationChanges];
         _geolocationMonitorState = SHGeoLocationMonitorState_MonitorSignificant;
-        //[[NSNotificationCenter defaultCenter] postNotificationName:SHLMStartSignificantMonitorNotification object:self];
     }
-    
-
 }
 
 - (void)createNetworkMonitor
@@ -145,40 +141,38 @@
 
 + (BOOL)locationServiceEnabledForApp:(BOOL)allowNotDetermined
 {
-    //Since iOS 8 must add key in Info.plist otherwise location service won't start.
     if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
     {
         NSString *locationAlwaysStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"];
         NSString *locationWhileInUseStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationWhenInUseUsageDescription"];
-        if (locationAlwaysStr == nil && locationWhileInUseStr == nil) //cannot check length != 0 because Info.plist can add empty string for these key and location is enabled.
+        NSString *locationAlwaysAndWhenInUseStr  = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysAndWhenInUseUsageDescription"];
+        if (locationAlwaysStr == nil && locationWhileInUseStr == nil && locationAlwaysAndWhenInUseStr == nil)
         {
-            return NO;  //this iOS 8 App not configure location service key, it's not enabled. cannot avoid this check as it's [CLLocationManager authorizationStatus] is kCLAuthorizationStatusNotDetermined.
+            return NO;
         }
     }
-    if (!VisiGeofence.isLocationServiceEnabled/*code allow*/ || ![CLLocationManager locationServicesEnabled]/**Global location service is enabled.*/)
+    if (!VisiGeofence.isLocationServiceEnabled || ![CLLocationManager locationServicesEnabled])
     {
         return NO;
     }
     BOOL isEnabled;
     if (allowNotDetermined)
     {
-        isEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized /*Individual App location service is enabled.*/
-                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways /*Sinc iOS 8, equal to kCLAuthorizationStatusAuthorized*/
-                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse /*Since iOS 8, */
-                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined/*Need this also, otherwise not ask for permission at first launch.*/);
+        isEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways
+                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse
+                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined
+                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways);
     }
     else
     {
-        isEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized /*Individual App location service is enabled.*/
-                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways /*Sinc iOS 8, equal to kCLAuthorizationStatusAuthorized*/
-                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse /*Since iOS 8, */);
+        isEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways
+                     || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse);
     }
     if (isEnabled)
     {
         NSString *sentFlag = [[NSUserDefaults standardUserDefaults] objectForKey:LOCATION_DENIED_SENT];
         if (sentFlag != nil && sentFlag.length > 0)
         {
-            //clear location denied flag
             [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:LOCATION_DENIED_SENT];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
@@ -331,24 +325,38 @@
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     BOOL enabled = VisiGeofence.isLocationServiceEnabled;
     
+    NSString *locationWhileInUseStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationWhenInUseUsageDescription"];
+    NSString *locationAlwaysStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"];
+    NSString *locationAlwaysAndWhenInUseStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysAndWhenInUseUsageDescription"];
     if (enabled && status == kCLAuthorizationStatusNotDetermined)
     {
-        NSString *locationAlwaysStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"];
-        if (locationAlwaysStr != nil) //if customer added "Always" uses this permission, recommended. cannot check length != 0 because Info.plist can add empty string for these key and location is enabled.
+        if (locationAlwaysStr != nil || locationAlwaysAndWhenInUseStr)
         {
             if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
             {
-                [self.locationManager requestAlwaysAuthorization]; //since iOS 8.0, must request for one authorization type, meanwhile, customer App must add `NSLocationAlwaysUsageDescription` in Info.plist.
+                [self.locationManager requestAlwaysAuthorization];
             }
         }
         else
         {
-            NSString *locationWhileInUseStr = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationWhenInUseUsageDescription"];
             if (locationWhileInUseStr != nil)
             {
                 if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
                 {
-                    [self.locationManager requestWhenInUseAuthorization]; //since iOS 8.0, if Always not available, try WhenInUse as secondary option.
+                    [self.locationManager requestWhenInUseAuthorization];
+                }
+            }
+        }
+    }
+    
+    if (@available(iOS 13.4, *)) {
+        if (enabled && status == kCLAuthorizationStatusAuthorizedWhenInUse)
+        {
+            if (locationAlwaysStr != nil || locationAlwaysAndWhenInUseStr)
+            {
+                if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+                {
+                    [self.locationManager requestAlwaysAuthorization];
                 }
             }
         }
@@ -359,20 +367,18 @@
 {
     if (!VisiGeofence.isLocationServiceEnabled)
     {
-        return NO;  //initialize CLLocationManager but cannot call any function to avoid promote.
+        return NO;
     }
-    [self requestPermissionSinceiOS8]; //request before action, it simply return if not suitable.
+    [self requestPermissionSinceiOS8];
     if (self.geolocationMonitorState == SHGeoLocationMonitorState_Stopped
         || (standard && self.geolocationMonitorState == SHGeoLocationMonitorState_MonitorSignificant)
         || (!standard && self.geolocationMonitorState == SHGeoLocationMonitorState_MonitorStandard))  //avoid stop and start for the same mode
     {
-        if ([VisilabsGeofenceLocationManager locationServiceEnabledForApp:YES/*for first time promote permission dialog*/])
+        if ([VisilabsGeofenceLocationManager locationServiceEnabledForApp:YES])
         {
-            //as the mode change, need to stop and start in new mode again
             [self stopMonitorGeoLocation];
             if (standard)
             {
-                //start standard services
                 DLog(@"LocationManager Action: Start standard location update.");
                 [self.locationManager startUpdatingLocation];
                 _geolocationMonitorState = SHGeoLocationMonitorState_MonitorStandard;
@@ -380,9 +386,6 @@
             }
             else
             {
-                //This check `significantLocationChangeMonitoringAvailable` always return YES in testing so it actually does not affect current logic. Add this code be more complete.
-                //It returns YES for testing in simulator new and old (6.1), returns YES for iPad 3 Wifi (although a stackoverflow says iPad 1 Wifi not support, but not have device on hand).
-                //Another stackoverflow says this API is added on iOS 4 but really support it since iOS 5. http://stackoverflow.com/questions/11609809/significantlocationchangemonitoringavailable-not-working-on-ios-4
                 if ([CLLocationManager significantLocationChangeMonitoringAvailable])
                 {
                     DLog(@"LocationManager Action: Start significant location update.");
@@ -410,7 +413,7 @@
 {
     if (!VisiGeofence.isLocationServiceEnabled)
     {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
+        return;
     }
     if (self.geolocationMonitorState != SHGeoLocationMonitorState_Stopped)
     {
@@ -547,14 +550,9 @@
         || ((timeDelta >= minTimeBWEvents) && (distanceDelta >= minDistanceBWEvents)))  //not push location change notification in certain time or in certain distance
     {
         NSDictionary *dictLoc = @{@"lat": @(self.currentGeoLocation.latitude), @"lng": @(self.currentGeoLocation.longitude)};
-        DLog([NSString stringWithFormat:@"LocationManager Delegate: FG (%@), new location (%f, %f), old location (%f, %f), distance (%f >= %f), last time (%@), time delta (%f >= %f).", (isFG ? @"Yes" : @"No"), self.currentGeoLocation.latitude, self.currentGeoLocation.longitude, self.sentGeoLocationValue.latitude, self.sentGeoLocationValue.longitude, distanceDelta, minDistanceBWEvents, [NSDate dateWithTimeIntervalSince1970:self.sentGeoLocationTime], timeDelta, minTimeBWEvents]);
-        self.sentGeoLocationValue = self.currentGeoLocation; //do it early
+        DLog(@"%@", [NSString stringWithFormat:@"LocationManager Delegate: FG (%@), new location (%f, %f), old location (%f, %f), distance (%f >= %f), last time (%@), time delta (%f >= %f).", (isFG ? @"Yes" : @"No"), self.currentGeoLocation.latitude, self.currentGeoLocation.longitude, self.sentGeoLocationValue.latitude, self.sentGeoLocationValue.longitude, distanceDelta, minDistanceBWEvents, [NSDate dateWithTimeIntervalSince1970:self.sentGeoLocationTime], timeDelta, minTimeBWEvents]);
+        self.sentGeoLocationValue = self.currentGeoLocation;
         self.sentGeoLocationTime = [[NSDate date] timeIntervalSince1970];
-        //Only send logline 20 when have location bridge. Above check must kept here because the internal variables cannot move to SHLocationBridge.
-        
-        //TODO:visilabsSerializeObjToJson hata verdiği için sildim
-        //[[NSNotificationCenter defaultCenter] postNotificationName:@"SH_LMBridge_SendGeoLocationLogline" object:nil userInfo:@{@"comment": NONULL(visilabsSerializeObjToJson(dictLoc))}];
-        
     }
 }
 
@@ -614,13 +612,6 @@
 
 #pragma mark - CLLocationManagerDelegate implementation
 
-/*
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    DLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
-    DLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-}
- */
-
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations  //since iOS 6.0
 {
     if (!VisiGeofence.isLocationServiceEnabled)
@@ -632,7 +623,6 @@
         CLLocationCoordinate2D previousLocation = self.currentGeoLocation;
         self.currentGeoLocationValue = ((CLLocation *)locations[0]).coordinate;  //no matter sent log or not, keep current geo location fresh.
         [self sendGeoLocationUpdate];
-        //send out notification for location change
         CLLocation *oldLocation = [[CLLocation alloc] initWithLatitude:previousLocation.latitude longitude:previousLocation.longitude];
         NSDictionary *userInfo = @{SHLMNotification_kNewLocation:locations[0], SHLMNotification_kOldLocation: oldLocation};
         NSNotification *notification = [NSNotification notificationWithName:SHLMUpdateLocationSuccessNotification object:self userInfo:userInfo];
@@ -672,33 +662,11 @@
     [request execAsyncWithSuccess:successBlock AndFailure:failBlock];
     
 }
-/*
--(void) checkDwell:(NSTimer*)theTimer
-{
-    NSString *geofenceID =  (NSString*)[theTimer userInfo];
-    NSArray *geofences = [[VisilabsGeofenceStatus sharedInstance] arrayGeofenceFetchList];
-    if(geofences){
-        for (VisilabsServerGeofence *geofence in geofences){
-            if([geofence.suid isEqualToString:geofenceID]){
-            
-                if(geofence.isInside){
-                    NSArray *elements = [geofenceID componentsSeparatedByString:@"_"];
-                    if(elements && elements.count >= 3){
-                        [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1]];
-                    }
-                }
-                return;
-            }
-        }
-    }
-    
-}
- */
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
     DLog(@"LocationManager Delegate: Enter Region: %@", region.identifier);
-
+    
     NSArray *geofences = [[VisilabsGeofenceStatus sharedInstance] arrayGeofenceFetchList];
     if(geofences){
         for (VisilabsServerGeofence *geofence in geofences){
@@ -716,38 +684,14 @@
                         [[VisilabsGeofenceLocationManager sharedInstance] sendPushNotification:elements[1] withGeofenceID: geoID withIsDwell:YES withIsEnter:YES] ;
                     }
                 }
-                
-                
-                /*
-                else if([geofence.type isEqualToString:@"Dwell"]){                   
-                    if(_geofenceDwellTimers == nil)
-                    {
-                        _geofenceDwellTimers = [[NSMutableDictionary alloc] init];
-                    }
-                    if([_geofenceDwellTimers objectForKey:geofence.suid] != nil)
-                    {
-                        NSTimer * previousTimer = _geofenceDwellTimers[geofence.suid];
-                        [previousTimer invalidate];
-                        previousTimer = nil;
-                        _geofenceDwellTimers[geofence.suid] = nil;
-                    }
-                    NSTimer *dwellTimer = [NSTimer scheduledTimerWithTimeInterval:geofence.durationInSeconds
-                                                                           target:self
-                                                                         selector:@selector(checkDwell:)
-                                                                         userInfo:geofence.suid
-                                                                          repeats:NO];
-                    [_geofenceDwellTimers setObject:dwellTimer forKey:geofence.suid];
-                    
-                }
-                */
             }
         }
     }
     
-
+    
     if (!VisiGeofence.isLocationServiceEnabled)
     {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
+        return;
     }
     NSDictionary *userInfo = @{SHLMNotification_kRegion: region};
     NSNotification *notification = [NSNotification notificationWithName:SHLMEnterRegionNotification object:self userInfo:userInfo];
@@ -756,7 +700,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
-     DLog(@"LocationManager Delegate: Exit Region: %@", region.identifier);
+    DLog(@"LocationManager Delegate: Exit Region: %@", region.identifier);
     NSArray *geofences = [[VisilabsGeofenceStatus sharedInstance] arrayGeofenceFetchList];
     if(geofences){
         for (VisilabsServerGeofence *geofence in geofences){
@@ -792,13 +736,13 @@
 {
     if (!VisiGeofence.isLocationServiceEnabled)
     {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
+        return;
     }
     DLog(@"LocationManager Delegate: Monitoring started for region: %@", region);
     NSDictionary *userInfo = @{SHLMNotification_kRegion: region};
     NSNotification *notification = [NSNotification notificationWithName:SHLMMonitorRegionSuccessNotification object:self userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
-
+    
     if ([self.locationManager respondsToSelector:@selector(requestStateForRegion:)])
     {
         [self.locationManager requestStateForRegion:region];
@@ -809,7 +753,7 @@
 {
     if (!VisiGeofence.isLocationServiceEnabled)
     {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
+        return;
     }
     DLog(@"LocationManager Delegate: Monitoring Failed for Region(%@): %@", region, [error localizedDescription]);
     NSDictionary *userInfo = @{SHLMNotification_kRegion: region, SHLMNotification_kError: error};
@@ -821,7 +765,7 @@
 {
     if (!VisiGeofence.isLocationServiceEnabled)
     {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
+        return;
     }
     NSString *strState = nil;
     switch (state)
@@ -848,7 +792,7 @@
 {
     if (!VisiGeofence.isLocationServiceEnabled)
     {
-        return;  //initialize CLLocationManager but cannot call any function to avoid promote.
+        return;
     }
     NSString *authStatus = nil;
     switch (status)
@@ -862,7 +806,7 @@
         case kCLAuthorizationStatusDenied:
             authStatus = @"Denied";
             break;
-        case kCLAuthorizationStatusAuthorizedAlways: //equal kCLAuthorizationStatusAuthorized (3)
+        case kCLAuthorizationStatusAuthorizedAlways:
             authStatus = @"Always Authorized";
             break;
         case kCLAuthorizationStatusAuthorizedWhenInUse:

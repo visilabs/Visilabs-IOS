@@ -175,9 +175,6 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
         return;
     }
     
-    
-    
-    
     int actualTimeOfevent = (int)[[NSDate date] timeIntervalSince1970];
     
     
@@ -347,7 +344,6 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
                 DLog(@"%@ in-app notifs check response format error: %@", self, rawNotifications);
             }
             
-            //self.notifications = [NSArray arrayWithArray:parsedNotifications];
             self.notificationResponseCached = YES;
         }else {
             DLog(@"%@ notification cache found, skipping network request", self);
@@ -1089,7 +1085,6 @@ void dispatch_once_on_main_thread(dispatch_once_t *predicate, dispatch_block_t b
     
     if(self.geofenceEnabled && self.geofenceURL != nil){
         [VisilabsGeofenceApp sharedInstance].isLocationServiceEnabled = YES;
-        //[[VisilabsGeofenceManager sharedInstance] start];
     }
     
 }

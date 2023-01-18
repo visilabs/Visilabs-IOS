@@ -8,24 +8,29 @@
      -->
     
     
-    <!--
-    <wpt lat="39.925533" lon="32.866287">
-        <name>ankara</name>
+
+    <wpt lat="36.6305413" lon="29.12304">
+        <name>fethiye-kent</name>
     </wpt>
-    -->
+
+    <wpt lat="36.624109677" lon="29.13169931">
+        <name>fethiye-otogar</name>
+    </wpt>
      
      
+     <!--
     <wpt lat="41.0886320178827" lon="29.0414509652661">
         <name>gülal</name>
     </wpt>
-    
+     -->
     
    
 
-    
+   <!--
     <wpt lat="41.077550" lon="29.013383">
         <name>levent</name>
     </wpt>
+   -->
     
      <!--
     <wpt lat="41.067692" lon="29.013627">
